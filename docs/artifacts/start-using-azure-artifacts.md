@@ -18,9 +18,12 @@ Azure Artifacts enables developers to share their code efficiently and manage al
 
 ## Prerequisites
 
+- An Azure DevOps organization and a project. Create an [organization](../organizations/accounts/create-organization.md) or a [project](../organizations/projects/create-project.md#create-a-project) if you haven't already.
+
 - [Allow domain URLs and IP addresses](../organizations/security/allow-list-ip-url.md) if your organization is using a firewall or a proxy server.
-- [Set up billing](../organizations/billing/set-up-billing-for-your-organization-vs.md) if you plan to use more than the free 2-GiB storage.
-- An Azure DevOps organization. [Create an organization](../organizations/accounts/create-organization.md), if you don't have one already.
+
+> [!NOTE]
+> If you anticipate using more than the provided 2-GiB storage, it is recommended to [set up billing](../organizations/billing/set-up-billing-for-your-organization-vs.md) for your organization.
 
 ::: moniker range="tfs-2018"
 
@@ -83,28 +86,29 @@ With Azure Artifacts, you can publish and consume different types of packages. S
 
 Azure Artifacts is free for every organization up to 2 GiB of storage. Once you reach the maximum storage limit, you can no longer upload new artifacts and need to delete some of your existing artifacts or [set up billing](../organizations/billing/set-up-billing-for-your-organization-vs.md) to increase your storage limit. See the [Pricing Calculator](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/) to learn more about Azure DevOps billing.
 
-## Organization billing settings
+## View organization billing
 
 Follow the steps outlined below to view your billing settings for your organization:
 
 1. Sign in to your Azure DevOps organization.
 
-1. Select ![gear icon](../media/icons/gear-icon.png) **Organization settings**.
-
-    :::image type="content" source="../media/settings/open-admin-settings-vert.png" alt-text="A screenshot showing how to access the organization settings":::
-
-1. Select **Billing**.
-
-    :::image type="content" source="../organizations/billing/media/shared/select-billing-organization-settings.png" alt-text="A screenshot showing how to access the billing settings":::
+1. Select ![gear icon](../media/icons/gear-icon.png) **Organization settings**, and then select **Billing**.
 
 1. View your Artifacts tier and usage limit.
 
-    :::image type="content" source="media/billing-settings.png" alt-text="A screenshot showing Artifacts tier and usage limit":::
+    :::image type="content" source="media/organization-billing-artifacts.png" alt-text="A screenshot showing Artifacts tier and usage limit.":::
 
 ## View Artifacts storage consumption
 
-- [Organization-level storage](./artifact-storage.md#organization-level-storage)
-- [Project-level storage](./artifact-storage.md#project-level-storage)
+### [Organization-level storage](#tab/orgstorage)
+
+- [Artifacts Storage - Organization-level](./artifact-storage.md#organization-level-storage)
+
+### [Project-level storage](#tab/projstorage)
+
+- [Artifacts Storage - Project-level](./artifact-storage.md#project-level-storage)
+
+---
 
 ## FAQs
 

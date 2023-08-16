@@ -72,14 +72,20 @@
           displayName: release trigger, CD trigger, stage trigger, environment trigger, deploy PR, scheduled trigger, schedule
     - name: Tasks & templates
       items:
+        - name: Templates, parameters, & expressions
+          items:
+          - name: Templates
+            href: process/templates.md
+            displayName: parameters, passing, job reuse, stage reuse, variable reuse, expressions, context, conditional insertion, iterative insertion, escape a value
+          - name: Template parameters
+            href: process/template-parameters.md
+          - name: Template expressions
+            href: process/template-expressions.md
         - name: Task types & usage
           href: process/tasks.md
           displayName: custom tasks, task versions, task control options, conditions, task tool installers, build tool installers
         - name: Task groups (classic)
           href: library/task-groups.md
-        - name: Template types & usage
-          href: process/templates.md
-          displayName: parameters, passing, job reuse, stage reuse, variable reuse, expressions, context, conditional insertion, iterative insertion, escape a value
         - name: Add a custom task extension
           href: ../extend/develop/add-build-task.md?toc=/azure/devops/pipelines/toc.json
         - name: Upload tasks to project collection
@@ -197,12 +203,16 @@
     - name: .NET Framework
       href: apps/aspnet/build-aspnet-4.md
       displayName: ASP, ASPNET, web
-    - name: JavaScript quickstart
-      href: ecosystems/javascript.md
-      displayName: node, node.js, nodetool, npm, yarn, react, babel, typescript, tsc, mocha, jasmine, jest, karma, ava, junit, cobertura, protractor, phantomjs, webpack, angular, react, vue, gulp, grunt
-    - name: Customize JavaScript
-      href: ecosystems/customize-javascript.md
-      displayName: configure javasript, node, configure node.js, nodetool, npm, yarn, react, babel, typescript, tsc, mocha, jasmine, jest, karma, ava, junit, cobertura, protractor, phantomjs, webpack, angular, react, vue, gulp, grunt
+    - name: JavaScript
+      items:
+      - name: JavaScript quickstart
+        href: ecosystems/javascript.md
+        displayName: node, node.js, nodetool, npm, yarn, react, babel, typescript, tsc, mocha, jasmine, jest, karma, ava, junit, cobertura, protractor, phantomjs, webpack, angular, react, vue, gulp, grunt
+      - name: Customize JavaScript
+        href: ecosystems/customize-javascript.md
+        displayName: configure javascript, node, configure node.js, nodetool, npm, yarn, react, babel, typescript, tsc, mocha, jasmine, jest, karma, ava, junit, cobertura, protractor, phantomjs, webpack, angular, react, vue, gulp, grunt
+      - name: Node.js tutorial
+        href: ecosystems/nodejs-tutorial.md
     - name: Python quickstart
       href: ecosystems/python.md
       displayName: flake, python
@@ -244,9 +254,6 @@
     - name: Xcode
       href: ecosystems/xcode.md
       displayName: app certificate, test flight
-    - name: GitHub Actions
-      href: ecosystems/github-actions.md
-      displayName: github, pipelines action
 - name: Build apps
   items:
     - name: Build multiple branches
@@ -315,6 +322,9 @@
           href: test/codecoverage-for-pullrequests.md
 - name: Deploy apps
   items:
+    - name: Create a multistage pipeline
+      href: process/create-multistage-pipeline.md
+      displayName: multi stage, multi stage pipelines 
     - name: Deploy apps to environments
       items:
         - name: Define and target environments
@@ -433,6 +443,8 @@
       items:
         - name: Build and push to Azure Container Registry with a Docker template
           href: ecosystems/containers/acr-template.md
+        - name: Build and push to Azure Container Registry - Managed Service Identity
+          href: ecosystems/containers/publish-to-acr.md
     - name: Azure Kubernetes Service
       items:
       - name: Build and deploy to Azure Kubernetes Service
@@ -503,6 +515,9 @@
     - name: Publish NuGet packages with Jenkins
       href: packages/jenkins.md
       displayName: nuget, package, publish, jenkins
+    - name: Publish NuGet packages to NuGet.org (Classic/YAML)
+      href: artifacts/publish-public-registry.md
+      displayName: publish, nuget, package
 - name: Create & use resources
   items:
     - name: About resources
@@ -510,7 +525,9 @@
     - name: Library & shared resources
       href: library/index.md
       displayName: resource, resources, pipeline resource, resources security, resources traceability
-    - name: Add protection to a repository resource
+    - name: Add an admin role to a resource
+      href: library/add-resource-protection.md
+    - name: Repository resource protection
       href: process/repository-resource.md
       displayName: protected resources, protection, checks
     - name: Manage service connections
@@ -536,7 +553,7 @@
     - name: About agents & agent pools
       href: agents/agents.md
       displayName: self-hosted, microsoft-hosted, parallel, capabilities, user capabilities, system capabilities, demands, pools, communication
-    - name: Agent version 3.x preview
+    - name: Agent version 3.x
       href: agents/v3-agent.md
     - name: Create & manage agent pools
       href: agents/pools-queues.md
@@ -546,11 +563,19 @@
     - name: Microsoft-hosted agents
       href: agents/hosted.md
     - name: Self-hosted Linux agents
-      href: agents/v2-linux.md
+      href: agents/linux-agent.md
     - name: Self-hosted macOS agents
-      href: agents/v2-osx.md
+      href: agents/osx-agent.md
     - name: Self-hosted Windows agents
-      href: agents/v2-windows.md
+      href: agents/windows-agent.md
+    - name: Self-hosted agents (previous version 2.x)
+      items:
+        - name: Self-hosted Linux agents (2.x)
+          href: agents/v2-linux-agent.md
+        - name: Self-hosted macOS agents (2.x)
+          href: agents/v2-osx-agent.md
+        - name: Self-hosted Windows agents (2.x)
+          href: agents/v2-windows-agent.md      
     - name: Scale set agents
       href: agents/scale-set-agents.md
       displayName: byos, elastic agents, VMSS, autoscale
@@ -624,6 +649,16 @@
           displayName: PATH, containers, control tasks, auditing
     - name: Download release permissions report
       href: ../organizations/security/download-permissions-report-release.md
+- name: Architectures
+  items:
+    - name: Baseline Azure Pipelines architecture
+      href: architectures/devops-pipelines-baseline-architecture.md
+    - name: Azure Web Apps architecture
+      href: architectures/devops-pipelines-azure-web-apps-architecture.md
+    - name: DevTest architecture
+      href: architectures/devops-pipelines-devtest-iaas-architecture.md
+    - name: IaaS architecture
+      href: architectures/devops-pipelines-iaas-vms-architecture.md
 - name: Integrate with 3rd party software
   items:
   - name: Microsoft Teams

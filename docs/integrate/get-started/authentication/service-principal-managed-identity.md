@@ -8,7 +8,7 @@ ms.assetid:
 ms.topic: how-to
 ms.author: wonga
 author: wonga
-ms.date: 04/05/2023
+ms.date: 04/07/2023
 monikerRange: '<= azure-devops'
 ---
 
@@ -64,10 +64,10 @@ For more information, see the following articles and video:
 
 ### 2. Add and manage service principals in an Azure DevOps organization
 
-Once you configure the service principals in the Azure AD portal, you must do the same in Azure DevOps by adding the service principals to your organization. You can add them through the [Users page](../../../organizations/accounts/add-organization-users.md) or with the [ServicePrincipalEntitlements APIs](/rest/api/azure/devops/memberentitlementmanagement/service-principal-entitlements). Since they can't sign in interactively, a user account that can add users to an organization, project, or team must add them. Such users include **Project Collection Administrators** (PCA) or **Project Administrators and Team Administrators** when the ["Allow team and project administrators to invite new users" policy](/azure/devops/organizations/security/restrict-invitations) is enabled. 
+Once you configure the service principals in the Azure AD portal, you must do the same in Azure DevOps by adding the service principals to your organization. You can add them through the [Users page](../../../organizations/accounts/add-organization-users.md) or with the [ServicePrincipalEntitlements APIs](/rest/api/azure/devops/memberentitlementmanagement/service-principal-entitlements?view=azure-devops-rest-7.1&preserve-view=true). Since they can't sign in interactively, a user account that can add users to an organization, project, or team must add them. Such users include **Project Collection Administrators** (PCA) or **Project Administrators and Team Administrators** when the ["Allow team and project administrators to invite new users" policy](/azure/devops/organizations/security/restrict-invitations) is enabled. 
 
 > [!TIP] 
-> To add a service principal to the organization, enter the application or managed identity's display name. If you choose to add a service principal programmatically through the [`ServicePrincipalEntitlements` API](/rest/api/azure/devops/memberentitlementmanagement/service-principal-entitlements), make sure to pass in the **service principal's object id** and not the application's object id. 
+> To add a service principal to the organization, enter the application or managed identity's display name. If you choose to add a service principal programmatically through the [`ServicePrincipalEntitlements` API](/rest/api/azure/devops/memberentitlementmanagement/service-principal-entitlements?view=azure-devops-rest-7.1&preserve-view=true), make sure to pass in the **service principal's object id** and not the application's object id. 
 
 If you're a PCA, you can also grant a service principal access to specific projects and assign a license. If you're not a PCA, you must reach out to the PCA to update any project memberships or license access levels.
 
@@ -76,7 +76,7 @@ If you're a PCA, you can also grant a service principal access to specific proje
 > [!NOTE]
 > You can only add a managed identity for the tenant your organization is connected to. If you would like to access a managed identity in a different tenant, see the [workaround we've included in the FAQ](#q-can-i-add-a-managed-identity-from-a-different-tenant-to-my-organization).
 
-After your service principals are added to the organization, you can treat them similarly to standard user accounts. You can assign permissions directly on a service principal, add it to security groups and teams, assign it to any access level, and remove it from the organization. You can also use the [`Service Principal Graph APIs`](/rest/api/azure/devops/graph/service-principals) to perform CRUD operations on service principals.
+After your service principals are added to the organization, you can treat them similarly to standard user accounts. You can assign permissions directly on a service principal, add it to security groups and teams, assign it to any access level, and remove it from the organization. You can also use the [`Service Principal Graph APIs`](/rest/api/azure/devops/graph/service-principals?view=azure-devops-rest-7.1&preserve-view=true) to perform CRUD operations on service principals.
 
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RWWG70]
 
@@ -128,7 +128,7 @@ A: Service principals and managed identities are priced similarly as users, base
 
 ### Q: Can I use a service principal or managed identity with Azure CLI?
 
-A: Yes! Anywhere that asks for PATs in the [Azure CLI](/azure/authenticate-azure-cli) can also accept [Azure AD access tokens](#get-an-azure-ad-token). See these examples for how you might pass an Azure AD token in to authenticate with CLI.
+A: Yes! Anywhere that asks for PATs in the [Azure CLI](/cli/azure/authenticate-azure-cli) can also accept [Azure AD access tokens](#get-an-azure-ad-token). See these examples for how you might pass an Azure AD token in to authenticate with CLI.
 
 ```powershell
 # To authenticate with a command: After typing this command, the az devops login will prompt you to enter a token. You can add an Azure AD token too! Not just a PAT.
@@ -199,7 +199,7 @@ private static async Task<AuthenticationResult> GetAppRegistrationAADAccessToken
 		.Build();
 	app.AddInMemoryTokenCache();
 
-	string AdoAppClinetID = "499b84ac-1321-427f-aa17-267ca6975798/.default";
+	string AdoAppClientID = "499b84ac-1321-427f-aa17-267ca6975798/.default";
 	string[] scopes = new string[] { AdoAppClientID };
 
 	var result = await app.AcquireTokenForClient(scopes).ExecuteAsync();
@@ -319,5 +319,5 @@ The Azure DevOps Graph List API may return an empty list, even if there are stil
 ## Related articles
 
 * [Link to sample apps](https://github.com/microsoft/azure-devops-auth-samples/tree/master/ServicePrincipalsSamples)
-* [Service Principals Entitlements API Reference](/rest/api/azure/devops/memberentitlementmanagement/service-principal-entitlements)
+* [Service Principals Entitlements API Reference](/rest/api/azure/devops/memberentitlementmanagement/service-principal-entitlements?view=azure-devops-rest-7.1&preserve-view=true)
 * [Service Principal Graph API Reference](/rest/api/azure/devops/graph/service-principals)

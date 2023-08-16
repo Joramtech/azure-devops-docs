@@ -33,6 +33,10 @@ This example shows how to create and deploy a VM, create a custom image, then
 delete the VM. It does so as one complete pipeline, though it reality you
 would use the tasks individually in your own custom build-test-deploy pipeline.
 
+> [!WARNING]
+> 
+> Deleting resources within the lab, the lab itself, or the resource group the lab resides in will be a permanent deletion. Restoring deleted lab resources is not supported at this time.
+
 ## Get set up
 
 Start by installing the
@@ -237,7 +241,7 @@ release pipeline in Azure Pipelines.
 
    >For more information, or if you have any suggestions for 
    improvements to the extension, visit the 
-   [DevTest Labs feedback forum](https://feedback.azure.com/forums/320373-azure-devtest-labs).  
+   [DevTest Labs feedback forum](https://feedback.azure.com/d365community/forum/502dba10-7726-ec11-b6e6-000d3a4f032c).  
 
 ## FAQ
 

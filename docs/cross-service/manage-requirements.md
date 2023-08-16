@@ -184,7 +184,7 @@ Each board supports many Kanban practices such as defining columns and swimlanes
 
 **Example Kanban board** 
 
-![Screenshot of Kanban board, Agile template, update status of work item](../boards/boards/media/ALM_CC_MoveCard.png) 
+:::image type="content" source="../boards/boards/media/alm-cc-move-card.png" alt-text="Screenshot of Kanban board, Agile template, update status of work item.":::
 
 Each team can quickly configure their board and the cards to support their business needs.  
  
@@ -358,7 +358,7 @@ To learn more about any of the concepts introduced in this article, refer to the
 
 - [About work items](../boards/work-items/about-work-items.md) 
 - [Add work item tags to categorize and filter lists and boards](../boards/queries/add-tags-to-work-items.md)
-- [Choose a process](../boards/work-items/guidance/choose-process.md)
+- [About processes and process templates](../boards/work-items/guidance/choose-process.md)
 - [About process customization and inherited processes](../organizations/settings/work/inheritance-process-model.md) 
 - [Bulk add or modify work items with Excel](../boards/backlogs/office/bulk-add-modify-work-items-excel.md)
 - [About Area and Iteration Paths (sprints)](../organizations/settings/about-areas-iterations.md) 
@@ -370,7 +370,6 @@ To learn more about any of the concepts introduced in this article, refer to the
 - [Create your backlog](../boards/backlogs/create-your-backlog.md)  
 - [Organize your backlog](../boards/backlogs/organize-backlog.md)  
 - [Define features and epics](../boards/backlogs/define-features-epics.md) 
-- [Refine your backlog](../boards/backlogs/best-practices-product-backlog.md) 
 - [About teams and Agile tools](../organizations/settings/about-teams-and-settings.md) 
 - [Tasks supported by Backlogs, Boards, Taskboards, and Plans](../boards/backlogs/backlogs-boards-plans.md)
 - [Configure and customize Azure Boards](../boards/configure-customize.md)
@@ -381,7 +380,6 @@ To learn more about any of the concepts introduced in this article, refer to the
 - [Add columns to your Kanban board](../boards/boards/add-columns.md) 
 - [Customize cards](../boards/boards/customize-cards.md)
 - [Filter your Kanban board](../boards/backlogs/filter-backlogs-boards-plans.md)
-- [Kanban best practices](../boards/boards/best-practices-kanban.md)
 
 #### Scrum
 

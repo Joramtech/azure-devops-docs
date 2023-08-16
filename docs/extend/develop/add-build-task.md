@@ -44,7 +44,7 @@ To create extensions for Azure DevOps, you need the following software and tools
   |--- vss-extension.json             // extension's manifest
   ```
 
-- The [vss-web-extension-sdk package installation](https://github.com/Microsoft/azure-devops-extension-sdk).
+- The [azure-devops-extension-sdk package installation](https://github.com/Microsoft/azure-devops-extension-sdk).
 
 > [!IMPORTANT]
 > The dev machine needs to run the [latest version of Node](https://nodejs.org/en/download/) to ensure that the written code is compatible with the production environment on the agent and the latest non-preview version of azure-pipelines-task-lib.
@@ -53,7 +53,7 @@ To create extensions for Azure DevOps, you need the following software and tools
 
 ## 1. Create a custom task
 
-Do every part of [1. Create a custom task](#1-create-a-custom-task) within the `buildandreleasetask` folder.
+Do every part of the steps withing this procedure in the `buildandreleasetask` folder.
 
 > [!NOTE]
 > This example walk-through is on Windows with PowerShell. We made it generic for all platforms, but the syntax for getting environment variables is different. If you're using a Mac or Linux, replace any instances of `$env:<var>=<val>` with `export <var>=<val>`.
@@ -61,7 +61,7 @@ Do every part of [1. Create a custom task](#1-create-a-custom-task) within the `
 ### Create task scaffolding
 
 1. Create the folder structure for the task and install the required libraries and dependencies.
-2. From within your `buildandreleasetask` folder, run the following command.
+2. Open a PowerShell command window, go to your `buildandreleasetask` folder, and run the following command.
 
    ```
    npm init --yes
@@ -729,9 +729,9 @@ To package and publish Azure DevOps Extensions to the Visual Studio Marketplace,
 ## FAQs
 See the following frequently asked questions (FAQs) about adding custom build or release tasks in extensions for Azure DevOps
 
-### Q: How can I restrict GitHub Codespaces commands usage for task?
+### Q: How can I restrict Azure Pipelines commands usage for task?
 
-You can restrict GitHub Codespaces commands usage and variables, which can be set by task.
+You can restrict Azure Pipelines commands usage and variables, which can be set by task.
 This action could be useful to prevent unrestricted access to variables/vso commands for custom scripts which task executes. We recommend that you set it up for new tasks.
 To apply, you may need to add the following statement to your task.json file:
 
@@ -775,7 +775,7 @@ We don't support the automatic deletion of tasks. Automatic deletion isn't safe 
 
 ### Q: How can I upgrade a task to the latest Node?
 
-We recommend upgrading to [the latest Node version](https://nodejs.org/en/download/). For example information, see [Upgrading tasks to Node 10](https://github.com/microsoft/azure-pipelines-tasks/blob/master/docs/migrateNode10.md).
+We recommend upgrading to [the latest Node version](https://nodejs.org/en/download/). For example information, see [Upgrading tasks to Node 16](https://github.com/microsoft/azure-pipelines-tasks/blob/master/docs/migrateNode16.md).
 
 ## Related articles
 

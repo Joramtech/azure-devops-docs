@@ -1,7 +1,7 @@
 - name: About notifications
   href:  about-notifications.md
   displayName: view, set, see, edit, custom, subscription, team, project, personal, global
-- name: Navigating the UI
+- name: Navigate the UI
   href:  navigating-the-ui.md
   displayName: interface, personal, team, project, organization, collection, notification, settings
 - name: How email recipients are determined
@@ -32,9 +32,8 @@
   - name: "Use @mentions to further discussion"
     href:  at-mentions.md
     displayName: add, user, group, conversation, comments, PR, story, directory
-  - name: "Use #ID to link to work items"
-    href:  add-links-to-work-items.md
-    displayName: build, commit, pull, request, audit, connect, discussion, changeset, shelveset, comment
+  - name: Link work items and other objects
+    href: ../../boards/backlogs/add-link.md
 - name: Notifications to third parties
   items:
   - name: Send notifications to third-party services (Slack, Teams)

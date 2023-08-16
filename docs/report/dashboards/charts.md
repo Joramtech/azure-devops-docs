@@ -282,7 +282,7 @@ To create a burndown chart, make sure to add the numeric field you want to your 
 > [!div class="mx-imgBorder"]  
 > ![Screenshot of Configure chart dialog, Remaining work for past four weeks.](media/charts/config-remaining-work-trend-chart.png)   
 
-In addition to query-based burndown charts, you can [Configure a Burndown or Burnup widget](configure-burndown-burnup-widgets.md). 
+In addition to query-based burndown charts, you can [Configure a burndown or burnup widget](configure-burndown-burnup-widgets.md). 
 
 ::: moniker-end  
 
@@ -313,7 +313,7 @@ In the dialog that opens, select the dashboard to add the chart to.
 ::: moniker-end  
 
 ::: moniker range="tfs-2018"  
-![Chart context menu, add to a team dashboard](media/pin-chart-to-a-dashboard.png)
+![Screenshot of a chart context menu, add to a team dashboard.](media/add-charts/pin-chart-to-a-dashboard.png)
 ::: moniker-end  
 
 To add other types of charts, such as test results and build summary charts, see [Add widgets and chart to a dashboard](add-widget-to-dashboard.md). 

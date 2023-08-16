@@ -17,7 +17,7 @@ ms.date: 07/26/2022
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
 
-Many teams find Kanban boards ideal for tracking work. Kanban boards are ideal because they support visualization the flow of work that is in progress. It also allows team members to quickly add new items and update work item status in a Kanban board. If you're new to working with the Kanban board, see [Kanban basics](kanban-basics.md).  
+Many teams find Kanban boards ideal for tracking work. Kanban boards are ideal because they support visualization the flow of work that is in progress. It also allows team members to quickly add new items and update work item status in a Kanban board. If you're new to working with the Kanban board, see [Kanban overview](kanban-overview.md).  
 
 With checklists or to do lists, you continue to enjoy lightweight tracking. You gain visibility into which tasks, bugs, or other child items are in progress or completed. For example, here we show several tasks and bugs for work in progress, both yet to do and those items marked as completed. By adding the Issue work item type to the Iteration backlog, issues can be added as checklists. 
 ::: moniker range=">= azure-devops-2019"
@@ -70,7 +70,7 @@ In this example, tasks are added to the product Kanban board using the checklist
     <img src="media/add-tasks-menu-options-vs-ts.png" alt="Open the context menu of a backlog item to add a task" />  
     ::: moniker-end
 
-2. If you have many tasks to add, keep typing their titles and choose Enter after each title.  
+2. If you have many tasks to add, keep entering their titles and choose Enter after each title.  
     ::: moniker range=">= azure-devops-2019"  
     :::image type="content" source="media/checklists/four-tasks-added.png" alt-text="Screenshot of added tasks.":::
     ::: moniker-end
@@ -82,7 +82,7 @@ In this example, tasks are added to the product Kanban board using the checklist
     :::image type="content" source="media/checklists/open-task.png" alt-text="Screenshot of opening a task.":::
 
 > [!NOTE]  
-> Tasks that you create from the Kanban board will show up on your sprint Taskboard. Also, tasks that you create from the [sprint backlog](../sprints/assign-work-sprint.md) or [taskboard](../sprints/task-board.md) will show up within tasks checklists on the Kanban board.  
+> Tasks that you create from the Kanban board appear on your sprint Taskboard. Also, tasks that you create from the [sprint backlog](../sprints/assign-work-sprint.md) or [Taskboard](../sprints/task-board.md) appear within tasks checklists on the Kanban board.  
 
 
 ## Mark a checklist item as done 
@@ -128,7 +128,7 @@ You can drag a task within a work item to reorder it. Or, you can drag the task 
 > [!NOTE]   
 > Users with **Stakeholder** access can't drag-and-drop tasks or reorder and reparent tasks.
 
-Tasks or other child items you add as checklists are automatically assigned to the **Iteration Path** of their parent work item. To reassign a checklist item to a different sprint, you must open the item and change its **Iteration Path**. Or, open the sprint backlogs where it's currently defined and  drag it to the new sprint using the Planning pane. For details, see [Assign backlog items to a sprint](../sprints/assign-work-sprint.md).  
+Tasks or other child items you add as checklists are automatically assigned to the **Iteration Path** of their parent work item. To reassign a checklist item to a different sprint, you must open the item and change its **Iteration Path**. Or, open the sprint backlogs where it's currently defined and  drag it to the new sprint using the Planning pane. For more information, see [Assign backlog items to a sprint](../sprints/assign-work-sprint.md).  
 
 <a id="checklist-actions" /> 
 
@@ -157,8 +157,7 @@ To configure or change the layout of the Kanban board, see [Customize your board
 - [Interactively filter backlogs, boards, queries, and plans](../backlogs/filter-backlogs-boards-plans.md)
 - [Add, run, update manual tests](add-run-update-tests.md)
 - [Create a new branch, drive Git development](../backlogs/connect-work-items-to-git-dev-ops.md)
-- [Kanban board controls](kanban-board-controls.md)
+- [Use Kanban board controls](kanban-overview.md#use-kanban-board-controls.md)
 
 ### REST API resources
 To programmatically create work items, see the [REST API, Work Items reference](/rest/api/azure/devops/wit/work-items/create).
-

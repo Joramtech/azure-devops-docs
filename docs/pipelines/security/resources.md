@@ -21,6 +21,7 @@ A pipeline can access two types of resources, protected and open.
 Your pipelines often have access to secrets.
 For instance, to sign your build, you need a signing certificate.
 To deploy to a production environment, you need a credential to that environment.
+Azure Pipelines requires the **Administrator** role when opening up access to a resource to all pipelines for all protected resources except for Environments. For Environments, you'll need the **Creator** role. Learn more about [resource protection](../library/add-resource-protection.md).  
 In Azure Pipelines, all of the following are considered *protected* resources in YAML pipelines:
 - [Agent pools](../agents/agents.md)
 - [Secret variables in variable groups](../library/variable-groups.md)
@@ -40,7 +41,7 @@ At the organization or project level, you may choose to limit the scope of the A
 When you do this, Azure Pipelines will add two more protections:
 
 * The access token given to the agent for running jobs will only have access to repositories explicitly mentioned in the `resources` section of the pipeline.
-* Repositories added to the pipeline will have to be authorized by someone with read access to the repository the first time that pipeline uses the repository.
+* Repositories added to the pipeline will have to be authorized by someone with contribute access to the repository the first time that pipeline uses the repository.
 
 This setting is on by default for all organizations created after May 2020.
 Organizations created before that should enable it in **Organization settings**.

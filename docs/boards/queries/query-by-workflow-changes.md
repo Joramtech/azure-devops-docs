@@ -351,7 +351,7 @@ You can list items based on the team area path, and if they are in a specific cu
 
 ## Workflow and Kanban board fields
 
-The following fields are useful to filter queries. Some of these fields get updated as a work item progresses from one state to another. Or they're updated as you  move a work item in the [Kanban board](../boards/kanban-basics.md) to a different column or swimlane. Several of these fields don't appear on the work item form, but they're tracked for those work item types listed in the following table.
+The following fields are useful to filter queries. Some of these fields get updated as a work item progresses from one state to another. Or they're updated as you  move a work item in the [Kanban board](../boards/kanban-overview.md) to a different column or swimlane. Several of these fields don't appear on the work item form, but they're tracked for those work item types listed in the following table.
 
 For more information about field attributes, see [Work item fields and attributes](../work-items/work-item-fields.md).
 
@@ -719,7 +719,7 @@ For more information about field attributes, see [Work item fields and attribute
 
 ### People picker 
 
-The **Assigned To** field is supported by the people picker feature. For example, when you choose the **Assigned To** field from within a work item form, the people picker is activated. As shown in the following image, you simply start typing the name of the user you want to select, and search until you find a match. Users that you've previously selected appear in the list automatically. To select users that you haven't selected previously, enter their entire name or search against the full directory.  
+The **Assigned To** field is supported by the people picker feature. For example, when you choose the **Assigned To** field from within a work item form, the people picker is activated. As shown in the following image, you simply start entering the name of the user you want to select, and search until you find a match. Users that you've previously selected appear in the list automatically. To select users that you haven't selected previously, enter their entire name or search against the full directory.  
  
 > [!div class="mx-imgBorder"]  
 > ![Screenshot of the @mention tool in Discussion showing people picker.](../../organizations/notifications/media/at-mention/identity-selector.png)  

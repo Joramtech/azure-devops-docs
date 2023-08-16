@@ -1,3 +1,6 @@
+- name: About default processes
+  displayName: Default, process, Basic, Agile, Scrum, CMMI
+  href: choose-process.md
 - name: Agile culture
   displayName: agile transformation, ship, DevOps
   href: ../../plans/agile-culture.md
@@ -5,7 +8,7 @@
   href: agile-process.md
   displayname: MSF
 - name: Agile workflow
-  displayName: discussion, map stories, track progress, kanban, taskboards
+  displayName: discussion, map stories, track progress, kanban, Taskboards
   href: agile-process-workflow.md
 - name: Scrum process guidance
   displayName: work item, azure boards, user stories, item types, links
@@ -86,6 +89,3 @@
       - name: Track bugs
         displayName: bugs, triage, unit tests
         href: /previous-versions/azure/devops/boards/work-items/guidance/cmmi/track-bugs
-- name: Changes made to process templates
-  displayName: Agile, CMMI, Scrum, Basic, rules, work item types
-  href: changes-to-process-templates.md

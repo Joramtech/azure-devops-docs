@@ -57,9 +57,9 @@ You can quickly assign work items to a sprint by dragging and dropping them from
 2. [Sprint retrospective meetings](best-practices-scrum.md#sprint-retrospective-meetings)
 
 
-## Sprint backlogs and taskboards overview
+## Sprint backlogs and Taskboards overview
 
-Sprint backlogs and taskboards provide a filtered view of work items a team has assigned to a specific iteration path, or sprint. Sprints are defined for a project and then selected by teams. From your backlog, you can map work to an iteration path using drag-and-drop, and then view that work in a separate **sprint backlog**. 
+Sprint backlogs and Taskboards provide a filtered view of work items a team has assigned to a specific iteration path, or sprint. Sprints are defined for a project and then selected by teams. From your backlog, you can map work to an iteration path using drag-and-drop, and then view that work in a separate **sprint backlog**. 
 
 ::: moniker range=">= azure-devops-2019"
 > [!div class="mx-imgBorder"]  
@@ -211,7 +211,7 @@ There isn't a sprint scope change chart or widget. However, you can query for wo
 
 ## List work items added after the start of the sprint
 
-1. [Screenshot to Open the velocity chart.](../../report/dashboards/team-velocity.md) for the team and choose the **Planned** bar for the sprint of interest. You can use the Planned bar for a velocity chart widget or the team backlog velocity chart. 
+1. [Open the velocity chart](../../report/dashboards/team-velocity.md) for the team and choose the **Planned** bar for the sprint of interest. You can use the Planned bar for a velocity chart widget or the team backlog velocity chart. 
 
 	:::image type="content" source="media/overview/velocity-chart.png" alt-text="Screenshot of team velocity chart, choose a planned work bar.":::
 

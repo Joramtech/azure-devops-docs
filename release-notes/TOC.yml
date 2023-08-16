@@ -10,6 +10,18 @@
       items:
         - name: "2023"
           items:
+          - name: August 2
+            href: 2023/sprint-225-update.md
+          - name: July 11
+            href: 2023/sprint-224-update.md
+          - name: June 21
+            href: 2023/sprint-223-update.md
+          - name: June 6
+            href: 2023/sprint-222-update.md
+          - name: May 9 
+            href: 2023/sprint-221-update.md
+          - name: April 20
+            href: 2023/sprint-220-update.md
           - name: March 31
             href: 2023/sprint-219-update.md
           - name: March 8
@@ -214,6 +226,16 @@
         items:
         - name: "2023"
           items:
+          - name: August 2
+            href: 2023/boards/sprint-225-update.md
+          - name: July 11
+            href: 2023/boards/sprint-224-update.md
+          - name: June 6
+            href: 2023/boards/sprint-222-update.md
+          - name: May 9
+            href: 2023/boards/sprint-221-update.md
+          - name: April 20
+            href: 2023/boards/sprint-220-update.md
           - name: March 31
             href: 2023/boards/sprint-219-update.md
           - name: February 17
@@ -322,6 +344,10 @@
             href: 2019/boards/sprint-146-update.md
       - name: Azure Repos
         items:
+        - name: "2023"
+          items:
+          - name: July 11
+            href: 2023/repos/sprint-224-update.md
         - name: "2021"
           items:
             - name: September 8
@@ -381,6 +407,18 @@
         items:
         - name: "2023"
           items:
+          - name: August 2
+            href: 2023/pipelines/sprint-225-update.md
+          - name: July 11
+            href: 2023/pipelines/sprint-224-update.md
+          - name: June 21
+            href: 2023/pipelines/sprint-223-update.md
+          - name: June 6
+            href: 2023/pipelines/sprint-222-update.md
+          - name: May 9
+            href: 2023/pipelines/sprint-221-update.md
+          - name: April 20
+            href: 2023/pipelines/sprint-220-update.md
           - name: March 31
             href: 2023/pipelines/sprint-219-update.md
           - name: March 8
@@ -617,6 +655,12 @@
         items:
         - name: "2023"
           items:
+          - name: July 11
+            href: 2023/general/sprint-224-update.md
+          - name: June 21
+            href: 2023/general/sprint-223-update.md
+          - name: June 6
+            href: 2023/general/sprint-222-update.md
           - name: March 31
             href: 2023/general/sprint-219-update.md
           - name: February 17
@@ -707,6 +751,12 @@
         items:
         - name: "2023"
           items:
+          - name: June 21
+            href: 2023/reporting/sprint-223-update.md
+          - name: May 9
+            href: 2023/reporting/sprint-221-update.md
+          - name: April 20
+            href: 2023/reporting/sprint-220-update.md
           - name: March 8
             href: 2023/reporting/sprint-218-update.md
           - name: February 17
@@ -792,11 +842,11 @@
   items:
   - name: What's new
     href: docswhatsnew/index.yml
-  - name: February 2023
+  - name: July 2023
     href: docswhatsnew/azure-devops-docs-whats-new.md
-  - name: January 2023
-    href: docswhatsnew/azure-devops-docs-2023-01.md
-  - name: December 2022
-    href: docswhatsnew/azure-devops-docs-2022-12.md
+  - name: June 2023
+    href: docswhatsnew/azure-devops-docs-2023-06.md
+  - name: May 2023
+    href: docswhatsnew/azure-devops-docs-2023-05.md
 - name: Subscribe to updates
   href: https://azure.microsoft.com/updates/?product=azure-devops

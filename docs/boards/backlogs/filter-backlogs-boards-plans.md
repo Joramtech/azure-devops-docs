@@ -242,7 +242,7 @@ Supported options are indicated with a ✔️ or listed.
 ::: moniker range="< azure-devops-2022"
 :::row:::
    :::column span="1.5":::
-     [**Plans**](../extensions/delivery-plans.md)
+     [**Plans**](../plans/review-team-plans.md)
    :::column-end:::
    :::column span="1":::
       ✔️   
@@ -659,7 +659,7 @@ Along with the standard filter functions summarized in the previous table, the f
 ::: moniker range="< azure-devops-2022"
 :::row:::
    :::column span="2":::
-     [**Plans**](../extensions/delivery-plans.md)
+     [**Plans**](../plans/review-team-plans.md)
    :::column-end:::
    :::column span="2":::
 
@@ -711,7 +711,7 @@ Along with the standard filter functions summarized in the previous table, the f
 
 ::: moniker range=">= azure-devops-2020"
 To learn more about these other functions, see the following articles: 
-- [Reorder cards (Kanban Boards)](../boards/reorder-cards.md)  
+- [Reorder cards (Kanban Boards)](../boards/customize-cards.md#reorder-cards)  
 - [Display rollup progress or totals](display-rollup.md) 
 - [About backlogs, Work with multi-team ownership of backlog items](backlogs-overview.md#work-with-multi-team-ownership-of-backlog-items) 
  
@@ -719,7 +719,7 @@ To learn more about these other functions, see the following articles:
 
 ::: moniker range="< azure-devops-2020"
 To learn more about these other functions, see the following articles: 
-- [Reorder cards (Kanban Boards)](../boards/reorder-cards.md)  
+- [Reorder cards (Kanban Boards)](../boards/customize-cards.md#reorder-cards)  
 - [About backlogs, Work with multi-team ownership of backlog items](backlogs-overview.md#work-with-multi-team-ownership-of-backlog-items) 
  
 ::: moniker-end 
@@ -1028,7 +1028,7 @@ To quickly find revisions made that contain a keyword, or made by specific peopl
 
 :::image type="content" source="../queries/media/history-audit/history-filter.png" alt-text="Screenshot of Work item form, History tab, Web portal, history filter enabled.":::
 
-To learn more, see [Query work item history and discussion fields](../queries/history-and-auditing.md#filter-history).
+For more information, see [Query work item history and discussion fields](../queries/history-and-auditing.md#filter-history).
 
 ::: moniker-end
 
@@ -1043,6 +1043,6 @@ To learn more, see [Query work item history and discussion fields](../queries/hi
 - [Customize a sprint Taskboard](../sprints/customize-taskboard.md)
 - [Tags](../queries/add-tags-to-work-items.md) 
 - [Query work items that you're following](../work-items/follow-work-items.md#query-work-items-that-youre-following)
-- [Reorder cards (Kanban Boards)](../boards/reorder-cards.md)  
+- [Reorder cards (Kanban Boards)](../boards/customize-cards.md#reorder-cards)  
 
 <!--- Other filter features cross-service such as Filter pipelines -->

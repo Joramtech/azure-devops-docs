@@ -4,7 +4,7 @@ ms.custom: seodec18
 description: Learn how to define YAML resources that can be consumed anywhere in your pipelines.
 ms.topic: how-to
 ms.assetid: b3ca305c-b587-4cb2-8ac5-52f6bd46c25e
-ms.date: 09/15/2022
+ms.date: 04/14/2023
 monikerRange: '>= azure-devops-2019'
 ---
 
@@ -13,9 +13,9 @@ monikerRange: '>= azure-devops-2019'
 [!INCLUDE [version-gt-eq-2019](../../includes/version-gt-eq-2019.md)]
 
 Resources in YAML represent sources of pipelines, builds, repositories, containers, packages, and webhooks.
-Resources also provide you the full traceability of the services used in your pipeline including the version, artifacts, associated commits, and work items. When you define a resource, it can be consumed anywhere in your pipeline. And, you can fully automate your DevOps workflow by subscribing to trigger events on your resources.
+Resources also provide you with the full traceability of the services used in your pipeline including the version, artifacts, associated commits, and work items. When you define a resource, it can be consumed anywhere in your pipeline. And, you can fully automate your DevOps workflow by subscribing to trigger events on your resources.
 
-For more information, see [About resources](about-resources.md)
+For more information, see [About resources](about-resources.md) and the [resources YAML schema definition](/azure/devops/pipelines/yaml-schema/resources).
 ### Schema
 
 ```yaml
@@ -157,7 +157,7 @@ These examples are tags set on the continuous integration (CI) pipeline. These t
 
 The version of the resource pipeline's artifacts depends on how your pipeline is triggered.
 
-If your pipeline runs because you manually triggered it or due to a scheduled run, the version of artifacts's version is defined by the values of the `version`, `branch`, and `tags` properties.
+If your pipeline runs because you manually triggered it or due to a scheduled run, the version of artifact's version is defined by the values of the `version`, `branch`, and `tags` properties.
 
 |Specified properties | Artifact version |
 |---------|---------|
@@ -216,7 +216,7 @@ resources:
       
 ```
 
-Your pipeline will run whenever the `SmartHotel-CI` pipelines runs on one of the `releases` branches or on the `main` branch, is tagged with both `Verified` and `Signed`, and it completed both the `Production` and `PreProduction` stages.
+Your pipeline will run whenever the `SmartHotel-CI` pipeline runs on one of the `releases` branches or on the `main` branch, is tagged with both `Verified` and `Signed`, and it completed both the `Production` and `PreProduction` stages.
 
 ### `download` for pipelines
 
@@ -249,6 +249,8 @@ Or, to avoid downloading any of the artifacts:
 
 ---
 Artifacts from the `pipeline` resource get downloaded to `$(PIPELINE.WORKSPACE)/<pipeline-identifier>/<artifact-identifier>` folder.
+
+:::moniker range=">=azure-devops-2020"
 
 ### Pipeline resource variables
 
@@ -293,6 +295,10 @@ steps:
 ```
 
 ---
+
+For more information, see [Pipeline resource metadata as predefined variables](/azure/devops/pipelines/yaml-schema/resources-pipelines-pipeline#pipeline-resource-metadata-as-predefined-variables).
+
+:::moniker-end
 
 ## Define a `builds` resource
 
@@ -368,22 +374,13 @@ The `repository` keyword lets you specify an external repository.
 
 ```yaml
 resources:
-  repositories:
-  - repository: string  # identifier (A-Z, a-z, 0-9, and underscore)
-    type: enum  # see the following "Type" topic
-    name: string  # repository name (format depends on `type`)
-    ref: string  # ref name to use; defaults to 'refs/heads/main'
-    endpoint: string  # name of the service connection to use (for types that aren't Azure Repos)
-    trigger:  # CI trigger for this repository, no CI trigger if skipped (only works for Azure Repos)
-      branches:
-        include: [ string ] # branch names which trigger a build
-        exclude: [ string ] # branch names which won't
-      tags:
-        include: [ string ] # tag names which trigger a build
-        exclude: [ string ] # tag names which won't
-      paths:
-        include: [ string ] # file paths which must match to trigger a build
-        exclude: [ string ] # file paths which won't trigger a build
+    repositories:
+    - repository: string # Required as first property. Alias for the repository.
+      endpoint: string # ID of the service endpoint connecting to this repository.
+      trigger: none | trigger | [ string ] # CI trigger for this repository, no CI trigger if skipped (only works for Azure Repos).
+      name: string # repository name (format depends on 'type'; does not accept variables).
+      ref: string # ref name to checkout; defaults to 'refs/heads/main'. The branch checked out by default whenever the resource trigger fires.
+      type: string # Type of repository: git, github, githubenterprise, and bitbucket.
 ```
 
 ## [Example](#tab/example)
@@ -416,6 +413,55 @@ GitHub Enterprise repos require a [GitHub Enterprise service connection](../libr
 
 Bitbucket Cloud repos require a [Bitbucket Cloud service connection](../library/service-endpoints.md#bitbucket-cloud-service-connection) for authorization.
 
+:::moniker range=">=azure-devops-2020"
+
+### Variables
+
+In each run, the metadata for a repository resource is available to all jobs in the form of runtime variables. The `<Alias>` is the identifier that you gave for your repository resource.
+
+## [Schema](#tab/schema)
+
+```yaml
+resources.repositories.<Alias>.name
+resources.repositories.<Alias>.ref
+resources.repositories.<Alias>.type
+resources.repositories.<Alias>.id
+resources.repositories.<Alias>.url
+```
+
+## [Example](#tab/example)
+
+The following example has a repository resource with an alias of `common`, and the repository resource variables are accessed using `resources.repositories.common.*`.
+
+```yaml
+resources:
+  repositories:
+    - repository: common
+      type: git
+      ref: main
+      name: Repo
+
+variables:
+  ref: $[ resources.repositories.common.ref ]
+  name: $[ resources.repositories.common.name ]
+  id: $[ resources.repositories.common.id ]
+  type: $[ resources.repositories.common.type ]
+  url: $[ resources.repositories.common.url ]
+
+steps:
+- bash: |
+    echo "name = $(name)"
+    echo "ref = $(ref)"
+    echo "id = $(id)"
+    echo "type = $(type)"
+    echo "url = $(url)"
+```
+
+---
+
+::: moniker-end
+
+
 ### Use `checkout` to consume repository
 
 Use `checkout` keyword to consume your repos defined as part of `repository` resource.
@@ -424,13 +470,24 @@ Use `checkout` keyword to consume your repos defined as part of `repository` res
 
 ```yaml
 steps:
-- checkout: string  # identifier for your repository resource
-  clean: boolean  # if true, execute `execute git clean -ffdx && git reset --hard HEAD` before fetching
-  fetchDepth: number  # the depth of commits to ask Git to fetch; defaults to no limit
-  lfs: boolean  # whether to download Git-LFS files; defaults to false
-  submodules: true | recursive  # set to 'true' for a single level of submodules or 'recursive' to get submodules of submodules; defaults to not checking out submodules
-  path: string  # path to check out source code, relative to the agent's build directory (e.g. \_work\1); defaults to a directory called `s`
-  persistCredentials: boolean  # if 'true', leave the OAuth token in the Git config after the initial fetch; defaults to false
+- checkout: string # Required as first property. Configures checkout for the specified repository.
+  clean: string # If true, run git clean -ffdx followed by git reset --hard HEAD before fetching.
+  fetchDepth: string # Depth of Git graph to fetch.
+  fetchTags: string # Set to 'true' to sync tags when fetching the repo, or 'false' to not sync tags. See remarks for the default behavior.
+  lfs: string # Set to 'true' to download Git-LFS files. Default is not to download them.
+  persistCredentials: string # Set to 'true' to leave the OAuth token in the Git config after the initial fetch. The default is not to leave it.
+  submodules: string # Set to 'true' for a single level of submodules or 'recursive' to get submodules of submodules. Default is not to fetch submodules.
+  path: string # Where to put the repository. The default is $(Build.SourcesDirectory).
+  condition: string # Evaluate this condition expression to determine whether to run this task.
+  continueOnError: boolean # Continue running even on failure?
+  displayName: string # Human-readable name for the task.
+  target: string | target # Environment in which to run this task.
+  enabled: boolean # Run this task when the job runs?
+  env: # Variables to map into the process's environment.
+    string: string # Name/value pairs
+  name: string # ID of the step.
+  timeoutInMinutes: string # Time to wait for this task to complete before the server kills it.
+  retryCountOnTaskFailure: string # Number of retries if the task fails.
 ```
 
 Repos from the `repository` resource aren't automatically synced in your jobs. Use `checkout` to fetch your repos as part of your jobs.
@@ -477,7 +534,7 @@ resources:
 
 ---
 
-You can use a first class container resource type for Azure Container Registry (ACR) to consume your ACR images. This resources type can be used as part of your jobs and also to enable automatic pipeline triggers.
+You can use a first class container resource type for Azure Container Registry (ACR) to consume your ACR images. This resources type can be used as part of your jobs and also to enable automatic pipeline triggers. You need to have **Contributor** or **Owner** permissions for ACR to use automatic pipeline triggers. For more information, see [Azure Container Registry roles and permissions](/azure/container-registry/container-registry-roles).
 
 ## [Schema](#tab/schema)
 
@@ -521,6 +578,9 @@ resources:
 #### Container resource variables
 
 Once you define a container as a resource, container image metadata gets passed to the pipeline in the form of variables. Information like image, registry, and connection details are accessible across all the jobs to be used in your container deploy tasks.
+
+Container resource variables work with Docker and Azure Container Registry. 
+You can't use container resource variables for local image containers. 
 
 ## [Schema](#tab/schema)
 
@@ -628,7 +688,12 @@ Do the following steps to configure the webhook triggers.
 
 1. Set up a webhook on your external service. When you're creating your webhook, you need to provide the following info:
 
-    - Request Url - `https://dev.azure.com/<ADO Organization>/_apis/public/distributedtask/webhooks/<WebHook Name>?api-version=6.0-preview`
+    - Request Url
+    
+      ```
+      https://dev.azure.com/<ADO Organization>/_apis/public/distributedtask/webhooks/<WebHook Name>?api-version=6.0-preview
+      ```
+  
     - Secret - Optional. If you need to secure your JSON payload, provide the **Secret** value.
 2. Create a new "Incoming Webhook" service connection. This connection is a newly introduced Service Connection Type that allows you to define the following important information:
     - **Webhook Name**: The name of the webhook should match webhook created in your external service.
@@ -653,9 +718,47 @@ resources:
           value: JSONParameterExpectedValue    ### Expected value in the path provided
 ```
 
-Webhooks automate your workflow based on any external webhook event that isn't supported by first class resources. Resources like pipelines, builds, containers, and packages. Also, for on-premise services where Azure DevOps doesn't have visibility into the process, you can configure webhooks on the service and to trigger your pipelines automatically.
+Webhooks automate your workflow based on any external webhook event that isn't supported by first class resources, like pipelines, builds, containers, and packages. Also, for on-premise services where Azure DevOps doesn't have visibility into the process, you can configure webhooks on the service and to trigger your pipelines automatically.
 
 ## [Example](#tab/example)
+
+You can define your pipeline as follows.
+
+```yaml
+resources:
+  webhooks:
+    - webhook: WebHook
+      connection: IncomingWH
+
+steps:  
+- script: echo ${{ parameters.WebHook.resource.message.title }}
+```
+
+To trigger your pipeline using the webhook, you need to make a `POST` request to `https://dev.azure.com/<org_name>/_apis/public/distributedtask/webhooks/<webhook_connection_name>?api-version=6.0-preview`. This endpoint is publicly available, and no authorization is needed. The request should have the following body.
+
+```json
+{
+    "resource": {
+        "message": {
+            "title": "Hello, world!",
+            "subtitle": "I'm using WebHooks!"
+        }
+    }
+}
+```
+
+When you access data from the webhook's request body, be mindful that it may lead to incorrect YAML. For example, if in the previous pipeline, your step reads `- script: echo ${{ parameters.WebHook.resource.message }}`, and you trigger the pipeline via a webhook, the pipeline doesn't run. This is because in the process of replacing `${{ parameters.WebHook.resource.message.title }}` with `message`, which contains the following JSON, the generated YAML becomes invalid.
+
+```json
+{
+  "title": "Hello, world!",
+  "subtitle": "I'm using WebHooks!"
+}
+```
+
+Because the generated YAML becomes invalid, no pipeline run is queued in response.
+
+The following snippet shows another example using webhook filters.
 
 ```yml
 resources:

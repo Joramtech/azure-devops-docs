@@ -1,79 +1,104 @@
 ---
-title: "Azure DevOps docs: What's new for February 1, 2023 - February 28, 2023"
-description: "What's new in the Azure DevOps docs for February 1, 2023 - February 28, 2023."
-ms.date: 03/02/2023
+title: "Azure DevOps docs: What's new for July 1, 2023 - July 31, 2023"
+description: "What's new in the Azure DevOps docs for July 1, 2023 - July 31, 2023."
+ms.date: 08/01/2023
 ---
 
-# Azure DevOps docs: What's new for February 1, 2023 - February 28, 2023
+# Azure DevOps docs: What's new for July 1, 2023 - July 31, 2023
 
-Welcome to what's new in the Azure DevOps docs from February 1, 2023 through February 28, 2023. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the Azure DevOps docs from July 1, 2023 through July 31, 2023. This article lists some of the major changes to docs during this period.
+
+## Administration
+
+### Updated articles
+
+- [Billing FAQs](/azure/devops/organizations/billing/billing-faq)
+- [Set work tracking permissions](/azure/devops/organizations/security/set-permissions-access-work-tracking)
 
 ## Artifacts
 
 ### Updated articles
 
-- [Delete and recover packages](/azure/devops/artifacts/how-to/delete-and-recover-packages)
+- [Package graphs in Azure Artifacts](/azure/devops/artifacts/concepts/package-graph)
+- [Azure Artifacts overview](/azure/devops/artifacts/start-using-azure-artifacts)
+- [Tutorial: How to use upstream sources](/azure/devops/artifacts/tutorials/protect-oss-packages-with-upstream-sources)
+- [Use feed views to share packages](/azure/devops/artifacts/feeds/views)
+- [Share packages publicly](/azure/devops/artifacts/tutorials/share-packages-publicly)
 
-## Boards
+## Azure Boards
+
+### Updated articles
+
+- [Migrate and integrate work tracking data in Azure Boards](/azure/devops/boards/extensions/migrate-integrate)
+- [Link work items and other objects](/azure/devops/boards/backlogs/add-link)
+- [About configuring and customizing Azure Boards](/azure/devops/boards/configure-customize)
+- [Copy or clone work items and more](/azure/devops/boards/backlogs/copy-clone-work-items)
+- [Review team delivery plans in Azure Boards](/azure/devops/boards/plans/review-team-plans)
+- [Add or modify Azure Boards work items in bulk with Microsoft Excel](/azure/devops/boards/backlogs/office/bulk-add-modify-work-items-excel)
+- [Resolve nest, display, and reorder issues for work items](/azure/devops/boards/backlogs/resolve-backlog-reorder-issues)
+- [Set Work in Progress limits](/azure/devops/boards/boards/wip-limits)
+- [Add status badges for your GitHub repo](/azure/devops/boards/github/configure-status-badges)
+- [Connect Azure DevOps Server to GitHub (on-premises)](/azure/devops/boards/github/connect-on-premises-to-github)
+- [Connect Azure Boards to GitHub (cloud)](/azure/devops/boards/github/connect-to-github)
+- [Install the Azure Boards app for GitHub](/azure/devops/boards/github/install-github-app)
+- [Link GitHub commits, pull requests, and issues to work items in Azure Boards](/azure/devops/boards/github/link-to-from-github)
+
+## Azure DevOps Reporting and Analytics service
+
+### Updated articles
+
+- [OData Analytics query guidelines for Azure DevOps](/azure/devops/report/extend-analytics/odata-query-guidelines)
+- [View and configure team velocity](/azure/devops/report/dashboards/team-velocity)
+- [Add charts to a dashboard](/azure/devops/report/dashboards/add-charts-to-dashboard)
+
+## Azure Pipelines
 
 ### New articles
 
-- [Example query charts](/azure/devops/boards/queries/example-query-charts)
+- [Tutorial: Automate Node.js deployments with Azure Pipelines](/azure/devops/pipelines/ecosystems/nodejs-tutorial)
+- [Template expressions](/azure/devops/pipelines/process/template-expressions)
+- [Template parameters](/azure/devops/pipelines/process/template-parameters)
 
 ### Updated articles
 
-- [Use swimlanes to differentiate work you want to expedite on your Kanban board](/azure/devops/boards/boards/expedite-work)
-- [Overview of extensions for Azure Boards](/azure/devops/boards/extensions/index)
-- [Keyboard shortcuts for Azure Boards and Team Explorer](/azure/devops/boards/get-started/keyboard-shortcuts)
-- [Set permissions on queries and query folders in Azure Boards and Azure DevOps](/azure/devops/boards/queries/set-query-permissions)
-- [Work item form controls](/azure/devops/boards/work-items/work-item-form-controls)
+- [Define resources in YAML](/azure/devops/pipelines/process/resources)
+- [Specify demands](/azure/devops/pipelines/process/demands)
+- [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers)
+- [Define approvals and checks](/azure/devops/pipelines/process/approvals)
+- [Invoke Azure Function / REST API checks](/azure/devops/pipelines/process/invoke-checks)
+- [Tutorial: Create a multistage pipeline with Azure DevOps](/azure/devops/pipelines/process/create-multistage-pipeline)
+- [Publish Python packages with Azure Pipelines](/azure/devops/pipelines/artifacts/pypi)
+- [Template usage reference](/azure/devops/pipelines/process/templates)
 
-## Organizations
-
-### Updated articles
-
-- [About notifications](/azure/devops/organizations/notifications/about-notifications)
-- [Security best practices](/azure/devops/organizations/security/security-best-practices)
-- [Define area paths and assign to a team](/azure/devops/organizations/settings/set-area-paths)
-- [Define iteration paths (sprints) and configure team iterations](/azure/devops/organizations/settings/set-iteration-paths-sprints)
-
-## Pipelines
+## Azure Repos
 
 ### Updated articles
 
-- [Azure Virtual Machine Scale Set agents](/azure/devops/pipelines/agents/scale-set-agents)
-- [Deploy to Kubernetes](/azure/devops/pipelines/ecosystems/kubernetes/deploy)
-- [Use Azure Pipelines](/azure/devops/pipelines/get-started/pipelines-get-started)
-- [Define variables](/azure/devops/pipelines/process/variables)
-- [Deploy pull request Artifacts with classic release pipelines](/azure/devops/pipelines/release/deploy-pull-request-builds)
+- [Branch policies and settings](/azure/devops/repos/git/branch-policies)
+- [Git limits](/azure/devops/repos/git/limits)
 
 ## Project
 
 ### Updated articles
 
-- [Keyboard shortcuts for Azure DevOps and Team Explorer](/azure/devops/project/navigation/keyboard-shortcuts)
-
-## Report
-
-### New articles
-
-- [Five steps to develop actionable dashboards in Azure DevOps](/azure/devops/report/dashboards/dashboard-focus)
-
-### Updated articles
-
-- [Out Of Box widget catalog](/azure/devops/report/dashboards/widget-catalog)
-- [Create an active bugs report in Power BI based on a custom Analytics view](/azure/devops/report/powerbi/active-bugs-sample-report)
-- [Add a time-in-state measure to your Power BI report](/azure/devops/report/powerbi/create-timeinstate-report)
+- [Restore a deleted wiki](/azure/devops/project/wiki/restore-deleted-wiki)
+- [View and update work items via mobile browser](/azure/devops/project/navigation/mobile-work)
 
 ## GitHub issue content updates
 
-Thank you for your feedback on our documentation. This month we made updates to our content to address [these GitHub issues](https://github.com/MicrosoftDocs/azure-devops-docs/issues?q=linked%3Apr+is%3Aissue+is%3Aclosed+closed%3A2023-02-01..2023-02-28).
+Thank you for your feedback on our documentation. This month we made updates to our content to address [these GitHub issues](https://github.com/MicrosoftDocs/azure-devops-docs/issues?q=linked%3Apr+is%3Aissue+is%3Aclosed+closed%3A2023-07-01..2023-07-31).
 
 ## Community contributors
 
 The following people contributed to the Azure DevOps docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
 
-- [bendews](https://github.com/bendews) - Ben Dews (1)
-- [Harry-Ross](https://github.com/Harry-Ross) - Harry Ross [SSW] (1)
-- [JiriFurda](https://github.com/JiriFurda) - Jiří Furda (1)
-- [kaito-ms](https://github.com/kaito-ms) - Kaito Kataoka (1)
+- [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (4)
+- [AlexandraRamirezMS](https://github.com/AlexandraRamirezMS) (3)
+- [ajayidhikrullah](https://github.com/ajayidhikrullah) - Ajayi Dhikrullah (1)
+- [FabianWarnecke](https://github.com/FabianWarnecke) (1)
+- [NenoLoje](https://github.com/NenoLoje) - Neno Loje (1)
+- [PwshPally](https://github.com/PwshPally) - Steve Mahoney (1)
+- [rickh18](https://github.com/rickh18) (1)
+- [saartanel](https://github.com/saartanel) - Tanel Saar (1)
+- [SebastianSchuetze](https://github.com/SebastianSchuetze) - Sebastian Schütze (1)
+- [sid5233](https://github.com/sid5233) - Sudarshan Bhamare (1)

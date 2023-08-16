@@ -77,24 +77,29 @@ _Inbound connections_ originate from Azure DevOps and target resources within yo
 Ensure the following IP addresses are allowed for inbound connection, so your organization works with any existing firewall or IP restrictions. The endpoint data in the following chart lists requirements for connectivity from Azure DevOps Services to your on-premises or other cloud services.
 
 > [!div class="mx-tdCol2BreakAll"]  
-> |  Region  | IP V4 ranges |  
-> |------|---------|  
-> | Australia East | 20.37.194.0/24 |  
-> | Australia South East | 20.42.226.0/24 |  
-> | Brazil South | 191.235.226.0/24 |  
-> | Central Canada | 52.228.82.0/24 |
-> | Asia Pacific (Singapore) | 20.195.68.0/24 |
-> | South India | 20.41.194.0/24 |  
-> | Central United States | 20.37.158.0/23 |  
-> | West Central United States | 52.150.138.0/24 |  
-> | East United States   | 20.42.5.0/24 |  
-> | East 2 United States  | 20.41.6.0/23 |
-> | North United States  | 40.80.187.0/24 |  
-> | South United States   | 40.119.10.0/24 |
-> | West United States  | 40.82.252.0/24 |  
-> | West 2 United States | 20.42.134.0/23 |  
-> | Western Europe | 40.74.28.0/23 |  
-> | United Kingdom South | 51.104.26.0/24 |  
+> |  Geography | Region  | IP V4 ranges |  
+> |------|------|---------|  
+> | Australia | Australia East | 20.37.194.0/24 |  
+> |  | Australia South East | 20.42.226.0/24 |  
+> | Brazil | Brazil South | 191.235.226.0/24 |  
+> | Canada | Central Canada | 52.228.82.0/24 |
+> | Asia Pacific | Southeast Asia (Singapore) | 20.195.68.0/24 |
+> | India | South India | 20.41.194.0/24 |
+> |  | Central India | 20.204.197.192/26 |  
+> | United States | Central United States | 20.37.158.0/23 |  
+> |  | West Central United States | 52.150.138.0/24 |
+> |  | North Central United States | 40.80.187.0/24 |
+> |  | South Central United States | 40.119.10.0/24 |
+> |  | East United States   | 20.42.5.0/24 |  
+> |  | East 2 United States  | 20.41.6.0/23 |
+> |  | North United States  | 40.80.187.0/24 |  
+> |  | South United States   | 40.119.10.0/24 |
+> |  | West United States  | 40.82.252.0/24 |  
+> |  | West 2 United States | 20.42.134.0/23 |
+> |  | West 3 United States | 20.125.155.0/24 |  
+> | Europe | Western Europe | 40.74.28.0/23 |
+> |  | North Europe | 20.166.41.0/24 |
+> | United Kingdom | United Kingdom South | 51.104.26.0/24 |  
 
 Azure Service Tags are supported for *inbound* connection. Instead of allowing the previously listed IP ranges, you may use the **AzureDevOps** service tag for Azure Firewall and Network Security Group (NSG) or on-premises firewall via a JSON file download.  
 
@@ -211,15 +216,21 @@ https://aadcdn.msauth.net
 https://aadcdn.msftauth.net
 https://amcdn.msftauth.net
 https://azurecomcdn.azureedge.net
+```
 
 The following endpoints are used to authenticate Azure DevOps organizations using a Microsoft Account (MSA). 
 These are only needed for Azure DevOps organizations backed by Microsoft Accounts (MSA). 
 Azure DevOps organizations backed an Azure Active Directory tenant does not need the following URLs.
+
+```
 https://live.com 
 https://login.live.com 
+```
 
 The following URL is required if you're migrating from Azure DevOps server to the cloud service using our data migration tool.
+```
 https://dataimport.dev.azure.com
+```
 
 > [!NOTE]
 > Azure DevOps uses Content Delivery Networks (CDNs) to serve static content. Users in **China** should also add the following domain URLs to an allowlist:
@@ -238,10 +249,10 @@ We recommend you open port `443` to all traffic on the following IP addresses an
 |https://*.vssps.visualstudio.com   |Authentication and sign-in related          |
 |https://*gallerycdn.vsassets.io   |Hosts Azure DevOps extensions         |
 |https://*vstmrblob.vsassets.io | Hosts Azure DevOps TCM log data        |
-|Row6 https://cdn.vsassets.io    | Hosts Azure DevOps Content Delivery Networks (CDNs) content        |
+|https://cdn.vsassets.io    | Hosts Azure DevOps Content Delivery Networks (CDNs) content        |
 |https://static2.sharepointonline.com    | Hosts some resources that Azure DevOps uses in "office fabric" UI kit for fonts, and so on        |
 |https://vsrm.dev.azure.com   | Hosts releases        |
-|https://vstsagentpackage.azureedge.net      |  Required to setup self-hosted agent in machines within your network              |
+|https://vstsagentpackage.azureedge.net      |  Required to set up self-hosted agent in machines within your network              |
 |https://amp.azure.net   | Needed for deploying to Azure app service           |
 |https://go.microsoft.com  | Accesses go links        |
 
@@ -287,7 +298,7 @@ If you use Microsoft-hosted agent to run your jobs and you need the information 
 For more information about hosted Windows, Linux and macOS agents, see [Microsoft-hosted agent IP ranges](../../pipelines/agents/hosted.md#agent-ip-ranges).
 
 ### Azure Pipelines Self-hosted agents
-If you're running a firewall and your code is in Azure Repos, see [Self-hosted Linux agents FAQs](../../pipelines/agents/v2-windows.md#im-running-a-firewall-and-my-code-is-in-azure-repos-what-urls-does-the-agent-need-to-communicate-with), [Self-hosted macOS agents FAQs](../../pipelines/agents/v2-osx.md#im-running-a-firewall-and-my-code-is-in-azure-repos-what-urls-does-the-agent-need-to-communicate-with) or [Self-hosted Windows agents FAQs](../../pipelines/agents/v2-windows.md#im-running-a-firewall-and-my-code-is-in-azure-repos-what-urls-does-the-agent-need-to-communicate-with). This article has information about which domain URLs and IP addresses your private agent needs to communicate with.
+If you're running a firewall and your code is in Azure Repos, see [Self-hosted Linux agents FAQs](../../pipelines/agents/linux-agent.md#im-running-a-firewall-and-my-code-is-in-azure-repos-what-urls-does-the-agent-need-to-communicate-with), [Self-hosted macOS agents FAQs](../../pipelines/agents/osx-agent.md#im-running-a-firewall-and-my-code-is-in-azure-repos-what-urls-does-the-agent-need-to-communicate-with) or [Self-hosted Windows agents FAQs](../../pipelines/agents/windows-agent.md#im-running-a-firewall-and-my-code-is-in-azure-repos-what-urls-does-the-agent-need-to-communicate-with). This article has information about which domain URLs and IP addresses your private agent needs to communicate with.
 
 
 ## Azure DevOps import service
@@ -298,6 +309,6 @@ During the import process, we highly recommend that you restrict access to your 
 
 - [Available service tags](/azure/virtual-network/service-tags-overview)
 - [Microsoft-hosted agents IP address ranges](../../pipelines/agents/hosted.md#agent-ip-ranges)
-- [Self-hosted Windows agents FAQs](../../pipelines/agents/v2-windows.md)
+- [Self-hosted Windows agents FAQs](../../pipelines/agents/windows-agent.md)
 - [Configure Azure Storage firewalls and virtual networks](/azure/storage/common/storage-network-security?toc=%2Fazure%2Fvirtual-network%2Ftoc.json&tabs=azure-portal)
 - [Install and use Visual Studio behind a firewall or proxy server](/visualstudio/install/install-and-use-visual-studio-behind-a-firewall-or-proxy-server#use-visual-studio-and-azure-services)

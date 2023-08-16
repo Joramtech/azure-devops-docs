@@ -3,6 +3,7 @@ title: Pipeline caching
 description: Improve pipeline performance by caching files, like dependencies, between runs
 ms.assetid: B81F0BEC-00AD-431A-803E-EDD2C5DF5F97
 ms.topic: conceptual
+ms.custom: devx-track-dotnet, devx-track-js, devx-track-python
 ms.manager: adandree
 ms.date: 10/03/2022
 monikerRange: azure-devops
@@ -279,7 +280,7 @@ steps:
       mkdir -p $(Pipeline.Workspace)/docker
       docker save -o $(Pipeline.Workspace)/docker/cache.tar $(repository):$(tag)
     displayName: Docker save
-    condition: and(not(canceled()), or(failed(), ne(variables.CACHE_RESTORED, 'true')))
+    condition: and(not(canceled()), not(failed()), ne(variables.CACHE_RESTORED, 'true'))
 ```
 
 - **key**: (required) - a unique identifier for the cache.
@@ -466,6 +467,10 @@ steps:
 - script: echo "##vso[task.prependpath]$CONDA/bin"
   displayName: Add conda to PATH
 
+- bash: |
+    sudo chown -R $(whoami):$(id -ng) $(CONDA_CACHE_DIR)
+  displayName: Fix CONDA_CACHE_DIR directory permissions
+
 - task: Cache@2
   displayName: Use cached Anaconda environment
   inputs:
@@ -548,7 +553,7 @@ A: Caches expire after seven days of no activity.
 
 ### Q: When does the cache get uploaded?
 
-A: After the last step fo your pipeline a cache will be created from your cache `path` and uploaded. See the [example](#configure-the-cache-task) for more details.
+A: After the last step of your pipeline a cache will be created from your cache `path` and uploaded. See the [example](#configure-the-cache-task) for more details.
 
 ### Q: Is there a limit on the size of a cache?
 

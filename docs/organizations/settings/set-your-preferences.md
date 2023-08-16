@@ -32,8 +32,6 @@ See the following articles for setting other user preferences:
 - [Refresh or re-evaluate your permissions](../security/troubleshoot-permissions.md#refresh-permissions): Use to refresh permissions and make any recent changes take effect.  
 - [Manage preview features](../../project/navigation/preview-features.md): Enable or disable a preview feature for your user account.  
 
-[!INCLUDE [preview-features-enabled](../../includes/preview-features-enabled-new-account.md)]
-
 ::: moniker-end
 
 ::: moniker range=">= azure-devops-2019 < azure-devops"
@@ -45,8 +43,6 @@ See the following articles for setting more user preferences:
 - [Use personal access tokens](../accounts/use-personal-access-tokens-to-authenticate.md) 
 - [Use SSH key authentication](../../repos/git/use-ssh-keys-to-authenticate.md) 
 - [Manage personal notifications](../../organizations/notifications/manage-your-personal-notifications.md)  
-
-[!INCLUDE [preview-features-enabled](../../includes/preview-features-enabled-new-account.md)]
 
 ::: moniker-end
 
@@ -105,7 +101,7 @@ Other tools for setting your Azure DevOps preferences include [Notifications](..
 	> [!div class="mx-imgBorder"]  
 	> ![Screenshot of highlighted Edit profile button.](../../media/settings/profile-jamal-h.png)
 
-3. From the **About** page, you can change the user profile picture, display name, contact information, and country. 
+3. From the **About** page, you can change the user profile picture, display name, contact information, and country/region. 
 
 	> [!div class="mx-imgBorder"]  
 	> ![Screenshot of the About User profile page.](../../media/settings/edit-profile-about-dialog.png)

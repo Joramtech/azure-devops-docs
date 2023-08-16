@@ -59,7 +59,7 @@ https://github.com/Microsoft/python-sample-vscode-flask-tutorial
 
 1. If you're redirected to GitHub to sign in, enter your GitHub credentials.
 
-1. When the list of repositories appears, select your Node.js sample repository.
+1. When the list of repositories appears, select your Python sample repository.
 
 1. Azure Pipelines analyzes the code in your repository and recommends the `Python package` template for your pipeline. Select that template.
 
@@ -81,8 +81,6 @@ pool:
   vmImage: ubuntu-latest
 strategy:
   matrix:
-    Python37:
-      python.version: '3.7'
     Python38:
       python.version: '3.8'
     Python39:

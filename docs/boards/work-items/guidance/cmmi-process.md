@@ -94,12 +94,12 @@ As updates are made to the CMMI process template, the version number is updated.
 > | Azure DevOps Server 2020<br/>Azure DevOps Server 2019 | CMMI | 17 |
 > | TFS 2018 | CMMI | 16 |
 
-For a summary of updates made to process templates, see [Changes made to process templates](changes-to-process-templates.md).
+For a summary of updates made to process templates, see [Release Notes for Azure DevOps Server](/azure/devops/server/release-notes/azuredevops2020u1).
 
 
 ### More CMMI guidance
 
-The situations and working practices of development teams vary widely, and most companies will have their own well-established processes. For these reasons, the guidance given here doesn't attempt to prescribe a development process in full. Instead, we describe just the activities that are relevant to making best use of the CMMI process.
+The situations and working practices of development teams vary widely, and most companies have their own well-established processes. For these reasons, the guidance given here doesn't attempt to prescribe a development process in full. Instead, we describe just the activities that are relevant to making best use of the CMMI process.
 
 -  [Background to CMMI](cmmi/guidance-background-to-cmmi.md): Provides an overview of CMMI and the six capability levels that are intrinsic to the model.
 
@@ -107,7 +107,7 @@ The situations and working practices of development teams vary widely, and most 
 
 -  [Engineering](cmmi/guidance-engineering.md): Addresses the value-added activities for discovering the information that is required to design and build software products
 
-Using the CMMI template and guidance can help you achieve the aims of CMMI if you use it as part of a process improvement program. Adapt this guidance to your own situation, which will depend on the type and history of the product that you're developing, the project's scale, the background of the team members, and accepted practices in your organization.
+Using the CMMI template and guidance can help you achieve the aims of CMMI if you use it as part of a process improvement program. Adapt this guidance to your own situation, which  depends on the type and history of the product that you're developing, the project's scale, the background of the team members, and accepted practices in your organization.
 
  This guidance was developed in partnership with David Anderson. For more information, see the following Web page: [David J Anderson & Associates](https://djaa.com/).  
 
