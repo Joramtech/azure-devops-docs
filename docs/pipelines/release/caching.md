@@ -17,7 +17,8 @@ Pipeline caching can help reduce build time by allowing the outputs or downloade
 
 Caching can be effective at improving build time provided the time to restore and save the cache is less than the time to produce the output again from scratch. Because of this, caching may not be effective in all scenarios and may actually have a negative impact on build time.
 
-Caching is currently supported in CI and deployment jobs, but not classic release jobs.
+> [!NOTE]
+> Pipeline caching is not supported in Classic release pipelines.
 
 ### When to use artifacts versus caching
 
@@ -28,7 +29,7 @@ Pipeline caching and [pipeline artifacts](../artifacts/pipeline-artifacts.md) pe
 * **Use pipeline caching** when you want to improve build time by reusing files from previous runs (and not having these files won't impact the job's ability to run).
 
 > [!NOTE]
-> Pipeline caching and pipeline artifacts are free for all tiers (free and paid). see [Artifacts storage consumption](../../artifacts/artifact-storage.md) for more details.
+> Pipeline caching and pipeline artifacts are free for all tiers (free and paid). See [Artifacts storage consumption](../../artifacts/artifact-storage.md) for more details.
 
 ## Cache task: how it works
 
@@ -39,7 +40,7 @@ When a cache step is encountered during a run, the task restores the cache based
 After all steps in the job have run and assuming a **successful** job status, a special **"Post-job: Cache"** step is automatically added and triggered for each **"restore cache"** step that wasn't skipped. This step is responsible for **saving the cache**.
 
 > [!NOTE]
-> Caches are immutable, meaning that once a cache is created, its contents cannot be changed.
+> Caches are immutable, meaning once a cache is created, its content is unchangeable.
 
 ### Configure the Cache task
 
@@ -65,7 +66,7 @@ Comma-separated list of glob-style wildcard pattern that must match at least one
   * `**/yarn.lock`: all yarn.lock files under the sources directory
   * `*/asset.json, !bin/**`: all asset.json files located in a directory under the sources directory, except under the bin directory
 
-The contents of any file identified by a file path or file pattern is hashed to produce a dynamic cache key. This is useful when your project has file(s) that uniquely identify what is being cached. For example, files like `package-lock.json`, `yarn.lock`, `Gemfile.lock`, or `Pipfile.lock` are commonly referenced in a cache key since they all represent a unique set of dependencies.
+The contents of any file identified by a file path or file pattern is hashed to produce a dynamic cache key. This is useful when your project has files that uniquely identify what is being cached. For example, files like `package-lock.json`, `yarn.lock`, `Gemfile.lock`, or `Pipfile.lock` are commonly referenced in a cache key since they all represent a unique set of dependencies.
 
 Relative file paths or file patterns are resolved against `$(System.DefaultWorkingDirectory)`.
 
@@ -75,7 +76,7 @@ Here's an example showing how to cache dependencies installed by Yarn:
 
 ```yaml
 variables:
-  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/.yarn
+  YARN_CACHE_FOLDER: $(Pipeline.Workspace)/s/.yarn
 
 steps:
 - task: Cache@2
@@ -92,14 +93,18 @@ steps:
 
 In this example, the cache key contains three parts: a static string ("yarn"), the OS the job is running on since this cache is unique per operating system, and the hash of the `yarn.lock` file that uniquely identifies the set of dependencies in the cache.
 
-On the first run after the task is added, the cache step will report a "cache miss" since the cache identified by this key doesn't exist. After the last step, a cache will be created from the files in `$(Pipeline.Workspace)/.yarn` and uploaded. On the next run, the cache step will report a "cache hit" and the contents of the cache will be downloaded and restored.
+On the first run after the task is added, the cache step will report a "cache miss" since the cache identified by this key doesn't exist. After the last step, a cache will be created from the files in `$(Pipeline.Workspace)/s/.yarn` and uploaded. On the next run, the cache step will report a "cache hit" and the contents of the cache will be downloaded and restored.
+
+When using `checkout: self`, the repository is checked out to `$(Pipeline.Workspace)/s`, and your `.yarn` folder usually resides in the repository itself.
 
 > [!NOTE]
 > `Pipeline.Workspace` is the local path on the agent running your pipeline where all directories are created. This variable has the same value as `Agent.BuildDirectory`.
+> 
+> Ensure you update the variable `YARN_CACHE_FOLDER` if using anything other than `checkout: self` as this should point to the repository where `.yarn` resides.
 
 #### Restore keys
 
-`restoreKeys` can be used if one wants to query against multiple exact keys or key prefixes. This is used to fall back to another key in the case that a `key` doesn't yield a hit. A restore key will search for a key by prefix and yield the latest created cache entry as a result. This is useful if the pipeline is unable to find an exact match but wants to use a partial cache hit instead. To insert multiple restore keys, simply delimit them by using a new line to indicate the restore key (see the example for more details). The order of which restore keys will be tried against will be from top to bottom.
+`restoreKeys` can be used if one wants to query against multiple exact keys or key prefixes. This is used to fall back to another key in the case that a `key` doesn't yield a hit. A restore key searches for a key by prefix and yield the latest created cache entry as a result. This is useful if the pipeline is unable to find an exact match but wants to use a partial cache hit instead. To insert multiple restore keys, delimit them by using a new line to indicate the restore key (see the example for more details). The order of which restore keys will be tried against will be from top to bottom.
 
 #### Required software on self-hosted agent
 
@@ -133,16 +138,18 @@ steps:
 ```
 
 In this example, the cache task attempts to find if the key exists in the cache. If the key doesn't exist in the cache, it tries to use the first restore key `yarn | $(Agent.OS)`.
-This will attempt to search for all keys that either exactly match that key or has that key as a prefix. A prefix hit can happen if there was a different `yarn.lock` hash segment.
-For example, if the following key `yarn | $(Agent.OS) | old-yarn.lock` was in the cache where the old `yarn.lock` yielded a different hash than `yarn.lock`, the restore key will yield a partial hit.
-If there's a miss on the first restore key, it will then use the next restore key `yarn` which will try to find any key that starts with `yarn`. For prefix hits, the result will yield the most recently created cache key as the result.
+This attempts to search for all keys that either exactly match that key or has that key as a prefix. A prefix hit can happen if there was a different `yarn.lock` hash segment.
+For example, if the following key `yarn | $(Agent.OS) | old-yarn.lock` was in the cache where the `old-yarn.lock` yielded a different hash than `yarn.lock`, the restore key would yield a partial hit.
+If there's a miss on the first restore key, it will then use the next restore key `yarn` which will try to find any key that starts with `yarn`. For prefix hits, the result yields the most recently created cache key as the result.
 
 > [!NOTE]
-> A pipeline can have one or more caching task(s). There is no limit on the caching storage capacity, and jobs and tasks from the same pipeline can access and share the same cache.
+> A pipeline can have one or more caching tasks. There's no limit on the caching storage capacity, and jobs and tasks from the same pipeline can access and share the same cache.
 
 ## Cache isolation and security
 
-To ensure isolation between caches from different pipelines and different branches, every cache belongs to a logical container called a scope. Scopes provide a security boundary that ensures a job from one pipeline cannot access the caches from a different pipeline, and a job building a PR has read access to the caches for the PR's target branch (for the same pipeline), but cannot write (create) caches in the target branch's scope.
+To ensure isolation between caches from different pipelines and different branches, every cache belongs to a logical container called a scope. Scopes provide a security boundary that ensures:
+1. A job from one pipeline can't access the caches from a different pipeline, and
+1. A job building a PR has read access to the caches for the PR's target branch (for the same pipeline), but can't write (create) caches in the target branch's scope.
 
 When a cache step is encountered during a run, the cache identified by the key is requested from the server. The server then looks for a cache with this key from the scopes visible to the job, and returns the cache (if available). On cache save (at the end of the job), a cache is written to the scope representing the pipeline and branch. See below for more details.
 
@@ -151,7 +158,8 @@ When a cache step is encountered during a run, the cache identified by the key i
 | Scope                                             | Read | Write |
 |---------------------------------------------------|------|-------|
 | Source branch                                     | Yes  | Yes   |
-| main branch (default branch)                      | Yes  | No    |
+| `main` branch                                     | Yes  | No    |
+| `master` branch                                   | Yes  | No    |
 
 ### Pull request runs
 
@@ -160,7 +168,8 @@ When a cache step is encountered during a run, the cache identified by the key i
 | Source branch                                     | Yes  | No    |
 | Target branch                                     | Yes  | No    |
 | Intermediate branch (such as `refs/pull/1/merge`) | Yes  | Yes   |
-| main branch (default branch)                      | Yes  | No    |
+| `main` branch                                     | Yes  | No    |
+| `master` branch                                   | Yes  | No    |
 
 ### Pull request fork runs
 
@@ -168,14 +177,15 @@ When a cache step is encountered during a run, the cache identified by the key i
 |---------------------------------------------------|------|-------|
 | Target branch                                     | Yes  | No    |
 | Intermediate branch (such as `refs/pull/1/merge`) | Yes  | Yes   |
-| main branch (default branch)                      | Yes  | No    |
+| `main` branch                                     | Yes  | No    |
+| `master` branch                                   | Yes  | No    |
 
 > [!TIP]
-> Because caches are already scoped to a project, pipeline, and branch, there is no need to include any project, pipeline, or branch identifiers in the cache key.
+> Because caches are already scoped to a project, pipeline, and branch, there's no need to include any project, pipeline, or branch identifiers in the cache key.
 
 ## Conditioning on cache restoration
 
-In some scenarios, the successful restoration of the cache should cause a different set of steps to be run. For example, a step that installs dependencies can be skipped if the cache was restored. This is possible using the `cacheHitVar` task input. Setting this input to the name of an environment variable will cause the variable to be set to `true` when there's a cache hit, `inexact` on a restore key cache hit, otherwise it will be set to `false`. This variable can then be referenced in a [step condition](../process/conditions.md) or from within a script.
+In some scenarios, the successful restoration of the cache should cause a different set of steps to be run. For example, a step that installs dependencies can be skipped if the cache was restored. This is possible using the `cacheHitVar` task input. Setting this input to the name of an environment variable causes the variable to be set to `true` when there's a cache hit, `inexact` on a restore key cache hit, otherwise it's set to `false`. This variable can then be referenced in a [step condition](../process/conditions.md) or from within a script.
 
 In the following example, the `install-deps.sh` step is skipped when the cache is restored:
 
@@ -196,7 +206,7 @@ steps:
 
 ## Bundler
 
-For Ruby projects using Bundler, override the `BUNDLE_PATH` environment variable used by Bundler to set the [path Bundler](https://bundler.io/v2.3/man/bundle-config.1.html) will look for Gems in.
+For Ruby projects using Bundler, override the `BUNDLE_PATH` environment variable used by Bundler to set the [path Bundler](https://bundler.io/v2.3/man/bundle-config.1.html) looks for Gems in.
 
 **Example**:
 
@@ -209,10 +219,10 @@ steps:
   displayName: Bundler caching
   inputs:
     key: 'gems | "$(Agent.OS)" | Gemfile.lock'
+    path: $(BUNDLE_PATH)
     restoreKeys: | 
       gems | "$(Agent.OS)"
-      gems
-    path: $(BUNDLE_PATH)
+      gems   
 ```
 
 ## Ccache (C/C++)
@@ -232,12 +242,12 @@ steps:
   displayName: Install ccache and update PATH to use linked versions of gcc, cc, etc
 
 - task: Cache@2
+  displayName: Ccache caching
   inputs:
-    key: 'ccache | "$(Agent.OS)"'
+    key: 'ccache | "$(Agent.OS)" | $(Build.SourceVersion)'
     path: $(CCACHE_DIR)
     restoreKeys: | 
       ccache | "$(Agent.OS)"
-  displayName: ccache
 ```
 
 See [Ccache configuration settings](https://ccache.dev/manual/latest.html#_configuration_settings) for more details.
@@ -381,7 +391,7 @@ If you're using a [Maven task](/azure/devops/pipelines/tasks/reference/maven-v3)
 ## .NET/NuGet
 
 If you use `PackageReferences` to manage NuGet dependencies directly within your project file and have a `packages.lock.json` file, you can enable caching by setting the `NUGET_PACKAGES` environment variable to a path under `$(UserProfile)` and caching this directory. See [Package reference in project files](/nuget/consume-packages/package-references-in-project-files) for more details on how to lock dependencies.
-If you want to use multiple packages.lock.json, you can still use the following example without making any changes. The content of all the packages.lock.json files will be hashed and if one of the files is changed, a new cache key will be generated.
+If you want to use multiple packages.lock.json, you can still use the following example without making any changes. The content of all the packages.lock.json files will be hashed and if one of the files is changed, a new cache key is generated.
 
 **Example**:
 
@@ -400,11 +410,13 @@ steps:
   displayName: Cache NuGet packages
 ```
 
+This approach is also valid for .NET Core projects if your project uses *packages.lock.json* to lock package versions. You can enable this by setting `RestorePackagesWithLockFile` to `True` in your *Csproj* file, or by using the following command: `dotnet restore --use-lock-file`.
+
 ## Node.js/npm
 
 There are different ways to enable caching in a Node.js project, but the recommended way is to cache npm's [shared cache directory](https://docs.npmjs.com/misc/config#cache). This directory is managed by npm and contains a cached version of all downloaded modules. During install, npm checks this directory first (by default) for modules that can reduce or eliminate network calls to the public npm registry or to a private registry.
 
-Because the default path to npm's shared cache directory is [not the same across all platforms](https://docs.npmjs.com/misc/config#cache), it's recommended to override the `npm_config_cache` environment variable to a path under `$(Pipeline.Workspace)`. This also ensures the cache is accessible from container and non-container jobs.
+Because the default path to npm's shared cache directory is [not the same across all platforms](https://docs.npmjs.com/misc/config#cache), it's recommended to override the `npm_config_cache` environment variable to a path under `$(Pipeline.Workspace)`. This also ensures the cache is accessible from container and noncontainer jobs.
 
 **Example**:
 
@@ -541,7 +553,7 @@ A: Clearing a cache is currently not supported. However you can add a string lit
 key: 'yarn | "$(Agent.OS)" | yarn.lock'
 ```
 
-to this:
+To this:
 
 ```yaml
 key: 'version2 | yarn | "$(Agent.OS)" | yarn.lock'

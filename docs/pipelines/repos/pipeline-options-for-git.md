@@ -3,7 +3,6 @@ title: Options for Git repositories
 description: Options available when using a Git repository with Azure Pipelines
 ms.topic: reference
 ms.assetid: a74b3efe-d7bd-438a-be32-47d036556f74
-ms.custom: seodec18
 ms.date: 01/25/2023
 monikerRange: '<= azure-devops'
 ---
@@ -12,9 +11,7 @@ monikerRange: '<= azure-devops'
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-::: moniker range="tfs-2018"
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
-::: moniker-end
+
 
 While editing a pipeline that uses a Git repo&mdash;in an Azure DevOps project, GitHub, GitHub Enterprise Server, Bitbucket Cloud, or another Git repo&mdash;you have the following options.
 
@@ -102,11 +99,7 @@ By default, `clean` is set to `true` but can be overridden when manually running
 
 :::moniker-end
 
-:::moniker range="<azure-devops-2019"
 
-YAML Pipelines are supported in Azure DevOps Server 2019 and higher.
-
-:::moniker-end
 
 #### [Classic](#tab/classic/)
 
@@ -277,9 +270,9 @@ As a workaround, if you're using YAML, you can add the following step before you
 steps:
 - script: |
     git config --global --add filter.lfs.required true
-    git config --global --add filter.lfs.smudge "git-lfs smudge -- %f"
+    git config --global --add filter.lfs.smudge "git-lfs smudge -- %%f"
     git config --global --add filter.lfs.process "git-lfs filter-process"
-    git config --global --add filter.lfs.clean "git-lfs clean -- %f"
+    git config --global --add filter.lfs.clean "git-lfs clean -- %%f"
   displayName: Configure LFS for use with submodules
 - checkout: self
   lfs: true
@@ -305,7 +298,7 @@ If the repo is not public, you will need to pass authentication to the Git comma
 
 ### Azure Repos
 
-:::moniker range="<= azure-devops-2019"
+:::moniker range="=azure-devops-2019"
 
 Your pipeline will already have access to other repos in its project, and you can clone them in your pipeline using a script command, as shown in the following example.
 

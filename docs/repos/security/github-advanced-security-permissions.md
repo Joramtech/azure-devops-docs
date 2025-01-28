@@ -6,15 +6,13 @@ ms.service: azure-devops
 ms.subservice: azure-devops-integration
 ms.topic: how-to 
 ms.custom: cross-service
-ms.author: jukullam
-author: juliakm 
+ms.author: laurajiang
+author: laurajjiang
 monikerRange: 'azure-devops'
-ms.date: 05/09/2023
+ms.date: 09/20/2023
 ---
 
 #  Advanced Security permissions
-
-[!INCLUDE [github-advanced-security-preview](includes/github-advanced-security-preview.md)]
 
 [GitHub Advanced Security for Azure DevOps](configure-github-advanced-security-features.md) includes extra permissions for more levels of control around Advanced Security results and management. There are three new permissions added through Advanced Security: read alerts, dismiss and manage alerts, and manage settings.
 
@@ -23,6 +21,10 @@ ms.date: 05/09/2023
 
 ### Default permissions and access levels 
 
+* Advanced Security: read alerts grants permission to view security alerts for the repository.
+* Advanced Security: manage and dismiss alerts grants permission to dismiss alerts for the repository.
+* Advanced Security: manage settings grants permission to enable Advanced Security, which is a billable action. 
+
 | Azure DevOps group  | Default permissions |
 | ----------- | ----------- |
 | Contributors | Advanced Security: read alerts |
@@ -30,11 +32,12 @@ ms.date: 05/09/2023
 | Project collection administrator | Advanced Security: read alerts, manage and dismiss alerts, manage settings |
 
 ## Manage Advanced Security permissions
+If you're a project collection admin for your organization or otherwise have the **Advanced Security: manage settings** permission, you can manage all other Advanced Security permissions.
 
 If you're running into an error when viewing Advanced Security alerts, you can adjust individual permissions for your repository.
 
 If the dropdowns are disabled, contact your administrator for the necessary permissions. 
-
+ 
 To adjust permissions for a specific repository:
 
 1. Go to **Project Settings** > **Repositories**.
@@ -47,7 +50,7 @@ To adjust permissions for a specific repository:
 
 ### Use personal access tokens (PATs)
 
-You can use a personal access token to use the Advanced Security APIs. To learn more about PATs on Azure DevOps and how to create them, refer to [About PATs](../../organizations/accounts/use-personal-access-tokens-to-authenticate.md).
+You can use a personal access token to use the Advanced Security APIs. For more information about PATs on Azure DevOps and how to create them, refer to [About PATs](../../organizations/accounts/use-personal-access-tokens-to-authenticate.md).
 
 Advanced Security offers three extra scopes for a PAT: `read`, `read and write`, and `read, write, and manage`. 
 

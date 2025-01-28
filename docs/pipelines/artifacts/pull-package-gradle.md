@@ -49,17 +49,7 @@ gradle -v
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-1. Select your profile icon, and then select **Security**.
-
-2. Select **New Token**, and then name your token and set its expiration date. 
-
-3. Select the **Packaging (Read & write)** scope.
-
-    :::image type="content" source="media/select-scope.png" alt-text="Screenshot showing the available scopes for a pat.":::
-
-::: moniker-end
 
 4. Copy your token and save it in a secure location.
 
@@ -113,7 +103,7 @@ gradle build
     gradle wrapper
     ```
 
-1. Push your changes to your remote branch. We will need this file later when we add the **Gradle** task.
+1. Push your changes to your remote branch. We'll need this file later when we add the **Gradle** task.
 
 1. Navigate to your pipeline definition. If you don't have one, create a new pipeline, select **Use the classic editor** and then select the **Gradle** template. 
 
@@ -123,7 +113,7 @@ gradle build
 
     :::image type="content" source="media/gradle-build-template.png" alt-text="Screenshot showing the Gradle task":::
 
-1. The **Publish build artifacts** task will publish our artifact to Azure Pipelines.
+1. The **Publish build artifacts** task publishes our artifact to Azure Pipelines.
 
     :::image type="content" source="media\publish-gradle-pipeline.png" alt-text="Screenshot showing the publish artifacts task.":::
 
@@ -132,6 +122,9 @@ gradle build
 1. You can view your published artifact in your pipeline **Summary** once the run is complete.
 
     :::image type="content" source="media\published-artifact.png" alt-text="Screenshot showing the published artifact in pipeline summary.":::
+
+> [!TIP]
+> To keep the Gradle daemon running, consider adding `org.gradle.daemon=true` to your *gradle.properties* file.
 
 ## Related articles
 

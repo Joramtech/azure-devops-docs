@@ -1,14 +1,14 @@
 ---
 title: Keyboard shortcuts for web portal and Team Explorer
 titleSuffix: Azure DevOps
-description: Learn about keyboard shortcuts for the web portal for Azure DevOps and Team Explorer
+description: Learn about keyboard shortcuts for the web portal for Azure DevOps and Team Explorer, including wikis.
 ms.custom: Navigation
 ms.subservice: azure-devops-projects
 ms.topic: conceptual 
 ms.author: chcomley
 author: chcomley
 monikerRange: '<= azure-devops'
-ms.date: 04/04/2022
+ms.date: 11/21/2023
 ---
 
 # Keyboard shortcuts for Azure DevOps and Team Explorer
@@ -58,11 +58,7 @@ You can use these keyboard shortcuts when you work in a list in the web portal f
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-## Code  
-
-::: moniker-end
 
 [!INCLUDE [temp](../../includes/keyboard-shortcuts/code-shortcuts.md)]
 
@@ -106,16 +102,89 @@ You can use these keyboard shortcuts when you work in a list in the web portal f
 
 [!INCLUDE [temp](../../includes/keyboard-shortcuts/test-shortcuts.md)]
 
-## Wiki  
+<a id="wiki-keyboard-shortcuts"></a>
 
-::: moniker range="tfs-2018"
+## Wiki
 
-> [!NOTE]  
-> Keyboard shortcuts to manage Wiki pages are supported on TFS 2018.2 or later versions. To download TFS 2018.2, see [Team Foundation Server 2018 Update 2 Release Notes](/visualstudio/releasenotes/tfs2018-update2).
+You can use the following keyboard shortcuts when you [manage or edit wiki pages](../../project/wiki/add-edit-wiki.md). To view valid shortcuts, select **?** on a **Wiki** page.
+
+
+
+::: moniker range=">= azure-devops-2020"
+
+### Manage wiki page shortcuts
+
+|Shortcut|Action|
+|---|---|
+|n|Add new page|
+|e|Edit page|
+|c|Create new subpage|
+|Ctrl+Down arrow|Move page down the order|
+|Ctrl+Up arrow|Move page up the order|
+|Ctrl+P|Print page|
+|Ctrl+Shift+b|Create work item from selected text|
+
+The following screenshot shows the list of keyboard shortcuts as it appears in Azure DevOps:
+
+:::image type="content" source="../../media/keyboard-shortcuts/wiki-manage-cloud.png" alt-text="Screenshot that shows Azure DevOps 2020 manage Wiki page keyboard shortcuts.":::
+
+### Edit wiki page shortcuts
+
+|Shortcut|Action|
+|---|---|
+|Ctrl+b|Bold text|
+|Ctrl+i|Italicize text|
+|Ctrl+k|Insert hyperlink|
+|Ctrl+c|Copy text|
+|Ctrl+v|Paste copied text|
+|Ctrl+Shift+f|Format tables|
+|Ctrl+s|Save changes|
+|Ctrl+Enter|Save and close|
+|Esc|Close|
+
+The following screenshot shows the list of keyboard shortcuts as it appears in Azure DevOps:
+
+:::image type="content" source="../../media/keyboard-shortcuts/wiki-edit-cloud.png" alt-text="Screenshot that shows Azure DevOps 2020 edit Wiki page keyboard shortcuts.":::
 
 ::: moniker-end
 
-[!INCLUDE [temp](../../includes/keyboard-shortcuts/wiki-shortcuts.md)]
+::: moniker range="=azure-devops-2019"
+
+### Manage wiki page shortcuts
+
+|Shortcut|Action|
+|---|---|
+|n|Add new page|
+|e|Edit page|
+|c|Create new subpage|
+|Ctrl+Down arrow|Move page down the order|
+|Ctrl+Up arrow|Move page up the order|
+|Ctrl+P|Print page|
+|Ctrl+Shift+f|Filter page|
+
+The following screenshot shows the list of keyboard shortcuts as it appears in Azure DevOps:
+
+:::image type="content" source="../../media/keyboard-shortcuts/wiki-manage.png" alt-text="Screenshot that shows Azure DevOps 2019 manage Wiki page keyboard shortcuts.":::
+
+### Edit wiki page shortcuts
+
+|Shortcut|Action|
+|---|---|
+|Ctrl+b|Bold text|
+|Ctrl+i|Italicize text|
+|Ctrl+k|Insert hyperlink|
+|Ctrl+c|Copy text|
+|Ctrl+v|Paste copied text|
+|Ctrl+Shift+f|Format tables|
+|Ctrl+s|Save changes|
+|Ctrl+Enter|Save and close|
+|Esc|Close|
+
+The following screenshot shows the list of keyboard shortcuts as it appears in Azure DevOps:
+
+:::image type="content" source="../../media/keyboard-shortcuts/wiki-edit.png" alt-text="Screenshot that shows Azure DevOps 2019 edit Wiki page keyboard shortcuts.":::
+
+::: moniker-end
 
 ## Team Explorer
 

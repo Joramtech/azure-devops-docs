@@ -309,7 +309,7 @@ For more information, see the following resources:
      `git branch -d` *branchname*
    :::column-end:::
    :::column span="1":::
-     Open the **Branches** view in Team Explorer, then right-click the branch and select **Delete**. You must be checked out to a different branch than the one you want to delete.
+     Open the **Branches** view in Team Explorer, then right-click the branch and select **Delete**. Be checked out to a different branch than the one you want to delete.
    :::column-end:::
    :::column span="1":::
      From the **Git** menu on the menu bar, select **Manage Branches**, then right-click a branch and select **Delete**
@@ -514,7 +514,7 @@ For more information, see the following resources:
 :::row-end:::
 --- 
 
-To learn more, see [Save your work with commits](commits.md).
+For more information, see [Save your work with commits](commits.md).
 
 ## Compare files and versions
  
@@ -575,7 +575,7 @@ To learn more, see [Save your work with commits](commits.md).
 :::row-end:::
 ---
 
-To learn more, see [Compare versions and review history](review-history.md).
+For more information, see [Compare versions and review history](review-history.md).
 
 ## Sync changes
 

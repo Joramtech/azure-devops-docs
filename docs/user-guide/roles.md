@@ -1,7 +1,6 @@
 ---
 title: Supported roles for software development
 titleSuffix: Azure DevOps
-ms.custom: seodec18
 description: Understand how Azure DevOps tools support various software development roles
 ms.subservice: azure-devops-new-user
 ms.assetid: 4600B0D9-3799-4902-814B-F6EC9098C4CE
@@ -58,7 +57,7 @@ Product owners typically plan the feature set to deliver, set priorities, and tr
 
 - Use the product backlog to quickly define and prioritize user stories, features, and other work items
 - Use the sprint backlog and task board to implement Scrum practices
-- Use the Kanban board to work with Kanban methods
+- Use your board to work with Kanban methods
 - Use queries to list and update work items, create status and trend charts, and post charts to dashboards
 - Use dashboards to share information, status, and trends with your team or organization
   
@@ -86,7 +85,7 @@ To get started, see the overviews in [Azure Pipelines](../pipelines/get-started/
 
 With Stakeholder access, anyone in your organization can check project status and provide feedback. Stakeholders can track project priorities and provide direction, feature ideas, and business alignment to a team. Stakeholders also contribute to plans by adding and modifying work items. They can't, however, contribute to the code base or exercise test tools.
 
-Stakeholder access essentially provides free access to a limited set of feature to project sponsors and supporters. To learn more, see [Work as a Stakeholder](../organizations/security/get-started-stakeholder.md).
+Stakeholder access essentially provides free access to a limited set of feature to project sponsors and supporters. For more information, see [Work as a Stakeholder](../organizations/security/get-started-stakeholder.md).
 
 <a id="admin-roles">  </a>
 
@@ -121,14 +120,7 @@ Responsible for configuring project-level resources, including:
 - [Test](../test/how-long-to-keep-test-results.md) and [release](../pipelines/policies/retention.md) retention policies  
 ::: moniker-end  
 
-::: moniker range="tfs-2018"
-
-- [Area paths](../organizations/settings/set-area-paths.md) and [iteration paths](../organizations/settings/set-iteration-paths-sprints.md)  
-- [Project permissions and repository security](../organizations/security/permissions.md)  
-- [Customizing work tracking objects](../reference/customize-work.md)  
-- [Build agents, pools, and service connections](../pipelines/get-started/what-is-azure-pipelines.md)  
-- [Test](../test/how-long-to-keep-test-results.md) and [release](../pipelines/policies/retention.md) retention policies
-::: moniker-end  
+  
 
 ::: moniker range="azure-devops"
 
@@ -146,32 +138,7 @@ Responsible for configuring organization-level resources, including the followin
 To get started, see [Manage organizations](../organizations/accounts/organization-management.md) and [Settings](../organizations/settings/about-settings.md#project-administrator-role-and-managing-projects).
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-### Project Collection Administrators
-
-Responsible for configuring collection-level resources. These tasks include:  
-
-- Add and manage projects
-- Manage collection-level permissions
-- Install and manage extensions
-
-To get started, see [Settings](../organizations/settings/about-settings.md#project-administrator-role-and-managing-projects).
-
-### Azure DevOps Server administrators
-
-Responsible for installing, upgrading, and maintaining an on-premises Azure DevOps Server deployment, including the:
-
-- Install Azure DevOps Server
-- Update servers running Azure DevOps Server
-- Manage database backups
-- Manage server administrative settings and permissions
-- Build retention policies
-- Add and manage project collections
-  
-To get started, see [Server Administration (Azure DevOps Server)](/azure/devops/server/index).
-
-::: moniker-end
 
 ## Related articles
 

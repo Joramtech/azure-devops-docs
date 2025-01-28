@@ -102,20 +102,8 @@ The following table summarizes the settings you can enable or configure for each
    :::column-end:::
 :::row-end:::
 ---
-::: moniker range="tfs-2018"
-:::row:::
-   :::column span="2":::
-      [Gravatar images](#gravatar-images)
-   :::column-end:::
-   :::column span="1"::: 
-       On  
-   :::column-end:::
-   :::column span="3"::: 
-      Enables or disables the use of [Gravatar images](https://go.microsoft.com/fwlink/?LinkId=313945) for users outside of your enterprise. This setting applies to all repositories in the project. 
-   :::column-end:::
-:::row-end:::
-::: moniker-end
-::: moniker range=">= tfs-2018"
+
+::: moniker range="<=azure-devops"
 :::row:::
    :::column span="2":::
       [Forks](#forks)
@@ -128,7 +116,7 @@ The following table summarizes the settings you can enable or configure for each
    :::column-end:::
 :::row-end:::
 ::: moniker-end
-::: moniker range=">= tfs-2018"
+::: moniker range="<=azure-devops"
 :::row:::
    :::column span="2":::
       [Commit mention linking](#work-item-linking)
@@ -317,6 +305,9 @@ The following table summarizes the policies you can define to customize a branch
 - Pull requests are required to update the branch.
 - The branch can't be deleted.
 
+> [!NOTE]
+> Branch policies are applied to Pull Requests based on the target branch of the Pull Request. Branch policies should not be set on temporary branches that will be deleted after a pull request. Adding branch policies to temporary branches will cause automatic branch deletion to fail.
+
 :::row:::
    :::column span="2":::
       **Policy**
@@ -415,12 +406,14 @@ The following table summarizes the policies you can define to customize a branch
 
 
 ::: moniker range=">= azure-devops-2020"
-- To configure policies, you must be a member of the Project Administrators security group, or have repository-level **Edit policies** permissions. To learn more, see [Set Git repository permissions](set-git-repository-permissions.md).
+- To configure policies, be a member of the Project Administrators security group, or have repository-level **Edit policies** permissions. For more information, see [Set Git repository permissions](set-git-repository-permissions.md).
+::: moniker-end
+::: moniker range="azure-devops"
 - If you want to use **az repos** commands, be sure to follow the steps in [Get started with Azure DevOps CLI](../../cli/index.md).
 ::: moniker-end
  
 ::: moniker range="< azure-devops-2020"
-- To configure policies, you must be a member of the Project Administrators security group, or have repository-level **Edit policies** permissions. To learn more, see [Set Git repository permissions](set-git-repository-permissions.md).
+- To configure policies, be a member of the Project Administrators security group, or have repository-level **Edit policies** permissions. For more information, see [Set Git repository permissions](set-git-repository-permissions.md).
 ::: moniker-end
 
 
@@ -475,17 +468,7 @@ To configure repository settings and policies through the web portal, open **Pro
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-1. From your web browser, open the project and choose the gear icon, **Version Control**, and select your repository.
-
-   ![Screenshot that shows the 'Version Control' options for your repository.](media/repository-settings/project-repository-settings-prev-nav.png)
-
-2. Select **Options** to view and configure your repository settings.
-
-   ![The options UI](media/repository-settings/repository-settings-tfs2018.2.png)
-
-::: moniker-end
 
 
 
@@ -493,15 +476,15 @@ To configure repository settings and policies through the web portal, open **Pro
 
 ::: moniker range="azure-devops" 
 
-You can use Azure DevOps CLI to list respositories or show or update a repository. Also, you can list, show or update policy details for a branch or repository.
+You can use Azure DevOps CLI to list repositories or show or update a repository. Also, you can list, show or update policy details for a branch or repository.
 
 [List repositories](#repos-list) &#124; [List repository details](#repos-show) &#124; [Update or rename a repository](#repos-update)  
-[List repository policies](#repos-policy-list) &#124; [List policy details](#show-policy) &#124; [Update respository policy](#update-policy)
+[List repository policies](#repos-policy-list) &#124; [List policy details](#show-policy) &#124; [Update repository policy](#update-policy)
 
 
 You can use Azure CLI to list, show, and update policies for a branch or repository, or for all repositories in a project.
 
-<a name="repos-list" />
+<a name="repos-list"></a>
 
 ### List repositories
 
@@ -540,7 +523,7 @@ ac228555-ea89-4881-9ace-dfa065baf7d3  Test 1-2-3      main              Fabrikam
 ```
 
 
-<a name="repos-show" />
+<a name="repos-show"></a>
 
 ### List repository details
 
@@ -609,7 +592,7 @@ az repos show --repository contosoREPO
 }
 ```
 
-<a name="repos-update" />
+<a name="repos-update"></a>
 
 ### Update a repository  
 
@@ -703,7 +686,7 @@ ID    Name                     Is Blocking    Is Enabled    Repository Id       
 
 ```
 
-<a id="update-policy"/> 
+<a id="update-policy"></a>
 
 
 ### Update policies
@@ -860,9 +843,7 @@ This setting enables or disables the use of [Gravatar images](https://go.microso
 1. On the **Settings** tab of the **All Repositories** page, set **Gravatar images** to **On** or **Off**.
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-**Gravatar images** is an individual repository setting.
-::: moniker-end
+
 
 <!--- REPOSITORY SETTINGS  --> 
  
@@ -903,11 +884,11 @@ When enabled, commit messages containing `#` followed by a valid work item ID au
 Enable this setting to automatically complete work items when linked pull requests complete. This setting also allows specifying other work item transition states in pull request commit messages. For more information, see [Auto-complete work items with pull requests](../../boards/work-items/auto-complete-work-items-pull-requests.md).
 
 ::: moniker-end
-::: moniker range=">= tfs-2018 <= azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 ### Commit mention work item resolution
 
-Enable this setting to automatically complete those work items when you successfully complete the PR. To learn more, see [Auto-complete work items with pull requests](../../boards/work-items/auto-complete-work-items-pull-requests.md).
+Enable this setting to automatically complete those work items when you successfully complete the PR. For more information, see [Auto-complete work items with pull requests](../../boards/work-items/auto-complete-work-items-pull-requests.md).
 ::: moniker-end
 
 ### Work item transition preferences
@@ -969,7 +950,7 @@ To set policies to protect specific or default branch names across a project:
 1. Select the plus sign **+** in **Branch Policies** at the bottom of the page.
 1. On the **Add branch protection** screen, select **Protect the default branch of each repository**, or **Protect current and future branches matching a specified pattern**.
 
-   If you select the second option, enter the branch name to protect. An informational message lets you know how many current branches are affected. The branch doesn't have to exist yet to protect the branch name.
+   If you select the second option, enter the branch name to protect. An informational message lets you know how many current branches are affected. Keep in mind that branch name (or the pattern you entered) is **case-sensitive**. The branch doesn't have to exist yet to protect the branch name.
 
 1. Select **Create**.
 
@@ -1013,7 +994,7 @@ You can set a policy that prevents commits to a repository from file paths that 
 
 ## Case enforcement policy
 
-::: moniker range=">= tfs-2018"
+::: moniker range="<=azure-devops"
 Git is case-sensitive, meaning that a file called *Foo.txt* is different from a file called *foo.txt*. However, Windows and macOS default to case-insensitive file systems, meaning that *Foo.txt* and *foo.txt* are the same name. This discrepancy can cause problems if someone on a case-insensitive system pushes files, folders, branches, or tags that differ only by letter case. For more information, see [Git Cross-Platform Compatibility](os-compatibility.md).
 
 If most of your contributors are on Windows or macOS, it's best to enable the **Case enforcement** policy. Case enforcement switches the server from its default case-sensitive mode, where *File.txt* and *file.txt* are distinct, to a Windows and macOS-friendly mode where *File.txt* and *file.txt* are considered the same file. This setting affects files, folders, branches, and tags.
@@ -1026,7 +1007,7 @@ This setting won't fix a repository that already contains objects that differ on
 
 #### [Browser](#tab/browser)
 
-::: moniker range=">= tfs-2018"
+::: moniker range="<=azure-devops"
 
 To set case enforcement policy:
 
@@ -1036,10 +1017,7 @@ To set case enforcement policy:
 :::image type="content" source="media/repository-settings/case-enforcement.png" alt-text="Screenshot that shows the Case enforcement policy setting.":::
 
 ::: moniker-end
-::: moniker range="tfs-2018"
-> [!NOTE]   
-> The **Case enforcement** policy requires TFS 2018.2 or later version.  
-::: moniker-end
+
  
 #### [Azure DevOps CLI](#tab/azure-devops-cli/)
 
@@ -1168,7 +1146,7 @@ To set the maximum path length policy:
 
 Large files checked into Git remain in the repository indefinitely, increasing clone times and disk usage. For guidance on managing large files, see [Manage and store large files in Git](manage-large-files.md).
 
-::: moniker range=">= tfs-2018"
+::: moniker range="<=azure-devops"
 The **Maximum file size** policy setting blocks files over a certain size from entering the repository. If a push contains a new or updated file larger than the limit configured in this setting, the push is blocked. The user must rewrite their unpushed history to remove the large file and try the push again.
 
 ::: moniker-end
@@ -1183,10 +1161,7 @@ To configure **Maximum file size** policy:
 
 :::image type="content" source="media/repository-settings/maximum-file-size.png" alt-text="Screenshot that shows the Maximum file size policy setting.":::
 
-::: moniker range="tfs-2018"
-> [!NOTE]   
-> The **Maximum file size** policy requires TFS 2018.2 or later.
-::: moniker-end 
+ 
 
 #### [Azure DevOps CLI](#tab/azure-devops-cli/)
 

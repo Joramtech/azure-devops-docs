@@ -35,13 +35,13 @@ This article describes pull request guidelines and management considerations. Fo
 ::: moniker range="azure-devops"
 - **Repos** must be enabled on your project. If the **Repos** hub and associated pages don't display, see [Turn an Azure DevOps service on or off](../../organizations/settings/set-services.md) to reenable Repos.
  
-- To view or review PRs, you must be a member of an Azure DevOps project with **Basic** access or higher.
+- To view or review PRs, be a member of an Azure DevOps project with at least **Basic** access.
   - If you don't have a project, create one or [sign up for free](../../user-guide/sign-up-invite-teammates.md).
   - If you aren't a project member, [get added](../../organizations/accounts/add-organization-users.md).
 
-- To contribute to a PR, you must be a member of the **Readers** security group or have the corresponding permissions.
+- To contribute to a PR, be a member of the **Readers** security group or have the corresponding permissions.
 
-- To create and complete a PR, you must be a member of the **Contributors** security group or have the corresponding permissions.
+- To create and complete a PR, be a member of the **Contributors** security group or have the corresponding permissions.
 
 > [!NOTE]
 > For public projects, users granted **Stakeholder** access have full access to Azure Repos.
@@ -49,19 +49,14 @@ This article describes pull request guidelines and management considerations. Fo
 
 ::: moniker range=">= azure-devops-2019 < azure-devops"
 - **Repos** must be enabled on your project. If the **Repos** hub and associated pages don't display, see [Turn an Azure DevOps service on or off](../../organizations/settings/set-services.md) to reenable Repos.
-- To view or review PRs, you must be a member of an Azure DevOps project with **Basic** access or higher. If you aren't a project member, [get added](../../organizations/security/add-users-team-project.md).
-- To contribute to a PR, you must be a member of the **Readers** security group or have the corresponding permissions.
-- To create and complete a PR, you must be a member of the **Contributors** security group or have the corresponding permissions.
+- To view or review PRs, be a member of an Azure DevOps project with at least **Basic** access. If you aren't a project member, [get added](../../organizations/security/add-users-team-project.md).
+- To contribute to a PR, be a member of the **Readers** security group or have the corresponding permissions.
+- To create and complete a PR, be a member of the **Contributors** security group or have the corresponding permissions.
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
-- To view or review PRs, you must be a member of an Azure DevOps project with **Basic** access or higher. If you aren't a project member, [get added](../../organizations/security/add-users-team-project.md).
-- To contribute to a PR, you must be a member of the **Readers** security group or have the corresponding permissions.
-- To create and complete a PR, you must be a member of the **Contributors** security group or have the corresponding permissions.
 
-::: moniker-end
 
-To learn more about permissions and access, see [Default Git repository and branch permissions](../../organizations/security/default-git-permissions.md) and [About access levels](../../organizations/security/access-levels.md).
+For more information about permissions and access, see [Default Git repository and branch permissions](../../organizations/security/default-git-permissions.md) and [About access levels](../../organizations/security/access-levels.md).
 
 <a name="pr-feedback"></a>
 ## Quality feedback for pull requests
@@ -83,15 +78,14 @@ PR owners should:
 - Reply to comments, accepting the suggestion or explaining why the suggested change isn't ideal.
 - For good suggestions outside the scope of the PR, create new work items, branches, and PRs to make those changes.
 
-Reviewers should:
+Reviewers should do the following tasks.
 
-- Provide feedback on changes they don't agree with.
-- Identify issues and give specific suggestions on what to do differently.
-- Make sure the feedback has clear intent and is easy to understand.
-- [Leave comments](review-pull-requests.md#make-comments).
-- [Vote on the changes](review-pull-requests.md#vote-on-changes).
+- Provide feedback on changes they don't agree with
+- Identify issues and give specific suggestions on what to do differently
+- Make sure the feedback has clear intent and is easy to understand
+- [Leave comments or vote on changes](review-pull-requests.md)
 
-Learn more about how to [get feedback with Git pull requests](/devops/develop/git/git-pull-requests).
+For more information, see [Get feedback with Git pull requests](/devops/develop/git/git-pull-requests).
 
 ## Branch policies and pull requests
 

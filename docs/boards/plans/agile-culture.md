@@ -142,7 +142,7 @@ Each team plans the features to deliver. They have the autonomy to determine how
 
 As your organization grows, you can scale your Agile tools in the following ways.     
 
-- **[Add teams and filtered backlog views](../../organizations/settings/add-teams.md):** You add teams to support team autonomy and provide them with the tools they can configure and manage that supports how they want to work. These tools include product backlogs, Kanban boards, sprint backlogs, Taskboards, and others.
+- **[Add teams and filtered backlog views](../../organizations/settings/add-teams.md):** You add teams to support team autonomy and provide them with the tools they can configure and manage that supports how they want to work. These tools include product backlogs, boards, sprint backlogs, Taskboards, and others.
 
     Also, you can configure teams to support a hierarchy of backlogs and portfolio backlogs so that portfolio managers can review priority and progress across several teams.
 
@@ -166,7 +166,7 @@ Often, organizations look at adding a project for each software development proj
 
 We recommend that you add teams to scale your tools rather than add projects for the following reasons:  
 - **Visibility:**  It's easier to view progress across all teams  
-- **Tracking and auditing:**  It's easier to [link work items and other objects](../queries/link-work-items-support-traceability.md) for tracking and auditing purposes
+- **Tracking and auditing:**  It's easier to [link work items to other objects](../backlogs/add-link.md) for tracking and auditing purposes
 - **Maintainability:**  You minimize the maintenance of security groups and process updates.  
 
 For more information, see [About projects and scaling your organization](../../organizations/projects/about-projects.md).

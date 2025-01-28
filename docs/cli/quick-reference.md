@@ -26,10 +26,10 @@ To start using Azure DevOps CLI, see [Get started with Azure DevOps CLI](index.m
 
 ## Azure Artifacts
 
-- [Universal Packages - download specific files](../artifacts/quickstarts/universal-packages.md#download-specific-files)
+- [Universal Packages - download specific files](../artifacts/quickstarts/download-universal-packages.md#download-specific-files)
 - [Create a feed](../artifacts/quickstarts/universal-packages.md) 
-- [Download a universal package](../artifacts/quickstarts/universal-packages.md#download-universal-packages) 
-- [Publish a universal package](../artifacts/quickstarts/universal-packages.md#publish-universal-packages) 
+- [Download a universal package](../artifacts/quickstarts/universal-packages.md) 
+- [Publish a universal package](../artifacts/quickstarts/universal-packages.md) 
  
 ## Azure Boards
 
@@ -37,17 +37,17 @@ To start using Azure DevOps CLI, see [Get started with Azure DevOps CLI](index.m
 :::row:::
    :::column span="1":::
       #### Area and Iteration Paths
-      - [Add a project area path](../organizations/settings/set-area-paths.md#add-area) 
-      - [Add a project iteration](../organizations/settings/set-iteration-paths-sprints.md#add-project-iteration)
-      - [Delete or update a project iteration path](../organizations/settings/set-iteration-paths-sprints.md#delete-update-iteration-paths)
-      - [List project area paths](../organizations/settings/set-area-paths.md#list-areas) 
-      - [List project iteration paths](../organizations/settings/set-iteration-paths-sprints.md#iteration-project-list) 
+      - [Add a project area path](../organizations/settings/set-area-paths.md#add-an-area-path) 
+      - [Add a project iteration](../organizations/settings/set-iteration-paths-sprints.md#add-iterations-and-set-iteration-dates)
+      - [Delete or update a project iteration path](../organizations/settings/set-iteration-paths-sprints.md#rename-or-move-an-iteration)
+      - [List project area paths](../organizations/settings/set-area-paths.md#list-project-areas) 
+      - [List project iteration paths](../organizations/settings/set-iteration-paths-sprints.md#list-project-iterations) 
       - [List team areas paths](../organizations/settings/set-area-paths.md#list-team-area-paths) 
-      - [List team iteration paths](../organizations/settings/set-iteration-paths-sprints.md#list-team-iteration-paths) 
-      - [Remove area path from a team](../organizations/settings/set-area-paths.md#remove-area-path-from-team)
-      - [Rename or move a project area path](../organizations/settings/set-area-paths.md#rename-move-project-area-path) 
+      - [List team iteration paths](../organizations/settings/set-iteration-paths-sprints.md#list-team-iterations) 
+      - [Remove area path from a team](../organizations/settings/set-area-paths.md#remove-an-area-path-from-a-team)
+      - [Rename or move a project area path](../organizations/settings/set-area-paths.md#rename-or-move-an-area-path) 
       - [Set team area paths](../organizations/settings/set-area-paths.md#set-team-area-paths) 
-      - [Set team iteration paths](../organizations/settings/set-iteration-paths-sprints.md#set-team-iteration-paths) 
+      - [Set team iteration paths](../organizations/settings/set-iteration-paths-sprints.md#select-team-sprints-and-set-the-default-iteration-path) 
    :::column-end:::
    :::column span="1":::
       #### Queries 
@@ -100,7 +100,7 @@ To start using Azure DevOps CLI, see [Get started with Azure DevOps CLI](index.m
       #### Teams
       - [Add a team](../organizations/settings/add-teams.md#add-team)
       - [Delete a team](../organizations/settings/rename-remove-team.md#delete-team)
-      - [List team members](../organizations/security/add-users-team-project.md#list-members)
+      - [List team members](../organizations/security/add-users-team-project.md#list-team-members)
       - [List teams](../organizations/settings/add-teams.md#list-teams) 
       - [Show team details](../organizations/security/add-users-team-project.md#show-details)
       - [Update a team](../organizations/settings/rename-remove-team.md#update-team) 
@@ -156,15 +156,15 @@ To start using Azure DevOps CLI, see [Get started with Azure DevOps CLI](index.m
       - [Update a variable](../pipelines/process/variables.md#update-variable)
 
       #### Variable groups
-      - [Add variables to a variable group](../pipelines/library/variable-groups.md#create-a-variable-group)
-      - [Create a variable group](../pipelines/library/variable-groups.md#create-variable-group)
-      - [Delete a variable group](../pipelines/library/variable-groups.md#delete-variable-group)
-      - [Delete variables from a variable group](../pipelines/library/variable-groups.md#delete-variables-group)
+      - [Add variables to a variable group](../pipelines/library/variable-groups.md#add-variables-to-a-variable-group)
+      - [Create a variable group](../pipelines/library/variable-groups.md#create-a-variable-group)
+      - [Delete a variable group](../pipelines/library/variable-groups.md#delete-a-variable-group)
+      - [Delete variables from a variable group](../pipelines/library/variable-groups.md#delete-variables-from-a-variable-group)
       - [List variable groups](../pipelines/library/variable-groups.md#list-variable-groups)
-      - [List variables in a variable group](../pipelines/library/variable-groups.md#list-variables-group)
-      - [Show details for a variable group](../pipelines/library/variable-groups.md#show-variable-group)
-      - [Update a variable group](../pipelines/library/variable-groups.md#update-variable-group)
-      - [Update variables in a variable group](../pipelines/library/variable-groups.md#update-variables-group)
+      - [List variables in a variable group](../pipelines/library/variable-groups.md#list-variables-in-a-variable-group)
+      - [Show details for a variable group](../pipelines/library/variable-groups.md#show-details-for-a-variable-group)
+      - [Update a variable group](../pipelines/library/variable-groups.md#update-a-variable-group)
+      - [Update variables in a variable group](../pipelines/library/variable-groups.md#update-variables-in-a-variable-group)
    :::column-end:::
 :::row-end:::
 
@@ -210,7 +210,7 @@ To start using Azure DevOps CLI, see [Get started with Azure DevOps CLI](index.m
       - [Define a custom pull request view](../repos/git/view-pull-requests.md#define-custom-pr-view)
       - [Show pull request details](../repos/git/view-pull-requests.md#open-pr)
       - [Set vote on a pull request](../repos/git/review-pull-requests.md#set-vote)
-      - [Reset vote on a pull request](../repos/git/review-pull-requests.md#reset-vote)
+      - [Reset vote on a pull request](../repos/git/review-pull-requests.md)
       - [Complete or update a pull request](../repos/git/complete-pull-requests.md#complete-the-pull-request)
       - [Set pull request completion options](../repos/git/complete-pull-requests.md#set-completion-options)
       - [Set pull request to autocomplete](../repos/git/complete-pull-requests.md#complete-automatically)
@@ -245,8 +245,6 @@ To start using Azure DevOps CLI, see [Get started with Azure DevOps CLI](index.m
 - [Show details of permissions available in each namespace](../organizations/security/manage-tokens-namespaces.md)
 - [Show permissions for specified token, namespace and user or group](../organizations/security/manage-tokens-namespaces.md)
 - [Update a security group](../organizations/security/add-manage-security-groups.md) 
-
-<a id="service-endpoints" />
 
 ## Service endpoints or service connections
 

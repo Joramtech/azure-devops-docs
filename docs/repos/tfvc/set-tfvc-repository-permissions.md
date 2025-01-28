@@ -1,7 +1,7 @@
 ---
 title: Set TFVC repository permissions
 titleSuffix: Azure Repos
-description: Follow steps to grant or restrict access to a Team Foundation Version Control (TFVC) repository feature or function.
+description: Follow steps to manage access to a Team Foundation Version Control (TFVC) repository feature or function.
 ms.assetid:  
 ms.service: azure-devops-repos
 ms.topic: quickstart
@@ -18,23 +18,23 @@ ms.subservice: azure-devops-repos-git
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 [!INCLUDE [version-vs-gt-eq-2019](../../includes/version-vs-gt-eq-2019.md)]
 
-You can grant or restrict access to a Team Foundation Version Control (TFVC) repository to lock down who can contribute to your source code. There's only one TFVC repository per project. For guidance on who to give greater permission levels, see [Grant or restrict access using permissions](../../organizations/security/restrict-access.md).
+You can manage access to a Team Foundation Version Control (TFVC) repository to lock down who can contribute to your source code. There's only one TFVC repository per project. For guidance on who to give greater permission levels, see [Manage access using permissions](../../organizations/security/restrict-access.md).
 
 ## Prerequisites
 
-- You must have a TFVC project. If you don't have a project yet, create one in [Azure DevOps Services](../../user-guide/sign-up-invite-teammates.md) or set one up in [on-premises Azure DevOps Server](../../organizations/projects/create-project.md).
+- A TFVC project. If you don't have a project yet, create one in [Azure DevOps Services](../../user-guide/sign-up-invite-teammates.md) or set one up in [on-premises Azure DevOps Server](../../organizations/projects/create-project.md).
 
-- You must be a member of the [Project Administrators group](../../organizations/security/change-project-level-permissions.md) or have **Manage permissions** set to **Allow** for the TFVC repository.
+- Be a member of the [Project Administrators group](../../organizations/security/change-project-level-permissions.md) or have **Manage permissions** set to **Allow** for the TFVC repository.
 
 ::: moniker range="azure-devops"
 
-- To contribute to the source code, you must be granted **Basic** access level or greater. Users granted **Stakeholder** access for private projects have no access to source code. Users granted **Stakeholder** access for public projects have the same access as **Contributors** and those granted **Basic** access. To learn more, see [About access levels](../../organizations/security/access-levels.md).
+- To contribute to the source code, have **Basic** access level or greater. Users granted **Stakeholder** access for private projects have no access to source code. Users granted **Stakeholder** access for public projects have the same access as **Contributors** and those granted **Basic** access. For more information, see [About access levels](../../organizations/security/access-levels.md).
 
 ::: moniker-end
 
 ::: moniker range="< azure-devops"
 
-- To contribute to the source code, you must be granted **Basic** access level or greater. Users granted **Stakeholder** access have no access to source code. To learn more, see [About access levels](../../organizations/security/access-levels.md).
+- To contribute to the source code, have **Basic** access level or greater. Users granted **Stakeholder** access have no access to source code. For more information, see [About access levels](../../organizations/security/access-levels.md).
 ::: moniker-end 
 
 ## Default repository permissions  
@@ -46,7 +46,7 @@ By default, members of the project **Contributors** group have permissions to co
 <a id="tfvc-repository">  </a>
 ## Set TFVC repository security permissions
 
-To set permissions for a custom security group, you must have defined that group previously. See [Change project-level permissions](../../organizations/security/change-project-level-permissions.md).
+To set permissions for a custom security group, have defined that group previously. See [Change project-level permissions](../../organizations/security/change-project-level-permissions.md).
 
 ::: moniker range="azure-devops"
 
@@ -103,27 +103,11 @@ To set the permissions for the TFVC repository for a project:
 
 ::: moniker-end    
 
-::: moniker range="tfs-2018"
 
-1. In the web portal for the project where you want to set permissions, select **Settings** and then select **Version Control**. Choose the TFVC repository for the project.
-
-1. Choose the security group whose permissions you want to manage.
-
-1. Change the permission setting to **Allow** or **Deny**. 
-
-   For example, here you change the **Manage branch** permission to **Allow** for all members of the **Contributors** group. 
-
-   ![Image that shows setting TFVC repository security permissions for the Contributors group.](media/tfvc-permissions/set-repo-tfvc-permissions.png)  
-
-   [!INCLUDE [temp](../../includes/ability-to-find-user-once-added.md)]
-
-1. Save your changes. 
-
-::: moniker-end
 
 ## Related articles
 
-- [Grant or restrict access using permissions](../../organizations/security/restrict-access.md)
+- [Manage access using permissions](../../organizations/security/restrict-access.md)
 - [Default permissions and access](../../organizations/security/permissions-access.md) 
 - [Permissions and groups reference](../../organizations/security/permissions.md)  
 - [Permission command](permission-command.md)

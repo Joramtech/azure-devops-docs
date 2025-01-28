@@ -1,13 +1,12 @@
 ---
 title: Change organization image
 titleSuffix: Azure DevOps Services
-ms.custom: seodec18
 description: Change your organization's profile icon image.
 ms.subservice: azure-devops-organizations
 ms.topic: how-to
 ms.author: chcomley
 author: chcomley
-ms.date: 07/05/2023
+ms.date: 10/22/2024
 monikerRange: 'azure-devops'
 ---
 
@@ -15,12 +14,14 @@ monikerRange: 'azure-devops'
 
 [!INCLUDE [version-eq-azure-devops](../../includes/version-eq-azure-devops.md)]
 
-When you [create an organization](create-organization.md) in Azure DevOps, the system automatically generates a profile image. You can replace the default image with one that better represents your organization.
+When you [create an organization](create-organization.md) in Azure DevOps, the system automatically generates a default profile image. You can replace the default image with one that better represents your organization.
 
 > [!NOTE]
-> The max image size allowed is 2560 x 1024 px, and then we resize to 200 x 200.
+> The maximum image size allowed is 2560 x 1024 pixels. The image gets resized to 200 x 200 pixels for display.
 
-[!INCLUDE [pca-prerequisite](includes/pca-prerequisite.md)]
+## Prerequisites
+
+[!INCLUDE [prerequisites-pca-only](../../includes/prerequisites-pca-only.md)]
 
 ## Change your organization image
 
@@ -36,11 +37,11 @@ When you [create an organization](create-organization.md) in Azure DevOps, the s
 
 4. Upload your image, and then select **Save**.
 
-Your organization's image is updated.
+Your organization's image gets updated. This change is reflected across all areas of Azure DevOps where the organization image is displayed, including the organization settings, project dashboards, and user profiles.
 
 ## Related articles
 
 - [Change your organization's owner](change-organization-ownership.md)
 - [Change your organization's location](change-organization-location.md)
-- [Change your organization's Azure AD connection](change-azure-ad-connection.md)
+- [Change your organization's Microsoft Entra connection](change-azure-ad-connection.md)
 - [Rename your organization](rename-organization.md)
