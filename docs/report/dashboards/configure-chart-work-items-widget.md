@@ -29,14 +29,14 @@ Prerequisites to meet include having the necessary permissions, defining and sav
  
 ### Permissions  
 
-By default, users with **Basic** access or higher can create charts. Users with **Stakeholder** access can't view or create charts from the **Queries** page, however, they can view charts added to a team dashboard. For details, see [Stakeholder access quick reference](../../organizations/security/stakeholder-access.md).
+By default, users with at least **Basic** access can create charts. Users with **Stakeholder** access can't view or create charts from the **Queries** page, however, they can view charts added to a team dashboard. For details, see [Stakeholder access quick reference](../../organizations/security/stakeholder-access.md).
 
 ::: moniker range=">= azure-devops-2020"
 
-- To save a query to a **Shared Queries** folder, you must be granted permissions to save queries under a folder. To get permissions granted, see [Set permissions on queries and query folders](../../boards/queries/set-query-permissions.md).
-- To add a widget to a team dashboard, you must be a member of the team or be a member of the **Project Administrators** security group.
-- To add a widget to a project dashboard, you must have created the dashboard or be granted permissions to edit the dashboard, or be a member of the **Project Administrators** security group.
-- To view a query-based widget added to a dashboard, you must have **Read** permissions to the underlying query. If that permission has been denied, then the widget will display with a *Widget failed to load* message.
+- To save a query to a **Shared Queries** folder, have permissions to save queries under a folder. To get permissions granted, see [Set permissions on queries and query folders](../../boards/queries/set-query-permissions.md).
+- To add a widget to a team dashboard, be a member of the team or be a member of the **Project Administrators** security group.
+- To add a widget to a project dashboard, have created the dashboard or be granted permissions to edit the dashboard, or be a member of the **Project Administrators** security group.
+- To view a query-based widget added to a dashboard, have **Read** permissions to the underlying query. If that permission has been denied, then the widget will display with a *Widget failed to load* message.
 ::: moniker-end
 
 ::: moniker range="azure-devops"
@@ -47,12 +47,12 @@ By default, users with **Basic** access or higher can create charts. Users with 
 
 ::: moniker range="< azure-devops-2020"
 
-- To save a query to a **Shared Queries** folder, you must be granted permissions to save queries under a folder. To get permissions granted, see [Set permissions on queries and query folders](../../boards/queries/set-query-permissions.md).  
-- To add a widget to a team dashboard, you must be a member of the team or be a member of the **Project Administrators** security group. 
-- To view a query-based widget added to a dashboard, you must have **Read** permissions to the underlying query. If that permission has been denied, then the widget will display with a *Widget failed to load* message.
+- To save a query to a **Shared Queries** folder, have permissions to save queries under a folder. To get permissions granted, see [Set permissions on queries and query folders](../../boards/queries/set-query-permissions.md).  
+- To add a widget to a team dashboard, be a member of the team or be a member of the **Project Administrators** security group. 
+- To view a query-based widget added to a dashboard, have **Read** permissions to the underlying query. If that permission has been denied, then the widget will display with a *Widget failed to load* message.
 ::: moniker-end
  
-To learn more about dashboard permissions, see [Set dashboard permissions](dashboard-permissions.md). 
+For more information about dashboard permissions, see [Set dashboard permissions](dashboard-permissions.md). 
 
 ### Define and save a flat-list query 
 
@@ -145,41 +145,7 @@ Prior to adding a widget to a dashboard, you must first add the dashboard to the
 
 
 
-::: moniker range="tfs-2018"
 
-1. From the web portal, open the [team dashboard](dashboards.md) you want to add the chart to.   
-
-2. To add widgets to the dashboard, select :::image type="icon" source="media/icons/edit-icon.png" border="false"::: **Edit**. The widget catalog will automatically open.  Add all the widgets that you want and drag their tiles into the sequence you want. 
-
-	If you don't see these icons, then you need to be added as a [team administrator](../../organizations/settings/add-team-administrator.md) or a member of the Project Administrators group. 
-
-3. Select the **Chart for work items** widget and then select **Add**. 
-
-	<img src="media/widget-chart-work-query.png" alt="Web portal, Dashboards page, Widget catalog, Chart for work items widget" /> 
-
-4. Select the widget's :::image type="icon" source="media/icons/gear-icon.png" border="false"::: gear icon to open the configuration dialog. 
-
-	<img src="media/charts-chart-wit-widget-configure-dialog.png" alt="Web portal, Dashboards page, Widget catalog, Chart for work items widget, Configuration dialog" /> 
-
-5. Give the chart a title, select the flat list query on which the chart is based, and choose the chart type. For guidance on choosing the chart type, see [Track progress with status and trend query-based charts ](charts.md).   
-
-	Based on your chart type, specify values for the remaining fields. Change a chart color simply by choosing another color from those shown.   
-
-	> [!NOTE]  
-	> All rules for configuring charts described previously in this article apply to configuring the chart for work items widget. 
-
-6. After you save your changes, you'll see the new chart has been added to the dashboard. 
-
-	![Chart of work items widget, configure dialog](media/charts-chart-wit-widget-configured.png)  
-
-	> [!TIP]  
-	> If the chart doesn't display all the rows or columns you want, try changing the chart **Size**. Pivot tables and other chart types will display more data based on the area provided on the dashboard.  
-
-7. Drag the tile anywhere on the dashboard to put it where you want it. 
-
-8. When you're finished with your changes, select ![Exit edit-dashboard-mode icon](media/exit-edit-dashboard-mode-icon.png) to exit dashboard editing.  
-
-::: moniker-end
 
 
 
@@ -196,7 +162,7 @@ To group a chart by tags, perform the same steps provided in the previous sectio
 
 :::image type="content" source="media/charts/configure-chart-widget-tags.png" alt-text="Screenshot of Chart by Work Items, Configure, Group by Tags.":::
 
-To learn more about using tags, see [Add tags to work items](../../boards/queries/add-tags-to-work-items.md). 
+For more information about using tags, see [Add tags to work items](../../boards/queries/add-tags-to-work-items.md). 
 
 ::: moniker-end
  

@@ -1,9 +1,8 @@
 ---
 title: Deploy an Azure Pipelines agent on Windows
-ms.custom: contperf-fy21q1
 description: Learn how to use Windows agents to build and deploy your Windows and Azure code for Azure Pipelines
 ms.topic: conceptual
-ms.date: 05/05/2023
+ms.date: 05/06/2024
 monikerRange: '<= azure-devops'
 ---
 
@@ -15,8 +14,7 @@ To build and deploy Windows, Azure, and other Visual Studio solutions you'll nee
 
 :::moniker range="<=azure-devops"
 
-> [!IMPORTANT]
-> This article provides guidance for using the [3.x agent software](v3-agent.md) with Azure DevOps Services. If you're using Azure DevOps Server or TFS, see [Self-hosted Windows agents (Agent version 2.x)](v2-windows-agent.md).
+This article provides guidance for using the [3.x agent software](v3-agent.md) with Azure DevOps Services and current versions of Azure DevOps Server. For a list of Azure DevOps Server versions that support the 3.x agent, see [Does Azure DevOps Server support the 3.x agent](v3-agent.md#does-azure-devops-server-support-the-3x-agent).
 
 :::moniker-end
 
@@ -37,10 +35,10 @@ Make sure your machine has these prerequisites:
     * Windows 11
   * Server OS
     * Windows Server 2012 or higher
-* The agent software installs its own version of .NET so there is no .NET prerequisite.
-- [PowerShell 3.0](/powershell/scripting/install/installing-windows-powershell) or higher
+* The agent software installs its own version of .NET so there's no .NET prerequisite.
+* [PowerShell 3.0](/powershell/scripting/install/installing-windows-powershell) or higher
 * **Subversion** - If you're building from a Subversion repo, you must install the Subversion client on the machine.
-* Recommended - [Visual Studio build tools](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools&rel=16) (2015 or higher)
+* Recommended - [Visual Studio build tools](https://visualstudio.microsoft.com/thank-you-downloading-visual-studio/?sku=BuildTools) (2015 or higher)
 
 
 You should run agent setup manually the first time.
@@ -52,7 +50,7 @@ The hardware specs for your agents will vary with your needs, team size, etc.
 It's not possible to make a general recommendation that will apply to everyone.
 As a point of reference, the Azure DevOps team builds the hosted agents code using pipelines that utilize [hosted agents](hosted.md).
 On the other hand, the bulk of the Azure DevOps code is built by 24-core server class machines
-running 4 self-hosted agents apiece.
+running four self-hosted agents apiece.
 
 <h2 id="permissions">Prepare permissions</h2>
 
@@ -81,7 +79,7 @@ If you aren't sure which version of Windows is installed, [follow these instruct
 
 1. Follow the instructions on the page to download the agent.
 
-1. Unpack the agent into the directory of your choice. Make sure that the path to the directory contains no spaces because tools and scripts don't always properly escape spaces. A recommended folder is `C:\agents`. Extracting in the download folder or other user folders may cause permission issues. Then run `config.cmd`. This will ask you a series of questions to configure the agent.
+1. Unpack the agent into the directory of your choice. Make sure that the path to the directory contains no spaces because tools and scripts don't always properly escape spaces. A recommended folder is `C:\agents`. Extracting in the download folder or other user folders may cause permission issues.
 
 > [!IMPORTANT]
 > We strongly recommend you configure the agent from an elevated PowerShell window.
@@ -94,40 +92,53 @@ If you aren't sure which version of Windows is installed, [follow these instruct
 
 
 > [!Note]
-> Please avoid using mintty based shells, such as git-bash, for agent configuration. Mintty is not fully compatible with native Input/Output Windows API ([here](https://github.com/mintty/mintty/wiki/Tips#inputoutput-interaction-with-alien-programs) is some info about it) and we couldn't guarantee correct work of setup script in this case.
+> Please avoid using mintty based shells, such as git-bash, for agent configuration. Mintty is not fully compatible with native Input/Output Windows API ([here](https://github.com/mintty/mintty/wiki/Tips#inputoutput-interaction-with-alien-programs) is some info about it) and we can't guarantee the setup script will work correctly in this case.
 
-### Server URL and authentication
+## Install the agent
+
+1. Start an elevated (PowerShell) window and set the location to where you unpacked the agent.
+
+   ```ps
+   cd C:\agents 
+
+1. Run `config.cmd`. This will ask you a series of questions to configure the agent.
+
+   ```ps
+   .\config.cmd
+
+### Server URL
+
+:::moniker range="azure-devops"
 
 When setup asks for your server URL, for Azure DevOps Services, answer `https://dev.azure.com/{your-organization}`.
 
+:::moniker-end
 
-When setup asks for your authentication type, choose **PAT**.
-Then paste the [PAT token you created](#permissions) into the command prompt window.
+:::moniker range="<azure-devops"
 
-> [!NOTE]
-> When using PAT as the authentication method, the PAT token is only used during the initial configuration of the agent. Later, if the PAT expires or needs to be renewed, no further changes are required by the agent.
+When setup asks for your server URL, for Azure DevOps Server, answer `https://{my-server}/{my-collection}`.
 
-::: moniker range="< azure-devops"
+:::moniker-end
+
+### Agent setup authentication type
+
+When you register an agent, choose from the following authentication types, and setup will prompt you for the specific additional information required for each authentication type.  For more information, see [Self-hosted agent authentication options](./agent-authentication-options.md).
+
+[!INCLUDE [agent-setup-authentication-type](./includes/agent-setup-authentication.md)]
+
+:::moniker range="<= azure-devops-2022"
+
+Windows agents have the following two additional authentication options on Azure DevOps Server and TFS.
+
+* [**Negotiate**](./agent-authentication-options.md#negotiate) Connect to TFS as a user other than the signed-in user via a Windows authentication scheme such as NTLM or Kerberos. After you select Negotiate you'll be prompted for credentials.
+* [**Integrated**](./agent-authentication-options.md#integrated) (Default) Connect a Windows agent to TFS using the credentials of the signed-in user via a Windows authentication scheme such as NTLM or Kerberos. You won't be prompted for credentials after you choose this method.
+
 > [!IMPORTANT]
-> 
-> Make sure your server is [configured to support the authentication method](agents.md#configure-tfs-authentication) you want to use.
-  
-When you configure your agent to connect to TFS, you've got the following options:
+> Your server must be [configured to support the authentication method](agents.md#configure-tfs-authentication) to use Alternate, Negotiate, or Integrated authentication.
 
-* **Alternate** Connect to TFS using Basic authentication. After you select Alternate you'll be prompted for your credentials.
+:::moniker-end
 
-* **Negotiate** Connect to TFS as a user other than the signed-in user via a Windows authentication scheme such as NTLM or Kerberos. After you select Negotiate you'll be prompted for credentials.
-
-* **Integrated** (Default) Connect a Windows agent to TFS using the credentials of the signed-in user via a Windows authentication scheme such as NTLM or Kerberos. You won't be prompted for credentials after you choose this method.
- 
-* **PAT** Supported only on Azure Pipelines and TFS 2017 and newer. After you choose PAT, paste the [PAT token you created](#permissions) into the command prompt window. Use a personal access token (PAT) if your TFS instance and the agent machine are not in a trusted domain. PAT authentication is handled by your TFS instance instead of the domain controller.
-
-> [!NOTE]
-> When using PAT as the authentication method, the PAT token is used only for the initial configuration of the agent. If the PAT needs to be regenerated, no further changes are needed to the agent. 
-
-Learn more at [Communication with Azure Pipelines or TFS](agents.md#communication).
-
-::: moniker-end
+The authentication method used for registering the agent is used only during agent registration. To learn more about how agents communicate with Azure Pipelines after registration, see [Communication with Azure Pipelines or TFS](agents.md#communication).
 
 ### Choose interactive or service mode
 
@@ -139,18 +150,32 @@ If you choose to run as a service (which we recommend), the username you run as 
 
 ### Run interactively
 
-If you configured the agent to run interactively, to run it:
+If you configured the agent to run interactively, run the following the command to start the agent.
 
  ```ps
  .\run.cmd
  ```
 
-To restart the agent, press Ctrl+C to stop the agent and then run `run.cmd` to restart it. 
+To restart the agent, press Ctrl+C to stop the agent, and then run `run.cmd` to restart it. 
 
-### Run once
+> [!NOTE]
+> If you are running the agent from PowerShell Core to execute Windows PowerShell tasks, your pipeline may fail with an error such as `Error in TypeData "System.Security.AccessControl.ObjectSecurity": The member is already present`. This is because 
+> Windows PowerShell inherits the `PSModulePath` environment variable, which includes PowerShell Core module locations, from its parent process. 
+>
+> As a workaround, you can set the agent's knob `AZP_AGENT_CLEANUP_PSMODULES_IN_POWERSHELL` to `true` in the pipeline. This will allow the agent to reset `PSModulePath` 
+> before executing tasks.
+> 
+> ```yml    
+> variables:
+>  AZP_AGENT_CLEANUP_PSMODULES_IN_POWERSHELL: "true"
+> ```
+>
+> If this workaround does not resolve your issue, or if you need to use custom module locations, you can set the `$Env:PSModulePath` variable as needed in your PowerShell Core window before running the agent.
 
-For agents configured to run interactively, you can choose to have the agent accept only one job.
-To run in this configuration:
+#### Run once
+
+You can also choose to have the agent accept only one job and then exit.
+To run in this configuration, use the following command.
 
  ```ps
  .\run.cmd --once
@@ -161,22 +186,30 @@ Agents in this mode will accept only one job and then spin down gracefully (usef
 ### Run as a service
 
 If you configured the agent to run as a service, it starts automatically. You can view and control the agent running status from the services snap-in. Run `services.msc` and look for one of:
-- "Azure Pipelines Agent (*name of your agent*)".
-- "VSTS Agent (*name of your agent*)".
-- "vstsagent.(*organization name*).(*name of your agent*)".
+- "Azure Pipelines Agent (*name of your agent*)"
+- "VSTS Agent (*name of your agent*)"
+- "vstsagent.(*organization name*).(*name of your agent*)"
+
+> [!Note]
+> To allow more flexibility with access control of an agent running as a service it
+> is possible to set up the agent service SID type as [`SERVICE_SID_TYPE_UNRESTRICTED`] via
+> flag or prompt during interactive configuration flow.
+> By default, the agent service is configured with `SERVICE_SID_TYPE_NONE`.
+>
+> For more details about [SID](/windows-server/identity/ad-ds/manage/understand-security-identifiers) types please check this [documentation](/windows/win32/api/winsvc/ns-winsvc-service_sid_info#members).
 
 To restart the agent, right-click the entry and choose **Restart**.
 
 > [!Note]
 > If you need to change the agent's logon account, don't do it from the Services
-> snap-in. Instead, see the information below to re-configure the agent.
+> snap-in. Instead, see the information below to reconfigure the agent.
 
 To use your agent, run a [job](../process/phases.md) using the agent's pool.
 If you didn't choose a different pool, your agent will be in the **Default** pool.
 
 [!INCLUDE [include](includes/v3/replace-agent.md)]
 
-## Remove and re-configure an agent
+## Remove and reconfigure an agent
 
 To remove the agent:
 
@@ -233,8 +266,6 @@ The help provides information on authentication alternatives and unattended conf
 
 [!INCLUDE [include](includes/system-prefer-git-from-path.md)]
 
-[!INCLUDE [include](includes/v3/qa-agent-version.md)]
-
 <!-- BEGINSECTION class="md-qanda" -->
 
 [!INCLUDE [include](includes/v3/qa-agent-version.md)]
@@ -245,6 +276,9 @@ The help provides information on authentication alternatives and unattended conf
 
 ### How do I run the agent with self-signed certificate?
 
+> [!NOTE]
+> Running the agent with a self-signed certificate only applies to Azure DevOps Server.
+
 [Run the agent with self-signed certificate](certificate.md)
 
 ### How do I run the agent behind a web proxy?
@@ -253,7 +287,7 @@ The help provides information on authentication alternatives and unattended conf
 
 ### How do I restart the agent
 
-If you are running the agent interactively, see the restart instructions in [Run interactively](#run-interactively). If you are running the agent as a service, restart the agent by following the steps in [Run as a service](#run-as-a-service).
+If you're running the agent interactively, see the restart instructions in [Run interactively](#run-interactively). If you're running the agent as a service, restart the agent by following the steps in [Run as a service](#run-as-a-service).
 
 ::: moniker range=">=azure-devops-2020"
 ### How do I set different environment variables for each individual agent?

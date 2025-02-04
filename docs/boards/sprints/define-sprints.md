@@ -25,13 +25,15 @@ With Scrum, teams plan and track work at regular time intervals, referred to as 
 
 ## Prerequisites
 
-* To change sprint dates, you must be a member of the **Project Administrators** security group, or have the **Edit this node** permission for the iteration child node you want to change. By default, the user who created the project has these permissions set. For more information, see [Change project-level permissions](../../organizations/security/change-project-level-permissions.md) or [Set permissions and access for work tracking](../../organizations/security/set-permissions-access-work-tracking.md).  
+| Category | Requirements |
+|--------------|-------------|
+| **Permissions** | To change sprint dates: Member of the [**Project Administrators** group](../../organizations/security/change-project-level-permissions.md), or **Edit this node** permission for the iteration child node you want to change. By default, the user who created the project has these permissions set. For more information, see [Change project-level permissions](../../organizations/security/change-project-level-permissions.md) or [Set permissions and access for work tracking](../../organizations/security/set-permissions-access-work-tracking.md). | 
 
 <a id="quick-start-schedule">   </a>
 
 ## Start scheduling sprints
 
-To quickly get started, you can use the default sprints. Default sprints are also referred to as iterations and were added when your project was created. Note, you must be a member of the [**Project Administrators** group](../../organizations/security/change-project-level-permissions.md) to add sprints and schedule sprint dates. If you created the project, you're a member. 
+To quickly get started, you can use the default sprints. Default sprints are also referred to as iterations and were added when your project was created. Note, be a member of the [**Project Administrators** group](../../organizations/security/change-project-level-permissions.md) to add sprints and schedule sprint dates. If you created the project, you're a member. 
 
 ::: moniker range=">= azure-devops-2020"
 
@@ -90,41 +92,7 @@ To quickly get started, you can use the default sprints. Default sprints are als
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-1. From your web browser, open your team's sprint backlog. (1) Select the team from the project/team selector, choose (2) **Work**, (3) **Backlogs**, and then (4) the product backlog, which is **Backlog items** (for Scrum), **Stories** (for Agile), or **Requirements** (for CMMI). 
-
-	> [!div class="mx-imgBorder"]
-	> ![Open the Boards>Backlogs page](media/assign-items-sprint/open-work-backlogs-standard.png) 
-
-	To choose another team, open the project/team selector and select a different team or choose the **Browse** option. 
-
-	> [!div class="mx-imgBorder"]  
-	> ![Choose another team](media/assign-items-sprint/team-selector-backlogs-standard.png) 
-
-	The set of sprints selected for your team appears in the left pane. If you don't see any sprints listed, you can add sprints or select existing sprints for your team's use. To learn how, see [Define sprints](define-sprints.md). 
-
-1. Choose the sprint you want to plan. 
-
-	> [!div class="mx-imgBorder"]  
-	> ![Choose another sprint](media/add-tasks/choose-sprint-standard.png)
-
-	The system lists only those sprints that have been selected for the current team focus. If you don't see the sprints you want listed, then see [Define iteration (sprint) paths](../../organizations/settings/set-iteration-paths-sprints.md).  
-
-2. Choose the sprint listed under **Current** and then choose **Set dates**.  
-
-	<img src="media/define-sprints/set-sprint-dates.png" alt="Sprint 1 backlog, Set dates" />  
-
-	> [!NOTE]
-	> If you don't see any sprints listed or the **Set dates** link, then no sprints have been selected for the team context you've selected. To select sprints for the team context, see [Define iteration (sprint) paths and configure team iterations](../../organizations/settings/set-iteration-paths-sprints.md). To switch team context, see [Switch project or team focus](../../project/navigation/go-to-project-repo.md). 
-
-3. Choose the calendar icon to select the start date, and then the end date of the sprint. 
-
-	> [!div class="mx-imgBorder"]
-	> ![Edit iteration dialog, Set dates](media/define-sprints/edit-iteration-set-sprint-dates.png) 
-
-
-::: moniker-end
 
 That's it! You can now start [planning your first sprint](assign-work-sprint.md). 
 
@@ -139,7 +107,7 @@ If you have several teams, more complex release and sprint cadences to schedule,
 ## Schedule new sprints for different teams and release cadences 
  
 > [!NOTE]    
-> Your sprint backlog and taskboard are designed to support your Scrum processes. In addition, you have access to product and portfolio backlogs and Kanban boards. For an overview of the features supported on each backlog and board, see [Backlogs, boards, and plans](../backlogs/backlogs-boards-plans.md).  
+> Your sprint backlog and taskboard are designed to support your Scrum processes. In addition, you have access to product and portfolio backlogs and boards. For an overview of the features supported on each backlog and board, see [Backlogs, boards, and plans](../backlogs/backlogs-boards-plans.md).  
 
 Your project comes with several sprints predefined. However, they aren't associated with any dates. For Scrum and sprint planning, assign start and end dates for your team's sprints.
 
@@ -161,12 +129,7 @@ For example, by selecting Sprints 1 through 6, the Fabrikam Fiber team gets acce
 ::: moniker-end
 
 
-::: moniker range="tfs-2018"
 
-![Selected sprints for a team](media/define-sprints/selected-team-iterations-vsts.png)
-
-
-::: moniker-end
 
 
 ## Next step

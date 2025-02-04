@@ -17,11 +17,11 @@ ms.date: 09/30/2020
 
 [!INCLUDE [version-gt-eq-2019](../../includes/version-gt-eq-2019.md)]
 
-This article covers how Analytics supports several OData functions. Unsupported functions are also listed. OData (Open Data Protocol) is an ISO/IEC approved, OASIS standard that defines best practices for building and consuming REST APIs. To learn more, see [OData documentation](/odata/). 
+This article covers how Analytics supports several OData functions. Unsupported functions are also listed. OData (Open Data Protocol) is an ISO/IEC approved, OASIS standard that defines best practices for building and consuming REST APIs. For more information, see [OData documentation](/odata/). 
 
 [!INCLUDE [temp](../includes/analytics-preview.md)]
 
-<a id="clauses" />
+<a id="clauses"></a>
 
 ## Supported clauses
 
@@ -44,7 +44,7 @@ WorkItems?$filter=Count ge 100&$apply=groupby((WorkItemType), aggregate($count a
 ```
 
 
-<a id="aggregation-extensions" />
+<a id="aggregation-extensions"></a>
 
 ### Aggregation extensions support
 
@@ -108,7 +108,7 @@ However, you can't enter the following string:
 /WorkItems?$select=WorkItemId,State,toupper(Title)
 ```  
 
-<a id="unsupported" />
+<a id="unsupported"></a>
 
 ## Unsupported features
 

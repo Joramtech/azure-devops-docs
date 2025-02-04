@@ -1,7 +1,5 @@
 ---
 title: Deployment for Azure Database for MySQL, Kubernetes with Helm, and Ruby on Rails – VSTS Sprint 133 Update
-author: alexcnichols
-ms.author: alexn
 ms.date: 4/16/2018
 description: In the **Sprint 133 Update** of Visual Studio Team Services (VSTS), we continue to expand on the languages and platforms we support for build and release.
 ---
@@ -71,7 +69,7 @@ However, with this Update, the full phrase is returned and highlighted.
 
 ## Work
 
-<a id="query-macro" />
+<a id="query-macro" ></a>
 
 ### Query work in the Area Paths of a Team with the new @TeamAreas macro
 

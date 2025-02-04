@@ -42,9 +42,7 @@ By setting team capacity, the team knows exactly the total number of work hours 
 :::image type="content" source="media/capacity/set-capacity-web-team.png" alt-text="Screenshot of team capacity page.":::
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-:::image type="content" source="media/team-capacity-planning-tool.png" alt-text="Screenshot of team capacity page, TFS 2018.":::
-::: moniker-end
+
 
 ## Capacity bars
 
@@ -55,7 +53,7 @@ With capacity bars, you can quickly see who is over, at, or under capacity. Capa
 
 |Capacity colors |Capacity bars |
 |----------------|--------------|
-|![Screenshot of capacity colors.](media/capacity-planning-tool-color-chart.png) | ![Screeshot of Capacity bars.](media/ALM_DS_CapacityBars_S.png) | 
+|![Screenshot of capacity colors.](media/capacity-planning-tool-color-chart.png) | ![Screenshot of Capacity bars.](media/ALM_DS_CapacityBars_S.png) | 
 
 For more information, see [Adjust work to fit sprint capacity](adjust-work.md). 
 
@@ -65,7 +63,7 @@ For more information, see [Adjust work to fit sprint capacity](adjust-work.md).
 Daily Scrum meetings help teams stay focused on what they need to do to maximize their ability to meet their sprint commitments. The team's Scrum Master should enforce the structure of the meeting and ensure that it starts on time and finishes in 15 minutes or less. Learn more: [Scrum best practices, Daily scrum meeting](best-practices-scrum.md#daily-scrum-meetings).   
 
 
-<a id="forecast" />
+<a id="forecast"></a>
 
 ## Forecast
 
@@ -94,7 +92,7 @@ Scrum Masters help build and maintain healthy teams by employing Scrum processes
 
 [!INCLUDE [temp](../../includes/glossary-terms/sprint-backlogs.md)]  
 
-<a id="sbc" />
+<a id="sbc"></a>
 
 ## Sprint burndown chart
 
@@ -104,9 +102,7 @@ The sprint burndown chart reflects the progress made by a team in completing all
 :::image type="content" source="../../report/dashboards/media/burndown/analytics-burndown-remaining-work-s159.png" alt-text="Screenshot of Sprint burndown chart.":::
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-![Screenshot of Sprint burndown chart, TFS 2018](media/ALM_DS_SprntBD_Chrt_S.png)
-::: moniker-end
+
 
 
 ## Sprint goals
@@ -125,7 +121,7 @@ The Sprint review or retrospective meeting occurs at the end of a sprint. This m
 
 A task is a type of work item used to track estimated and remaining work. In Scrum, a task is defined to range between four and twelve hours. Defining tasks are essential for monitoring sprint burndown, working with team capacity, and using the [Taskboard](#taskboard). Tasks are linked to their parent product backlog items or user stories. Learn more: [Add tasks to backlog items](add-tasks.md). 
 
-<a id="taskboard" />
+<a id="taskboard"></a>
 
 ## Taskboard 
 
@@ -148,7 +144,6 @@ Technical debt includes anything the team must do to deploy production quality c
 ## Triage meetings 
 
 Triage meetings are used to review and organize the backlog and bugs assigned to a team. Other details, such as estimates, acceptance criteria, and more may be added to the work items. Typically, a product owner runs triage meetings, and team leads, business analysts, and other stakeholders who can speak about specific project risks attend them. 
-Learn more: [Triage work items](../queries/triage-work-items.md).
 
 [!INCLUDE [temp](../../includes/glossary-terms/user-story.md)] 
 
@@ -164,9 +159,7 @@ For example, in the chart shown below the green bar indicates the total estimate
 :::image type="content" source="../../report/dashboards/media/velocity/analytics-velocity-azure-devops.png" alt-text="Screenshot of Velocity.":::
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-![Screenshot of Velocity chart, TFS 2018.](media/velocity-chart.png)
-::: moniker-end
+
 
 
 ::: moniker range=">= azure-devops-2019"  

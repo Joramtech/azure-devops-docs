@@ -1,10 +1,10 @@
 ---
-title: Use managed queries to list work items  
-titleSuffix: Azure Boards 
+title: Use managed queries to list work items
+titleSuffix: Azure Boards
 description: Learn how to track work by creating queries to list work items in Azure Boards and Azure DevOps.
-ms.custom: boards-queries, cross-project, contperf-fy23
+ms.custom: boards-queries, cross-project, engagement-fy23
 ms.service: azure-devops-boards
-ms.assetid: 285a014e-89bf-4e5f-bebf-11094e93d796  
+ms.assetid: 285a014e-89bf-4e5f-bebf-11094e93d796
 ms.topic: conceptual
 ms.author: chcomley
 author: chcomley
@@ -32,7 +32,7 @@ You can create queries and query folders from the web portal or from Visual Stud
 If you're just getting started, read [View, run, or email a work item query](view-run-query.md). For a quick reference to query editor tasks and sample queries, see [Query quick reference](query-index-quick-ref.md). 
 
 - To find work items that are assigned to you, add the **@Me** macros as the value for the **Assigned To** field in one of the query clauses.  
-- All valid users with standard access can create queries and folders under the **My Queries** area. To create queries and query folders under **Shared Queries**, you must have the Contribute permission set. For more information, see [Set permissions on queries](../queries/set-query-permissions.md).
+- All valid users with standard access can create queries and folders under the **My Queries** area. To create queries and query folders under **Shared Queries**, have the Contribute permission set. For more information, see [Set permissions on queries](../queries/set-query-permissions.md).
 - You can modify any query by adding criteria to focus on a product area, an iteration, or another field. To modify a query, [open the query editor](using-queries.md).   
 - You can open any query in [Excel](../backlogs/office/bulk-add-modify-work-items-excel.md). You can also update the fields of one or more work items and publish your changes to the database for tracking work items.  
 - You can [visualize status or progress](../../report/dashboards/charts.md) by creating a pie-chart, column chart, or trend chart for flat-list queries. 
@@ -48,7 +48,7 @@ The following sections provide an overview of the functions supported to define 
 
 [!INCLUDE [temp](../includes/feature-matrix-filter-queries.md)]
 
-<a id="macros" /> 
+### Supported macros 
 
 [!INCLUDE [temp](../includes/feature-matrix-query-macros.md)]
 
@@ -126,9 +126,6 @@ Azure Boards supports three query types. The icon next to each query indicates t
 To learn more about link types, see [Link type reference](link-type-reference.md).
 
 
-
-<a id="my-shared"/>
-
 ## My Queries, Shared Queries, and Favorites
 
 Only you can view and run queries that you save under **My Queries** with the queries directory. Also, you can favorite one of these queries to have it appear within your query selector.
@@ -140,26 +137,41 @@ For more information, see:
 - [Set query permissions](set-query-permissions.md)
 - [Favorite a query](view-run-query.md) and [Set personal or team favorites](../../project/navigation/set-favorites.md#favorite-a-shared-query)
 
-::: moniker range=">= azure-devops-2019"
-
 ## Query directory, query folders, and breadcrumbs 
 
-The **Queries** page  contains a directory-focused view that you can filter to find specific queries of interest. 
-When working in the **Queries** pages, you can go to a subfolder, folder, or page.
+The **Queries** page contains a **Favorites** and an **All** tab. Each contains a directory-focused view that you can filter to find specific queries of interest. 
 
-![Queries breadcrumbs](../../project/navigation/media/breadcrumbs/queries-breadcrumbs.png)
+When you're working in the **Queries** pages, you can go to a folder, subfolder, or a query page.
 
-Also, you can choose a query that you've favorited from the selector menu. Or, you can choose to browse all queries that return you to the **All Queries** page. 
-  
-> [!div class="mx-imgBorder"]  
-> ![Screenshot of Queries, Query selector.](../../project/navigation/media/breadcrumbs/query-bd-and-selector.png) 
+::: moniker range="azure-devops"
 
-
-For more information, see [Query FAQs, Navigate, and Folders](query-faqs.yml).
+:::image type="content" source="media/view-run-queries/query-navigation-new-boards-hubs.png" alt-text="Screenshot of queries page." :::
 
 ::: moniker-end
- 
 
+::: moniker range="< azure-devops"
+
+As you make selections, the breadcrumbs are shown at the top of the page. You can navigate to a folder, subfolder, or query page.
+
+:::image type="content" source="../../project/navigation/media/breadcrumbs/queries-breadcrumbs.png" alt-text="Screenshot of breadcrumbs on query page." :::
+
+::: moniker-end
+
+You can also select a favorite query or return to the **All** queries page from the drop-down menu of an open query.
+
+::: moniker range="< azure-devops"
+
+:::image type="content" source="../../project/navigation/media/breadcrumbs/query-bd-and-selector.png" alt-text="Screenshot of query dropdown." :::
+
+::: moniker-end
+
+::: moniker range="azure-devops"
+
+:::image type="content" source="../../project/navigation/media/breadcrumbs/query-dropdown-new-boards-hubs.png" alt-text="Screenshot of query navigation dropdown." :::
+
+::: moniker-end
+
+For more information, see [Query FAQs, Navigate, and Folders](query-faqs.yml).
 
 ## Query charts and widgets
 

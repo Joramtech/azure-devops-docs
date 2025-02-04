@@ -34,11 +34,11 @@
     "overwrite": [],
     "externalReference": [],
     "globalMetadata": {
+      "feedback_system": "Standard",
       "ms.subservice": "azure-devops-release-notes",
       "uhfHeaderId": "MSDocsHeader-AzureDevOps",
       "ms.topic": "article",
       "breadcrumb_path": "~/breadcrumb/toc.yml",
-      "extendBreadcrumb": true,
       "author": "gloridelmorales",
       "ms.author": "glmorale",
       "ms.manager": "mijacobs",

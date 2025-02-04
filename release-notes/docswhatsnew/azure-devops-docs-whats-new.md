@@ -1,104 +1,101 @@
 ---
-title: "Azure DevOps docs: What's new for July 1, 2023 - July 31, 2023"
-description: "What's new in the Azure DevOps docs for July 1, 2023 - July 31, 2023."
-ms.date: 08/01/2023
+title: "Azure DevOps docs: What's new for December 1, 2024 - December 31, 2024"
+description: "What's new in the Azure DevOps docs for December 1, 2024 - December 31, 2024."
+ms.date: 01/07/2025
 ---
 
-# Azure DevOps docs: What's new for July 1, 2023 - July 31, 2023
+# Azure DevOps docs: What's new for December 1, 2024 - December 31, 2024
 
-Welcome to what's new in the Azure DevOps docs from July 1, 2023 through July 31, 2023. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the Azure DevOps docs from December 1, 2024 through December 31, 2024. This article lists some of the major changes to docs during this period.
 
 ## Administration
 
 ### Updated articles
 
-- [Billing FAQs](/azure/devops/organizations/billing/billing-faq)
-- [Set work tracking permissions](/azure/devops/organizations/security/set-permissions-access-work-tracking)
+- [About teams and Agile tools](/azure/devops/organizations/settings/about-teams-and-settings)
+- [Security best practices](/azure/devops/organizations/security/security-best-practices)
+- [Set user preferences](/azure/devops/organizations/settings/set-your-preferences)
+- [Auditing events list](/azure/devops/organizations/audit/auditing-events)
+- [Manage personal access tokens (PATs) using REST API](/azure/devops/organizations/accounts/manage-personal-access-tokens-via-api)
+- [Use personal access tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
+- [About security, authentication, and authorization](/azure/devops/organizations/security/about-security-identity)
 
 ## Artifacts
 
 ### Updated articles
 
-- [Package graphs in Azure Artifacts](/azure/devops/artifacts/concepts/package-graph)
-- [Azure Artifacts overview](/azure/devops/artifacts/start-using-azure-artifacts)
-- [Tutorial: How to use upstream sources](/azure/devops/artifacts/tutorials/protect-oss-packages-with-upstream-sources)
-- [Use feed views to share packages](/azure/devops/artifacts/feeds/views)
-- [Share packages publicly](/azure/devops/artifacts/tutorials/share-packages-publicly)
-
-## Azure Boards
-
-### Updated articles
-
-- [Migrate and integrate work tracking data in Azure Boards](/azure/devops/boards/extensions/migrate-integrate)
-- [Link work items and other objects](/azure/devops/boards/backlogs/add-link)
-- [About configuring and customizing Azure Boards](/azure/devops/boards/configure-customize)
-- [Copy or clone work items and more](/azure/devops/boards/backlogs/copy-clone-work-items)
-- [Review team delivery plans in Azure Boards](/azure/devops/boards/plans/review-team-plans)
-- [Add or modify Azure Boards work items in bulk with Microsoft Excel](/azure/devops/boards/backlogs/office/bulk-add-modify-work-items-excel)
-- [Resolve nest, display, and reorder issues for work items](/azure/devops/boards/backlogs/resolve-backlog-reorder-issues)
-- [Set Work in Progress limits](/azure/devops/boards/boards/wip-limits)
-- [Add status badges for your GitHub repo](/azure/devops/boards/github/configure-status-badges)
-- [Connect Azure DevOps Server to GitHub (on-premises)](/azure/devops/boards/github/connect-on-premises-to-github)
-- [Connect Azure Boards to GitHub (cloud)](/azure/devops/boards/github/connect-to-github)
-- [Install the Azure Boards app for GitHub](/azure/devops/boards/github/install-github-app)
-- [Link GitHub commits, pull requests, and issues to work items in Azure Boards](/azure/devops/boards/github/link-to-from-github)
+- [Get started with Python packages in Azure Artifacts](/azure/devops/artifacts/quickstarts/python-packages)
+- [Install NuGet packages with Visual Studio](/azure/devops/artifacts/nuget/consume)
 
 ## Azure DevOps Reporting and Analytics service
 
 ### Updated articles
 
-- [OData Analytics query guidelines for Azure DevOps](/azure/devops/report/extend-analytics/odata-query-guidelines)
-- [View and configure team velocity](/azure/devops/report/dashboards/team-velocity)
-- [Add charts to a dashboard](/azure/devops/report/dashboards/add-charts-to-dashboard)
+- [Configure and monitor sprint burndown](/azure/devops/report/dashboards/configure-sprint-burndown)
 
 ## Azure Pipelines
 
 ### New articles
 
-- [Tutorial: Automate Node.js deployments with Azure Pipelines](/azure/devops/pipelines/ecosystems/nodejs-tutorial)
-- [Template expressions](/azure/devops/pipelines/process/template-expressions)
-- [Template parameters](/azure/devops/pipelines/process/template-parameters)
+- [Agent software version 4](/azure/devops/pipelines/agents/v4-agent)
 
 ### Updated articles
 
-- [Define resources in YAML](/azure/devops/pipelines/process/resources)
-- [Specify demands](/azure/devops/pipelines/process/demands)
-- [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers)
-- [Define approvals and checks](/azure/devops/pipelines/process/approvals)
-- [Invoke Azure Function / REST API checks](/azure/devops/pipelines/process/invoke-checks)
-- [Tutorial: Create a multistage pipeline with Azure DevOps](/azure/devops/pipelines/process/create-multistage-pipeline)
+- [Publish NuGet packages to NuGet.org (Classic/YAML)](/azure/devops/pipelines/artifacts/publish-public-registry)
+- [Publish Cargo packages with Azure Pipelines](/azure/devops/pipelines/artifacts/cargo-pipelines)
 - [Publish Python packages with Azure Pipelines](/azure/devops/pipelines/artifacts/pypi)
-- [Template usage reference](/azure/devops/pipelines/process/templates)
+- [Sign a mobile app](/azure/devops/pipelines/apps/mobile/app-signing)
+- [Create a multi-stage release pipeline (Classic)](/azure/devops/pipelines/release/define-multistage-release-process)
+- [Use predefined variables](/azure/devops/pipelines/build/variables)
+- [Manage security in Azure Pipelines](/azure/devops/pipelines/policies/permissions)
+- [Troubleshoot Azure Resource Manager service connections](/azure/devops/pipelines/release/azure-rm-endpoint)
+- [Set variables in scripts](/azure/devops/pipelines/process/set-variables-scripts)
+- [Use Azure Pipelines to build and push container images to registries](/azure/devops/pipelines/ecosystems/containers/push-image)
+- [Azure Resource Manager service connection special cases](/azure/devops/pipelines/library/azure-resource-manager-alternate-approaches)
+- [Connect to Azure with an Azure Resource Manager service connection](/azure/devops/pipelines/library/connect-to-azure)
+- [Run a self-hosted agent in Docker](/azure/devops/pipelines/agents/docker)
 
 ## Azure Repos
 
 ### Updated articles
 
-- [Branch policies and settings](/azure/devops/repos/git/branch-policies)
-- [Git limits](/azure/devops/repos/git/limits)
+- [Authentication with Azure Repos](/azure/devops/repos/git/auth-overview)
+- [Use Git Credential Manager to authenticate to Azure Repos](/azure/devops/repos/git/set-up-credential-managers)
 
-## Project
+## Extend
 
 ### Updated articles
 
-- [Restore a deleted wiki](/azure/devops/project/wiki/restore-deleted-wiki)
-- [View and update work items via mobile browser](/azure/devops/project/navigation/mobile-work)
+- [Publish from the command line](/azure/devops/extend/publish/command-line)
 
-## GitHub issue content updates
+## Integrate
 
-Thank you for your feedback on our documentation. This month we made updates to our content to address [these GitHub issues](https://github.com/MicrosoftDocs/azure-devops-docs/issues?q=linked%3Apr+is%3Aissue+is%3Aclosed+closed%3A2023-07-01..2023-07-31).
+### New articles
 
-## Community contributors
+- [Authenticate to Azure DevOps with Microsoft Entra](/azure/devops/integrate/get-started/authentication/entra)
 
-The following people contributed to the Azure DevOps docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
+### Updated articles
 
-- [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (4)
-- [AlexandraRamirezMS](https://github.com/AlexandraRamirezMS) (3)
-- [ajayidhikrullah](https://github.com/ajayidhikrullah) - Ajayi Dhikrullah (1)
-- [FabianWarnecke](https://github.com/FabianWarnecke) (1)
-- [NenoLoje](https://github.com/NenoLoje) - Neno Loje (1)
-- [PwshPally](https://github.com/PwshPally) - Steve Mahoney (1)
-- [rickh18](https://github.com/rickh18) (1)
-- [saartanel](https://github.com/saartanel) - Tanel Saar (1)
-- [SebastianSchuetze](https://github.com/SebastianSchuetze) - Sebastian Schütze (1)
-- [sid5233](https://github.com/sid5233) - Sudarshan Bhamare (1)
+- [REST API versioning](/azure/devops/integrate/concepts/rest-api-versioning)
+- [Choose the right authentication mechanism](/azure/devops/integrate/get-started/authentication/authentication-guidance)
+- [Building for Azure DevOps with Microsoft Entra OAuth Apps](/azure/devops/integrate/get-started/authentication/entra-oauth)
+- [Use service principals & managed identities in Azure DevOps](/azure/devops/integrate/get-started/authentication/service-principal-managed-identity)
+- [C# client library samples](/azure/devops/integrate/get-started/client-libraries/samples)
+
+## Managed DevOps Pools
+
+### New articles
+
+- [Compare Managed DevOps Pools with Azure Virtual Machine Scale Set agents](/azure/devops/managed-devops-pools/migrate-from-scale-set-agents)
+
+### Updated articles
+
+- [Configure Managed DevOps Pools networking](/azure/devops/managed-devops-pools/configure-networking)
+- [Configure scaling](/azure/devops/managed-devops-pools/configure-scaling)
+
+## Migrate
+
+### Updated articles
+
+- [Resolve migration errors](/azure/devops/migrate/migration-troubleshooting)
+

@@ -5,7 +5,7 @@ description: Learn how Scaled Agile Framework concepts map to Azure Boards artif
 ms.service: azure-devops-boards
 ms.author: chcomley
 author: chcomley
-ms.topic: tutorial
+ms.topic: conceptual
 monikerRange: '<= azure-devops'
 ms.date: 10/20/2021
 ---
@@ -42,7 +42,7 @@ The following image illustrates how you can configure Azure Boards to support a 
 
 Examples provided below illustrate how a three-level team hierarchy is configured using hierarchical area paths. The examples build from the [Agile process](../work-items/guidance/agile-process.md), However, you can apply these changes to any project hosted on Azure Boards.
 
-<a id="teams" />    
+<a id="teams"></a>    
 
 
 ## Agile feature, program, and portfolio teams 
@@ -55,7 +55,7 @@ To support SAFe® teams, you reconfigure the default team as the Portfolio team 
 
 
 
-<a id="work-items" />
+<a id="work-items"></a>
 
 ## Stories, Features, Epics, Enablers, and Capabilities  
 
@@ -78,7 +78,7 @@ Work items provide support for the following tasks:
 
 Product and portfolio backlogs enable teams to quickly add and prioritize their User Stories, Features, and Epics. For more information about work items and work item types, see [Track work with user stories, issues, bugs, features, and epics](../work-items/about-work-items.md).  
 
-<a id="backlogs-boards" />
+<a id="backlogs-boards"></a>
 
 ## Team backlogs and boards
 
@@ -88,13 +88,9 @@ SAFe® backlogs map to team, program, and portfolio backlogs. Out of the box, th
 
 You can customize your backlog and boards, even adding portfolio backlogs, as described in [Customize Azure Boards, Customize backlogs](safe-customize.md#custom-backlog).  
 
-The Kanban board view of each backlog is configurable by each team. 
+The board view of each backlog is configurable by each team. 
 
-
-
-
-
-<a id="iterations" />
+<a id="iterations"></a>
 
 ## Program Increments, releases, and sprints  
 
@@ -107,7 +103,7 @@ Because epics can span several release trains, the Portfolio team isn't associat
 ![Teams track deliverables using iterations](media/safe/program-iterations.png) 
 
 
-<a id="misc-artifacts" />
+<a id="misc-artifacts"></a>
 
 ## Iteration goals and objectives 
 
@@ -116,7 +112,7 @@ SAFe® practices include Agile release teams defining their iteration goals and 
 For more information, see [Share information](#share-information) later in this article. 
 
 
-<a id="tags" />
+<a id="tags"></a>
 
 ## Value streams and budgets 
  
@@ -126,7 +122,7 @@ You can use tags for a quick and easy way to map Features and Epics to their Val
 
 With tags that you add to work items, you can:
 
-- Filter any backlog or Kanban board
+- Filter any backlog or board
 - Create queries based on tags, and filter query results by tags
 - Create progress and trend charts or reports based on tags 
 
@@ -141,7 +137,7 @@ With rollup, you can get Budget Estimates for Epics from a rollup of the estimat
 
 To add custom fields, see [Customize Azure Boards, Add a custom field](safe-customize.md#add-custom-field). 
 
-<a id="wiki" />
+<a id="wiki"></a>
 
 ## Use the project wiki to support your portfolio vision and strategic themes
 
@@ -156,10 +152,10 @@ Use your project wiki to support sharing the following SAFe® artifacts:
 - Objectives
 - Customer-centric practices 
 
-To learn more about the project wiki, see [Share information](#share-information) later in this article. 
+For more information about the project wiki, see [Share information](#share-information) later in this article. 
 
 
-<a id="milestones" />
+<a id="milestones"></a>
 
 ## Milestones and key events  
 
@@ -174,7 +170,7 @@ In Azure Boards, you can track other types of milestones or key events in the fo
 
 With custom fields and tags, you can quickly filter backlogs, boards, and queries based on a specific milestone. 
 
-<a id="shared-services" />
+<a id="shared-services"></a>
 
 ## Shared services team structure
 
@@ -186,7 +182,7 @@ Here we show how area paths are assigned to the UX Design team, and then selecti
 > ![Shared services area path and team structure](media/safe/shared-services-team-structure.png)
 
 
-<a id="retrospectives" />
+<a id="retrospectives"></a>
 
 ## Retrospectives and reviews
 
@@ -201,7 +197,7 @@ This extension allows teams to create their own retrospective boards and capture
 - Organize and prioritize that feedback
 - Create and track actionable tasks to help each team in their improvement processes.
  
-<a id="share-information" />
+<a id="share-information"></a>
 
 ## Share information   
 
@@ -212,7 +208,7 @@ Azure Boards provides many ways to share information.
 - The Project wiki provides a central repository with versioning control built-in to share information with all project members. Other wikis can be created as needed. For more information, see [About Wikis, READMEs, and Markdown](../../project/wiki/about-readme-wiki.md). 
 
 For details on supported Markdown features, see the following articles.  
-- [Syntax guidance for Markdown usage in Wiki](../../project/wiki/wiki-markdown-guidance.md)
+- [Syntax guidance for Markdown usage in Wiki](../../project/wiki/markdown-guidance.md)
 - [Syntax guidance for basic Markdown usage](../../project/wiki/markdown-guidance.md)
 
 ## Next steps
@@ -220,7 +216,7 @@ For details on supported Markdown features, see the following articles.
 > [!div class="nextstepaction"]
 > [Configure Azure Boards to support SAFe®](safe-configure-boards.md)
 
-<a id="related-articles" /> 
+<a id="related-articles"></a> 
 
 
 ## Related articles
@@ -240,36 +236,12 @@ For details on supported Markdown features, see the following articles.
 
 <!---
 
-::: moniker range="tfs-2018"
-
-![SAFe® roles map to a hierarchy of teams](media/safe-roles-to-vso-roles.png)  
-
-![Hierarchical backlog: epics, features, and stories](media/safe-epics-to-stories-value-area.png)
-
-![SAFe® release trains map to iterations](media/safe-release-trains-map.png)  
-
-![Teams track deliverables using iterations](media/safe-teams-track-deliverables.png)  
 
 
-![Tags can track value streams or associated budgets](media/save-epics-value-stream-tags.png)    
 
 
-![Value Area tracks Business or Architectural work](media/safe-epic-to-stories-map-to-value-area.png)    
-
-::: moniker-end
 
 
-::: moniker range="tfs-2018"
 
-> [!NOTE]  
-> The [Retrospectives extension by Microsoft DevLabs](https://marketplace.visualstudio.com/items?itemName=ms-devlabs.team-retrospectives) is supported on TFS 2018 and later versions. 
-
-::: moniker-end
-
-
-::: moniker range="tfs-2018"
-> [!NOTE]  
-> The Project Wiki is available with TFS 2018 and later versions. 
-::: moniker-end
 
 -->

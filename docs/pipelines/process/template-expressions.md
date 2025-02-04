@@ -1,9 +1,8 @@
 ---
 title: Template expressions
-ms.custom: seodec18
 description: How to use expressions in templates
 ms.topic: conceptual
-ms.date: 06/30/2023
+ms.date: 10/25/2024
 monikerRange: '>=azure-devops-2020'
 ---
 
@@ -246,6 +245,37 @@ steps:
   - script: echo "this is a test" # runs when foo=test
 ```
 
+You can also set variables based on the values of other variables. In the following pipeline, `myVar` is used to set the value of `conditionalVar`. 
+
+
+```yaml
+trigger:
+- main
+
+pool: 
+   vmImage: 'ubuntu-latest' 
+
+variables:
+  - name: myVar
+    value: 'baz'
+
+  - name: conditionalVar
+    ${{ if eq(variables['myVar'], 'foo') }}:
+      value: 'bar'
+    ${{ elseif eq(variables['myVar'], 'baz') }}:
+      value: 'qux'
+    ${{ else }}:
+      value: 'default'
+
+steps:
+- script: echo "start" # always runs
+- ${{ if eq(variables.conditionalVar, 'bar') }}:
+  - script: echo "the value of myVar is set in the if condition" # runs when myVar=foo
+- ${{ if eq(variables.conditionalVar, 'qux') }}:
+  - script: echo "the value of myVar is set in the elseif condition" # runs when myVar=baz
+```
+
+
 ### Iterative insertion
 
 The `each` directive allows iterative insertion based on a YAML sequence (array) or mapping (key-value pairs).
@@ -328,11 +358,3 @@ jobs:
 ### Escape a value
 
 If you need to escape a value that literally contains `${{`, then wrap the value in an expression string. For example, `${{ 'my${{value' }}` or `${{ 'my${{value with a '' single quote too' }}`
-
-## Imposed limits
-
-Templates and template expressions can cause explosive growth to the size and complexity of a pipeline.
-To help prevent runaway growth, Azure Pipelines imposes the following limits:
-- No more than 100 separate YAML files may be included (directly or indirectly)
-- No more than 20 levels of template nesting (templates including other templates)
-- No more than 10 megabytes of memory consumed while parsing the YAML (in practice, this is typically between 600 KB - 2 MB of on-disk YAML, depending on the specific features used)

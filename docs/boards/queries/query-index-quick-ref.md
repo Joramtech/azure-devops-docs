@@ -2,7 +2,7 @@
 title: Use an index to query examples, tasks, operators, and macros
 titleSuffix: Azure Boards
 description: Learn how to use an index to query operators, macros, and sample queries that are used to list work items for Azure Boards and Azure DevOps.
-ms.custom: boards-queriess, engagement-fy23
+ms.custom: boards-queries, engagement-fy23
 ms.service: azure-devops-boards
 ms.topic: overview 
 ms.author: chcomley
@@ -11,14 +11,14 @@ monikerRange: '<= azure-devops'
 ms.date: 10/05/2022
 ---
 
-# Use an index to query quick reference data in Azure Boards and Azure DevOps
+# Use an index to query quick reference data
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-Use this index to quickly access example queries and information on opening, defining, and working with queries. To learn how to use the Query Editor, see [Define a query](using-queries.md). If you find that your queries take too long to return results, review the [Guidance to create high-performing queries](high-performing-queries.md).  
+Use this index to quickly access example queries and information on opening, defining, and working with queries. To learn how to use the Query Editor, see [Define a query](using-queries.md). If you find that your queries take too long to return results, see [Define a query/Best practices](using-queries.md#best-practices).  
 
 
-<a id="examples" />  
+<a id="examples"></a>  
 
 ## Example queries   
 
@@ -111,10 +111,7 @@ You can list work items based on the following criteria...
       - [Assigned to a team's current sprint](query-by-date-or-current-iteration.md#current-iteration)  
       - [Assigned to a team's sprint window](query-by-date-or-current-iteration.md#current-iteration-plus-minus-n)  
       ::: moniker-end
-      ::: moniker range="tfs-2018"
-      - [Assigned to a member of a team](query-by-workflow-changes.md#group)
-      - [Assigned to a team's current sprint](query-by-date-or-current-iteration.md#current-iteration)  |
-      ::: moniker-end
+      
 
       **Build and test field queries**  
       - [List bugs and linked test cases](build-test-integration.md#linked-bugs)
@@ -129,7 +126,7 @@ You can list work items based on the following criteria...
 :::row-end:::
 ---
 
-<a id="tasks" />
+<a id="tasks"></a>
 
 
 ## Query tasks 
@@ -141,23 +138,23 @@ You can list work items based on the following criteria...
       - [Add a query](using-queries.md) 
       - [Add a query chart](../../report/dashboards/charts.md) 
       - [Add a query chart to a dashboard](../../report/dashboards/charts.md#add-chart-to-a-dashboard) 
-      - [Add a query tile to a dashboard](organize-queries.md#add-query-dashboard)
-      - [Add query results to a dashboard](using-queries.md#query-results-widget-dashboard) 
+      - [Add a query tile to a dashboard](organize-queries.md#add-a-query-tile-to-a-dashboard))
+      - [Add query results to a dashboard](using-queries.md#view-query-results-in-a-dashboard)
       - [Add a query folder](organize-queries.md) 
       - [Add columns to query results](../backlogs/set-column-options.md) 
       - [Bulk modify query items](../backlogs/bulk-modify-work-items.md) 
       - [Bulk update existing work items (csv)](import-work-items-from-csv.md#update-existing-work-items) 
-      - [Copy query URL](view-run-query.md#email-query) 
-      - [Define a clause](using-queries.md#define-clause) 
-      - [Delete a query or query folder](organize-queries.md#view-rename-delete) 
-      - [Direct-links query](using-queries.md#directs-link-query) 
+      - [Copy query URL](view-run-query.md#email-query-items-or-share-a-query-url) 
+      - [Define a clause](using-queries.md#define-a-clause) 
+      - [Delete a query or query folder](organize-queries.md#rename-or-delete-a-query)) 
+      - [Direct-links query](using-queries.md#use-direct-links-to-view-dependencies)
    :::column-end:::
    :::column span="1":::
       - [Edit a query](using-queries.md) 
-      - [Email a query](view-run-query.md#email-query) 
+      - [Email a query](view-run-query.md#email-query-items-or-share-a-query-url) 
       - [Export a query to Excel](../backlogs/office/bulk-add-modify-work-items-excel.md) 
       - [Export a query (csv)](import-work-items-from-csv.md#export-list-as-a-csv-file) 
-      - [Favorite a query](view-run-query.md#favorites) 
+      - [Favorite a query](view-run-query.md#all-and-favorites-supported-tasks) 
       - [Favorite a query as a team favorite](organize-queries.md#save-a-query-as-a-team-favorite) 
       - [Filter a query](../backlogs/filter-backlogs-boards-plans.md) 
       - [Flat-list query](using-queries.md#flat-list) 
@@ -165,31 +162,29 @@ You can list work items based on the following criteria...
       - [Group a chart by tags](add-tags-to-work-items.md#chart-work-items-and-group-by-tags) 
       - [Import new work items (csv)](import-work-items-from-csv.md#import-new-work-items) 
       - [Open a query](using-queries.md) 
-      - [Query across projects](using-queries.md#across-projects) 
+      - [Query across projects](using-queries.md#query-across-or-within-projects)
       - [Query based on tags](add-tags-to-work-items.md#query) 
    :::column-end:::
    :::column span="1":::
       ::: moniker range="azure-devops"
-      - [Rename a query or query folder](organize-queries.md#view-rename-delete) 
+      - [Rename a query or query folder](organize-queries.md#rename-or-delete-a-query)) 
       - [Run a query](view-run-query.md) 
-      - [Save a query](organize-queries.md#save) 
+      - [Copy and save a query](organize-queries.md#copy-edit-and-save-a-query) 
       - [Set query permissions](set-query-permissions.md) 
-      - [Tree query](using-queries.md#tree-query) 
-      - [Triage query results](triage-work-items.md) 
+      - [Tree query](using-queries.md#use-a-work-item-tree-to-view-hierarchies)
       - [View a query](view-run-query.md) 
-      - [View query results with Parent field](using-queries.md#query-results-widget-parent-titles) 
+      - [View query results with Parent field](using-queries.md#view-query-results-widget-with-parent-titles)
       - [Understand link types](link-type-reference.md) 
       - [Ungroup a clause](using-queries.md#ungroup-clause) 
       - [Work Item Query Language (WIQL)](wiql-syntax.md)
       ::: moniker-end 
       ::: moniker range="< azure-devops"
-      - [Rename a query or query folder](organize-queries.md#view-rename-delete) 
+      - [Rename a query or query folder](organize-queries.md#rename-or-delete-a-query) 
       - [Run a query](using-queries.md) 
-      - [Save a query](organize-queries.md#save)
-      - [Save a query as a team favorite](organize-queries.md#favorite-query)  
+      - [Copy and save a query](organize-queries.md#copy-edit-and-save-a-query)
+      - [Save a query as a team favorite](organize-queries.md#save-a-query-as-a-team-favorite)  
       - [Set query permissions](set-query-permissions.md) 
-      - [Tree query](using-queries.md#tree-query) 
-      - [Triage query items](triage-work-items.md) 
+      - [Tree query](using-queries.md#use-a-work-item-tree-to-view-hierarchies) 
       - [View a query](view-run-query.md) 
       - [Understand link types](link-type-reference.md) 
       - [Ungroup a clause](using-queries.md#ungroup-clause) 
@@ -199,7 +194,7 @@ You can list work items based on the following criteria...
 :::row-end:::
 ---
 
-<a id="fields-operators-macros" />
+<a id="fields-operators-macros"></a>
 
 ## Operators and macros supported for each data type
 
@@ -381,7 +376,7 @@ The following table indicates the operators and macros available for the differe
 
 [!INCLUDE [date-time-pattern](../includes/date-time-pattern.md)]
 
-<a id="samples" />
+<a id="samples"></a>
 
 ## Example queries for select fields 
 
@@ -482,8 +477,7 @@ The following table lists common query fields and their data type for which samp
 
 ## Related articles
 
-- [Query by field value comparisons](query-field-value.md) 
-- [Guidance to create high-performing queries](high-performing-queries.md)
+- [Query by field value comparisons](query-field-value.md)
 - [Use categories to group work item types](/previous-versions/azure/devops/reference/xml/use-categories-to-group-work-item-types)  
 - [Define a managed query](using-queries.md) 
 - [Work item field index](../work-items/guidance/work-item-field.md) 

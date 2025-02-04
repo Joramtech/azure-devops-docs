@@ -3,9 +3,9 @@ title: Logging commands
 description: How scripts can request work from the agent
 ms.topic: reference
 ms.assetid: 3ec13da9-e7cf-4895-b5b8-735c1883cc7b
-ms.date: 04/21/2023
-ms.custom: contperf-fy21q3
+ms.date: 11/19/2024
 monikerRange: '<= azure-devops'
+ai-usage: ai-assisted
 ---
 
 # Logging commands
@@ -15,11 +15,19 @@ monikerRange: '<= azure-devops'
 Logging commands are how [tasks](../process/tasks.md) and scripts communicate with the agent.
 They cover actions like creating new [variables](../process/variables.md), marking a step as failed, and uploading [artifacts](../artifacts/pipeline-artifacts.md). Logging commands are useful when you're troubleshooting a pipeline. 
 
-
+> [!IMPORTANT]
+> We make an effort to mask secrets from appearing in Azure Pipelines output, but you still need to take precautions. Never echo secrets as output.
+> Some operating systems log command line arguments. Never pass secrets on the command line.
+> Instead, we suggest that you map your secrets into environment variables.
+> 
+> We never mask substrings of secrets. If, for example, "abc123" is set as a secret, "abc" isn't masked from the logs.
+> This is to avoid masking secrets at too granular of a level, making the logs unreadable.
+> For this reason, secrets shouldn't contain structured data. If, for example, "{ "foo": "bar" }" is set as a secret,
+> "bar" isn't masked from the logs.
 
 |Type  |Commands  |
 |---------|---------|
-|Task commands     |    [AddAttachment](#addattachment-attach-a-file-to-the-build), [Complete](#complete-finish-timeline), [LogDetail](#logdetail-create-or-update-a-timeline-record-for-a-task), [LogIssue](#logissue-log-an-error-or-warning), [PrependPath](#prependpath-prepend-a-path-to-the--path-environment-variable), [SetEndpoint](#setendpoint-modify-a-service-connection-field), [SetProgress](#setprogress-show-percentage-completed), [SetVariable](#setvariable-initialize-or-modify-the-value-of-a-variable), [UploadFile](#uploadfile-upload-a-file-that-can-be-downloaded-with-task-logs), [UploadSummary](#uploadsummary-add-some-markdown-content-to-the-build-summary) |
+|Task commands     |    [AddAttachment](#addattachment-attach-a-file-to-the-build), [Complete](#complete-finish-timeline), [LogDetail](#logdetail-create-or-update-a-timeline-record-for-a-task), [LogIssue](#logissue-log-an-error-or-warning), [PrependPath](#prependpath-prepend-a-path-to-the--path-environment-variable), [SetEndpoint](#setendpoint-modify-a-service-connection-field), [SetProgress](#setprogress-show-percentage-completed), [SetVariable](#setvariable-initialize-or-modify-the-value-of-a-variable), [SetSecret](#setsecret-register-a-value-as-a-secret), [UploadFile](#uploadfile-upload-a-file-that-can-be-downloaded-with-task-logs), [UploadSummary](#uploadsummary-add-some-markdown-content-to-the-build-summary) |
 |Artifact commands     |   [Associate](#associate-initialize-an-artifact), [Upload](#upload-upload-an-artifact)      |
 |Build commands     |  [AddBuildTag](#addbuildtag-add-a-tag-to-the-build), [UpdateBuildNumber](#updatebuildnumber-override-the-automatically-generated-build-number), [UploadLog](#uploadlog-upload-a-log) |
 |Release commands     |    [UpdateReleaseName](#updatereleasename-rename-current-release)     |
@@ -59,7 +67,7 @@ Write-Host "##vso[task.setvariable variable=testvar;]testvalue"
 File paths should be given as absolute paths: rooted to a drive on Windows, or beginning with `/` on Linux and macOS.
 
 > [!NOTE]
-> Please note that you can't use the `set -x` command before a logging command when you are using Linux or macOS. See [troubleshooting](../troubleshooting/troubleshooting.md#variables-having--single-quote-appended), to learn how to disable `set -x` temporarily for Bash.
+> Note that you can't use the `set -x` command before a logging command when you're using Linux or macOS. See [troubleshooting](../troubleshooting/troubleshooting.md#variables-having--single-quote-appended), to learn how to disable `set -x` temporarily for Bash.
 
 ## Formatting commands
 
@@ -111,7 +119,7 @@ steps:
 ```
 ---
 
-Those commands will render in the logs like this:
+Those commands render in the logs like this:
 
 ![Screenshot of logs with custom formatting options](media/log-formatting.png)
  
@@ -267,7 +275,7 @@ While customers can add entries to the timeline, they won't typically be shown i
 The first time we see `##vso[task.detail]` during a step, we create a "detail timeline" record for the step. We can create and update nested timeline records base on `id` and `parentid`.
 
 Task authors must remember which GUID they used for each timeline record.
-The logging system will keep track of the GUID for each timeline record, so any new GUID will result a new timeline record.
+The logging system keeps track of the GUID for each timeline record, so any new GUID results a new timeline record.
 
 #### Properties
 
@@ -310,25 +318,21 @@ Update exist timeline record:
 
 Sets a variable in the variable service of taskcontext. The first task can set a variable, and following tasks are able to use the variable. The variable is exposed to the following tasks as an environment variable.
 
-When `issecret` is set to `true`, the value of the variable will be saved as secret and masked out from log. Secret variables aren't passed into tasks as environment variables and must instead be passed as inputs.
+When `isSecret` is set to `true`, the value of the variable will be saved as secret and masked out from log. Secret variables aren't passed into tasks as environment variables and must instead be passed as inputs.
 
-When `isoutput` is set to `true` the syntax to reference the set variable varies based on whether you are accessing that variable in the same job, a future job, or a future stage. Additionally, if `isoutput` is set to `false` the syntax for using that variable within the same job is distinct. See [levels of output variables](../process/set-variables-scripts.md#levels-of-output-variables) to determine the appropriate syntax for each use case.
+When `isOutput` is set to `true` the syntax to reference the set variable varies based on whether you're accessing that variable in the same job, a future job, or a future stage. Additionally, if `isOutput` is set to `false` the syntax for using that variable within the same job is distinct. See [levels of output variables](../process/set-variables-scripts.md#levels-of-output-variables) to determine the appropriate syntax for each use case.
 
-See [set variables in scripts](../process/set-variables-scripts.md) and [define variables](../process/variables.md#set-variables-in-scripts) for more details.
+For more information about output variables, see [set variables in scripts](../process/set-variables-scripts.md) and [define variables](../process/variables.md#set-variables-in-scripts).
 
 #### Properties
 
 ::: moniker range=">= azure-devops-2019"
 * `variable` = variable name (Required)
-* `issecret` = boolean (Optional, defaults to false)
-* `isoutput` = boolean (Optional, defaults to false)
-* `isreadonly` = boolean (Optional, defaults to false)
+* `isSecret` = boolean (Optional, defaults to false)
+* `isOutput` = boolean (Optional, defaults to false)
+* `isReadOnly` = boolean (Optional, defaults to false)
 ::: moniker-end
-::: moniker range="< azure-devops-2019"
-* `variable` = variable name (Required)
-* `issecret` = boolean (Optional, defaults to false)
-* `isreadonly` = boolean (Optional, defaults to false)
-::: moniker-end   
+   
 
 #### Examples
 
@@ -340,19 +344,12 @@ Set the variables:
 ```yaml
 - bash: |
     echo "##vso[task.setvariable variable=sauce;]crushed tomatoes"
-    echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-    echo "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
+    echo "##vso[task.setvariable variable=secretSauce;isSecret=true]crushed tomatoes with garlic"
+    echo "##vso[task.setvariable variable=outputSauce;isOutput=true]canned goods"
   name: SetVars
 ```
 ::: moniker-end
-::: moniker range="< azure-devops-2019"
-```yaml
-- bash: |
-    echo "##vso[task.setvariable variable=sauce;]crushed tomatoes"
-    echo "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-  name: SetVars
-```
-::: moniker-end
+
 Read the variables:
 
 ::: moniker range=">= azure-devops-2019"
@@ -363,14 +360,7 @@ Read the variables:
     echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
 ```
 ::: moniker-end
-::: moniker range="< azure-devops-2019"
-```yaml
-- bash: |
-    echo "Non-secrets automatically mapped in, sauce is $SAUCE"
-    echo "Secrets are not automatically mapped in, secretSauce is $SECRETSAUCE"
-    echo "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
-```
-::: moniker-end
+
 
 # [PowerShell](#tab/powershell)
 
@@ -380,19 +370,12 @@ Set the variables:
 ```yaml
 - pwsh: |
     Write-Host "##vso[task.setvariable variable=sauce;]crushed tomatoes"
-    Write-Host "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-    Write-Host "##vso[task.setvariable variable=outputSauce;isoutput=true]canned goods"
+    Write-Host "##vso[task.setvariable variable=secretSauce;isSecret=true]crushed tomatoes with garlic"
+    Write-Host "##vso[task.setvariable variable=outputSauce;isOutput=true]canned goods"
   name: SetVars
 ```
 ::: moniker-end
-::: moniker range="< azure-devops-2019"
-```yaml
-- pwsh: |
-    Write-Host "##vso[task.setvariable variable=sauce;]crushed tomatoes"
-    Write-Host "##vso[task.setvariable variable=secretSauce;issecret=true]crushed tomatoes with garlic"
-  name: SetVars
-```
-::: moniker-end
+
 
 Read the variables:
 
@@ -406,14 +389,7 @@ Read the variables:
     write-Host "Future jobs can also see $(SetVars.outputSauce)"
 ```
 ::: moniker-end
-::: moniker range="< azure-devops-2019"
-```yaml
-- pwsh: |
-    Write-Host "Non-secrets automatically mapped in, sauce is $env:SAUCE"
-    Write-Host "Secrets are not automatically mapped in, secretSauce is $env:SECRETSAUCE"
-    Write-Host "You can use macro replacement to get secrets, and they'll be masked in the log: $(secretSauce)"
-```
-::: moniker-end
+
 
 ---
 
@@ -428,13 +404,71 @@ Future jobs can also see canned goods
 Future jobs can also see canned goods
 ```
 ::: moniker-end
-::: moniker range="< azure-devops-2019"
+
+
+### SetSecret: Register a value as a secret
+
+`##vso[task.setsecret]value`
+
+#### Usage
+
+The value is registered as a secret for the duration of the job. The value will be masked out from the logs from this point forward. This command is useful when a secret is transformed (for example, base64 encoded) or derived.
+
+Note: Previous occurrences of the secret value won't be masked. 
+
+#### Examples
+
+# [Bash](#tab/bash)
+
+Set the variables:
+
+```yaml
+- bash: |
+    NEWSECRET=$(echo $OLDSECRET|base64)
+    echo "##vso[task.setsecret]$NEWSECRET"
+  name: SetSecret
+  env:
+    OLDSECRET: "SeCrEtVaLuE"
 ```
-Non-secrets automatically mapped in, sauce is crushed tomatoes
-Secrets are not automatically mapped in, secretSauce is 
-You can use macro replacement to get secrets, and they'll be masked in the log: ***
+
+Read the variables:
+
+```yaml
+- bash: |
+    echo "Transformed and derived secrets will be masked: $(echo $OLDSECRET|base64)"
+  env:
+    OLDSECRET: "SeCrEtVaLuE"
 ```
-::: moniker-end
+
+# [PowerShell](#tab/powershell)
+
+Set the variables:
+
+```yaml
+- pwsh: |
+    $NewSecret = [convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($env:OLDSECRET))
+    Write-Host "##vso[task.setsecret]$NewSecret"
+  name: SetSecret
+  env:
+    OLDSECRET: "SeCrEtVaLuE"
+```
+
+Read the variables:
+
+```yaml
+- pwsh: |
+    Write-Host "Transformed and derived secrets will be masked: $([convert]::ToBase64String([Text.Encoding]::UTF8.GetBytes($env:OLDSECRET)))"
+  env:
+    OLDSECRET: "SeCrEtVaLuE"
+```
+
+---
+
+Console output:
+
+```
+Transformed and derived secrets will be masked: ***
+```
 
 ### SetEndpoint: Modify a service connection field
 
@@ -484,12 +518,13 @@ Upload and attach attachment to current timeline record. These files aren't avai
 
 #### Usage
 
-Upload and attach summary Markdown to current timeline record. This summary shall be added to the build/release summary and not available for download with logs. The summary should be in UTF-8 or ASCII format. The summary will appear on an Extensions tab.   
+Upload and attach summary Markdown from an .md file in the repository to current timeline record. This summary shall be added to the build/release summary and not available for download with logs. The summary should be in UTF-8 or ASCII format. The summary appears on the **Extensions** tab of your pipeline run. Markdown rendering on the Extensions tab is different from Azure DevOps wiki rendering. For more information on Markdown syntax, see the [Markdown Guide](https://www.markdownguide.org/basic-syntax/). 
+
 
 #### Examples
 
 ```
-##vso[task.uploadsummary]c:\testsummary.md
+##vso[task.uploadsummary]$(System.DefaultWorkingDirectory)/testsummary.md
 ```
 
 It's a short hand form for the command
@@ -528,6 +563,8 @@ The updated environment variable will be reflected in subsequent tasks.
 ```
 
 ## Artifact commands
+
+Artifact publishing is not supported in Classic release pipelines.
 
 ### Associate: Initialize an artifact
 

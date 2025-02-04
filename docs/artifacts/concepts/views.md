@@ -17,19 +17,22 @@ Feed views enable developers to share a subset of package-versions with their co
 
 ## Default view
 
-All Artifacts feeds come with three views: `@local`, `@prerelease`, and `@release`. The latter two are suggested views that you can rename or delete as desired. `@local` is the default view that's commonly used in upstream sources.
+All Artifacts feeds come with three views: `@local`, `@prerelease`, and `@release`. The latter two are suggested views that you can rename or delete as desired. `@local` is the default view that's commonly used in upstream sources. You can change the default view in your **Feed Settings** > **Views**, but doing so does not enable direct publishing to that view. Packages can only be published to the base feed, where they will be available in the *@Local* view.
 
 The `@local` view contains all packages published directly to the feed and all packages [saved from upstream sources](upstream-sources.md#save-packages-from-upstream-sources).
 
 Feed views are read-only, which means that users connected to a view can only use packages that are published to that view and/or packages previously saved from upstream sources. See [package graphs](package-graph.md) to learn how available packages are constructed.
 
-> [!NOTE]
-> All feed views in a public project are accessible to everyone on the internet.
+> [!Note]
+> Azure Artifacts only supports publishing and restoring packages from and to the default view - *@Local*.
 
 ## Feed views and upstream sources
 
 Feed views and upstream sources are designed to work together to provide an enterprise-level solution to share and consume packages.
-In order for other Azure Artifacts feeds to use your feed as an upstream source, you must set your feed's visibility to **members of your organization**, or **members of your Azure Active Directory**, depending on your scenario. If you choose the latter, all people in your organization will be able to access your feed. In addition, all feeds in your organization and other organizations associated with the same Azure Active Directory tenant will be able to upstream to your feed.
+In order for other Azure Artifacts feeds to use your feed as an upstream source, you must set your feed's visibility to **members of your organization**, or **members of your Microsoft Entra ID**, depending on your scenario. If you choose the latter, all people in your organization will be able to access your feed. In addition, all feeds in your organization and other organizations associated with the same Microsoft Entra tenant will be able to upstream to your feed.
+
+> [!NOTE]
+> All feed views in a public project are accessible to everyone on the internet.
 
 ## Release packages with feed views
 

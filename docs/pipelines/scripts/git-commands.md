@@ -1,6 +1,5 @@
 ---
 title: Run Git commands in a script
-ms.custom: seodec18
 description: Learn how you can run a Git command in a build script for your workflow with Azure Pipelines
 ms.topic: conceptual
 ms.assetid: B5481254-F39C-4F1C-BE98-44DC0A95F2AD
@@ -12,9 +11,7 @@ monikerRange: '<= azure-devops'
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-::: moniker range="tfs-2018"
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
-::: moniker-end
+
 
 For some workflows, you need your build pipeline to run Git commands. For example, after a CI build on a feature branch is done, the team might want to merge the branch to main.
 
@@ -63,35 +60,29 @@ Git is available on [Microsoft-hosted agents](../agents/hosted.md) and on [on-pr
 
 ::: moniker-end
 
-::: moniker range="<= azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 Go to the Version Control control panel tab
 
-<ul>
-<li>Azure Repos: <code>https:&#x2F;&#x2F;dev.azure.com/{your-organization}/{your-project}/_admin/_versioncontrol</code></li>
 
-<li>On-premises: <code>https:&#x2F;&#x2F;{your-server}:8080/tfs/DefaultCollection/{your-project}/_admin/_versioncontrol</code></li>
-</ul>
+- Azure Repos: `https:&#x2F;&#x2F;dev.azure.com/{your-organization}/{your-project}/_admin/_versioncontrol`
 
-<p>
+- On-premises: `https:&#x2F;&#x2F;{your-server}:8080/tfs/DefaultCollection/{your-project}/_admin/_versioncontrol`
 
 ![manage project](media/manage-project.png)
 
-</p>
 
-<p>If you see this page, select the repo, and then select the link:</p>
+If you see this page, select the repo, and then select the link:
 
-<p>
+
 
 ![control panel top to project](media/control-panel-top-to-team-project.png)
 
-</p>
 
-<p>
 
 ![control panel project version control tab](media/control-panel-team-project-version-control-tab.png)
 
-</p>
+
 
 On the **Version Control** tab, select the repository in which you want to run Git commands, and then select **Project Collection Build Service**. By default, this identity can read from the repo but can’t push any changes back to it.
 
@@ -244,7 +235,7 @@ Yes
 
 ### How do I avoid triggering a CI build when the script pushes?
 
-::: moniker range="<= azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 Add ```***NO_CI***``` to your commit message. Here are examples:
 * ```git commit -m "This is a commit message ***NO_CI***"```
