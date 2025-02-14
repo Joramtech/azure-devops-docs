@@ -279,7 +279,7 @@ https://analytics.dev.azure.com/{organization}/{project}/_odata/v3.0-preview/Wor
 
 ***
 
-<a id="weekly-snapshots" />
+<a id="weekly-snapshots"></a>
 
 ### Bug trend with a snapshot on the first of every month
 
@@ -366,7 +366,7 @@ The example report displays.
 
 	:::image type="content" source="media/reports-boards/bug-trends-change-color.png" alt-text="Screenshot of Power BI Format visual selections for Bug trends report. "::: 
 
-To learn more, see [Get started with the formatting pane](/power-bi/visuals/service-getting-started-with-color-formatting-and-axis-properties). 
+For more information, see [Get started with the formatting pane](/power-bi/visuals/service-getting-started-with-color-formatting-and-axis-properties). 
 
 
 ## Related articles

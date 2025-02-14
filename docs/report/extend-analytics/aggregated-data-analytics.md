@@ -32,13 +32,16 @@ To learn how to generate simple counts, see [Return a count of items (no other d
 
 [!INCLUDE [temp](../includes/analytics-preview.md)]
 
+## Prerequisites
+
+[!INCLUDE [prerequisites-simple](../includes/analytics-prerequisites-simple.md)]
 
 ## What is the Aggregation Extension for OData?
 
 Analytics relies on OData to author queries over your work tracking data. Aggregations in OData are achieved using an extension that introduces the `$apply` keyword. We have some examples of how to use this keyword below. Learn more about the extension at [OData Extension for Data Aggregation](https://docs.oasis-open.org/odata/odata-data-aggregation-ext/v4.0/cs01/odata-data-aggregation-ext-v4.0-cs01.html).
 
 
-<a id="aggregation-extension" />
+<a id="aggregation-extension"></a>
 
 ## Aggregate data using the OData aggregation extension
 
@@ -52,7 +55,7 @@ Where:
 - {aggregationType} will specify the type of aggregation used
 - {newColumnName} specifies the name of the column having values after aggregation.
 
-<a id="apply-extension" />
+<a id="apply-extension"></a>
 
 ## Aggregated data using the apply extension 
 
@@ -75,13 +78,13 @@ Using the `$apply` extension, you can obtain counts, sums, and additional inform
 >   $apply=aggregate(WorkItemId with max as MaxWorkItemId)
 > ```
 
-<a id="groupby" />
+<a id="groupby"></a>
 
 ## Group results using the groupby clause
 
 The OData aggregation extension also supports a `groupby` clause that is identical to the SQL `GROUP BY` clause. You can use this clause to quickly break down numbers in more detail.  
 
-For example, thie following clause returns a  count of work items:
+For example, the following clause returns a count of work items:
 
 > [!div class="tabbedCodeSnippets"]
 > ```OData
@@ -168,7 +171,7 @@ https://analytics.dev.azure.com/{OrganizationName}/_odata/{version}/Areas?
 
  
 
-<a id="filter-aggregate" />
+<a id="filter-aggregate"></a>
 
 ## Filter aggregated results
 
@@ -188,7 +191,7 @@ Filters look like this example:
 > [!NOTE]
 > You don't have to provide the `groupby` clause. You can simply use the `aggregate` clause to return a single value.  
 
-<a id="multiple-aggregate" />
+<a id="multiple-aggregate"></a>
 
 ## Generate multiple aggregations within a single call
 
@@ -210,7 +213,7 @@ It will return a result that looks like this example:
 > ```
 
 
-<a id="calculated-properties" />
+<a id="calculated-properties"></a>
 
 ## Generate calculated properties for use within a single call
 
@@ -229,7 +232,7 @@ You might need to use a mathematical expression to calculate properties for use 
 > }
 > ```
 
-<a id="cfd" />
+<a id="cfd"></a>
 
 ## Generate a Cumulative Flow Diagram from aggregate data
 
@@ -309,7 +312,7 @@ Use this basic root URL as a prefix for all the examples provided in this articl
 
 ::: moniker-end
 
-<a id="simple-count" />
+<a id="simple-count"></a>
 
 ## Simple count aggregations
 

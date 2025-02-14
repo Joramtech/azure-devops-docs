@@ -3,7 +3,7 @@ title: Classic release pipelines
 description: Overview of classic release pipelines
 ms.assetid: 126C3E1C-9DB3-4E46-918D-FF5600BF8FC9
 ms.topic: conceptual
-ms.custom: seodec18, engagement-fy23
+ms.custom: engagement-fy23
 ms.author: ronai
 author: RoopeshNair
 ms.date: 06/02/2023
@@ -52,13 +52,34 @@ As part of every deployment, Azure Pipelines executes the following steps:
 
 ## Deployment model
 
-Azure release pipelines support a wide range of [artifact sources](artifacts.md#sources) including Jenkins, Azure Artifacts, and Team City. The following example illustrates a deployment model using Azure release pipelines:
+Azure release pipelines support a wide range of [artifact sources](artifacts.md#artifact-sources) including Jenkins, Azure Artifacts, and Team City. The following example illustrates a deployment model using Azure release pipelines:
 
 In the following example, the pipeline consists of two build artifacts originating from separate build pipelines. The application is initially deployed to the *Dev* stage and then to two separate *QA* stages. If the deployment is successful in both QA stages, the application will be deployed to *Prod ring 1* and then to *Prod ring 2*. Each production ring represents multiple instances of the same web app, deployed to different locations across the world.
 
 :::image type="content" source="media/definition-01.png" alt-text="A screenshot showing a release pipeline deployment steps.":::
 
+## Releases vs deployments 
+
+A **release** is a construct that holds a versioned set of artifacts specified in a CI/CD pipeline. It includes a snapshot of all the information required to carry out all the tasks and actions in the release pipeline, such as stages, tasks, policies such as triggers and approvers, and deployment options. There can be multiple releases from one release pipeline, and information about each one is stored and displayed in Azure Pipelines for the specified [retention period](../policies/retention.md#release).  
+
+A **deployment** is the action of running the tasks for one stage, which can include running automated tests, deploying build artifacts, and whatever other actions are specified for that stage. 
+Initiating a release starts each deployment based on the settings and policies defined in the original release pipeline. There can be multiple deployments of each release even for one stage. When a deployment of a release fails for a stage, you can redeploy the same release to that stage. To redeploy a release, simply navigate to the release you want to deploy and select deploy.
+
+The following diagram shows the relationship between release, release pipelines, and deployments.
+
+:::image type="content" source="media/release-deploy.png" alt-text="A diagram illustrating the difference between releases and deployments.":::
+
 ## FAQ 
+
+#### Q: Why wasn't my deployment triggered?
+
+A: Creating a release pipeline doesn't automatically start a deployment. Here are a few reasons why this might happen:
+
+- [Deployment Triggers](triggers.md): defined deployment triggers may cause the deployment to pause. This can occur with scheduled triggers or when there's a delay until deployment to another stage is complete.
+
+- [Queuing Policies](../process/stages.md#queuing-policies): these policies dictate the order of execution and when releases are queued for deployment.
+
+- [Pre-Deployment Approvals or Gates](approvals/index.md): specific stages may require pre-deployment approvals or gates, preventing deployment until all defined conditions are met.
 
 #### Q: How can I edit variables at release time?
 
@@ -93,10 +114,10 @@ When specifying the format mask, you can use the following predefined variables.
 | **System.TeamProject** | The name of the project to which this build belongs. |
 | **Release.ReleaseId** | The ID of the release, which is unique across all releases in the project. |
 | **Release.DefinitionName** | The name of the release pipeline to which the current release belongs. |
-| **Build.BuildNumber** | The number of the build contained in the release. If a release has multiple builds, it's the number of the [primary build](artifacts.md#primary-source). |
-| **Build.DefinitionName** | The pipeline name of the build contained in the release. If a release has multiple builds, it's the pipeline name of the [primary build](artifacts.md#primary-source). |
+| **Build.BuildNumber** | The number of the build contained in the release. If a release has multiple builds, it's the number of the [primary build](artifacts.md). |
+| **Build.DefinitionName** | The pipeline name of the build contained in the release. If a release has multiple builds, it's the pipeline name of the [primary build](artifacts.md). |
 | **Artifact.ArtifactType** | The type of the artifact source linked with the release. For example, this can be **Azure Pipelines** or **Jenkins**. |
-| **Build.SourceBranch** | The branch of the [primary artifact source](artifacts.md#primary-source). For Git, this is of the form **main** if the branch is **refs/heads/main**. For Team Foundation Version Control, this is of the form **branch** if the root server path for the workspace is **$/teamproject/branch**. This variable is not set for Jenkins or other artifact sources. |
+| **Build.SourceBranch** | The branch of the [primary artifact source](artifacts.md). For Git, this is of the form **main** if the branch is **refs/heads/main**. For Team Foundation Version Control, this is of the form **branch** if the root server path for the workspace is **$/teamproject/branch**. This variable is not set for Jenkins or other artifact sources. |
 | **Custom variable** | The value of a global configuration property defined in the release pipeline. You can update the release name with custom variables using the [Release logging commands](https://github.com/microsoft/azure-pipelines-tasks/blob/master/docs/authoring/commands.md#release-logging-commands) |
 
 #### Q: How can I define the retention period for my releases?

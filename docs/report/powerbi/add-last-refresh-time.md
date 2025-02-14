@@ -7,142 +7,160 @@ ms.custom: engagement-fy23
 ms.author: chcomley
 author: chcomley
 ms.topic: how-to
+ai-usage: ai-assisted
 monikerRange: '>= azure-devops-2019'
-ms.date: 12/12/2022
+ms.date: 10/08/2024
+#customer intent: As a report creator who works in Power BI, I want to add last refresh information to my reports to let users know that the data is current.
 ---
 
-# Refresh your report and show last refresh date  
+# Show last refresh date to Power BI report
 
 [!INCLUDE [version-gt-eq-2019](../../includes/version-gt-eq-2019.md)]
 
-The last refresh date, when added to a report, alerts users as to how fresh the data is in the report. You can add a card to a report that provides the date and time that the data for the report was last updated. Also, you can refresh the data models from Power BI to update all data models with the latest data.  
+Adding a last refresh date to a report helps users understand how current the data is. You can display the date and time of the last data update using a card in the report. Regularly refreshing the data models in Power BI ensures that all information is up-to-date.
 
-The method for adding a last refresh date differs depending on whether your Power BI report is based on an Analytics view, Power BI, or OData query.  
- 
-> [!NOTE]   
-> Several Analytics entity types include The `AnalyticsUpdatedDate` property, such as `WorkItemRevision`, `WorkItem`, `WorkItemLink`, `TestRun`, and more. This property indicates the last time the individual entity references was last updated. 
+The steps to add a last refresh date vary based on the source of your Power BI report, whether it's an Analytics view, Power BI, or an OData query.
+
+> [!NOTE]  
+> Several Analytics entity types, such as `WorkItemRevision`, `WorkItem`, `WorkItemLink`, `TestRun`, and others, include the `AnalyticsUpdatedDate` property. This property indicates the most recent time that the individual entity references were updated.
+
+## Prerequisites
 
 [!INCLUDE [prerequisites-simple](../includes/analytics-prerequisites-simple.md)]
 
-## Add the last refresh date based on an Analytics view 
+## Add the last refresh date based on an Analytics view
 
-To add a column with the last refresh date of the dataset, follow these steps.  
+To add a column with the last refresh date of the dataset, do the following steps.  
 
-1. Load the Power BI pbix file associated with your view in Power BI Desktop.  
+1. Load the Power BI *.pbix* file associated with your view in Power BI Desktop.  
+2. In the **Queries** section of the ribbon, select **Transform data** > **Transform data**.
 
-1. In the External Data section of the ribbon, choose **Edit Queries**.   
+   :::image type="content" source="media/edit-queries.png" alt-text="Screenshot of Power BI Desktop, Home tab, highlighted Transform Data button in Queries section." lightbox="media/edit-queries.png":::
 
-    > [!div class="mx-imgBorder"]  
-    > ![Power BI Desktop, Home tab, Edit Queries](media/edit-queries.png) 
+3. Select **Advanced Editor**.  
 
-1. Open **Advanced Editor**.  
+   :::image type="content" source="media/advanced-editor.png" alt-text="Screenshot of highlighted Advanced Editor button." lightbox="media/advanced-editor.png":::
 
-    > [!div class="mx-imgBorder"]  
-    > ![Advanced Editor](media/AdvancedEditor.png) 
+   If you didn't modify the query, review the following examples with specific table values matching your Analytics view.
 
-    If you haven't already modified the query, review the following examples with specific table values matching your Analytics view.
+   ### [Private view](#tab/private/)
 
-	#### [Private view](#tab/private/)
-	```Query 
-	let
-	    Source = VSTS.AnalyticsViews("{OrganizationName}", "ProjectName}", []),
-	    #"Private Views_Folder" = Source{[Id="Private Views",Kind="Folder"]}[Data],
-	    #"{AnalyticsViewsID_Table}" = #"Private Views_Folder"{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data]
-	in
-	    #"{AnalyticsViewsID_Table}"
-	```
-	
-	#### [Shared view](#tab/shared/)
-	```Query 
-	let
-	    Source = VSTS.AnalyticsViews("{OrganizationName}", "{ProjectName}", []),
-	    #"{AnalyticsViewsID_Table}" = Source{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data]
-	in
-	    #"{AnalyticsViewsID_Table}"
-	```
-	
-	***
+   ```Query
+   let
+       Source = AzureDevOps.AnalyticsViews("{OrganizationName}", "{ProjectName}", []),
+       #"Private Views_Folder" = Source{[Id="Private Views",Kind="Folder"]}[Data],
+       #"{AnalyticsViewsID_Table}" = #"Private Views_Folder"{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data],
+       #"Added Refresh Date" = Table.AddColumn(#"{AnalyticsViewsID_Table}", "Refresh Date", each DateTimeZone.FixedUtcNow(), type datetimezone)
+   in
+       #"Added Refresh Date"
+   ```
 
-1. Modify the query according to the following syntax.  
-	#### [Private view](#tab/private/)
-	```Query 
-	let
-	   Source = VSTS.AnalyticsViews("{OrganizationName}", "{ProjectName}", []),
-		#"Private Views_Folder" = Source{[Id="Private Views",Kind="Folder"]}[Data],
-		#"{AnalyticsViewsID_Table}" = #"Private Views_Folder"{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data]
-	    #"Added Refresh Date" = Table.AddColumn(#"{tableid}_Table", "Refresh Date", 
-	        each DateTimeZone.FixedUtcNow(), type datetimezone)
-	in
-	    #"Added Refresh Date"
-	```
-	
-	#### [Shared view](#tab/shared/)
-	```Query 
-	let
-	   Source = VSTS.AnalyticsViews("{OrganizationName}", "{ProjectName}", []),
-	   #"{AnalyticsViewsID_Table}" = Source{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data]
-	   #"Added Refresh Date" = Table.AddColumn(#"{tableid}_Table", "Refresh Date", 
-	       each DateTimeZone.FixedUtcNow(), type datetimezone)
-	in
-	   #"Added Refresh Date"
-	```
-	 
-	***
+   ### [Shared view](#tab/shared/)
 
-> [!IMPORTANT]  
-> These examples use UTC. You can adjust the query code based on your specific timezone as described in [DateTimeZone functions](/powerquery-m/datetimezone-functions).
+   ```Query
+   let
+       Source = AzureDevOps.AnalyticsViews("{OrganizationName}", "{ProjectName}", []),
+       #"{AnalyticsViewsID_Table}" = Source{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data]
+   in
+       #"{AnalyticsViewsID_Table}"
+   ```
 
-1. When finish, choose **Done**.
+   ***
 
-1. Choose **Close & Apply** to immediately refresh the dataset.   
+4. Modify the query according to the following syntax.  
 
-	> [!div class="mx-imgBorder"]  
-	> ![Screenshot of Power BI Desktop, Home, Close & Apply.](media/transform-data/powerbi-close-apply.png)   
+   ### [Private view](#tab/private/)
 
+   ```Query
+   let
+       Source = AzureDevOps.AnalyticsViews("{OrganizationName}", "{ProjectName}", []),
+       #"Private Views_Folder" = Source{[Id="Private Views",Kind="Folder"]}[Data],
+       #"{AnalyticsViewsID_Table}" = #"Private Views_Folder"{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data],
+       #"Added Refresh Date" = Table.AddColumn(#"{AnalyticsViewsID_Table}", "Refresh Date", each DateTimeZone.FixedUtcNow(), type datetimezone)
+   in
+       #"Added Refresh Date"
+   ```
 
-## Add last refresh date based on a Power BI or OData query 
+   ### [Shared view](#tab/shared/)
 
-1. From Power BI, choose **Blank Query**, rename the query to *Last Refreshed Date*, and then enter the following formula into the function bar. 
+   ```Query
+   let
+       Source = AzureDevOps.AnalyticsViews("{OrganizationName}", "{ProjectName}", []),
+       #"{AnalyticsViewsID_Table}" = Source{[Id="{AnalyticsViewsID}",Kind="Table"]}[Data],
+       #"Added Refresh Date" = Table.AddColumn(#"{AnalyticsViewsID_Table}", "Refresh Date", each DateTimeZone.FixedUtcNow(), type datetimezone)
+   in
+       #"Added Refresh Date"
+   ```
 
-	:::image type="content" source="media/last-refresh/last-refresh-date-query.png" alt-text="Screenshot of Power Query Editor, formula for DateTime.LocalNow for Last Refresh Date query. ":::
+   ***
 
-1. To convert the date data to a table format, choose **To Table** and select the  **To Table** option. 
+   > [!NOTE]  
+   > These examples use UTC. You can adjust the query code based on your specific timezone as described in [DateTimeZone functions](/powerquery-m/datetimezone-functions).
 
-	:::image type="content" source="media/last-refresh/convert-data-to-table.png" alt-text="Screenshot of Power Query Editor, To Table option. ":::
+5. Select **Done**.
+6. Select **Close & Apply** to immediately refresh the dataset.
 
-	A single column appears with the date.
+   :::image type="content" source="media/transform-data/powerbi-close-apply.png" alt-text="Screenshot of Power BI Desktop, Home, highlighted Close & Apply button.":::
 
-	:::image type="content" source="media/last-refresh/column-coverted-data.png" alt-text="Screenshot of converted date column. ":::
+## Add last refresh date based on a Power BI or OData query
 
-1. From the **Transform** menu, choose **Change Data Type** and select the **Date/Time** option. 
+1. From Power BI, select **Get data** > **Blank Query**.
 
-	:::image type="content" source="media/last-refresh/change-data-type-date-time.png" alt-text="Screenshot of Transform menu, Change Data Type option to Date/Time. ":::
+   :::image type="content" source="media/last-refresh/get-data-blank-query.png" alt-text="Screenshot of highlighted buttons, Get data, and Blank query.":::
 
-1. Rename **Column1** to something more meaningful, such as *Last Refresh Date*. 
+1. Rename the query to *Last Refreshed Date*, and then enter the following formula into the function bar. 
 
-1. From the Home menu, choose **Close and Apply**. 
+   :::image type="content" source="media/last-refresh/last-refresh-date-query.png" alt-text="Screenshot of Power Query Editor, formula for DateTime.LocalNow for Last Refresh Date query. ":::
 
-	> [!div class="mx-imgBorder"]  
-	> ![Screenshot of Power BI Desktop, Home, Close & Apply.](media/transform-data/powerbi-close-apply.png)   
+1. To convert the date data to a table format, choose **To Table** > **To Table**.
 
-## Add a card to a report with the Refresh Date 
+   :::image type="content" source="media/last-refresh/convert-data-to-table.png" alt-text="Screenshot of Power Query Editor, To Table option. ":::
 
-1. To add a card with the last refresh date to your reports, under **Visualizations**, choose **Card**, and add **Refresh Date** or **Last Refresh Date** to **Fields**.
+   A single column appears with the date.
 
-	> [!div class="mx-imgBorder"]  
-	> ![Screenshot of Power BI Desktop, Card, Refresh Date Applied.](media/last-refresh/card-visualizations.png)
+   :::image type="content" source="media/last-refresh/column-coverted-data.png" alt-text="Screenshot of converted date column. ":::
 
-## Refresh data 
+   > [!TIP]
+   > If you don't see the **To Table** option, you can use the following alternative steps to add the last refresh date and time to your reports:
+   > 1. Select the **Home** tab and select **Get Data**. Choose **Blank Query** from the options.
+   > 2. In the Queries pane, right-select on the new query and select **Advanced Editor**. 
+   > 3. Replace the existing code with the following code to create a table with the current date and time:
+   > ```
+   > let
+   > Source = #table(
+   >     {"Last Refresh Date"}, 
+   >     {{DateTime.LocalNow()}}
+   > )
+   > in
+   > Source
+   >```
 
-1. Choose **Refresh** to refresh report page data and the data model. After all queries are updated, the card refreshes with the latest date. 
+1. From the **Transform** menu, select the **Data Type** dropdown menu and select **Date/Time** option.
 
-	:::image type="content" source="media/last-refresh/refresh-data.png" alt-text="Screenshot of Power BI, Refresh option.":::
+   :::image type="content" source="media/last-refresh/change-data-type-date-time.png" alt-text="Screenshot of Transform menu, Change Data Type option to Date/Time. ":::
 
+1. Rename **Column1** to something more meaningful, such as *Last Refresh Date*.
+
+1. From the Home menu, select **Close and Apply**.
+
+   :::image type="content" source="media/transform-data/powerbi-close-apply.png" alt-text="Screenshot of Power BI Desktop, Home, Close & Apply.":::
+
+## Add a card to a report with the Refresh Date
+
+- To add a card with the last refresh date to your reports, under **Visualizations**, choose **Card**, and add **Refresh Date** or **Last Refresh Date** to **Fields**.
+
+  :::image type="content" source="media/last-refresh/card-visualizations.png" alt-text="Screenshot of Power BI Desktop, Card, Refresh Date Applied.":::
+
+## Refresh data
+
+Choose **Refresh** to refresh report page data and the data model. After all queries are updated, the card refreshes with the latest date.
+
+:::image type="content" source="media/last-refresh/refresh-data.png" alt-text="Screenshot of the Power BI Desktop refresh option.":::
 
 ## Related articles
 
-- [Power BI integration overview](overview.md) 
-- [Create Analytics views](analytics-views-create.md)
-- [Create a Power BI report with a default Analytics view](create-quick-report.md)
+- [Learn about Power BI integration](overview.md)
+- [Create an Analytics view in Azure DevOps](analytics-views-create.md)
+- [Create a Power BI report using a default Analytics view](create-quick-report.md)
 - [Publish a Power BI Desktop file to Power BI](publish-power-bi-desktop-to-power-bi.md)
 - [Get started with Power BI Desktop](/power-bi/fundamentals/desktop-getting-started)

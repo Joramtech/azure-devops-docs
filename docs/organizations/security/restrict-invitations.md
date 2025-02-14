@@ -8,15 +8,14 @@ ms.subservice: azure-devops-security
 ms.author: chcomley
 author: chcomley
 monikerRange: 'azure-devops'
-ms.date: 03/02/2023
+ms.date: 11/30/2023
 ---
 
-# Restrict new user invitations from Project and Team Administrators 
+# Restrict administrators from inviting new users
 
 [!INCLUDE [version-eq-azure-devops](../../includes/version-eq-azure-devops.md)]
 
-By default, all administrators can invite new users to their Azure DevOps organization. Disabling this policy blocks Team and Project Administrators from inviting new users. Project Collection Administrators (PCAs) can add new users to the organization, regardless of the policy status. If a user is already a member of the organization, Project and Team Administrators can add that user to a project.
-
+By default, all administrators can invite new users to their Azure DevOps organization. Disabling this policy prevents Team and Project Administrators from inviting new users. However, Project Collection Administrators (PCAs) can still add new users to the organization regardless of the policy status. Additionally, if a user is already a member of the organization, Project and Team Administrators can add that user to specific projects.
 <!---
 
 |  Role               |Policy **on** |Policy **off**  |
@@ -30,16 +29,19 @@ can add users who are already in the organization to their team       |
 
 ## Prerequisites
 
-You must be a member of the [Project Collection Administrators group](../security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group.
+| Category | Requirements |
+|--------------|-------------|
+| **Permissions** | Member of the [**Project Collection Administrators** group](../security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group. |
+| **Microsoft Entra** | Member in the destination Microsoft Entra ID. For more information, see [Convert a Microsoft Entra guest into a member](../accounts/faq-azure-access.yml). |
 
 ## Turn off policy
 
 1. Sign in to your organization (```https://dev.azure.com/{yourorganization}```).
 
-2. Select ![gear icon](../../media/icons/gear-icon.png) **Organization settings**.
-   
-   ![Screenshot showing highlighted Organization settings button.](../../media/settings/open-admin-settings-vert.png)
+1. Select ![gear icon](../../media/icons/gear-icon.png) **Organization settings**.
 
+   ![Screenshot showing highlighted Organization settings button.](../../media/settings/open-admin-settings-vert.png)
+   
 3. Under Security, select **Policies**, and then move the toggle to **off**.   
 
    :::image type="content" source="media/user-policy-invite-new-users.png" alt-text="Turn policy off to limit Team and Project administrators from inviting new users":::
@@ -49,9 +51,6 @@ Now, only Project Collection Administrators can invite new users to Azure DevOps
 > [!NOTE]
 > Project and Team Administrators can directly add users to their projects through the permissions blade. However, if they attempt to add users through the **Add Users** button located in the **Organization settings** > **Users** section, it's not visible to them.
 > Adding a user directly through **Project settings** > **Permissions** doesn't result in the user appearing automatically in the **Organization settings** > **Users** list. For the user to be reflected in the Users list, they must sign in to the system.
-
-### Known limitation
-Even with the policy turned off, Team and Project Administrators can re-invite users who were previously members of the organization. 
 
 ## Related articles
 - [Default permissions and access](permissions-access.md) 

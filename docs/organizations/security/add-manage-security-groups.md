@@ -27,13 +27,12 @@ Azure DevOps is pre-configured with default security groups. You can add and man
 > [!NOTE]
 > This article applies to Azure DevOps Services only. For Azure DevOps Server, you can manage security groups using the [**TFSSecurity** command](/azure/devops/server/command-line/tfssecurity-cmd).
 
-
 ## Prerequisites 
 
-- To add and manage security groups, you must be a member of the Project Collection Administrators security group.  
-- You must have installed the Azure DevOps CLI extension as described in [Get started with Azure DevOps CLI](../../cli/index.md).  
-- Sign into Azure DevOps using `az login`.   
-- For the examples in this article, set the default organization as follows: `az devops configure --defaults organization=YourOrganizationURL`.  
+| Category | Requirements |
+|--------------|-------------|
+|**Permissions**| Member of the [Project Collection Administrators group](../security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group. For more information on tokens, see [Security namespace and permission reference](namespace-reference.md).  |
+|**Tools**| [Azure DevOps CLI extension](../../cli/index.md). Sign in using `az login`. |
 
 ## Security group commands
 
@@ -72,10 +71,10 @@ az devops security group create [--description]
 ### Optional parameters
 
 - **description**: Description of the new security group.
-- **email-id**: Create new group using the email address as a reference to an existing group from an Azure Active Directory  backed provider. Required if **name** or **origin-id** is missing.
+- **email-id**: Create new group using the email address as a reference to an existing group from a Microsoft Entra backed provider. Required if **name** or **origin-id** is missing.
 - **groups**: A comma-separated list of descriptors referencing groups you want the newly created group to join.
 - **name**: Name of the new security group. Required if **origin-id** or **email-id** is missing.
-- **origin-id**: Create new group using the OriginID as a reference to an existing group from an Azure AD backed provider. Required if **name** or **email-id** is missing.
+- **origin-id**: Create new group using the OriginID as a reference to an existing group from a Microsoft Entra backed provider. Required if **name** or **email-id** is missing.
 - **project**: Name or ID of the project in which the group should be created.
 - **scope**: Create group at project or organization level. Accepted values are *organization* and *project* (default).
 
@@ -328,4 +327,3 @@ az devops security group membership remove --group-id vssgp.Uy0xLTktMTU1MTM3NDI0
 - [Manage tokens and namespaces](manage-tokens-namespaces.md)
 - [Security REST API](/rest/api/azure/devops/security/)
 - [TFSSecurity command](/azure/devops/server/command-line/tfssecurity-cmd) 
-- [Security glossary](security-glossary.md)

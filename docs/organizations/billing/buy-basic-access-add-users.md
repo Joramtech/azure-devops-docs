@@ -1,14 +1,14 @@
 ---
 title: Manage paid access for users
 titleSuffix: Azure DevOps
-ms.custom: seodec18, freshness-fy22q1, engagement-fy23
+ms.custom: freshness-fy22q1, engagement-fy23
 description: Assign paid access and control the default access of your new users in Azure DevOps.
 ms.subservice: azure-devops-billing
 ms.assetid: 02cb8774-6d1d-4f15-8818-b56541033b1f
 ms.topic: how-to
 ms.author: chcomley
 author: chcomley
-ms.date: 01/05/2023
+ms.date: 01/04/2024
 monikerRange: '<= azure-devops'
 ---
 
@@ -30,15 +30,17 @@ Visual Studio subscribers get access included with their subscription, and their
 
 Ensure you have the following items in place:
 
-* You must have [licensing set up for your organization via Azure](https://azure.microsoft.com/pricing/details/devops/server/)
-* You must be a member of the [Project Collection Administrators group](../security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group.
+| Category | Requirements |
+|--------------|-------------|
+|**Permissions**| Member of the [Project Collection Administrators group](../security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group.  |
+|**Licensing**| [Licensing set up for your organization via Azure](https://azure.microsoft.com/pricing/details/devops/server/)|
 
 ## Pay via Azure
 
 Complete the following steps to pay via Azure.
 
 1. [Create an Azure DevOps organization](../accounts/create-organization.md), even if you don't intend to use it.
-2. [Set up billing](set-up-billing-for-your-organization-vs.md) using an Azure subscription and add users or buy CI/CD.
+2. [Set up billing](set-up-billing-for-your-organization-vs.md#set-up-billing) using an Azure subscription and add users or buy CI/CD.
 3. Assign licenses to users.
 
 You're entitled to the same number of user licenses to be used in the server.
@@ -51,8 +53,8 @@ You're entitled to the same number of user licenses to be used in the server.
 
 Ensure you have the following items in place:
 
-* [Billing is set up](set-up-billing-for-your-organization-vs.md) for your organization
-* You have permissions allocated as [an organization Owner](../security/look-up-organization-owner.md) or [a member of the Project Collection Administrators group](../security/look-up-project-collection-administrators.md)
+* Ensure [billing is set up](set-up-billing-for-your-organization-vs.md#set-up-billing) for your organization.
+* **Permissions**: Be a member of the [Project Collection Administrators](../security/look-up-project-collection-administrators.md) group. Organization owners are already members of this group.
 
 <a name="buy-access-vs-marketplace"></a>
 
@@ -110,13 +112,13 @@ To find out if you have users who are no longer using Azure DevOps, do the follo
 
    :::image type="content" source="media/shared/last-access.png" alt-text="Screenshot showing select Users and then sort by Last Access.":::
  
-4. If there are users who have never signed in, you can find out how recently they were added by exporting the list of users and checking the **Date Created** column. 
+4. If there are users who haven't signed in, you can find out how recently they were added by exporting the list of users and checking the **Date Created** column. 
 
    :::image type="content" source="media/shared/export-users.png" alt-text="Screenshot showing Export users.":::
 
 ## Pay for a user once across multiple organizations
 
-If you're a member of more than one Azure DevOps organization, you can turn on multi-organization billing and pay for each **Basic** or **Basic + Test Plans** human user once, for all organizations under the same billing Azure subscription. This does not apply to [service principals](../../integrate/get-started/authentication/service-principal-managed-identity.md), which you must pay for each organization the service principal has been added to where the service principal has **Basic** or **Basic + Test Plans**.
+If you're a member of more than one Azure DevOps organization, you can turn on multi-organization billing and pay for each **Basic** or **Basic + Test Plans** human user once, for all organizations under the same billing Azure subscription. Multi-organization billing doesn't apply to [service principals](../../integrate/get-started/authentication/service-principal-managed-identity.md), which you must pay for each organization the service principal was added to where the service principal has **Basic** or **Basic + Test Plans**.
 
 For more information, see [multi-organization billing FAQs](./billing-faq.yml). Complete the following steps.
 
@@ -147,7 +149,7 @@ For more information, see [multi-organization billing FAQs](./billing-faq.yml). 
 
 ## Related articles
 
-* [Set up billing](set-up-billing-for-your-organization-vs.md)
+* [Set up billing](set-up-billing-for-your-organization-vs.md#set-up-billing)
 * [Change your Azure subscription for billing](change-azure-subscription.md)
 * [Learn about Azure DevOps pricing](https://azure.microsoft.com/pricing/details/visual-studio-team-services/)
 * [Get Azure DevOps billing support](https://azure.microsoft.com/support/devops/)

@@ -9,8 +9,8 @@ ms.assetid:
 ms.author: chcomley
 author: chcomley
 ms.reviewer: gopinach
-monikerRange: '>= tfs-2018'
-ms.date: 06/21/2022  
+monikerRange: "<=azure-devops"
+ms.date: 01/05/2024  
 ---
 
 # Clone and update wiki content offline
@@ -19,38 +19,23 @@ ms.date: 06/21/2022
 
 You can update your wiki pages offline the same way you develop code in a Git repo.
 
-::: moniker range="tfs-2018"
-> [!NOTE]  
-> GIT workflows, like branch policies, are applicable only for publish code as wiki workflows.
-::: moniker-end
-
 You can use any client you want or git command-line tools to update your wiki offline. For details on working with Git repositories and supported tools, see [Git Repositories](../../repos/git/index.yml).
 
 The basic steps to update wiki content offline are as follows:
 
-1. Clone your wiki Git repo to your local IDE or workspace.
-2. Add files or folders to your local git branch.
-3. Update the *.order* files to reflect the pages and sub-pages that you've added.
-4. Commit and push the updates you made to your local git branch.
+1. [Clone your wiki Git repo to your local IDE or workspace.](#clone-your-wiki)
+2. [Add files or folders to your local git branch.](#add-pages)
+3. Update the *.order* files to reflect your pages and subpages.
+4. [Commit and push the updates you made to your local git branch.](#push-your-changes)
 
 ## Prerequisites
 
-::: moniker range=">= azure-devops-2019"
-
-Do the following steps to migrate Markdown pages from another wiki to your team project wiki or to content that you publish as code to a wiki.
-
-- [Understand the underlying structure of your wiki Git repo](wiki-file-structure.md)
-- Understand the [differences between provisioned wiki and publish code as wiki](provisioned-vs-published-wiki.md)
-
-::: moniker-end
-
-::: moniker range="tfs-2018"
-
-Do the following steps to migrate Markdown pages from another wiki to your team project wiki.
-
-- [Understand the underlying structure of your wiki Git repo](wiki-file-structure.md).
-
-::: moniker-end
+| Category | Requirements |
+|--------------|-------------|
+| **Project access** | Member of the project where the wiki's located. If you don't have access, request it from your project administrator. |
+| **Permissions** | - Member of the **Contributors** group.<br> - To publish code as wiki: **Create Repository** permission. By default, this permission is set for members of the [Project Administrators group](../../repos/git/set-git-repository-permissions.md).  |
+| **Access levels** | At least **Basic** access. |
+|**Tasks**   |- [Understand the underlying structure of your wiki Git repo](wiki-file-structure.md) <br> - Understand the [differences between provisioned wiki and publish code as wiki](provisioned-vs-published-wiki.md)    |
 
 <a id="edit-wiki-offline"></a>
 
@@ -58,7 +43,7 @@ Do the following steps to migrate Markdown pages from another wiki to your team 
 
 Your wiki repository stores pages, images, attachments, and the sequence of pages and subpages. Clone your wiki to begin.
 
-1. Sign in to your organization (`https://dev.azure.com/{yourorganization}`), select your project, and then select your wiki.
+1. Sign in to your project (`https://dev.azure.com/{Your_Organization/Your_Project}`) and then select your wiki.
 
 2. Open the **More actions** context menu and select **Clone wiki**.
 
@@ -72,7 +57,10 @@ Your wiki repository stores pages, images, attachments, and the sequence of page
 
    :::image type="content" source="media/wiki/work-offline-wikiMaster-files.png" alt-text="Wiki main files":::
 
-4. Use the URL that you copied to clone the repo in the IDE that you use. To learn more, see one of the following articles:
+	> [!IMPORTANT]
+	> The "Generate Git Credentials" button will be removed in January 2025, to reduce creation of unnecessary and underutilized personal access tokens. Review the Git Authentication docs for all authentication methods available to you for git clone operations.
+
+4. Use the URL that you copied to clone the repo in the IDE that you use. For more information, see one of the following articles:
 	- [Clone an existing Git repo](../../repos/git/clone.md)
 	- [Using Version Control in VS Code](https://code.visualstudio.com/docs/editor/versioncontrol)
 	- [Get Started with Git and Azure DevOps](../../repos/git/gitquickstart.md?tabs=visual-studio)
@@ -95,7 +83,7 @@ To add pages at the root of the wiki tree, add a Markdown file at the root of th
 
     :::image type="content" source="media/wiki/add-pages.png" alt-text="Local branch wiki Git repo":::
 
-3. After you've added all the pages you want to add at the root, update the **.order** file at the root. It should have one entry for each Markdown file that is defined at the root. Each entry should match the file title with spaces replaced with a dash.
+3. After you added all the pages you want to add at the root, update the **.order** file at the root. It should have one entry for each Markdown file that is defined at the root. Each entry should match the file title with spaces replaced with a dash.
 
 	For example:  
 
@@ -115,9 +103,9 @@ To add pages at the root of the wiki tree, add a Markdown file at the root of th
 
    :::image type="content" source="media/wiki/add-sub-pages.png" alt-text="Screenshot of the subpages.":::
 
-2. Add a **.order** file in the folder with the order of the sub-pages as they should appear in the wiki. To understand the use of the **.order** file to sequence pages, see [Wiki Git repository files and file structure](wiki-file-structure.md).
+2. Add a **.order** file in the folder with the order of the subpages as they should appear in the wiki. To understand the use of the **.order** file to sequence pages, see [Wiki Git repository files and file structure](wiki-file-structure.md).
 	 
-	For example, the file has the following sub-pages:
+	For example, the file has the following subpages:
 
     ```
 	Request-extensions  
@@ -126,7 +114,7 @@ To add pages at the root of the wiki tree, add a Markdown file at the root of th
 	Coding-guidelines  
     ```
 
-### Push your changes
+## Push your changes
 
 When you're done with all your updates, [push the files to the Git repository](../../repos/git/pushing.md).
 
@@ -136,7 +124,7 @@ The added pages and subpages appear immediately in your wiki.
 
 If there are any errors in the process, the pages appear in your wiki with a warning sign.
 
-:::image type="content" source="media/wiki/wiki-offline-order-warning.png" alt-text="Warning when .order file is not updated properly.":::
+:::image type="content" source="media/wiki/wiki-offline-order-warning.png" alt-text="Warning when .order file isn't updated properly.":::
 
 ## Related articles
 
@@ -146,33 +134,3 @@ If there are any errors in the process, the pages appear in your wiki with a war
 - [Share code with push](../../repos/git/pushing.md)
 - [Manage README and Wiki permissions](manage-readme-wiki-permissions.md)
 - [Syntax guidance for Markdown files, widgets, wikis, and pull request comments](./markdown-guidance.md).
-
-<!---
-
-<img src="media/wiki/wiki-repo-struct.png" alt="Wiki Git repository structure" />
- 
-<img src="media/wiki/wiki-offline-add-page.png" alt="Add page to wiki Git repo" />
-
-	<img src="media/wiki/wiki-offline-update-order-subpages.png" alt="Update .ORDER file with the order of the sub-pages in the Git repo" />
-
-	<img src="media/wiki/wiki-offline-updated.png" alt="Wiki pages appear after updating the pages offline" />
-
-In the web portal, you can view the repo files based on the following URL: 
-::: moniker range=">= azure-devops-2019"
-	`https://*AccountName*.visualstudio.com/DefaultCollection/*ProjectName*/_git/*ProjectName*.wiki`
-::: moniker-end
-::: moniker range="tfs-2018"
-	`https://*ServerName*/DefaultCollection/*ProjectName*/_git/*ProjectName*.wiki`
-::: moniker-end
-
-1. Clone your wiki Git repo to your local IDE or workspace 
-2. Create a local git branch based on your wikiMaster branch 
-3. Add files or folders to your local git branch 
-4. Update the .ORDER file(s) to reflect the pages and subpages you've added 
-5. Commit and push the updates you made to your local git branch
-6. Create a pull request to merge your changes to the wikiMaster branch 
-7. Approve the changes to complete the pull request.  
-
-While that's a lot of steps, the main steps that are specific to updating a wiki is step 3. The rest follow the standard steps for updating a Git repo.
-
--->

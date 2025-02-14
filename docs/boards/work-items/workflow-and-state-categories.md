@@ -1,44 +1,38 @@
 ---
 title: How workflow category states are used in Azure Boards backlogs and boards
-titleSuffix: Azure Boards   
-description: Understand how workflow states map to workflow category states and are used in Azure Boards backlogs, boards, and Analytics in Azure Boards.
-ms.custom: seodec18   
+titleSuffix: Azure Boards
+description: Learn how workflow states map to workflow category states and how to use them in Azure Boards backlogs, boards, and Analytics to manage work items effectively.
 ms.service: azure-devops-boards
 ms.assetid: C6FEEE5A-CD13-413E-8A3F-84A7D4F3A2C9
+ai-usage: ai-assisted
 ms.author: chcomley
-author: chcomley 
+author: chcomley
 ms.topic: conceptual
 monikerRange: '<= azure-devops'
-ms.date: 04/04/2023
+ms.date: 11/08/2024
 ---
 
-# How workflow category states are used in Azure Boards backlogs and boards
+# About workflow states in backlogs and boards
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-All workflows consist of states, transitions, and reasons. Workflows are defined for a work item type. A transition supports forward and backward movement among two states. When you add a custom state, the system automatically adds transitions from the custom state to all other inherited states (except for Removed).  
+Workflows are essential for managing work items, consisting of states, transitions, and reasons. Each workflow is defined for a specific work item type. Transitions allow movement between states, both forward and backward. When you add a custom state, the system automatically includes transitions to all other inherited states, except for the Removed state.
 
-Each state belongs to a state category (previously referred to as a metastate). State categories support the Agile tool backlog and board views. 
-
-<a id="workflow-states">  </a> 
+Each state is categorized to support Agile tool backlogs and board views, ensuring a streamlined and organized workflow process.
 
 ## Workflow states
 
-Workflow states define how a work item progresses from its creation to closure. The four main states that are defined for the User Story (Agile process) describe a user story's progression. The workflow states are New, Active, Resolved, and Closed. (The Removed state supports removing a work item from appearing on the backlog; for more information, see [Move, change, or delete work items](../backlogs/remove-delete-work-items.md#remove).)
+Workflow states define how a work item progresses from creation to closure. For the User Story (Agile process), the main states are New, Active, Resolved, and Closed. The Removed state is used to remove a work item from the backlog; for more information, see [Move, change, or delete work items](../backlogs/remove-delete-work-items.md#remove).
 
-The natural progressions and regressions for the work item types&mdash;user story (Agile), issue (Basic) product backlog item (SCrum), and requirement (CMMI)&mdash;are as shown.  
+The natural progressions and regressions for work item types—user story (Agile), issue (Basic), product backlog item (Scrum), and requirement (CMMI)—are as shown.
  
 [!INCLUDE [temp](../includes/four-process-workflow.md)] 
 
-
-<a id="state-categories">  </a>  
-
 ## Category states
 
-Category states determine how Agile planning tools and select dashboard widgets treat each workflow state. The state categories used by the backlogs, boards and widgets are *Proposed*, *In Progress*, *Resolved*, and *Complete*.
+Category states determine how Agile planning tools and dashboard widgets treat each workflow state. Work item types use state categories to track progress. These states apply across all projects using the same process and affect how work items appear on backlogs and boards. The state categories used by backlogs, boards, and widgets are *Proposed*, *In Progress*, *Resolved*, and *Complete*.
 
-Here's how the default, inherited states map to the category states for the four system processes, including Test Plan work item types. The workflow states for Test Case, Test Design, and Test Suite are the same across all four system processes. 
-
+The following table shows how the default, inherited states map to the category states for the four system processes, including Test Plan work item types. The workflow states for Test Case, Test Design, and Test Suite are the same across all four system processes.
 
 #### [Agile process](#tab/agile-process) 
 
@@ -55,7 +49,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the Kanban boards and Taskboards map to a Proposed state category. 
+   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the boards and Taskboards map to a Proposed state category. 
    :::column-end:::
    :::column span="1":::
    New
@@ -66,7 +60,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on Kanban boards. 
+   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on boards. 
    :::column-end::: 
    :::column span="1":::
    Active (Bug, Epic, Feature, User Story)
@@ -77,7 +71,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Resolved:** Assigned to states that represent a solution has been implemented, but aren't yet verified. Generally these states apply to bugs. Work items in a *Resolved* category state appear on the backlog by default. The Agile tools treat the *Resolved* category state  exactly the same as the *In Progress* category state. 
+   **Resolved:** Assigned to states that represent a solution was implemented, but not yet verified. Generally these states apply to bugs. Work items in a *Resolved* category state appear on the backlog by default. You can also include *Resolved* states in burndown charts, providing a more accurate tracking of progress. The Agile tools treat the *Resolved* category state  exactly the same as the *In Progress* category state. 
    :::column-end::: 
    :::column span="1":::
    Resolved (Bug)
@@ -88,7 +82,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Completed:** Assigned to states that represent work that has finished. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the Kanban board. You can't modify states in this category nor can you add states to this category.
+   **Completed:** Assigned to states that represent work that's complete. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the board. You can't modify states in this category nor can you add states to this category.
    :::column-end::: 
    :::column span="1":::
    Closed (Bug, Epic, Feature, User Story)  
@@ -127,7 +121,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the Kanban boards and Taskboards map to a Proposed state category. 
+   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the boards and Taskboards map to a Proposed state category. 
    :::column-end:::
    :::column span="1":::
    To Do
@@ -138,7 +132,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on Kanban boards. 
+   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on boards. 
    :::column-end::: 
    :::column span="1":::
    Doing
@@ -149,7 +143,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Resolved:** Assigned to states that represent a solution has been implemented, but aren't yet verified. Generally these states apply to bug WITs. Work items in a Resolved state appear on the backlog by default. The Agile tools treat the Resolved state category exactly the same as the In Progress state category. 
+   **Resolved:** Assigned to states that represent a solution was implemented, but not yet verified. Generally these states apply to bug work item types. Work items in a *Resolved* state appear on the backlog by default. You can also include *Resolved* states in burndown charts, providing a more accurate tracking of progress. The Agile tools treat the *Resolved* state category exactly the same as the In Progress state category. 
    :::column-end::: 
    :::column span="1":::
    n/a
@@ -160,7 +154,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Completed:** Assigned to states that represent work that has finished. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the Kanban board. You can't modify states in this category nor can you add states to this category.
+   **Completed:** Assigned to states that represent completed work. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the board. You can't modify states in this category nor can you add states to this category.
    :::column-end::: 
    :::column span="1":::
    Done  
@@ -197,7 +191,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the Kanban boards and Taskboards map to a Proposed state category. 
+   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the boards and Taskboards map to a Proposed state category. 
    :::column-end:::
    :::column span="1":::
    New (Bug, Epic, Feature, Product backlog item)  Approved  To Do (Task) 
@@ -208,7 +202,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on Kanban boards. 
+   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on boards. 
    :::column-end::: 
    :::column span="1":::
    Committed (Bug, Epic, Feature, Product backlog item)  Open (Impediment)
@@ -219,7 +213,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Resolved:** Assigned to states that represent a solution has been implemented, but aren't yet verified. Generally these states apply to bugs. Work items in a *Resolved* category state appear on the backlog by default. The Agile tools treat the *Resolved* category state exactly the same as the *In Progress* state category. 
+   **Resolved:** Assigned to states that represent a solution was implemented, but not yet verified. Generally these states apply to bugs. Work items in a *Resolved* category state appear on the backlog by default. You can also include *Resolved* states in burndown charts, providing a more accurate tracking of progress. The Agile tools treat the *Resolved* category state exactly the same as the *In Progress* state category. 
    :::column-end::: 
    :::column span="1":::
    n/a
@@ -230,7 +224,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Completed:** Assigned to states that represent work that has finished. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the Kanban board. You can't modify states in this category nor can you add states to this category.
+   **Completed:** Assigned to states that represent completed work. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the board. You can't modify states in this category nor can you add states to this category.
    :::column-end::: 
    :::column span="1":::
    Done  
@@ -267,7 +261,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the Kanban boards and Taskboards map to a Proposed state category. 
+   **Proposed:** Assigned to states associated with newly added work items so that they appear on the backlog. The first column on the boards and Taskboards map to a Proposed state category. 
    :::column-end:::
    :::column span="1":::
    Proposed  
@@ -278,7 +272,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on Kanban boards. 
+   **In Progress:** Assigned to states that represent active work. Work items assigned to states mapped to this category appear in the backlog (unless you choose to hide them) and make up the middle columns on boards. 
    :::column-end::: 
    :::column span="1":::
    Active  Resolved (Epic, Feature, Requirement, Task)
@@ -289,7 +283,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Resolved:** Assigned to states that represent a solution  has been implemented but not yet verified. Generally these states apply to bugs. Work items in a *Resolved* category state appear on the backlog by default. The Agile tools treat the *Resolved* category state exactly the same as the *In Progress* state category. 
+   **Resolved:** Assigned to states that represent a solution was implemented, but not yet verified. Generally these states apply to bugs. Work items in a *Resolved* category state appear on the backlog by default. You can also include *Resolved* states in burndown charts, providing a more accurate tracking of progress. The Agile tools treat the *Resolved* category state exactly the same as the *In Progress* state category. 
    :::column-end::: 
    :::column span="1":::
    Resolved (Bug, Issue, Review, Risk)
@@ -300,7 +294,7 @@ Here's how the default, inherited states map to the category states for the four
 :::row-end:::
 :::row:::
    :::column span="2":::
-   **Completed:** Assigned to states that represent work that has finished. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the Kanban board. You can't modify states in this category nor can you add states to this category.
+   **Completed:** Assigned to states that represent completed work. Work items whose state is in this category don't appear on the backlog and do appear in the last column of the board. You can't modify states in this category nor can you add states to this category.
    :::column-end::: 
    :::column span="1":::
    Closed  
@@ -323,49 +317,58 @@ Here's how the default, inherited states map to the category states for the four
 
 * * *
 
+### Work item types and their boards
+
+Understand where each work item type appears so you can manage your work effectively.
+
+|Work item type category |Work items appear here |
+|---------|---------|
+|Requirement    |  Only on the product board.       | 
+|Feature   | Only on the Feature portfolio board.        |         
+|Epic     | Only on the Epic portfolio board.        | 
+|Custom|    Only on a custom portfolio board. |        
+
+> [!TIP]   
+> We recommend that you map each workflow state to a column. If it’s not mapped, it doesn’t appear on the board.
+
 [!INCLUDE [temp](../includes/note-closed-items.md)]
 
 [!INCLUDE [activated-resolved-by-fields](../includes/activated-resolved-by-fields.md)]
 
+## When to add a State versus a column
 
-<a id="add-state-vs-kanban-column" />
+Use both States and columns to track work status. Workflow states are shared across a project, while columns are shared within a team. Only project collection admins can add custom states, while team admins can add columns.
 
-## When to add a State versus a Kanban column
+Add custom states to align all teams with the organization's business workflow. Customizing the process automatically customizes the projects and work item types that reference it.
 
-Use both States and Kanban columns to track the status of work. Workflow states are shared across a project while Kanban columns are shared within a team. Only project collection admins can add custom states, while team admins can add Kanban columns.  
-
-Add custom states when you want all teams to track the status according to the business workflow adopted by the organization. By customizing the process, you automatically customize the projects and work item types that reference that process. 
-
-Adding custom states to support workflow states that multiple teams want to track, helps avoid the resulting confusion of different teams creating queries based on a Kanban column. Because each team can customize the Kanban board columns and swimlanes, the values assigned to work items that appear on different boards might not be the same. The primary workaround for this issue is to maintain single ownership of work items by team area path. Another workaround is to formalize the columns by adding custom states that can be shared across teams. 
-
-
-<a id="auto-complete-work-items-with-pr" />
+Custom states help avoid confusion from different teams creating queries based on columns. Since teams can customize board columns and swimlanes, work item values might differ across boards. Maintain single ownership of work items by team area path or formalize columns by adding custom states shared across teams.
 
 ## Auto completion of work items with pull requests 
 
 When you link a work item to a pull request (PR), you can automatically complete those work items when you complete the PR. For more information, see [Auto complete work items with pull requests](auto-complete-work-items-pull-requests.md).
 
+## Automate work item state transitions
+
+You can automatically update the state of a work item according to the state of its child tasks. For more information, see [Automate work item state transitions](automate-work-item-state-transitions.md).
+
 ## Related articles
 
-::: moniker range=">= azure-devops-2019"
 **Inheritance process model**
-- [Customize a workflow for a process](../../organizations/settings/work/customize-process-workflow.md)
-- [Apply rules to workflow states (Inheritance process)](../../organizations/settings/work/apply-rules-to-workflow-states.md)
-- [Rules and rule evaluation](../../organizations/settings/work/rule-reference.md) 
-- [Sample custom rule scenarios](../../organizations/settings/work/rule-samples.md)  
-::: moniker-end
+- [Customize your workflow](../../organizations/settings/work/customize-process-workflow.md)
+- [Apply rules to workflow states](../../organizations/settings/work/apply-rules-to-workflow-states.md)
+- [Evaluate rules](../../organizations/settings/work/rule-reference.md)
+- [Explore custom rule scenarios](../../organizations/settings/work/rule-samples.md)
 
 ::: moniker range="< azure-devops"
 **On-premises XML process model**
 
 - [Change the workflow for a work item type](../../reference/xml/change-workflow-wit.md)
-- [ProcessConfiguration XML element reference](../../reference/xml/process-configuration-xml-element.md)
-- [Customize your work tracking experience](../../reference/on-premises-xml-process-model.md) 
-- [Rules and rule evaluation](../../organizations/settings/work/rule-reference.md) 
-- [Sample custom rule scenarios](../../organizations/settings/work/rule-samples.md)  
+- [Reference the ProcessConfiguration XML element](../../reference/xml/process-configuration-xml-element.md)
+- [Customize your work tracking experience](../../reference/on-premises-xml-process-model.md)
+- [Evaluate rules](../../organizations/settings/work/rule-reference.md)
+- [Explore custom rule scenarios](../../organizations/settings/work/rule-samples.md)
 ::: moniker-end
 
-::: moniker range=">= azure-devops-2019"
 **Dashboard widgets**
-- [Lead Time and Cycle Time control charts (widgets)](../../report/dashboards/cycle-time-and-lead-time.md)
+- [Explore Lead Time and Cycle Time control charts (widgets)](../../report/dashboards/cycle-time-and-lead-time.md)
 ::: moniker-end

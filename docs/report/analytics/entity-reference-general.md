@@ -87,7 +87,7 @@ The following members are defined for the `Period` enumerated type that you can 
 
 ## Projects
 
-The following properties are valid for the **Projects** entity set and its surrogate key `ProjectSK`. When generating an organization scoped query, you can focus on one or more projects by specifying  one or more **Project Names**. To learn more, see [Project and organization-scoped queries](../extend-analytics/account-scoped-queries.md). 
+The following properties are valid for the **Projects** entity set and its surrogate key `ProjectSK`. When generating an organization scoped query, you can focus on one or more projects by specifying  one or more **Project Names**. For more information, see [Project and organization-scoped queries](../extend-analytics/account-scoped-queries.md). 
 
 |**Display name** | **Name**           | **Data type** | **Description** | 
 |-----------------|--------------------|---------------|--------------------------------------|
@@ -147,7 +147,5 @@ The following members are defined for the `UserType` enumerated type.
 - [Data model for Analytics](../extend-analytics/data-model-analytics-service.md)
 - [Entities and properties reference for Azure Boards](entity-reference-boards.md)   
 - [OData Analytics query guidelines](../extend-analytics/odata-query-guidelines.md)  
-- [Project and team quick reference](../../organizations/projects/project-team-quick-reference.md)
-
-
+- [About projects](../../organizations/projects/about-projects.md)
   

@@ -33,6 +33,8 @@ Use this article to learn how to:
 
 [!INCLUDE [temp](../includes/boards-disabled.md)]
 
+## Prerequisites
+
 [!INCLUDE [prerequisites-simple](../includes/analytics-prerequisites-simple.md)]
 
 [!INCLUDE [temp](../includes/analytics-open.md)] 
@@ -55,7 +57,7 @@ The creator of a view and all members of the Project Administrators and Project 
    > [!TIP]
    > If you remove fields from a view that are in use in the report, you'll need to update any Power BI report that references the view. 
 
-<a id="share-view" />
+<a id="share-view"></a>
 
 ## Share a view 
 
@@ -78,7 +80,7 @@ To favorite a view, hover over the view and choose the ![star icon](../../media/
 > [!div class="mx-imgBorder"]
 > ![Screenshot of Analytics views, favorite a view.](media/editable-views/directory-favorite.png)
 
-<a id="manage-permissions" />
+<a id="manage-permissions"></a>
  
 
 [!INCLUDE [temp](includes/manage-shared-view-permissions.md)]

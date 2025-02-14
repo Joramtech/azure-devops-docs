@@ -63,24 +63,6 @@
       "branch_mapping": {}
     },
     {
-      "path_to_root": "snippets",
-      "url": "https://github.com/MicrosoftDocs/snippets-azure-devops-docs-pr",
-      "branch": "master",
-      "branch_mapping": {}
-    },
-    {
-      "path_to_root": "azure-docs",
-      "url": "https://github.com/MicrosoftDocs/azure-docs-pr",
-      "branch": "main",
-      "branch_mapping": {}
-    },
-    {
-      "path_to_root": "quickstart-templates",
-      "url": "https://github.com/Azure/azure-quickstart-templates",
-      "branch": "master",
-      "branch_mapping": {}
-    },
-    {
       "path_to_root": "docs/reusable-content",
       "url": "https://github.com/MicrosoftDocs/reusable-content",
       "branch": "main",
@@ -102,6 +84,7 @@
     ".openpublishing.redirection.archive.2013.json",
     ".openpublishing.redirection.archive.2015.json",
     ".openpublishing.redirection.archive.2017.json",
+    ".openpublishing.redirection.archive.2018.json",
     "docs/legacy/.openpublishing.redirection.legacy.json",
     "docs/organizations/.openpublishing.redirection.notifications.json",
     "docs/pipelines/.openpublishing.redirection.pipelines.json",

@@ -1,29 +1,25 @@
 ---
 title: Create a project
 titleSuffix: Azure DevOps
-ms.custom: seodec18, contperf-fy20q4, devx-track-azurecli, engagement-fy23
+ms.custom: devx-track-azurecli, engagement-fy23
 description: Learn how to create a new project where your team can plan, track progress, and collaborate on building software solutions.
 ms.assetid: 21F3C364-34F4-41B0-9EFC-6D4A141D81E0
 ms.subservice: azure-devops-projects
 ms.topic: how-to
 ms.author: chcomley
 author: chcomley
-monikerRange: '<= azure-devops'
-ms.date: 11/04/2022
+monikerRange: '>= azure-devops-2019'
+ms.date: 12/17/2024
 ---
 
 
 # Create a project in Azure DevOps
 
-[!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
+[!INCLUDE [version-gt-eq-2019](../../includes/version-gt-eq-2019.md)] 
 
 Create an Azure DevOps project to establish a repository for source code and to plan and track work. You can manage and structure your project to support your business needs. Each project provides boundaries to isolate data from other projects. For more information, see [About projects and scaling your organization](about-projects.md).
 
-[!INCLUDE [version-selector](../../includes/version-selector-minimize.md)]
-
-If you don't want to create a project in Azure DevOps, you can create [Azure DevOps Projects](/azure/devops-project/).
-
-<!---Projects differ from [software application projects or solutions](/visualstudio/ide/creating-solutions-and-projects). -->  
+[!INCLUDE [version-selector](../../includes/version-selector.md)]
 
 ::: moniker range="< azure-devops"
 > [!NOTE]
@@ -34,21 +30,26 @@ If you don't want to create a project in Azure DevOps, you can create [Azure Dev
 
 ::: moniker range="azure-devops" 
 
-- You need an organization before you can create a project. If you haven't created an organization yet, create one by following the instructions in [Sign up, sign in to Azure DevOps](../../user-guide/sign-up-invite-teammates.md), which also creates a project. Or see [Create an organization or project collection](../accounts/create-organization.md).  
-- You must be a member of the Project Collection Administrators group or have the collection-level "Create new projects" permission set to *Allow*. If you're the Organization owner, you're automatically added to the Project Collection Administrators group. For more information, see [Change project collection-level permissions](../security/change-organization-collection-level-permissions.md).
+| Category | Requirements |
+|--------------|-------------|
+|**Organization** |An [organization](../accounts/create-organization.md). | 
+|**Permissions** |Member of the [Project Collection Administrators](../security/change-organization-collection-level-permissions.md) group or the collection-level "Create new projects" permission set to *Allow*. Organization owners are automatically members of this group.|
+
 ::: moniker-end
 
 ::: moniker range=" < azure-devops"  
 
-- You need a project collection before you can create a project. If you don't have one, [create a project collection now](/azure/devops/server/admin/manage-project-collections?view=azure-devops-2020#create-a-project-collection&preserve-view=true).
-- You must be a member of the Project Collection Administrators group or have the "Create new projects permission" set to *Allow*. For more information, see [Change project collection-level permissions](../security/change-organization-collection-level-permissions.md).
+| Category | Requirements |
+|--------------|-------------|
+|**Project collection**| A [project collection](/azure/devops/server/admin/manage-project-collections?view=azure-devops-2020#create-a-project-collection&preserve-view=true).|
+|**Permissions** |Be a member of the [Project Collection Administrators](../security/change-organization-collection-level-permissions.md) group or have the collection-level "Create new projects" permission set to *Allow*. Organization owners are automatically members of this group.|
 
 ::: moniker-end  
 
 ::: moniker range="azure-devops"
 
 > [!IMPORTANT]  
-> To create a public project or to make a private project public, see the information in [Make a private project public](../projects/make-project-public.md). You must enable additional policy settings to work with public projects. Then, return to this article to create your project.
+> To create a public project or [make a private project public](../projects/make-project-public.md), enable additional policy settings to work with public projects, and then return to this article to create your project.
 
 ::: moniker-end
 
@@ -56,7 +57,7 @@ If you don't want to create a project in Azure DevOps, you can create [Azure Dev
 
 ::: moniker range="azure-devops"
 
-You can create up to 1000 projects within an organization in Azure DevOps. For more information, see [Work tracking, process, and project limits](../settings/work/object-limits.md). 
+You can create up to 1,000 projects within an organization in Azure DevOps. For more information, see [Work tracking, process, and project limits](../settings/work/object-limits.md). 
 
 ::: moniker-end
 
@@ -71,9 +72,9 @@ There isn't a limit on the number of projects that you can create within a proje
 
 #### [Browser](#tab/browser)
 
-::: moniker range=">= azure-devops-2020"
+::: moniker range=">= azure-devops"
 
-1. Sign in to your organization (```https://dev.azure.com/{yourorganization}```). 
+1. Sign in to your organization (```https://dev.azure.com/{Your_Organization}```). 
 
 2. Select **New project**.
 
@@ -87,7 +88,7 @@ There isn't a limit on the number of projects that you can create within a proje
      For more information, see [Choosing the right version control for your project](../../repos/tfvc/comparison-git-tfvc.md) and [Choose a process](../../boards/work-items/guidance/choose-process.md).
 
    > [!div class="mx-imgBorder"]  
-   > ![Screenshot of create new project form.](media/create-project/create-new-project-form-new-nav.png)  
+   > ![Screenshot of create new project form.](media/create-project/create-new-project-form-new-nav-2.png)  
 
    When you choose public visibility, anyone on the internet can view your project. With private visibility, only users you give access to can view your project. For more information about features and access levels for public projects, see [Make a private project public](make-project-public.md). If the **Public** option isn't available, you need to change the policy.
 
@@ -104,15 +105,15 @@ There isn't a limit on the number of projects that you can create within a proje
    - **Pipelines**: Define a pipeline. See [Azure Pipelines documentation](../../pipelines/index.yml).
    - **Test Plans**: Define test plans and test suites. See [Create test plans and test suites](../../test/create-a-test-plan.md).
    - **Artifacts**: Discover, install, and publish NuGet, npm, and Maven packages. See the [Azure Artifacts overview](../../artifacts/start-using-azure-artifacts.md).
-   - **manage your services**: Disable the visibility of services. See [Turn a service on or off](../settings/set-services.md).
+   - **Manage your services**: Disable the visibility of services. See [Turn a service on or off](../settings/set-services.md).
 
 ::: moniker-end
 
-::: moniker range="azure-devops-2019"
+::: moniker range="< azure-devops"
 
-1. Sign in to your organization (```https://dev.azure.com/{yourorganization}```). 
+1. Sign in to your DevOps Server collection (```https://<your-devops-server>/<your-organization>```). 
 
-2. Select **New project**.
+2. Select **New project**. You can also [create a project from a process](../settings/work/manage-process.md).
 
    > [!div class="mx-imgBorder"]  
    > ![Screenshot of listed projects and highlighted New projects button.](media/create-project/select-new-project.png)
@@ -124,7 +125,7 @@ There isn't a limit on the number of projects that you can create within a proje
      For more information, see [Choosing the right version control for your project](../../repos/tfvc/comparison-git-tfvc.md) and [About processes and process templates](../../boards/work-items/guidance/choose-process.md).
 
    > [!div class="mx-imgBorder"]  
-   > ![Screenshot of create new project form.](media/create-project/create-new-project-form-new-nav.png)  
+   > ![Screenshot of create new project form.](media/create-project/create-new-project-form-new-nav-2.png)  
 
    When you choose public visibility, anyone on the internet can view your project. With private visibility, only people who you give access to can view your project. For more information about public projects, see [Create a public project in your organization](../projects/create-project.md). If the **Public** option isn't available, you need to change the policy.
 
@@ -144,22 +145,6 @@ There isn't a limit on the number of projects that you can create within a proje
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-
-1. Select ![Azure DevOps logo.](../../media/icons/project-icon.png) **Azure DevOps** to open the **Projects** page. Then, select **New project**.
-
-   > [!div class="mx-imgBorder"]  
-   > ![Screenshot of highlighted New Project button.](media/create-project/projects-hub-horz-new-project.png)  
-
-2. Enter a name for your new project, initial source control type, and work item process.
-
-   Azure DevOps displays the project summary. For more information, see [Share your project, view project activity](project-vision-status.md).
-
-   > [!div class="mx-imgBorder"]  
-   > ![Screenshot of new project created.](media/create-project/new-team-project-tfs-2017.png)
-
-::: moniker-end
-
 #### [Team Explorer](#tab/team-explorer)
 
 > [!NOTE]
@@ -169,7 +154,7 @@ There isn't a limit on the number of projects that you can create within a proje
 
 #### [Azure DevOps CLI](#tab/azure-devops-cli)
 
-<a id="create-project" /> 
+<a id="create-project"></a> 
 
 ::: moniker range="azure-devops" 
 
@@ -192,7 +177,7 @@ az devops project create --name
 - **description**: Optional. Short description of the project, enclosed in quotes.  
 - **open**: Optional. Once the command creates a project, it opens in the default web browser.
 - **org**: Optional. Azure DevOps organization URL. Required if not configured as default or picked up by using `git config`. You can configure the default organization using `az devops configure -d organization=ORG_URL`. Example: `https://dev.azure.com/MyOrganizationName/`.
-- **process**: Optional. The process model to use, such as *Agile*, *Basic*, *Scrum*, *CMMI*, or other custom process model. Agile is the default. To learn more, see [About process customization and inherited processes](../settings/work/inheritance-process-model.md).
+- **process**: Optional. The process model to use, such as *Agile*, *Basic*, *Scrum*, *CMMI*, or other custom process model. Agile is the default. For more information, see [About process customization and inherited processes](../settings/work/inheritance-process-model.md).
 - **source-control**: Optional. Type of source control repository to create for the project: *git* (default) or *tfvc*. If not, name or ID of the project. Example: `--project "Fabrikam Fiber"`.
 - **visibility**: Optional. Project visibility. Accepted values: *private* (default), *public*.
 
@@ -232,7 +217,7 @@ View a list of projects from your web browser.
 
 ::: moniker-end
  
-::: moniker range=">= tfs-2018 <= azure-devops-2019"  
+::: moniker range=" azure-devops-2019"
 
 1. To view the projects defined for a collection, select ![Azure DevOps logo](../../media/icons/project-icon.png) **Azure DevOps** to open the **Projects** page. 
 
@@ -243,7 +228,7 @@ View a list of projects from your web browser.
 
 Or
 
-1. Select **Admin settings** and then choose **Projects** to list all projects.
+- Select **Admin settings** and then choose **Projects** to list all projects.
 
 	> [!div class="mx-imgBorder"]  
 	> ![Screenshot of selected Admin settings and Projects.](media/create-project/list-projects-admin-settings-2019.png)  
@@ -271,8 +256,6 @@ From Team Explorer, you can view a list of projects by connecting to an organiza
 > ![Screenshot of connect to a project dialog 2015.](media/create-project/connect-to-a-project-vs-2015.png)  
 
 #### [Azure DevOps CLI](#tab/azure-devops-cli)
-
-<a id="list-projects" /> 
 
 ::: moniker range="azure-devops" 
 
@@ -315,7 +298,8 @@ aba0ed07-3174-4793-9f2c-d2c5fa6b44d7  MyPublicProject     Public
 
 ```
 
-<a id="show-project" /> 
+
+<a id="show-project"></a>
 
 ### Show project information in the web portal
 
@@ -352,24 +336,20 @@ ID                                    Name            Visibility    Process     
 
 * * *
 
-<a id="add-a-repository" />
-<a id="add-a-repository-to-your-project" />
 
 ## Add a repository to your project
 
-You can add Git (distributed) or TFVC (centralized) repositories to your project. You can create many Git repositories, but only a single TFVC repository for a project. More steps to address permissions may be required. For more information, see [Use Git and TFVC repos in the same project](../../repos/git/team-projects.md).
+You can add Git (distributed) or TFVC (centralized) repositories to your project. You can create many Git repositories, but only a single TFVC repository for a project. More steps to address permissions might be required. For more information, see [Use Git and TFVC repos in the same project](../../repos/git/team-projects.md).
 
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Structure your project](about-projects.md#project-structure)
+> [Structure your project](about-projects.md#structure-your-project)
 
 ## Related articles
 
 - [Rename a project](rename-project.md)
-- [Save project data](save-project-data.md)
 - [Delete a project](delete-project.md)
-- [Restore a project](restore-project.md)
 - [Get started as an administrator](../../user-guide/project-admin-tutorial.md)
 - [Install extensions](../../marketplace/install-extension.md)
 
@@ -387,29 +367,9 @@ A: If you receive an error message that states you don't have permission to crea
           
 ### Q: How do I resolve Error TF30321? 
 
-A: **Error TF30321: The name you entered is already used for another project on the Team Foundation Server** indicates that you should use a different name for your project. The name you entered is either in active use or has undergone partial deletion, but not full deletion.  
+A: **Error TF30321: The name you entered is already used for another project on the Team Foundation Server** indicates that you should use a different name for your project. The name you entered is either in active use or is partially deleted, but not fully deleted.  
           
-Even when you've deleted a project, you may get the same name error. Some components could be created or deleted even though others aren't. In this event, you can't reuse the name associated with the project.
-          
-::: moniker range="tfs-2018"
-
-To verify project deletion or remove remaining components associated with a partially deleted project, use the [Delete project command line tool(TFSDeleteProject)](/azure/devops/server/command-line/tfsdeleteproject-cmd). Then try again to create the project with the same name.
-          
-Even with troubleshooting, you might not be able to use the same name. Some components of the deleted project could be scheduled for deletion but not yet deleted.
-
-### Q: How do I resolve an error message related to a plug-in?
-
-A: The process template used to create the project contains several XML plug-in files. If one of these files contains a format or other error, an error message appears.
-
-Review the project creation log to determine the plug-in that caused the error. After you discover the problem, you can either contact the developer or vendor that provided the plug-in, or attempt to fix the problem yourself. For more information, see [Customize a process template](../../reference/process-templates/customize-process.md).
-
-### Q: How do I resolve a problem connecting to a server?
-
-A: If you receive an error message about a problem connecting to a server, retrieving information from a server, or checking permissions to create projects, an incorrectly configured server in the deployment could have caused it. This problem is especially common after a server move, failover, or other maintenance activity.
-          
-Contact the TFS system administrator and request that they verify the server configuration.
-          
-::: moniker-end
+Even when you deleted a project, you might get the same name error. Some components could be created or deleted even though others aren't. In this event, you can't reuse the name associated with the project.
 
 ::: moniker range="< azure-devops"
 ### Q: How do I add my custom process template to the list?
@@ -421,7 +381,7 @@ A: [Upload your template](../../boards/work-items/guidance/manage-process-templa
 
 A: The log file is stored in $:\\Users\\*user name*\\AppData\\Local\\Temp and labeled vso\_TeamProjectCreation\_*yyyy\_mm\_dd\_hh\_mm\_ss*.log.
           
-The log shows each action taken by the wizard at the time of the failure and may include more details about the error. You can review the log entries to find network or file related issues by searching for **Exception** or **Error**.
+The log shows each action taken by the wizard at the time of the failure and might include more details about the error. You can review the log entries to find network or file related issues by searching for **Exception** or **Error**.
                  
 ### Q: How do I add SQL Server Reporting services?
 

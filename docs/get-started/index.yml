@@ -7,11 +7,12 @@ metadata:
   title: Get started with Azure DevOps documentation
   titleSuffix: Azure DevOps  
   description: Learn how to start using Azure DevOps to collaborate on code, build and deploy apps, or plan and track work.
+  ms.custom: UpdateFrequency3
   ms.subservice: azure-devops-new-user
   ms.topic: landing-page 
   author: chcomley 
   ms.author: chcomley 
-  ms.date: 09/30/2019 
+  ms.date: 09/17/2024 
   manager: jillfra
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
@@ -32,8 +33,10 @@ landingContent:
             url: ../repos/get-started/what-is-repos.md 
           - text: What is Azure Pipelines?
             url: ../pipelines/get-started/what-is-azure-pipelines.md 
+          - text: What is Azure Test Plans?
+            url: ../test/overview.md
           - text: Get started as a Stakeholder
-            url: ../organizations/security/get-started-stakeholder.md 
+            url: ../organizations/security/get-started-stakeholder.md
   - title: Sign up for free
     linkLists:
       - linkListType: quickstart
@@ -46,6 +49,8 @@ landingContent:
             url: ../repos/get-started/sign-up-invite-teammates.md
           - text: Azure Pipelines 
             url: ../pipelines/get-started/pipelines-sign-up.md
+          - text: Azure Artifacts
+            url: ../artifacts/start-using-azure-artifacts.md
       - linkListType: how-to-guide
         links:
           - text: Connect to a project
@@ -62,12 +67,22 @@ landingContent:
             url: ../organizations/security/change-project-level-permissions.md?toc=/azure/devops/get-started/toc.json
           - text: Add a project collection administrator
             url: ../organizations/security/change-organization-collection-level-permissions.md?toc=/azure/devops/get-started/toc.json
+          - text: Create a new project
+            url: ../organizations/projects/create-project.md?toc=/azure/devops/get-started/toc.json
+          - text: Delete or restore a project
+            url: ../organizations/projects/delete-project.md?toc=/azure/devops/get-started/toc.json
+          - text: Set up billing for your organization
+            url: ../organizations/billing/set-up-billing-for-your-organization-vs.md#set-up-billing
       - linkListType: concept
         links:
+          - text: Security overview
+            url: ../organizations/security/security-overview.md?toc=/azure/devops/get-started/toc.json
           - text: Default permissions and access
             url: ../organizations/security/permissions-access.md?toc=/azure/devops/get-started/toc.json
           - text: Permission lookup guide
             url: ../organizations/security/permissions-lookup-guide.md?toc=/azure/devops/get-started/toc.json
+          - text: About settings
+            url: ../organizations/settings/about-settings.md?toc=/azure/devops/get-started/toc.json
   - title: Plan and track work
     linkLists:
       - linkListType: quickstart
@@ -76,6 +91,10 @@ landingContent:
             url: ../boards/get-started/plan-track-work.md
           - text: Create your backlog
             url: ../boards/backlogs/create-your-backlog.md
+          - text: Define sprints
+            url: ../boards/sprints/define-sprints.md
+          - text: Use boards
+            url: ../boards/boards/kanban-quickstart.md
   - title: Collaborate on code
     linkLists:
       - linkListType: quickstart
@@ -88,16 +107,22 @@ landingContent:
             url: ../repos/git/use-ssh-keys-to-authenticate.md
           - text: Search code across projects
             url: ../project/search/functional-code-search.md
+          - text: Set Git repo permissions
+            url: ../repos/git/set-git-repository-permissions.md
   - title: Build and deploy your apps
     linkLists:
       - linkListType: quickstart
         links:
           - text: Create your first pipeline
             url: ../pipelines/get-started/pipelines-get-started.md
+          - text: Build multiple branches
+            url: ../pipelines/build/ci-build-git.md
       - linkListType: reference
         links:
-          - text: YAML Schema
+          - text: YAML schema
             url: /azure/devops/pipelines/yaml-schema/
+          - text: Pipeline variables
+            url: ../pipelines/process/variables.md
   - title: Set your preferences
     linkLists:
       - linkListType: quickstart
@@ -118,13 +143,27 @@ landingContent:
             url: ../project/navigation/index.md
           - text: Team Explorer navigation
             url: ../user-guide/work-team-explorer.md
-  - title: Migrate & import
+          - text: Use the command line
+            url: ../repos/git/command-prompt.md
+  - title: Migrate
     linkLists:
       - linkListType: concept
         links:
-          - text: Migrate from TFS to Azure DevOps Services
+          - text: Migration overview
             url: ../migrate/migration-overview.md
-          - text: Migration options
-            url: ../migrate/migrate-from-tfs.md
-          - text: Import
-            url: ../migrate/migration-import.md
+          - text: Get started
+            url: ../migrate/migration-get-started.md
+          - text: Prerequisites
+            url: ../migrate/migration-prerequisites.md
+          - text: Validate
+            url: ../migrate/migration-validate.md
+          - text: Prepare test run
+            url: ../migrate/migration-prepare-test-run.md
+          - text: Test run
+            url: ../migrate/migration-test-run.md
+          - text: Migrate
+            url: ../migrate/migration-migrate.md
+          - text: Post-migration
+            url: ../migrate/migration-post-migration.md
+          - text: Troubleshoot
+            url: ../migrate/migration-troubleshooting.md

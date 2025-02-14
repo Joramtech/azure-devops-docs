@@ -20,8 +20,9 @@ Project Collection Administrators receive an email when another project member r
 
 ## Prerequisites
 
-- To request extensions, you must be a contributor for your organization.
-- To approve extensions, you must be a member of the Project Collection Administrators group and have [**Edit collection-level information** permissions](../organizations/security/permissions.md#collection).
+**Permissions:**
+- To request extensions: Contributor for your organization.
+- To approve extensions: Member of the Project Collection Administrators group and [**Edit collection-level information** permissions](../organizations/security/permissions.md#collection).
 
 ## Request an extension
 
@@ -71,21 +72,9 @@ Your requests appear on the **Extensions** page, **Requested** tab.
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-1. Select an extension from the [Visual Studio Marketplace > Azure DevOps](https://marketplace.visualstudio.com/azuredevops).
 
-2. Select the project collection where you want to install the extension. If you don't have permission to install the extension, request it now.
-
-You can review your requests after the Marketplace sends the request to your Project Collection or Project Administrator.
-
-Your requests appear on your **Manage extensions** page.
-
-![On the Extension page, a drop-down list to the right of the search window has two options, Browse Marketplace and Manage extensions (highlighted).](media/manage-extensions-vsts.png)
-
-::: moniker-end
-
-To approve extensions, you must have [**edit collection-level information** permissions](../organizations/security/permissions.md#collection).
+To approve extensions, have [**edit collection-level information** permissions](../organizations/security/permissions.md#collection).
 
 ## Approve an extension request
 
@@ -108,30 +97,13 @@ To approve extensions, you must have [**edit collection-level information** perm
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-1. Go to your project, ```https://{server}:8080/tfs/{team-project-collection}/{team-project}```.
-
-1. Select the shopping bag icon, and then **Manage extensions**.
-
-   ![On the Extension page, a drop-down list to the right of the search window has two options, Browse Marketplace and Manage extensions (highlighted)](../organizations/billing/media/shared/marketplace-shopping-bag-manage-extensions-prev-nav.png)
-
-2. Review and approve your requested extensions.
-
-   > [!div class="mx-imgBorder"] 
-   > ![Extensions tab, requested extensions](media/get-tfs-extensions/connected/approve-request-tfs.png)
-
-   After you approve extension requests, the extensions automatically get installed.
-
-3. [Assign those extensions](./install-extension.md) to users who need access.
-
-::: moniker-end
 
 Tell your team about installed extensions, so they can start using their capabilities.
 
 ## Related articles
 
 - [FAQs](faq-extensions.yml)
-- [Set up billing](../organizations/billing/set-up-billing-for-your-organization-vs.md)
+- [Set up billing](../organizations/billing/set-up-billing-for-your-organization-vs.md#set-up-billing)
 - [Azure DevOps pricing](https://azure.microsoft.com/pricing/details/devops/azure-devops-services/)
 - [Assign access levels by group membership](../organizations/accounts/assign-access-levels-by-group-membership.md)

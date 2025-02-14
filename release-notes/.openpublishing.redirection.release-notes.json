@@ -535,6 +535,82 @@
       "redirect_url": "/azure/devops/release-notes/features-timeline"
     },
     {
+      "source_path_from_root": "/release-notes/roadmap/support-flexible-orchestration-mode.md",
+      "redirect_url": "/azure/devops/pipelines/agents/scale-set-agents#orchestration-modes"
+    },
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-10.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-09.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-08.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-07.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-06.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-05.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-04.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-03.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-02.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2024-01.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-12.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-11.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-10.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-09.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-08.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-07.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },  
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-06.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
+      "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-05.md",
+      "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    }, 
+    {
       "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2023-04.md",
       "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
     }, 
@@ -693,6 +769,10 @@
     {
       "source_path_from_root": "/release-notes/docswhatsnew/azure-devops-docs-2020-01.md",
       "redirect_url": "/azure/devops/release-notes/docswhatsnew/azure-devops-docs-whats-new"
+    },
+    {
+      "source_path_from_root": "/release-notes/roadmap/2022/resume-test-execution.md",
+      "redirect_url": "/azure/devops/test/"
     }
   ]
 }

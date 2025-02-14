@@ -5,7 +5,7 @@ ms.topic: reference
 ms.assetid: 96a52d0d-5e01-4b30-818d-1893387522cd
 ms.author: vijayma
 author: vijayma
-ms.date: 01/25/2023
+ms.date: 12/11/2024
 monikerRange: azure-devops
 ---
 
@@ -137,7 +137,7 @@ To use the GitHub App, install it in your GitHub organization or user account fo
 
 After installation, the GitHub App will become Azure Pipelines' default method of authentication to GitHub (instead of OAuth) when pipelines are created for the repositories.
 
-If you install the GitHub App for all repositories in a GitHub organization, you don't need to worry about Azure Pipelines sending mass emails or automatically setting up pipelines on your behalf. As an alternative to installing the app for all repositories, repository admins can install it one at a time for individual repositories. This requires more work for admins, but has no advantage nor disadvantage.
+If you install the GitHub App for all repositories in a GitHub organization, you don't need to worry about Azure Pipelines sending mass emails or automatically setting up pipelines on your behalf. However, if the app is installed for all repositories, the token used by the application will have access to all repositories, including private ones. For security reasons, it is recommended to separate private and public repositories at the organization level. This means having a dedicated organization only for public projects without private repositories. If, for some reason, there is a need to have public and private repositories in the same organization, instead of using access for all repositories, explicitly select the repositories to which the application should have access. This requires more work for admins but ensures better security management.
 
 #### Permissions needed in GitHub
 
@@ -393,9 +393,6 @@ For more information, see [PR trigger](/azure/devops/pipelines/yaml-schema/pr) i
 > [!NOTE]
 > If your `pr` trigger isn't firing, follow the troubleshooting steps in the [FAQ](#failing-triggers).
 
->[!NOTE]
->[Draft pull requests](https://docs.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests#draft-pull-requests) do not trigger a pipeline.
-
 # [Classic](#tab/classic/)
 
 Select the **Pull request validation** trigger and check the **Enable pull request validation** check box to enable builds on pull requests.
@@ -477,7 +474,22 @@ To bypass this precaution on GitHub pipelines, enable the **Make secrets availab
 > It has more limited access to open resources than a normal access token.
 > To give fork builds the same permissions as regular builds, enable the **Make fork builds have the same permissions as regular builds** setting.
 
-For more information, see [Repository protection - Forks](../security/repos.md#forks).
+For more information, see [Repository protection - Forks](../security/misc.md#forks).
+
+You can define centrally how pipelines build PRs from forked GitHub repositories using the **Limit building pull requests from forked GitHub repositories** control. It's available at organization and project level. You can choose to:
+- Disable building pull requests from forked repositories
+- Securely build pull requests from forked repositories
+- Customize rules for building pull requests from forked repositories
+
+:::image type="content" source="media/centralized-pipeline-control.png" alt-text="Screenshot of centralized control settings for how pipelines build PRs from forked GitHub repositories.":::
+
+Starting with [Sprint 229](/azure/devops/release-notes/2023/sprint-229-update), to improve the security of your pipelines, [Azure Pipelines no longer automatically builds pull requests from forked GitHub repositories](/azure/devops/release-notes/2023/sprint-229-update#building-prs-from-forked-github-repositories). For new projects and organizations, the default value of the **Limit building pull requests from forked GitHub repositories** setting is **Disable building pull requests from forked repositories**.
+
+When you choose the **Securely build pull requests from forked repositories** option, all pipelines, organization or project-wide, *cannot* make secrets available to builds of PRs from forked repositories, *cannot* make these builds have the same permissions as normal builds, and *must* be triggered by a PR comment. Projects can still decide to *not* allow pipelines to build such PRs.
+
+When you choose the **Customize** option, you can define how to restrict pipeline settings. For example, you can ensure that all pipelines require a comment in order to build a PR from a forked GitHub repo, when the PR belongs to non-team members and non-contributors. But, you can choose to allow them to make secrets available to such builds. Projects can decide to *not* allow pipelines to build such PRs, or to build them securely, or have even more restrictive settings than what is specified at the organization level.
+
+The control is off for existing organizations. [Starting September 2023, new organizations have **Securely build pull requests from forked repositories** turned on by default](/azure/devops/release-notes/2023/pipelines/sprint-227-update#build-github-repositories-securely-by-default).
 
 #### Important security considerations
 
@@ -569,6 +581,10 @@ GitHub allows three options when one or more Check Runs fail for a PR/commit. Yo
 
 Clicking on the "Rerun" link next to the Check Run name will result in Azure Pipelines retrying the run that generated the Check Run. The resultant run will have the same run number and will use the same version of the source code, configuration, and YAML file as the initial build. Only those jobs that failed in the initial run and any dependent downstream jobs will be run again. Clicking on the "Rerun all failing checks" link will have the same effect. This is the same behavior as clicking "Retry run" in the Azure Pipelines UI. Clicking on "Rerun all checks" will result in a new run, with a new run number and will pick up changes in the configuration or YAML file.
 
+## Limitations
+
+[!INCLUDE [limitations](includes/limitations-gh.md)]
+
 ## FAQ
 
 Problems related to GitHub integration fall into the following categories:
@@ -646,7 +662,7 @@ This means that your repository is already associated with a pipeline in a diffe
 
 [!INCLUDE [qa](includes/qa2-1.md)]
 
-[!INCLUDE [qa](includes/qa3.md)]
+[!INCLUDE [qa](includes/qa3-gh.md)]
 
 [!INCLUDE [qa](includes/qa4.md)]
 

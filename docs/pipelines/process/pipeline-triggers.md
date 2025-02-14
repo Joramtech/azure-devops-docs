@@ -4,8 +4,7 @@ description: Configure pipeline triggers
 ms.topic: conceptual
 ms.author: sdanie
 author: steved0x
-ms.date: 06/06/2023
-ms.custom: contperf-fy21q3
+ms.date: 04/05/2024
 monikerRange: ">=azure-devops-2020"
 ---
 
@@ -24,6 +23,10 @@ In situations like these, add a pipeline trigger to run your pipeline upon the s
 
 > [!NOTE]
 > Previously, you may have navigated to the classic editor for your YAML pipeline and configured **build completion triggers** in the UI. While that model still works, it is no longer recommended. The recommended approach is to specify **pipeline triggers** directly within the YAML file. Build completion triggers as defined in the classic editor have various drawbacks, which have now been addressed in pipeline triggers. For instance, there is no way to trigger a pipeline on the same branch as that of the triggering pipeline using build completion triggers.
+>
+> Triggers defined using the pipeline settings UI take precedence over YAML triggers. To delete UI scheduled triggers from a YAML pipeline, see [UI settings override YAML scheduled triggers](../troubleshooting/troubleshoot-triggers.md#ui-settings-override-yaml-scheduled-triggers).
+
+
 
 ## Configure pipeline resource triggers
 
@@ -60,7 +63,7 @@ This example has the following two pipelines.
     ```
 
 * `- pipeline: securitylib` specifies the name of the pipeline resource. Use the label defined here when referring to the pipeline resource from other parts of the pipeline, such as when using pipeline resource variables or downloading artifacts.
-* `source: security-lib-ci` specifies the name of the pipeline referenced by this pipeline resource. You can retrieve a pipeline's name from the Azure DevOps portal in several places, such as the [Pipelines landing page](../create-first-pipeline.md#pipelines-landing-page). By default, pipelines are named after the repository that contains the pipeline. To update a pipeline's name, see [Pipeline settings](../customize-pipeline.md#pipeline-settings).
+* `source: security-lib-ci` specifies the name of the pipeline referenced by this pipeline resource. You can retrieve a pipeline's name from the Azure DevOps portal in several places, such as the [Pipelines landing page](../create-first-pipeline.md#view-and-manage-your-pipelines). By default, pipelines are named after the repository that contains the pipeline. To update a pipeline's name, see [Pipeline settings](../customize-pipeline.md#pipeline-settings). If the pipeline is contained in a folder, include the folder name, including the leading `\`, for example `\security pipelines\security-lib-ci`.
 * `project: FabrikamProject` - If the triggering pipeline is in another Azure DevOps project, you must specify the project name. This property is optional if both the source pipeline and the triggered pipeline are in the same project. If you specify this value and your pipeline doesn't trigger, see the note at the end of this section.
 * `trigger: true` - Use this syntax to trigger the pipeline when any version of the source pipeline completes. See the following sections in this article to learn how to filter which versions of the source pipeline completing will trigger a run. When filters are specified, the source pipeline run must match all of the filters to trigger a run.
 
@@ -89,6 +92,22 @@ resources:
         - releases/old*
 ```
 
+To trigger the child pipeline for different branches for which the parent is triggered, include all the branch filters for which the parent is triggered. In the following example, the `app-ci` pipeline runs if the `security-lib-ci` completes on any `releases/*` branch or main branch, except for `releases/old*`.
+
+```yaml
+# app-ci YAML pipeline
+resources:
+  pipelines:
+  - pipeline: securitylib
+    source: security-lib-ci
+    trigger: 
+      branches:
+        include: 
+        - releases/*
+        - main
+        exclude:
+        - releases/old*
+```
 > [!NOTE]
 > If your branch filters aren't working, try using the prefix `refs/heads/`. For example, use `refs/heads/releases/old*`instead of `releases/old*`.
 
@@ -166,6 +185,4 @@ For example, consider two pipelines named `A` and `B` that are in the same repos
 - At the same time, a new run of `B` is started, based on its CI trigger. This run consumes the artifacts from a previous run of pipeline `A`.
 - When `A` completes, it triggers another run of `B`, based on the pipeline completion trigger in `B`.
 
-To prevent triggering two runs of `B` in this example, you must remove its CI trigger or pipeline trigger.
-
-
+To prevent triggering two runs of `B` in this example, you must disable its CI trigger (`trigger: none`) or pipeline trigger (`pr: none`).

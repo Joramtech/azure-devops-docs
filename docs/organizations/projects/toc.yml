@@ -1,9 +1,6 @@
 - name: About projects
   href: about-projects.md
   displayname: private, public, customize, configure, Agile, connect
-- name: Project & team quick reference
-  href: project-team-quick-reference.md
-  displayname: administrator, users, actions, manage, concepts
 - name: Project summary
   href: project-vision-status.md
   displayname: readme, wiki, objective, administrator, summary, view, activity, members
@@ -28,8 +25,8 @@
 - name: Add users or groups to a project
   displayName: create, new, account, default, custom, access, permission
   href: ../security/add-users-team-project.md
-- name: Work across projects FAQs 
-  href: ../../project/work-across-projects-faqs.yml?toc=/azure/devops/organizations/toc.json 
+- name: Work across projects FAQs
+  href: ../../project/work-across-projects-faqs.yml?toc=/azure/devops/organizations/toc.json
 - name: Project configuration
   items:
   - name: Area & iteration paths
@@ -53,7 +50,7 @@
     href: delete-project.md
     displayname: remove, permission, allow, administrator
   - name: Restore a project
-    href: restore-project.md
+    href: delete-project.md#restore-a-deleted-project
     displayname: deleted, reinstate, settings
   - name: Change service visibility
     href: ../settings/set-services.md
@@ -62,11 +59,8 @@
     href: ../projects/make-project-public.md
     displayname: make, change, vs, repo, repository,
   - name: Save project data
-    href: save-project-data.md
+    href: delete-project.md#save-project-data
     displayname: export, backup, download, source, code, build, work, item
-  - name: Resources granted to project members
-    href: resources-granted-to-project-members.md
-    displayname: scope, group, organization, project, collection
 - name: Public projects
   items:
   - name: About public projects

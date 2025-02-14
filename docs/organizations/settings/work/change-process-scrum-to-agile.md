@@ -1,11 +1,9 @@
 ---
 title: Change process from Scrum to Agile
 titleSuffix: Azure Boards
-ms.custom: seodec18
 description: Change the process for your project from Scrum to Agile
 ms.service: azure-devops-boards
 ms.topic: how-to
-ms.assetid:
 ms.author: chcomley
 author: chcomley
 ms.reviewer: dahellem
@@ -38,11 +36,13 @@ Reasons you might want to change your process from Scrum to Agile:
 
 [!INCLUDE [temp](../includes/change-process-manual-steps.md)]
 
+## Prerequisites
+
 [!INCLUDE [temp](../includes/prerequisites-change-process.md)]
 
 [!INCLUDE [temp](../includes/open-process-admin-context-ts-plus-2020.md)]
 
-<a id="create-customize-process" />
+<a id="create-customize-process"></a>
 
 ## Create and customize an Agile inherited process
 
@@ -89,20 +89,17 @@ Reasons you might want to change your process from Scrum to Agile:
     > ![Step 3 of 3 of change process dialog](media/scrum-to-agile/change-process-scrum-to-agile-wizard-complete.png)
 
 Steps to manually update your work items and board settings:
-- Update the column to state mapping for each team Kanban board
+- Update the column to state mapping for each team board
 - Update existing work items using the work item types set by the target process
 - Update existing work items using the correct state model of the target process.
 
-## Update Kanban board column-to-state settings
+## Update board column-to-state settings
 
-You can customize Kanban boards to display intermediate columns. For each column added, you must choose a valid workflow state for the work item types displayed on the board. To learn more, see [Workflow states & state categories](../../../boards/work-items/workflow-and-state-categories.md).
+You can customize boards to display intermediate columns. For each column added, you must choose a valid workflow state for the work item types displayed on the board. For more information, see [Workflow states & state categories](../../../boards/work-items/workflow-and-state-categories.md).
 
-1. For each team, [open your Kanban board](../../../boards/get-started/plan-track-work.md).
+1. For each team, [open your board](../../../boards/get-started/plan-track-work.md).
 
-   > [!div class="mx-imgBorder"]  
-   > ![Open team Kanban board](media/scrum-to-agile/open-kanban-board.png)
-
-1. Choose the **Correct this now** link or the :::image type="icon" source="../../../media/icons/blue-gear.png" border="false"::: gear icon to configure the board settings.
+2. Choose the **Correct this now** link or the :::image type="icon" source="../../../media/icons/blue-gear.png" border="false"::: gear icon to configure the board settings.
 
    The Settings dialog opens. Those tabs that display a :::image type="icon" source="../../../media/icons/required-icon.png" border="false"::: required icon need correction.
 
@@ -112,7 +109,7 @@ You can customize Kanban boards to display intermediate columns. For each column
    Rename each column and choose the correct state for each column so that the column-to-state mapping is correct. As needed, add one or more columns. When done, choose **Save and close**.
 
    > [!div class="mx-imgBorder"]  
-   > ![Kanban board fixed.](media/scrum-to-agile/column-settings-fixed.png)
+   > ![Board fixed.](media/scrum-to-agile/column-settings-fixed.png)
 
 
 ## Update work items
@@ -178,7 +175,7 @@ Your next step is to bulk update work items. The recommended sequence is:
    > [!div class="mx-imgBorder"]  
    > ![View team board](media/scrum-to-agile/verify-boards.png)
 
-   To add columns or change column names, see [Add columns to your Kanban board](../../../boards/boards/add-columns.md).
+   To add columns or change column names, see [Add columns to your board](../../../boards/boards/add-columns.md).
 
 ## Optional updates
 
@@ -191,9 +188,9 @@ After changing the process, you may want to make additional updates as follows:
 ## Related articles
 
 - [Bulk modify work items](../../../boards/backlogs/bulk-modify-work-items.md)
-- [Change the process used by a project](./manage-process.md#change-the-process-used-by-a-project)
-- [Create an inherited process](./manage-process.md#create-an-inherited-process)
-- [Add and manage work item types](./customize-process-work-item-type.md)
+- [Change the process used by a project](manage-process.md#migrate)
+- [Create an inherited process](manage-process.md#create-an-inherited-process)
+- [Add and manage work item types](customize-process-work-item-type.md)
 - [Show bugs on backlogs and boards](../show-bugs-on-backlog.md)
 - [Customize your boards](../../../boards/configure-customize.md)
 - [Create and saved managed queries with the query editor](../../../boards/queries/using-queries.md)

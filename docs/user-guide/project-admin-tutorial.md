@@ -1,13 +1,12 @@
 ---
-title: Get started as a project administrator 
+title: Get started as a project administrator
 titleSuffix:  Azure DevOps
-ms.custom: seodec18
 description: Learn how to structure a project, manage users, and more to support your software development teams in Azure DevOps.
 ms.subservice: azure-devops-new-user
 ms.author: chcomley
 author: chcomley
 ms.topic: overview
-monikerRange: '<= azure-devops'  
+monikerRange: '<= azure-devops'
 ms.date: 03/23/2023
 ---
 
@@ -18,6 +17,10 @@ ms.date: 03/23/2023
 With most Azure DevOps Services, you can start using the service and configure resources as you go. No up-front work is required. Most settings define defaults. 
 
 If you created a project or you're added to the **Project Administrators** group, get familiar with the administrative tasks you're charged with. There are a few tasks you might want to do to ensure a smooth operational experience. 
+
+## Prerequisites
+
+[!INCLUDE [prerequisites-project-administrator-only](../includes/prerequisites-project-administrator-only.md)]
 
 > [!NOTE]   
 > This article provides an overview of tasks a member of the **Project Administrators** group should review and attend to. For information on tasks to be performed by members of the **Project Collection Administrators** group, see [Manage your organization or project collection](manage-organization-collection.md).
@@ -31,7 +34,7 @@ If you created a project or you're added to the **Project Administrators** group
 
 ## Manage security and permissions
 
-Permissions and security groups control access to select tasks. To quickly understand the defaults configured for your project, see [Default permissions and access](../organizations/security/permissions-access.md).  
+Permissions and security groups control access to specific tasks. To quickly understand the defaults configured for your project, see [Default permissions and access](../organizations/security/permissions-access.md).  
 
 [!INCLUDE [project-level-permissions](../organizations/security/includes/project-level-permissions.md)]
 
@@ -55,7 +58,7 @@ As a member of the **Project Administrators** group, you can grant or restrict p
 
 - [Role-based permissions](../organizations/security/about-permissions.md#role-based-permissions)
 - [Add or remove users or groups, manage security groups](../organizations/security/add-remove-manage-user-group-security-group.md)
-- [Grant or restrict access to select features and functions](../organizations/security/restrict-access.md)   
+- [Manage access to specific features and functions](../organizations/security/restrict-access.md)   
 - [Set object-level permissions](../organizations/security/set-object-level-permissions.md) 
 
 
@@ -98,12 +101,12 @@ Azure DevOps supports integration with Azure, GitHub, and many other services. A
 - Microsoft Teams integration:  
 	- [Azure Boards with Microsoft Teams](../boards/integrations/boards-teams.md) 
 	- [Azure Repos with Microsoft Teams](../repos/integrations/repos-teams.md)
-	- [Azure Pipelines with Microsoft Teams](../pipelines/integrations/slack.md)
+	- [Azure Pipelines with Microsoft Teams](../pipelines/integrations/microsoft-teams.md)
 
 - Slack integration:
 - 	- [Azure Boards with Slack](../boards/integrations/boards-slack.md) 
 	- [Azure Repos with Slack](../repos/integrations/repos-slack.md)
-	- [Azure Pipelines with Slack](../pipelines/integrations/microsoft-teams.md)
+	- [Azure Pipelines with Slack](../pipelines/integrations/slack.md)
 
 - [Integrate with service hooks](../service-hooks/overview.md) 
 
@@ -121,15 +124,15 @@ Azure DevOps supports integration with Azure, GitHub, and many other services. A
 
 ::: moniker range="azure-devops"  
 
-- [Project and team quick reference](../organizations/projects/project-team-quick-reference.md)   
+- [About projects](../organizations/projects/project-team-quick-reference.md)   
 - [Get started managing your organization or project collection](manage-organization-collection.md) 
 - [About user, team, project, and organization-level settings](../organizations/settings/about-settings.md)
 
 ::: moniker-end
 
-::: moniker range=">= tfs-2018 < azure-devops"  
+::: moniker range="<azure-devops"
 
-- [Project and team quick reference](../organizations/projects/project-team-quick-reference.md)  
+- [About projects](../organizations/projects/project-team-quick-reference.md)  
 - [Get started managing your organization or project collection](manage-organization-collection.md) 
 - [About user, team, project, and organization-level settings](../organizations/settings/about-settings.md)
 - [TFS administration](/azure/devops/server/index)

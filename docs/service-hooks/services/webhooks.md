@@ -2,143 +2,103 @@
 ms.subservice: azure-devops-service-hooks
 ms.topic: conceptual
 title: Webhooks with Azure DevOps
-description: Use webhooks with your Azure DevOps organization
+description: Set up a webhook subscription that sends JSON representations of Azure DevOps events to any service that has a public endpoint.
 ms.assetid: 6c7dfe37-800d-47b8-b9db-9f73878eeb77
 monikerRange: '<= azure-devops'
-ms.date: 07/27/2020
+ms.date: 08/13/2024
 ---
 
 # Webhooks
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-Webhooks provide a way to send a JSON representation of an event to any service. All that is required is a public endpoint (HTTP or HTTPS).
+This article describes webhooks and how to set them up for your Azure DevOps project. Webhooks provide a way to send a JSON representation of an Azure DevOps event to any service that has a public endpoint.
 
-For more information about the JSON payloads posted by this consumer, see [events](../events.md).
+>[!NOTE]
+>Azure DevOps doesn't charge for setting up service hooks or integrating with external services. Refer to the specific service's site for pricing related to their services.
 
 ## Prerequisites
 
-Only organization Owners or Project Collection Administrators can manage webhooks for an organization.
+| Category | Requirements |
+|--------------|-------------|
+|**Permissions**| - Member of the [Project Collection Administrators group](../../organizations/security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group.|
+|**Project and service**|- A project in the organization<br>- A service with a public HTTPS endpoint to which you want to send Azure DevOps events.|
 
+  > [!IMPORTANT]
+  > - Use only HTTPS endpoints. HTTP has the potential to send private data, including authentication headers, unencrypted in the event payload. You must use HTTPS for basic authentication on a webhook. 
+  > - If you're connecting to a service behind a virtual private network, ensure that Azure DevOps IP addresses are allowed for inbound connections. See [Inbound Connections](../../organizations/security/allow-list-ip-url.md).
+  
 ## Send JSON representation to a service
 
-::: moniker range=">= azure-devops-2019"
+1. In your Azure DevOps project, go to **Project settings** > **Service hooks** at `https://<organization-name>/<project-name>/_settings/serviceHooks`.
 
-1. Go to your project **Service hooks** page: 
+   ![Screenshot of the Service hooks choice in Project settings.](./media/add-devops-service-hook-new-name.png)
 
-	`https://{orgName}/{project_name}/_settings/serviceHooks`
+1. On the **Service Hooks** page, select the **+** icon or **Create subscription**.
 
-	![Screenshot of the most recent version of the Project administration page](./media/add-devops-service-hook.png)
+   ![Screenshot of selecting Create subscription on the Service Hooks page.](./media/add-service-hook.png)
 
-	Select **Create subscription**.
+1. On the **Service** screen, select **Web Hooks** and then select **Next**.
 
-1.  Select and configure the Azure DevOps Services event:
+   ![Screenshot of selecting Web Hooks on the Service page.](./media/webhooks/configure-service.png)
 
-	![Configure the event dialog box](./media/webhooks/configure-event.png)
+1. On the **Trigger** screen, select and configure the Azure DevOps event you want to trigger the webhook on, and then select **Next**. For more information about the JSON payloads posted by the Azure DevOps consumer, see [Service hooks events](../events.md).
 
-1. Configure what to do when the event occurs:
+   ![Screenshot of selecting and configuring the trigger event.](./media/webhooks/configure-event.png)
 
-	See the following [Q & A](#q--a) for information on the **Resource details to send**, **Messages to send**, and **Detailed messages to send** settings.
+1. On the **Action** screen, configure the target **URL** and what to do when the event occurs. For more information about what to enter in **Resource details to send**, **Messages to send**, and **Detailed messages to send**, see [Resource details to send](#resource-details-to-send).
 
-	![Configure the action dialog box](./media/webhooks/configure-action.png)
+   >[!NOTE]
+   >Webhooks can't target localhost (loopback) or special range [IPv4](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml)/[IPv6](https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xhtml) addresses. 
 
-2. Test the service hook subscription and finish the wizard:
+1. Select **Test** to test the service hook subscription.
 
-	![Test it](./media/webhooks/test.png)
+   ![Screenshot of configuring the Action dialog box.](./media/webhooks/configure-action.png)
 
-::: moniker-end
+1. When the test completes successfully, close the notification screen, and then select **Finish** on the **Action** screen.
 
-::: moniker range="tfs-2018"
+   ![Screenshot of test results for the service hook subscription](./media/webhooks/test.png)
 
-1. Go to your project Service Hooks page: 
+1. Now the webhook is set up. Go to the target service to view the JSON representation.
 
-    `https://dev.azure.com/{orgName}/{project_name}/_apps/hub/ms.vss-servicehooks-web.manageServiceHooks-project`
+   ![Screenshot of viewing the JSON representation.](./media/webhooks/request-bin.png)
 
-	![Screenshot of the Project administration page](./media/add-service-hook.png)
+>[!TIP]
+>You can also create a webhook programmatically. For more information, see [Create a service hook subscription programmatically](../create-subscription.md).
 
-	Select **Create Subscription**.
+### Resource details to send
 
-1.  Select and configure the Azure DevOps Services event:
+The **Resource details to send**, **Messages to send**, and **Detailed messages to send** settings in the **Action** pane control the size of the JSON payload to send. **Resource details to send** controls how much of the resource to send. The default is **All**, but you can also choose to send **Minimal**, which sends only key fields like URL and ID, or **None**.
 
-	![Configure the event dialog box](./media/webhooks/configure-event.png)
+**None** and **Minimal** are useful in scenarios where the caller doesn't need much or any information about the resource, because it relies on the message or detailed message itself. **None** and **Minimal** are also useful for security reasons. The caller must call back into Azure DevOps Services and go through normal security and permission checks to get more details about the resource.
 
-1. Configure what to do when the event occurs:
-
-	See the following [Q & A](#q--a) for information on the **Resource details to send**, **Messages to send**, and **Detailed messages to send** settings.
-
-	![Configure the action dialog box](./media/webhooks/configure-action.png)
-
-2. Test the service hook subscription and finish the wizard:
-
-	![Test it](./media/webhooks/test.png)
-
-::: moniker-end
-
-Now the webhook is set up. Go to the target service to view the JSON representation:
-
-![View the JSON representation](./media/webhooks/request-bin.png)
-
-
-## Pricing
-
-Azure DevOps doesn't charge for the framework for integrating with external services. Check out the specific service's site
-for pricing related to their services. 
-
-## Q & A
-
-<!-- BEGINSECTION class="m-qanda" -->
-
-#### Q: What are the Resource details to send, Messages to send, and Detailed messages to send settings for?
-
-A: They control the size of the JSON payload that is sent.
-
-The **Resource details to send** setting controls how much of the resource is sent.
-The default is **All**, but you can also choose to send **Minimal** (only sends key fields like URL and ID), or **None**.
-
-**None** and **Minimal** are useful in scenarios where the caller doesn't actually need much,
-if anything, about the resource because it's relying on the message or detailed message.
-**None** and **Minimal** are also useful for security reasons, for example,
-the caller needs to call back into Azure DevOps Services and go through normal security/permission checks to get more details about the resource.
-
-Sample JSON:
+The following sample JSON shows minimal details about the resource:
 
 ```json
-	{
-	    "eventType": "git.push",
-	    ...
-	    "messages": {
-	        "text": "...",
-	        "html": "...",
-	        "markdown": "..."
-	    },
-	    "detailedMessage": {
-	        "text": "...",
-	        "html": "...",
-	        "markdown": "..."
-	    },
-	    "resource": {
-	        "id": "...",
-	        "url": "https://...",
-	        "name": "...",
-	        "field1:": "..."
-	    }
-	}	
+   {
+       "eventType": "git.push",
+       ...
+       "messages": {
+           "text": "...",
+           "html": "...",
+           "markdown": "..."
+       },
+       "detailedMessage": {
+           "text": "...",
+           "html": "...",
+           "markdown": "..."
+       },
+       "resource": {
+           "id": "...",
+           "url": "https://...",
+           "name": "...",
+           "field1:": "..."
+       }
+   }   
 ```
 
-#### Q: Can I programmatically create subscriptions?
+## Related content
 
-**A:** Yes, see details [here](../create-subscription.md).
-
-#### Q: Can I send webhooks to non HTTPS endpoints?
-
-**A:** Yes. However, it's recommended that you only use HTTPS endpoints for your webhooks. Using HTTP means there is a the potential for private data being sent unencrypted. This includes any authentication headers in your webhook. 
-
-#### Q: Can I use basic authentication when setting up a webhook that isn't HTTPS?
-
-**A:** No. You must use HTTPS when utilizing basic authentication on a webhook. 
-
-#### Q: Can we use localhost or special range IPs as webhook targets?
-
-A: No. Webhooks can't target localhost (loopback) or special range [IPv4](https://www.iana.org/assignments/iana-ipv4-special-registry/iana-ipv4-special-registry.xhtml)/[IPv6](https://www.iana.org/assignments/iana-ipv6-special-registry/iana-ipv6-special-registry.xhtml) addresses. 
-
-<!-- ENDSECTION -->
+- [Integrate with service hooks](../overview.md)
+- [Service hooks events](../events.md)
+- [Create a service hook subscription programmatically](../create-subscription.md)

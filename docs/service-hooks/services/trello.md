@@ -15,6 +15,13 @@ ms.date: 07/27/2020
 Create cards and lists in Trello in response to events from Azure DevOps.
 For example, when code is pushed, or a build occurs.
 
+## Prerequisites
+
+| Category | Requirements |
+|--------------|-------------|
+|**Permissions**| - Member of the [Project Collection Administrators group](../../organizations/security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group.<br>- **Edit subscriptions** and **View subscriptions** permissions set to **Allow**. By default, only project administrators have these permissions. To grant the permissions to other users, you can use the command-line tool or the [Security](/rest/api/azure/devops/security/?view=azure-devops-rest-6.0&preserve-view=true) REST API.|
+|**Tools**|Trello  |
+
 ## Get a Trello authorization token
 
 1. If you don't have a Trello account, sign up at [Trello](https://trello.com/signup).
@@ -68,42 +75,7 @@ either create a card or a list.
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-1. Go to your project Service Hooks page: 
-
-    `https://dev.azure.com/{orgName}/{project_name}/_apps/hub/ms.vss-servicehooks-web.manageServiceHooks-project`
-
-	![Project administration page](./media/add-service-hook.png)
-
-	Select **Create Subscription**.
-
-1. Pick the Trello service.
-
-   ![Service page, Trello selected](./media/trello/service.png)
-
-1. Configure the triggering Visual Studio event. In this case,
-we're going to have the subscription respond when a work item is created.
-
-   ![Trigger configuration page](./media/trello/trigger.png)
-
-
-1. Set up the action that Trello will take in response to the trigger -
-either create a card or a list.
-
-   ![Action configuration page](./media/trello/action.png) 
-
-   You can use  placeholders to insert content from the event into the
-   name and description of the cards or lists that the subscription creates.
-   For example, when we run the test notification, the card that gets created is named
-   "Bug #5: Some great new idea!" because the test work item is a bug (ID=5)
-   with the title "Some great new idea!".
-
-1. Test the service hook subscription and finish the wizard.
-
-  ![Test notification](./media/trello/test.png) 
-
-::: moniker-end
 
 Now it's set up. Go to Trello and see the cards appear.
 

@@ -25,6 +25,10 @@ Once you've imported your Analytics data into Power BI, you may need to transfor
 - Create a custom field 
 - Rename fields. 
  
+## Prerequisites
+
+[!INCLUDE [prerequisites-simple](../includes/analytics-prerequisites-simple.md)]
+
 ## Expand columns 
 
 The query returns several columns that you need to expand before you can use them in Power BI. Any entity pulled in using an OData **$expand** statement returns a record with potentially several fields. You need to expand the record to flatten the entity into its fields. Examples of such entities are: **AssignedTo**, **Iteration**, and **Area**. 
@@ -37,7 +41,7 @@ After closing the **Advanced Editor** and while remaining in the **Power Query E
     > ![Screenshot of Power BI transform data, Expand AreaPath column.](media/transform-data/expand-area-path-property.png)
 
 	> [!NOTE]   
-	> The available properties to select depends on the properties requested to return in the query. If you don't specify any properties, then all properties are available. To learn more about these properties, see the following metadata references: [Areas](../analytics/entity-reference-boards.md#areas), [Iterations](../analytics/entity-reference-boards.md#iterations), and [Users](../analytics/entity-reference-general.md#users).
+	> The available properties to select depends on the properties requested to return in the query. If you don't specify any properties, then all properties are available. For more information about these properties, see the following metadata references: [Areas](../analytics/entity-reference-boards.md#areas), [Iterations](../analytics/entity-reference-boards.md#iterations), and [Users](../analytics/entity-reference-general.md#users).
 	
 1. The table now contains entity field(s).
 
@@ -47,7 +51,7 @@ After closing the **Advanced Editor** and while remaining in the **Power Query E
 1. Repeat steps 1 through 3 for all fields representing entities that need expanding. These appear with *Record* listed in the table column when unexpanded. 
 
 
-<a id="expand-descendants" />
+<a id="expand-descendants"></a>
 
 ### Expand Descendants column
 
@@ -68,7 +72,7 @@ The **Descendants** column contains a table with two fields: **State** and **Tot
 
 
 
-<a id="pivot-statecategory" />
+<a id="pivot-statecategory"></a>
 
 #### Pivot Descendants.StateCategory column
 
@@ -83,7 +87,7 @@ The **Descendants** column contains a table with two fields: **State** and **Tot
 	:::image type="content" source="media/transform-data/descendants-pivot-column-dialog.png" alt-text="Dialog of Pivot Column for  Descendants.TotalStoryPoints column. ":::  
 
 
-<a id="expand-links-column" />
+<a id="expand-links-column"></a>
 
 ### Expand the Links column
 
@@ -109,11 +113,11 @@ The **Descendants** column contains a table with two fields: **State** and **Tot
 > represents its link to Work Item #3.
 
 
-<a id="transform-data-type" />
+<a id="transform-data-type"></a>
 
 ## Transform a column data type 
 
-<a id="leadtimedays-cycletimedays" />
+<a id="leadtimedays-cycletimedays"></a>
 
  
 ### Transform LeadTimeDays and CycleTimeDays to whole numbers
@@ -146,7 +150,7 @@ From the Power Query Editor, select the ribbon **Transform** menu.
 	In the **Change Column Type** dialog, select **Add new step**.
  
 
-<a id="replace-null-values" /> 
+<a id="replace-null-values"></a> 
 
 ## Replace values  
 
@@ -165,7 +169,7 @@ For easier reporting, replace nulls with zero by following these steps.
 
 ## Create a custom column
 
-<a id="create-percent-complete" />
+<a id="create-percent-complete"></a>
 
 
 ### Create a percentage complete computed column

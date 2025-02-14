@@ -104,7 +104,7 @@ Or, toggle the **Show/Hide Deleted Items** icon in the **Source Control Explorer
 
 ![Screenshot showing the Show/Hide Deleted Items icon in the Source Control Explorer menu bar.](./media/effective-feature-isolation-on-tfvc/show-hide.png)
 
-If needed, you can also [restore](delete-restore-files-folders.md#restore-items-deleted-from-visual-studio) deleted branches and associated items. 
+If needed, you can also [restore](delete-restore-files-folders.md#recover-or-restore-deleted-items) deleted branches and associated items. 
 
 ![Screenshot that shows deleted feature branches and their changesets.](./media/effective-feature-isolation-on-tfvc/feature-isolation-delete-branches-show.png)
 
@@ -121,7 +121,6 @@ Now that you're using feature isolation, you should explore continuous integrati
 ## Related resources
 
 * [Branching strategies with TFVC](./effective-tfvc-branching-strategies-for-devops.md)
-* [Classic branching and merging guidance (PDF)](https://vsardata.blob.core.windows.net/projects/TFS%20Version%20Control%20Part%201%20-%20Branching%20Strategies.pdf)
 * [Continuous integration](/devops/develop/what-is-continuous-integration)
 * [Feature toggles](/archive/msdn-magazine/2014/may/alm-rangers-software-development-with-feature-toggles)
 * [Team Foundation Version Control (TFVC)](./what-is-tfvc.md)

@@ -1,6 +1,5 @@
 ---
 title: Sign up for Azure Pipelines
-ms.custom: seodec18
 description: Walk through signing up for Azure Pipelines to begin managing CI/CD to deploy your code.
 ms.topic: overview
 ms.author: chcomley
@@ -31,7 +30,7 @@ To sign up for Azure DevOps with a Microsoft account, complete the following ste
 
    ![Screenshot of Start free with Azure Pipelines page.](media/start-free-azure-pipelines.png)
 
-3. Log into your Microsoft account.
+3. Sign in to your Microsoft account.
 
 4. To get started with Azure Pipelines, select **Continue**.
 
@@ -53,7 +52,7 @@ You're now prompted to [create a project](#create-project).
 To sign up for Azure DevOps with a GitHub account, complete the following steps.
 
 > [!IMPORTANT]
-> If your GitHub email address is associated with an Azure AD-backed organization in Azure DevOps, you can't sign in with your GitHub account, rather you must sign in with your Azure AD account.
+> If your GitHub email address is associated with a Microsoft Entra ID-backed organization in Azure DevOps, you can't sign in with your GitHub account, rather you must sign in with your Microsoft Entra account.
 
 1. Check that your account is up to date by logging into your <a href="https://github.com/login" target="_blank">GitHub account</a>.
 
@@ -73,7 +72,7 @@ To sign up for Azure DevOps with a GitHub account, complete the following steps.
 
     ![Link GitHub account to Microsoft account](media/link-microsoft-account.png)
 
-    For more information about GitHub authentication, see [FAQs](../../organizations/security/faq-github-authentication.yml).
+    For more information about GitHub authentication, see [Connect to GitHub/FAQs](../../boards/github/connect-to-github.md#faqs).
 
 6. Fill in your name, email address, and country/region.
     
@@ -92,7 +91,7 @@ Use the following URL to sign in to your organization at any time: `https://dev.
 
 You're now prompted to create a project.
 
-<a id="create-project" /></a>
+<a id="create-project"></a></a>
 
 ## Create a project
 
@@ -103,13 +102,15 @@ You can create public or private projects. To learn more about public projects, 
    > [!div class="mx-imgBorder"]
    >![Create new project dialog](../../boards/get-started/media/sign-up/nf-create-project.png)
 
-   Special characters aren't allowed in the project name (such as / : \ ~ & % ; @ ' " ? < > | # $ * } { , + = [ ]).  The project name also can't begin with an underscore, can't begin or end with a period, and must be 64 characters or less. Set your project visibility to either public or private. Public visibility allows for anyone on the internet to view your project. Private visibility is for only people who you give access to your project.
+   Special characters aren't allowed in the project name (such as `/ : \ ~ & % ; @ ' " ? < > | # $ * } { , + = [ ]`).  The project name also can't begin with an underscore, can't begin or end with a period, and must be 64 characters or less. 
 
-2. When your project is created, if you signed up with a Microsoft account, the wizard to create a new pipeline automatically starts. If you signed up with a GitHub account, you're asked to select which services to use.
+    Set your project visibility to either public or private. Public visibility allows for anyone on the internet to view your project. Private visibility is for only people who you give access to your project.
+
+2. When your project is created, you're asked to select which services to use.
 
 You're now set to [create your first pipeline](../create-first-pipeline.md), or [invite other users](#invite-others) to collaborate with your project.
 
-<a id="invite-others" /></a>
+<a id="invite-others"></a></a>
 
 ## Invite team members - optional
 
@@ -131,13 +132,13 @@ Add and invite others to work on your project by adding their email address to y
       - **Stakeholder:** Assign to users for limited access to features to view, add, and modify work items. You can assign an unlimited amount of users Stakeholder access for free.
       - **Visual Studio Subscriber:** Assign to users who already have a Visual Studio subscription.
    - **Add to project:** Select the project you named in the preceding procedure.
-   - **Azure DevOps groups:** Select one of the following security groups, which will determine the permissions the users have to do select tasks. To learn more, see [Azure Pipelines resources](../security/resources.md).
+   - **Azure DevOps groups:** Select one of the following security groups that determines the permissions the users have to do select tasks. For more information, see [Azure Pipelines resources](../security/resources.md).
       - **Project Readers:** Assign to users who only require read-only access.
-      - **Project Contributors:** Assign to users who will contribute fully to the project.
-      - **Project Administrators:** Assign to users who will configure project resources.
+      - **Project Contributors:** Assign to users who contribute fully to the project.
+      - **Project Administrators:** Assign to users who can configure project resources.
 
    > [!NOTE]  
-   > Add email addresses for [Microsoft accounts](https://account.microsoft.com/account) and IDs for GitHub accounts unless you plan to use [Azure Active Directory (Azure AD)](/azure/active-directory/fundamentals/active-directory-whatis) to authenticate users and control organization access. If a user doesn't have a Microsoft or GitHub account, ask the user to [sign up](https://signup.live.com/) for a Microsoft account or a GitHub account.  
+   > Add email addresses for [Microsoft accounts](https://account.microsoft.com/account) and IDs for GitHub accounts unless you plan to use [Microsoft Entra ID](/azure/active-directory/fundamentals/active-directory-whatis) to authenticate users and control organization access. If a user doesn't have a Microsoft or GitHub account, ask the user to [sign up](https://signup.live.com/) for a Microsoft account or a GitHub account.  
 
 4. When you're done, select **Add** to complete your invitation.
 
@@ -147,7 +148,7 @@ For more information, see [Add organization users for Azure DevOps Services](../
 
 You can rename and delete your organization, or change the organization location. For more information, see the following articles:
 
-- [Manage organizations](../../organizations/accounts/organization-management.md)
+- [Delete an organization](../../organizations/accounts/delete-your-organization.md)
 - [Rename an organization](../../organizations/accounts/rename-organization.md)
 - [Change the location of your organization](../../organizations/accounts/change-organization-location.md)
 

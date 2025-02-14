@@ -23,11 +23,17 @@
   - name: Copy/clone test plans, suites, cases
     displayName: copy, clone, import, export, test plans, test suites, test cases
     href: copy-clone-test-items.md
+  - name: Bulk Import and Export Test cases (CSV/XLSX)
+    displayName: copy, clone, import, export, test plans, test suites, test cases
+    href: bulk-import-export-test-cases.md
   - name: Run manual tests
     displayName: manual test, run, test runs
     href: run-manual-tests.md
   - name: Default permissions (Security)
     href: manual-test-permissions.md
+  - name: Store custom data in test plan and/or test result
+    displayName: manual test, automated, run, test runs, result, test results, custom data, custom fields
+    href: custom-fields.md
   expanded: true
 - name: Manual tests
   items:
@@ -37,7 +43,7 @@
   - name: Repeat a test with different data
     displayName: data, testing, shared steps, shared parameters
     href: repeat-test-with-different-data.md
-  - name: Test from the Kanban board
+  - name: Test from your board
     displayName: inline testing
     href: ../boards/boards/add-run-update-tests.md?toc=/azure/devops/test/toc.json
   - name: Perform user acceptance testing
@@ -55,6 +61,8 @@
   - name: Set test retention policies
     displayName: results, logs
     href: how-long-to-keep-test-results.md
+  - name: Manage test failure type
+    href: manage-test-failure-type.md
 - name: Automated tests
   items:
   - name: Associate automated tests with test cases

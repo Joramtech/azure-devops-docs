@@ -31,9 +31,11 @@ You can query Analytics from any [supported web browser](/azure/devops/server/co
 > [!NOTE]   
 > OData, an application-level protocol for interacting with data via RESTful (where REST=Representational State Transfer) interfaces), supports the description of data models as well as editing and querying of data according to those models. The Entity Data Model (EDM) or metadata describes the information available from Analytics, including the entities, entity types, properties, relationships, and enumerations you use to query the data to build reports. For an overview of OData, see [Welcome to OData](/odata/overview). 
 
+## Prerequisites
+
 [!INCLUDE [prerequisites-simple](../includes/analytics-prerequisites-simple.md)]
 
-<a id="query-metadata" />
+<a id="query-metadata"></a>
 
 ## URL components to query the metadata
 
@@ -100,7 +102,7 @@ https://fabrikam-devops/DefaultCollection/_odata/v4.0-preview/$metadata
 
 ***
 
-<a id="metadata-response" />
+<a id="metadata-response"></a>
 
 ### Interpret the metadata response
 
@@ -127,7 +129,7 @@ The two main schemas defined in the Analytics metadata are `Microsoft.VisualStud
 > </edmx:Edmx>
 > ```
 
-<a id="metadata-response" />
+<a id="metadata-response"></a>
 
 ### Related entities and navigation properties
 
@@ -184,7 +186,7 @@ The following code snippet provides a partial view of the metadata for the `Work
 > ...
 > ```
  
-<a id="construct-basic-query" />
+<a id="construct-basic-query"></a>
 
 ## URL components to query entities 
 
@@ -262,7 +264,7 @@ For entity metadata property and relationship information, see the following art
 - [Metadata reference for Test Plans](entity-reference-test-plans.md)
 
 
-<a id="query-entity-set" />
+<a id="query-entity-set"></a>
 
 ### Example: Query a specific entity set
 

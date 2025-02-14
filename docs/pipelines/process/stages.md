@@ -1,10 +1,9 @@
 ---
 title: Stages in Azure Pipelines
-ms.custom: seodec18
-description: Understand stages in Azure Pipelines
+description: Learn how to organize your jobs into stages, define dependencies, and set conditions. Understand how to implement deployment strategies and use YAML or a Classic pipeline to define stages.
 ms.assetid: FAAD6503-F8CE-4F5D-8C1E-83AF6E903568
 ms.topic: conceptual
-ms.date: 12/22/2022
+ms.date: 02/16/2024
 monikerRange: '<= azure-devops'
 ---
 
@@ -12,13 +11,9 @@ monikerRange: '<= azure-devops'
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-::: moniker range="tfs-2018"
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
-::: moniker-end
+A stage is a logical boundary in an Azure DevOps pipeline. Stages can be used to group actions in your software development process (for example, build the app, run tests, deploy to preproduction). Each stage contains one or more jobs. 
 
-A stage is a logical boundary in the pipeline. It can be used to mark separation of concerns (for example, Build, QA, and production). Each stage contains one or more jobs. When you define multiple stages in a pipeline, by default, they run one after the other. 
-
-For Classic pipelines, You can organize the deployment jobs in your release pipeline into stages.
+When you define multiple stages in a pipeline, by default, they run one after the other. Stages can also depend on each other. You can use the `dependsOn` keyword to define [dependencies](#specify-dependencies). Stages also can run based on the result of a previous stage with [conditions](#conditions). 
 
 To learn how stages work with parallel jobs and licensing, see [Configure and pay for parallel jobs](../licensing/concurrent-jobs.md). 
 
@@ -29,9 +24,9 @@ You can also learn more about how stages relate to parts of a pipeline in the [Y
 #### [YAML](#tab/yaml/)
 ::: moniker range=">=azure-devops-2019"
 
-You can organize pipeline jobs into stages. Stages are the major divisions in a pipeline: "build this app", "run these tests", and "deploy to pre-production" are good examples of stages. They're logical boundaries in your pipeline where you can pause the pipeline and perform various checks.
+You can organize pipeline jobs into stages. Stages are the major divisions in a pipeline: build this app, run these tests, and deploy to preproduction are good examples of stages. They're logical boundaries in your pipeline where you can pause the pipeline and perform various checks.
 
-Every pipeline has at least one stage even if you don't explicitly define it. You can also arrange stages into a dependency graph so that one stage runs before another one. There is a limit of 256 jobs for a stage. 
+Every pipeline has at least one stage even if you don't explicitly define it. You can also arrange stages into a dependency graph so that one stage runs before another one. There's a limit of 256 jobs for a stage. 
 
 ::: moniker-end
 
@@ -42,21 +37,16 @@ Every pipeline has at least one stage even if you don't explicitly define it. Yo
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
 
-This version of TFS doesn't support YAML.
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
-You can organize the deployment jobs in your release pipeline into stages.
-Stages are the major divisions in your release pipeline: "run functional tests", "deploy to pre-production",
-and "deploy to production" are good examples of release stages.
+Organize the deployment jobs in your release pipeline into stages.
+Stages are the major divisions in your release pipeline: run functional tests, deploy to preproduction, and deploy to production are good examples of release stages.
 
 <a name="approvals"></a><a name="conditions"></a>
 A stage in a release pipeline consists of [jobs](../process/phases.md) and [tasks](../process/tasks.md).
  
-[Approvals and gates](../release/approvals/index.md), [deployment conditions and triggers](../release/triggers.md#env-triggers),
+[Approvals and gates](../release/approvals/index.md), [deployment conditions and triggers](../release/triggers.md#stage-triggers),
 and [queuing policies](#queuing-policies) control when a release gets deployed to a stage. 
 
 ![stage](../release/media/definition-02.png)
@@ -113,7 +103,7 @@ stages:
   - job: B2
 ```
 
-If you choose to specify a `pool` at the stage level, then all jobs defined in that stage will use that pool unless otherwise specified at the job-level.
+If you choose to specify a `pool` at the stage level, then all jobs defined in that stage use that pool unless specified at the job-level.
 
 ::: moniker-end
 
@@ -151,11 +141,7 @@ stages:
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
 
-This version of TFS doesn't support YAML pipelines. 
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 
@@ -257,21 +243,18 @@ stages:
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
 
-This version of TFS doesn't support YAML pipelines. 
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 You control the dependencies by setting the triggers on each stage of the release pipeline:
 
 * Stages run with a trigger or by being manually started. 
-* With an **After release** trigger, a stage will start as soon as the release starts, in parallel with other stages that have **After release** trigger.
+* With an **After release** trigger, a stage starts as soon as the release starts, in parallel with other stages that have **After release** trigger.
 * With an **After stage** trigger, a stage will start after all the dependent stages complete. Using this, you can model fan-out and fan-in behavior for stages.
 
 * * *
-<h2 id="conditions">Conditions</h2>
+
+## Define conditions
 
 You can specify the conditions under which each stage runs with [expressions](expressions.md). By default, a stage runs if it doesn't depend on any other stage, or if all of the stages that it depends on have completed and succeeded. You can customize this behavior by forcing a stage to run even if a previous stage fails or by specifying a custom condition. 
 
@@ -323,12 +306,7 @@ stages:
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
 
-This version of TFS doesn't support YAML pipelines. 
-
-
-::: moniker-end
 
 
 #### [Classic](#tab/classic/)
@@ -346,11 +324,7 @@ When you specify **After release** or **After stage** triggers, you can also spe
 YAML pipelines don't support queuing policies. Each run of a pipeline is independent from and unaware of other runs. In other words, your two successive commits may trigger two pipelines, and both of them will execute the same sequence of stages without waiting for each other. While we work to bring queuing policies to YAML pipelines, we recommend that you use [manual approvals](approvals.md) in order to manually sequence and control the order the execution if this is of importance.
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
 
-This version of TFS doesn't support YAML pipelines. 
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 In some cases, you may be able to generate builds faster than
@@ -365,57 +339,47 @@ stage. **Queuing policies** give you that control.
 The options you can choose for a queuing policy are:
 
 * **Number of parallel deployments**:
-  Use this option if you dynamically provision new resources
-  in your stage and it's physically capable of handling
-  the deployment of multiple releases in parallel, but you want
-  to limit the number of parallel deployments.
+  Use this option if you dynamically provision new resources in your stage and it's physically capable of handling the deployment of multiple releases in parallel, but you want to limit the number of parallel deployments.
 
 * If you specify a maximum number of deployments, two more options appear:
 
   - **Deploy all in sequence**:
-    Use this option if you want to deploy all the releases
-    sequentially into the same shared physical resources.
-    By deploying the builds in turn, one after the other, you
-    ensure that two deployment jobs don't target the same
-    physical resources concurrently, even if there are
-    multiple build and release agents available. You
-    also ensure that pre-deployment approval requests for the
-    stage are sent out in sequence.
+    Use this option if you want to deploy all the releases sequentially into the same shared physical resources.
+    By deploying the builds in turn, one after the other, you ensure that two deployment jobs don't target the same physical resources concurrently, even if there are multiple build and release agents available. You also ensure that predeployment approval requests for the stage are sent out in sequence.
 
   - **Deploy latest and cancel the others**:
-    Use this option if you're producing releases faster
-    than builds, and you only want to deploy the latest build.
+    Use this option if you're producing builds faster than releases, and you only want to deploy the latest build.
 
 To understand how these options work, consider a scenario
 where releases **R1**, **R2**, **...**, **R5** of a
 single release pipeline get created in quick succession.
 Assume that
 the first stage in this pipeline is named **QA**
-and has both pre-deployment and post-deployment approvers
+and has both predeployment and post-deployment approvers
 defined.
 
 * If you don't specify a limit for the number of parallel deployments,
-  all five approval requests will be sent out as soon as
+  all five approval requests are sent out as soon as
   the releases are created. If the approvers approve all of the
   releases, they'll all be deployed to the **QA** stage in parallel.
-  (if the **QA** stage didn't have any pre-deployment
+  (if the **QA** stage didn't have any predeployment
   approvers defined, all the five releases will automatically
   be deployed in parallel to this stage).
 
 * If you specify a limit and **Deploy all in sequence**,
-  and the limit has already been reached, the pre-deployment approval for
+  and the limit has already been reached, the predeployment approval for
   release **R1** will be sent out first. After this
   approval is completed, the deployment of release **R1** to the
   **QA** stage begins. Next, a request for
   post-deployment approval is sent out for release **R1**. It's
   only after this post-deployment approval is completed that
-  execution of release **R2** begins and its pre-deployment
+  execution of release **R2** begins and its predeployment
   approval is sent out. The process continues like this for
   all of the releases in turn.
 
 * If you specify a limit and **Deploy latest and cancel the others**,
   and the limit has already been reached, releases **R2**, **R3**, and **R4** will be
-  skipped, and the pre-deployment approval for **R5** in
+  skipped, and the predeployment approval for **R5** in
   the **QA** stage will be sent out immediately
   after the post-deployment approval for release **R1** is completed.
 
@@ -429,8 +393,7 @@ defined.
 
 You can manually control when a stage should run using approval checks. This is commonly used to control deployments to production environments. Checks are a mechanism available to the *resource owner* to control if and when a stage in a pipeline can consume a resource. As an owner of a resource, such as an environment, you can define checks that must be satisfied before a stage consuming that resource can start. 
 
-Currently, manual approval checks are supported on environments. 
-For more information, see [Approvals](approvals.md).
+Currently, manual approval checks are supported on environments. For more information, see [Approvals](approvals.md).
 
 ::: moniker-end
 
@@ -440,15 +403,64 @@ Approvals aren't yet supported in YAML pipelines in this version of Azure DevOps
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
 
-This version of TFS doesn't support YAML pipelines. 
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 
 You can add manual approvals at the start or end of each stage in the pipeline. For more information, see [Release approvals and gates overview](../release/approvals/index.md).
 
-
 * * *
+
+## Add a manual trigger
+
+::: moniker range="> azure-devops-2020"
+
+Manually triggered YAML pipeline stages enable you to have a unified pipeline without always running it to completion. 
+
+For instance, your pipeline might include stages for building, testing, deploying to a staging environment, and deploying to production. You might want all stages to run automatically except for the production deployment, which you prefer to trigger manually when ready.
+
+To use this feature, add the `trigger: manual` property to a stage.
+
+In the following example, the development stage runs automatically, while the production stage requires manual triggering. Both stages run a hello world output script.
+
+```yaml
+stages:
+- stage: development
+  displayName: Deploy to development
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo 'hello, world'
+      displayName: 'Run script'
+- stage: production
+  displayName: Deploy to production
+  trigger: manual
+  jobs:
+  - job: DeployJob
+    steps:
+    - script: echo 'hello, world'
+      displayName: 'Run script'
+```
+
+## Mark a stage as unskippable
+
+Mark a stage as `isSkippable: false` to prevent pipeline users from skipping stages. For example, you may have a YAML template that injects a stage that performs malware detection in all pipelines. If you set `isSkippable: false` for this stage, Pipeline won't be able to skip malware detection.
+
+In the following example, the Malware detection stage is marked as non-skippable, meaning it must be executed as part of the pipeline run. 
+
+```yaml
+- stage: malware_detection
+  displayName: Malware detection
+  isSkippable: false
+  jobs:
+  - job: check_job
+    ...
+```
+
+When a stage is non-skippable, it will show with a disabled checkbox in the **Stages to run** configuration panel.
+
+:::image type="content" source="media/stages/stages-run-skip-stage.png" alt-text="Screenshot of stages to run with disabled stage. ":::
+
+::: moniker-end
+
+

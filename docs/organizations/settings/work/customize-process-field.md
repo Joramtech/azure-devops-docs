@@ -24,6 +24,7 @@ For a list of all fields defined for your organization&mdash;which includes all 
 
 Once you've added a custom field, you can create [queries](../../../boards/queries/using-queries.md), [charts](../../../report/dashboards/charts.md), or [Analytics views and Power BI reports](../../../report/powerbi/create-quick-report.md) to track data related to it.  
 
+## Prerequisites
 
 [!INCLUDE [temp](../includes/process-prerequisites.md)] 
 
@@ -84,7 +85,7 @@ You can add fields and specify the group and page where they should appear. Also
 	<img src="media/process/cpfield-customer-ticket-layout.png" alt="Add a field to Use story, specify layout" />  
 
 	> [!NOTE]    
-	> While you can change the form label, you must use the field name when you are adding fields to cards ([Kanban](../../../boards/boards/customize-cards.md#fields), [Taskboard](../../../boards/sprints/customize-taskboard.md)) or [creating queries](../../../boards/queries/using-queries.md) based on the field.   
+	> While you can change the form label, you must use the field name when you are adding fields to cards ([Board](../../../boards/boards/customize-cards.md#fields), [Taskboard](../../../boards/sprints/customize-taskboard.md)) or [creating queries](../../../boards/queries/using-queries.md) based on the field.   
 
 1.	Choose <strong>Add field</strong> to complete adding the field. If you don't specify its layout location, the system adds it to the first group of fields on the form.  
 
@@ -97,7 +98,7 @@ You can add fields and specify the group and page where they should appear. Also
 
 
 <a id="pick-list">  </a>
-<a id="edit-picklist-inherited" />
+<a id="edit-picklist-inherited"></a>
 
 ### Add a picklist  
 
@@ -143,7 +144,7 @@ You can add a new field and define a pick list or customize the pick list of an 
 
 ### Add an Identity field  
 
-Use an Identity-based field to add a field similar to the Assigned To field. Identity-based fields act in the same way as the Assigned To field, providing a search and identity picker function. When your organization manages users with Azure Active Directory or Active Directory, the system synchronizes Identity-based fields with the names defined in these directories. 
+Use an Identity-based field to add a field similar to the Assigned To field. Identity-based fields act in the same way as the Assigned To field, providing a search and identity picker function. When your organization manages users with Microsoft Entra ID or Active Directory, the system synchronizes Identity-based fields with the names defined in these directories. 
 
 1. Start by choosing ![add new field icon](media/process/new-field-icon.png) <strong>New field</strong>, then the field name, Identity type, and optionally a description. 
 
@@ -184,7 +185,7 @@ Use an Identity-based field to add a field similar to the Assigned To field. Ide
 4. By default, the field is added to the last group defined in the second column. Open the <strong>Layout</strong> tab to drag and drop the field to another group on the form.  
 
 	> [!NOTE]    
-	> The field appears as a checkbox in the work item form. Check the box to indicate a True value. If you display the field on the Kanban or Taskboard, then the field values of True and False display (not a checkbox).
+	> The field appears as a checkbox in the work item form. Check the box to indicate a True value. If you display the field on the board or Taskboard, then the field values of True and False display (not a checkbox).
 
 <a id="add-existing-field">  </a>
 
@@ -212,7 +213,7 @@ Here, we relabel the Customer Ticket field to Ticket Number.
 ![Layout tab, Relabel a field](media/process/cpfield-relabel-customer-ticket.png) 
 
 
-<a id="modify-description" />
+<a id="modify-description"></a>
 
 ## Modify Description help text  
 
@@ -342,7 +343,7 @@ Deleting a field deletes all data associated with that field, including historic
 
 	![Delete field](media/process/cpfield-delete-field.png) 
 
-	To delete fields, you must be a member of the Project Collection Administrators group or be [granted explicit permissions to Delete field from account](../../../organizations/security/set-permissions-access-work-tracking.md#process-permissions). 
+	To delete fields, be a member of the Project Collection Administrators group or be [granted explicit permissions to Delete field from account](../../../organizations/security/set-permissions-access-work-tracking.md#process-permissions). 
 
 2. To complete the delete operation, you must type the name of the field as shown. 
 

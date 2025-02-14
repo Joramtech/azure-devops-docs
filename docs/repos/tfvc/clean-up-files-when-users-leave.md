@@ -19,7 +19,7 @@ When a member leaves a team, version control administrators must correctly dispo
 
 ## Prerequisites
 
-To perform these procedures, you must be a member of the **Azure DevOps Administrators** or **Team Foundation Administrators** security group. For more information, see [Default TFVC permissions](../../organizations/security/default-tfvc-permissions.md).
+To perform these procedures, be a member of the **Azure DevOps Administrators** or **Team Foundation Administrators** security group. For more information, see [Default TFVC permissions](../../organizations/security/default-tfvc-permissions.md).
 
 ## Clean up version-controlled files after a team member leaves
 
@@ -34,4 +34,4 @@ To perform these procedures, you must be a member of the **Azure DevOps Administ
 
 ## Related articles
 
-- [Remove user accounts](../../organizations/security/remove-users-prohibit-access.md)
+- [Remove user accounts](/azure/active-directory/add-users-azure-active-directory#delete-a-user?toc=/azure/devops/organizations/security/toc.json)
