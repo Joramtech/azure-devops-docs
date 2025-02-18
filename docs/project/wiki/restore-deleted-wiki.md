@@ -9,31 +9,21 @@ ms.assetid:
 ms.author: chcomley
 author: chcomley
 monikerRange: '<= azure-devops'
-ms.date: 07/19/2023
+ms.date: 11/21/2023
 ---
 
 # Restore a deleted wiki
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)] 
 
-If a user deleted a provisioned (project) or published (code) wiki by mistake, you can restore it.
-We don't provide options via the UI to delete a wiki, but a user could have used the REST API to delete the repository associated with the wiki.
+If a user accidentally deleted a provisioned (project) or published (code) wiki, you can restore it. Although there are no options in the UI to delete a wiki, a user might have used the REST API to delete the repository associated with the wiki.
 
 > [!NOTE]
 > Deleted repositories remain in the recycle bin for 30 days, after which they are permanently deleted and can't be restored.
 
 ## Prerequisites
 
-::: moniker range="azure-devops"
-* You must have at least Basic access to restore a wiki.
-* You must have the permission **Create Repository** to publish code as wiki. By default, this permission is set for members of the [Project Administrators group](../../repos/git/set-git-repository-permissions.md). 
-* Anyone who is a member of the Contributors security group can add or edit wiki pages. Anyone with access to the team project, including [stakeholders](../../organizations/security/get-started-stakeholder.md), can view the wiki.
-::: moniker-end
-
-::: moniker range=" < azure-devops"
-* You must have the permission **Create Repository** to publish code as wiki. By default, this permission is set for members of the [Project Administrators group](../../repos/git/set-git-repository-permissions.md). 
-* Anyone who is a member of the Contributors security group can add or edit wiki pages. Anyone with access to the team project, including [stakeholders](../../organizations/security/get-started-stakeholder.md), can view the wiki.
-::: moniker-end
+[!INCLUDE [wiki-prereqs-create-repository](includes/wiki-prereqs-create-repository.md)]
 
 ## Restore a complete wiki
 
@@ -133,11 +123,11 @@ The wiki is restored.
 
 1. Go to the URL for your repo: `https://dev.azure.com/<OrgName>/<ProjectName>/_git/classicreleaseoption.wiki`.
 
-2. Search for the history for the main branch, `wikiMaster`.
+2. Search for the history for the main branch, `wikiMain`.
  
 3. Find and select the commit that has the deleted files.
  
-4. Select :::image type="icon" source="../../media/icons/more-actions.png" border="false"::: more actions, and then **Revert**.
+4. Select :::image type="icon" source="../../media/icons/more-actions.png" border="false"::: **More actions**, and then **Revert**.
  
 5. Create and complete a pull request.
 

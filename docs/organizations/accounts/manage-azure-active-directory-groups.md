@@ -1,42 +1,40 @@
 ---
-title: Manage access with Azure Active Directory groups
+title: Manage access with Microsoft Entra groups
 titleSuffix: Azure DevOps Services
-ms.custom: seodec18
-description: Learn how to control who can access Azure DevOps with Azure Active Directory groups
+description: Learn how to control who can access Azure DevOps with Microsoft Entra groups
 ms.subservice: azure-devops-organizations
 ms.assetid: 882E6E07-F407-478A-9DCC-9324493CBE11
-ms.topic: conceptual
+ms.topic: how-to
 ms.author: chcomley
 author: chcomley
-ms.date: 11/11/2022
+ms.date: 10/23/2024
 monikerRange: 'azure-devops'
 ---
 
 
-# Access with Azure Active Directory groups
+# Manage access with Microsoft Entra groups
 
 [!INCLUDE [version-eq-azure-devops](../../includes/version-eq-azure-devops.md)]
 
-Do you want an easier way to control who can access your team's critical resources and key business assets in Azure DevOps Services?
-If you already use Microsoft services like Microsoft 365 or [Azure Active Directory (Azure AD)](https://azure.microsoft.com/services/active-directory/), you can use the same identities with your organization.
-[Azure AD works with your organization](access-with-azure-ad.md) to control access and authenticate users.
+To control access to your team's critical resources and key business assets in Azure DevOps Services, use Microsoft services like Microsoft 365 or [Microsoft Entra ID](https://azure.microsoft.com/services/active-directory/). [Microsoft Entra ID works with your organization](access-with-azure-ad.md) to control access and authenticate users.
 
-When you organize directory members with [Azure AD groups](/azure/active-directory/fundamentals/active-directory-manage-groups), you can reuse those groups to manage permissions in bulk for your organization. Add those groups to the group that you want. For example, add them to built-in groups like Project Collection Administrators or Contributors, or manually created groups like your project management team. Azure AD group members inherit permissions from the Azure DevOps group, so you don't have to manage group members one at a time.
+Organize your directory members with [Microsoft Entra groups](/azure/active-directory/fundamentals/active-directory-manage-groups) and manage permissions in bulk for your organization. Add these groups to built-in groups like Project Collection Administrators or Contributors, or to custom groups like your project management team. Microsoft Entra group members inherit permissions from the Azure DevOps group, so you don't have to manage group members individually.
 
-Not familiar with Azure AD, but want to check it out? Learn more about [Azure AD benefits](/azure/active-directory/fundamentals/active-directory-whatis)
-and differences in how you [control organization access with Microsoft accounts or with Azure AD](access-with-azure-ad.md).
+For more information on [Microsoft Entra ID benefits](/azure/active-directory/fundamentals/active-directory-whatis) and how to [control organization access with Microsoft accounts or Microsoft Entra ID](access-with-azure-ad.md), see the provided links.
 
 > [!NOTE]
-> Due to a functional limitation on Microsoft Graph, [service principals](../../integrate/get-started/authentication/service-principal-managed-identity.md) will not appear in any list of Azure AD group members on Azure DevOps. Permissions set on any Azure AD groups will still apply to any service principals in the group that have been added to the organizations, even if they are not displaying on the web UI.
+> Due to a functional limitation on Microsoft Graph, [service principals](../../integrate/get-started/authentication/service-principal-managed-identity.md) don't appear in any list of Microsoft Entra group members on Azure DevOps. Permissions set on any Microsoft Entra groups still apply to any service principals in the group that have been added to the organizations, even if they aren't displaying on the web UI.
 
 ## Prerequisites
 
-* Your organization must be connected to Azure Active Directory. [My organization uses Microsoft accounts only. Can I switch to Azure AD?](faq-azure-access.yml#ChangeMSA). Learn how to [connect your organization to Azure AD](connect-organization-to-azure-ad.md).
-* You must be a member of the [Project Collection Administrators group](../security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group. You must also have at least Basic access, not Stakeholder.
-* To create and manage Azure AD groups, you need Azure AD administrator permissions or have the directory administrator delegate those permissions to you in the [Azure portal](https://portal.azure.com).
-* Azure AD changes might take up to 1 hour to be visible in Azure DevOps, but you can immediately [reevaluate your permissions](../security/request-changes-permissions.md#refresh-or-re-evaluate-your-permissions).
+| Category | Requirements |
+|--------------|-------------|
+|**Permissions**| - Member of the [Project Collection Administrators group](../security/look-up-project-collection-administrators.md). Organization owners are automatically members of this group.<br>- Microsoft Entra Administrator in the [Azure portal](https://portal.azure.com).|
+|**Access levels**| At least **Basic** access.|
 
-## Add an Azure AD group to an Azure DevOps group
+<a name='add-an-azure-ad-group-to-an-azure-devops-group'></a>
+
+## Add a Microsoft Entra group to an Azure DevOps group
 
 > [!NOTE]   
 > To enable the preview feature, **Organization Permissions Settings Page v2**, see [Enable preview features](../../project/navigation/preview-features.md).
@@ -59,7 +57,7 @@ and differences in how you [control organization access with Microsoft accounts 
 
     ![Select Members, and then Add](media/user-hub/select-members-add.png)
 
-    You [invite guests into Azure AD](https://devblogs.microsoft.com/devops/inviting-directory-guests-to-aad-backed-vsts-accounts/) and into your Azure AD-backed organizations, without waiting for them to accept. This invitation allows you to add those guests to your organization, grant access to projects, assign extensions, and more.
+    You [invite guests into Microsoft Entra ID](https://devblogs.microsoft.com/devops/inviting-directory-guests-to-aad-backed-vsts-accounts/) and into your Microsoft Entra ID-backed organizations, without waiting for them to accept. This invitation allows you to add those guests to your organization, grant access to projects, assign extensions, and more.
 
 5. Add users or groups, and then **Save** your changes.
 
@@ -82,11 +80,13 @@ and differences in how you [control organization access with Microsoft accounts 
 
     ![Bulk adds members to a group](media/manage-azure-ad-groups/bulk-add-groups.png)
 
-    You [invite guests into Azure AD](https://devblogs.microsoft.com/devops/inviting-directory-guests-to-aad-backed-vsts-accounts/) and into your Azure AD-backed organizations, without waiting for them to accept. This invitation allows you to add those guests to your organization, grant access to projects, assign extensions, and more.
+    You [invite guests into Microsoft Entra ID](https://devblogs.microsoft.com/devops/inviting-directory-guests-to-aad-backed-vsts-accounts/) and into your Microsoft Entra ID-backed organizations, without waiting for them to accept. This invitation allows you to add those guests to your organization, grant access to projects, assign extensions, and more.
 
 5. Add more users or groups if needed, and then **Save** your changes.
 
 * * *
+
+Microsoft Entra ID changes might take up to 1 hour to be visible in Azure DevOps, but you can immediately [reevaluate your permissions](../security/request-changes-permissions.md#refresh-or-reevaluate-your-permissions).
 
 ## Related articles
 

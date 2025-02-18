@@ -1,104 +1,135 @@
 ---
-title: "Azure DevOps docs: What's new for July 1, 2023 - July 31, 2023"
-description: "What's new in the Azure DevOps docs for July 1, 2023 - July 31, 2023."
-ms.date: 08/01/2023
+title: "Azure DevOps docs: What's new for January 1, 2025 - January 31, 2025"
+description: "What's new in the Azure DevOps docs for January 1, 2025 - January 31, 2025."
+ms.date: 02/04/2025
 ---
 
-# Azure DevOps docs: What's new for July 1, 2023 - July 31, 2023
+# Azure DevOps docs: What's new for January 1, 2025 - January 31, 2025
 
-Welcome to what's new in the Azure DevOps docs from July 1, 2023 through July 31, 2023. This article lists some of the major changes to docs during this period.
+Welcome to what's new in the Azure DevOps docs from January 1, 2025 through January 31, 2025. This article lists some of the major changes to docs during this period.
 
 ## Administration
 
 ### Updated articles
 
-- [Billing FAQs](/azure/devops/organizations/billing/billing-faq)
-- [Set work tracking permissions](/azure/devops/organizations/security/set-permissions-access-work-tracking)
+- [Allowed IP addresses and domain URLs](/azure/devops/organizations/security/allow-list-ip-url)
+- [Rename or remove a team](/azure/devops/organizations/settings/rename-remove-team)
+- [User and permissions management FAQs](/azure/devops/organizations/accounts/faq-user-and-permissions-management)
+- [Organization FAQs](/azure/devops/organizations/accounts/faq-configure-customize-organization)
+- [Work tracking, process, and project limits](/azure/devops/organizations/settings/work/object-limits)
+- [Use personal access tokens](/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate)
+- [Security best practices](/azure/devops/organizations/security/security-best-practices)
 
 ## Artifacts
 
+### New articles
+
+- [Connect your Python project to an Azure Artifacts feed](/azure/devops/artifacts/python/project-setup-python)
+- [Connect to an Azure Artifacts feed - Universal Packages](/azure/devops/artifacts/universal-packages/project-setup-universal-packages)
+- [Connect your Cargo project to an Azure Artifacts feed](/azure/devops/artifacts/cargo/project-setup-cargo)
+- [Download Universal Packages from Azure Artifacts feeds](/azure/devops/artifacts/quickstarts/download-universal-packages)
+- [Install Python packages (CLI)](/azure/devops/artifacts/quickstarts/install-python-packages)
+- [Restore NuGet packages from the command line (NuGet.exe)](/azure/devops/artifacts/nuget/restore-nuget-packages-nuget-exe)
+- [Restore NuGet packages from the command line (dotnet)](/azure/devops/artifacts/nuget/restore-nuget-packages-dotnet)
+
 ### Updated articles
 
-- [Package graphs in Azure Artifacts](/azure/devops/artifacts/concepts/package-graph)
-- [Azure Artifacts overview](/azure/devops/artifacts/start-using-azure-artifacts)
-- [Tutorial: How to use upstream sources](/azure/devops/artifacts/tutorials/protect-oss-packages-with-upstream-sources)
-- [Use feed views to share packages](/azure/devops/artifacts/feeds/views)
-- [Share packages publicly](/azure/devops/artifacts/tutorials/share-packages-publicly)
+- [Publish Universal Packages from Azure Artifacts feeds](/azure/devops/artifacts/quickstarts/universal-packages)
+- [Publish Python packages (CLI)](/azure/devops/artifacts/quickstarts/python-cli)
+- [Publish NuGet packages from the command line (NuGet.exe)](/azure/devops/artifacts/nuget/publish)
+- [Publish NuGet packages from the command line (dotnet)](/azure/devops/artifacts/nuget/dotnet-exe)
+- [What is Azure Artifacts?](/azure/devops/artifacts/start-using-azure-artifacts)
 
 ## Azure Boards
 
 ### Updated articles
 
-- [Migrate and integrate work tracking data in Azure Boards](/azure/devops/boards/extensions/migrate-integrate)
-- [Link work items and other objects](/azure/devops/boards/backlogs/add-link)
-- [About configuring and customizing Azure Boards](/azure/devops/boards/configure-customize)
-- [Copy or clone work items and more](/azure/devops/boards/backlogs/copy-clone-work-items)
-- [Review team delivery plans in Azure Boards](/azure/devops/boards/plans/review-team-plans)
-- [Add or modify Azure Boards work items in bulk with Microsoft Excel](/azure/devops/boards/backlogs/office/bulk-add-modify-work-items-excel)
-- [Resolve nest, display, and reorder issues for work items](/azure/devops/boards/backlogs/resolve-backlog-reorder-issues)
-- [Set Work in Progress limits](/azure/devops/boards/boards/wip-limits)
-- [Add status badges for your GitHub repo](/azure/devops/boards/github/configure-status-badges)
+- [Link work items to objects](/azure/devops/boards/backlogs/add-link)
+- [Drive Git development from a work item in Azure Boards](/azure/devops/boards/backlogs/connect-work-items-to-git-dev-ops)
+- [Display rollup progress or totals in Azure Boards](/azure/devops/boards/backlogs/display-rollup)
+- [Add or modify work items in bulk with Microsoft Excel](/azure/devops/boards/backlogs/office/bulk-add-modify-work-items-excel)
+- [Add, run, and update inline tests](/azure/devops/boards/boards/add-run-update-tests)
+- [Customize cards on a board](/azure/devops/boards/boards/customize-cards)
+- [Plan and track work in Azure Boards](/azure/devops/boards/get-started/plan-track-work)
+- [Move work items from one team to another team](/azure/devops/boards/work-items/move-work-items)
 - [Connect Azure DevOps Server to GitHub (on-premises)](/azure/devops/boards/github/connect-on-premises-to-github)
-- [Connect Azure Boards to GitHub (cloud)](/azure/devops/boards/github/connect-to-github)
-- [Install the Azure Boards app for GitHub](/azure/devops/boards/github/install-github-app)
-- [Link GitHub commits, pull requests, and issues to work items in Azure Boards](/azure/devops/boards/github/link-to-from-github)
+- [About migrating and integrating work tracking data](/azure/devops/boards/extensions/migrate-integrate)
 
 ## Azure DevOps Reporting and Analytics service
 
 ### Updated articles
 
-- [OData Analytics query guidelines for Azure DevOps](/azure/devops/report/extend-analytics/odata-query-guidelines)
-- [View and configure team velocity](/azure/devops/report/dashboards/team-velocity)
-- [Add charts to a dashboard](/azure/devops/report/dashboards/add-charts-to-dashboard)
+- [Add Markdown to a dashboard](/azure/devops/report/dashboards/add-markdown-to-dashboard)
 
 ## Azure Pipelines
 
 ### New articles
 
-- [Tutorial: Automate Node.js deployments with Azure Pipelines](/azure/devops/pipelines/ecosystems/nodejs-tutorial)
-- [Template expressions](/azure/devops/pipelines/process/template-expressions)
-- [Template parameters](/azure/devops/pipelines/process/template-parameters)
+- [Build a pipeline with stages](/azure/devops/pipelines/process/run-stages)
 
 ### Updated articles
 
-- [Define resources in YAML](/azure/devops/pipelines/process/resources)
-- [Specify demands](/azure/devops/pipelines/process/demands)
-- [Configure schedules for pipelines](/azure/devops/pipelines/process/scheduled-triggers)
-- [Define approvals and checks](/azure/devops/pipelines/process/approvals)
-- [Invoke Azure Function / REST API checks](/azure/devops/pipelines/process/invoke-checks)
+- [CI/CD baseline architecture with Azure Pipelines](/azure/devops/pipelines/architectures/devops-pipelines-baseline-architecture)
+- [Deployment jobs](/azure/devops/pipelines/process/deployment-jobs)
+- [Azure Pipelines agents](/azure/devops/pipelines/agents/agents)
+- [Quickstart: Use an ARM template to deploy a Linux web app to Azure](/azure/devops/pipelines/apps/cd/azure/deploy-arm-template)
 - [Tutorial: Create a multistage pipeline with Azure DevOps](/azure/devops/pipelines/process/create-multistage-pipeline)
-- [Publish Python packages with Azure Pipelines](/azure/devops/pipelines/artifacts/pypi)
+- [Expressions](/azure/devops/pipelines/process/expressions)
+- [Microsoft-hosted agents](/azure/devops/pipelines/agents/hosted)
+- [Clone or import a pipeline](/azure/devops/pipelines/get-started/clone-import-pipeline)
+- [Set variables in scripts](/azure/devops/pipelines/process/set-variables-scripts)
+- [Specify jobs in your pipeline](/azure/devops/pipelines/process/phases)
+- [Pipeline caching](/azure/devops/pipelines/release/caching)
+- [Troubleshoot Azure Resource Manager service connections](/azure/devops/pipelines/release/azure-rm-endpoint)
 - [Template usage reference](/azure/devops/pipelines/process/templates)
+- [Check out multiple repositories in your pipeline](/azure/devops/pipelines/repos/multi-repo-checkout)
+- [Run a self-hosted agent in Docker](/azure/devops/pipelines/agents/docker)
+- [Use Azure Pipelines to build and push container images to registries](/azure/devops/pipelines/ecosystems/containers/push-image)
 
-## Azure Repos
+## CLI
 
 ### Updated articles
 
-- [Branch policies and settings](/azure/devops/repos/git/branch-policies)
-- [Git limits](/azure/devops/repos/git/limits)
+- [Azure DevOps CLI service endpoint](/azure/devops/cli/service-endpoint)
+
+## Integrate
+
+### Updated articles
+
+- [Authenticate to Azure DevOps with Microsoft Entra](/azure/devops/integrate/get-started/authentication/entra)
+- [Build Azure DevOps integrations with Microsoft Entra OAuth apps](/azure/devops/integrate/get-started/authentication/entra-oauth)
+- [Use service principals & managed identities in Azure DevOps](/azure/devops/integrate/get-started/authentication/service-principal-managed-identity)
+- [Choose the right authentication mechanism](/azure/devops/integrate/get-started/authentication/authentication-guidance)
+- [Integrate applications](/azure/devops/integrate/index)
+
+## Migrate
+
+### Updated articles
+
+- [Do test run migration](/azure/devops/migrate/migration-test-run)
+- [Migration overview](/azure/devops/migrate/migration-overview)
 
 ## Project
 
 ### Updated articles
 
-- [Restore a deleted wiki](/azure/devops/project/wiki/restore-deleted-wiki)
+- [Filter lists, boards, and directories](/azure/devops/project/navigation/filter-basics)
+- [Open a service, page, or settings](/azure/devops/project/navigation/go-to-service-page)
 - [View and update work items via mobile browser](/azure/devops/project/navigation/mobile-work)
+- [Set personal or team favorites](/azure/devops/project/navigation/set-favorites)
+- [Work across projects](/azure/devops/project/navigation/work-across-projects)
+- [Functional code search](/azure/devops/project/search/functional-code-search)
+- [Publish a Git repo to a wiki](/azure/devops/project/wiki/publish-repo-to-wiki)
 
-## GitHub issue content updates
+## Service-hooks
 
-Thank you for your feedback on our documentation. This month we made updates to our content to address [these GitHub issues](https://github.com/MicrosoftDocs/azure-devops-docs/issues?q=linked%3Apr+is%3Aissue+is%3Aclosed+closed%3A2023-07-01..2023-07-31).
+### Updated articles
 
-## Community contributors
+- [Service hook consumers](/azure/devops/service-hooks/consumers)
 
-The following people contributed to the Azure DevOps docs during this period. Thank you! Learn how to contribute by following the links under "Get involved" in the [what's new landing page](index.yml).
+## User guide
 
-- [hyoshioka0128](https://github.com/hyoshioka0128) - Hiroshi Yoshioka (4)
-- [AlexandraRamirezMS](https://github.com/AlexandraRamirezMS) (3)
-- [ajayidhikrullah](https://github.com/ajayidhikrullah) - Ajayi Dhikrullah (1)
-- [FabianWarnecke](https://github.com/FabianWarnecke) (1)
-- [NenoLoje](https://github.com/NenoLoje) - Neno Loje (1)
-- [PwshPally](https://github.com/PwshPally) - Steve Mahoney (1)
-- [rickh18](https://github.com/rickh18) (1)
-- [saartanel](https://github.com/saartanel) - Tanel Saar (1)
-- [SebastianSchuetze](https://github.com/SebastianSchuetze) - Sebastian Schütze (1)
-- [sid5233](https://github.com/sid5233) - Sudarshan Bhamare (1)
+### New articles
+
+- [Capture a browser trace for troubleshooting](/azure/devops/user-guide/capture-browser-trace)
+

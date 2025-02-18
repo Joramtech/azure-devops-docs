@@ -5,10 +5,10 @@ ms.assetid: 616919f3-7339-4813-9dcf-82ead3476b1a
 ms.service: azure-devops-test-plans
 ms.custom: UpdateFrequency3
 ms.topic: quickstart
-ms.author: sdanie
-author: steved0x
+ms.author: jeom
+author: rohit-batra
 monikerRange: '<= azure-devops'
-ms.date: 01/11/2022
+ms.date: 09/11/2024
 ---
 
 # Run manual tests
@@ -65,9 +65,11 @@ The Test Center in the Microsoft Test Manager client is a desktop-based manual t
 Testers can use it for manual testing needs. For more information, see [Guidance on Microsoft Test Manager usage](/previous-versions/azure/devops/test/mtm/guidance-mtm-usage).
 To get Microsoft Test Manager, install [Visual Studio Enterprise](https://visualstudio.microsoft.com/downloads/) or [Visual Studio Test Professional](https://visualstudio.microsoft.com/vs/test-professional/).
 
+## Prerequisites
+
 [!INCLUDE [prerequisites-define](includes/prerequisites-run.md)] 
 
-[!INCLUDE [prerequisites-define](includes/prerequisites-tcm.md)] 
+[!INCLUDE [prerequisites-tcm](includes/prerequisites-tcm.md)] 
 
 <a name="run-web"></a>
 
@@ -107,7 +109,7 @@ Follow these steps to run tests for web applications.
    You can also [Create or add to a bug](#create-or-add-to-a-bug).
 
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 1. If you haven't already, [create your manual tests](create-test-cases.md#test-cases).
 
 1. Select a test from a test suite and run it.
@@ -144,6 +146,19 @@ You can also update an existing bug with information about the failure.
 
    ![Screenshot shows Test Runner with a failed test and Create bug highlighted.](media/run-manual-tests/create-bug-button.png)
 
+   > [!NOTE]
+   >
+   > If the create bug button does not launch bug workitem, then verify if the teams settings are correct at Area and Iteration level as below: 
+   >
+   > Go to the project settings and Team, check if the correct Team is set as default. 
+   >
+   > From that Team, click on the Iterations and Area paths hyperlink near to Team name. It will take you to Team configuration page. 
+   >
+   > In the Team configuration page, select Iterations, Default and Backlog iteration must match the Team for which the test case is running. 
+   >
+   > In the Team configuration page, select Areas, Default area must match the Team for which the test case is running. 
+   
+
 1. In the **New bug** dialog box, enter a name for the bug.
 
    ![Screenshot shows Test Runner with Create bug selected and the new bug dialog box open.](media/run-manual-tests/create-bug-test-fail.png)
@@ -163,7 +178,7 @@ Instead of creating a bug, you can update an existing bug with information about
 ![Screenshot shows Test Runner with Add to existing bug selected](media/run-manual-tests/find-existing-bug.png)
 ::: moniker-end
 
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 1. In the Test Runner window, select **Create bug**.
 
    ![Submit a bug.](media/run-manual-tests/RunTest_4.png)
@@ -196,7 +211,7 @@ After you complete testing, save your results, close the session, and review tes
    ::: moniker range=">=azure-devops-2020"
    ![Screenshot shows the result of running test cases, with outcomes of Active, Failed, and Passed displayed.](media/run-manual-tests/test-case-outcome.png)
    ::: moniker-end
-   ::: moniker range="<=azure-devops-2019"
+   ::: moniker range="=azure-devops-2019"
    ![Screenshot shows View test results.](media/run-manual-tests/RunTest_8.png)
    ::: moniker-end
 
@@ -209,7 +224,7 @@ After you complete testing, save your results, close the session, and review tes
    ::: moniker range=">=azure-devops-2020"
    ![Screenshot shows the Related Work section of a work item to view bugs filed for that test.](media/run-manual-tests/related-work-shows-bugs.png)  
    ::: moniker-end
-   ::: moniker range="<=azure-devops-2019"
+   ::: moniker range="=azure-devops-2019"
    ![View bugs filed](media/run-manual-tests/view-bugs.png)
    ::: moniker-end  
 
@@ -237,13 +252,14 @@ If you want to collect more diagnostic data for your desktop application, run yo
    ![Screenshot shows the Run for desktop application dialog box with options to download and launch Test Runner.](media/run-manual-tests/tr-atp-launch.png)
 
    > [!NOTE]
-   > Check that the Test Runner client is available for your platform. Currently, the Test Runner client is available only for x64.
+   > - Check that the Test Runner client is available for your platform. Currently, the Test Runner client is available only for x64.
+   > - Azure Test Runner might not work if your organization uses a conditional access policy via Microsoft Entra. For more information, see [Conditional access common decisions](/entra/identity/conditional-access/overview#common-decisions)
 
 1. Select **Launch** and start testing as described in the previous section. For more information about data collection, see [Collect diagnostic data while testing](collect-diagnostic-data.md).
 
 ::: moniker-end
 
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 If you want to collect more diagnostic data for your desktop application, run your tests using Test Runner client:
 
@@ -271,7 +287,7 @@ Select a test suite and select **Run for web application** or **Run for desktop 
 
 ![Screenshot shows how to select and run all active tests in a test suite.](media/run-manual-tests/run-test-test-suite.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 Select a test suite and select **Run** to run all the active tests.
 
 ![Screenshot shows how to run all active tests in a test suite.](media/run-manual-tests/RunTestsRunSuite.png) 
@@ -290,7 +306,7 @@ Choose a build to run tests against.
 
    ![Screenshot shows the Run with options dialog box with a build selected.](media/run-manual-tests/run-test-select-build.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 1. Choose **Run** and then select **Run with options**.
 
    ![Screenshot shows Run selected and Run with options available.](media/shared/collect-diagnostic-data-16.png)
@@ -323,7 +339,7 @@ Select the **Edit test step** icon.
 ::: moniker range=">=azure-devops-2020"
 ![Screenshot shows how to select the edit icon to edit test steps.](media/run-manual-tests/edit-icon-test-run.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 ![Screenshot shows how to select the edit icon to modify test steps.](media/run-manual-tests/RunTest_11.png)
 ::: moniker-end
 
@@ -333,7 +349,7 @@ You can also edit the text itself.
 ::: moniker range=">=azure-devops-2020"
 ![Screenshot shows the tool to edit test steps when you run a test.](media/run-manual-tests/edit-test-step.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 ![Screenshot shows the tool to modify test steps when you run a test.](media/run-manual-tests/RunTest_9.png)
 ::: moniker-end
 
@@ -351,7 +367,7 @@ For Microsoft Internet Explorer or Microsoft Edge browsers, or for desktop app t
 ::: moniker range=">=azure-devops-2020"
 ![Screenshot shows the button for capturing a screenshot during a test.](media/run-manual-tests/test-capture-screen.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 ![Screenshot shows the button for capturing a screenshot.](media/shared/collect-diagnostic-data-01.png)
 ::: moniker-end
 
@@ -367,7 +383,7 @@ For Microsoft Internet Explorer or Microsoft Edge browsers, or for desktop app t
 ::: moniker range=">=azure-devops-2020"
 ![Screenshot shows the button for capturing an image action log from the app.](media/run-manual-tests/test-capture-action.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 ![Screenshot shows the button to capture an image action log from the app.](media/shared/collect-diagnostic-data-06.png)
 ::: moniker-end
 
@@ -383,7 +399,7 @@ For Microsoft Internet Explorer or Microsoft Edge browsers, or for desktop app t
 ::: moniker range=">=azure-devops-2020"
 ![Screenshot show the button for capturing a screen recording from the app.](media/run-manual-tests/test-capture-screen-recording.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 ![Screenshot show the button to capture a screen recording from the app.](media/shared/collect-diagnostic-data-11.png)
 ::: moniker-end
 
@@ -395,7 +411,7 @@ You can run tests that are part of a test plan using the TCM command-line tool. 
 
 [List test runs](#list-test-runs) | [Create test runs](#create-test-runs) | [Execute test runs](#execute-test-runs) | [Abort test runs](#abort-test-runs) | [Delete test runs](#delete-test-runs) | [Export test runs](#export-test-runs) | [Publish test runs](#publish-test-runs) 
 
-<a id="list-test-runs" /> 
+<a id="list-test-runs"></a> 
 
 ### List test runs  
 
@@ -435,7 +451,7 @@ Id        Title                              Owner               Date Completed
 1000060   Game Shopping (Manual)             Bukhosi Bhengu      12/6/2021
 ```
 
-<a id="create-test-runs" /> 
+<a id="create-test-runs"></a> 
 
 ### Create test runs  
 
@@ -477,7 +493,7 @@ Run created with ID: 1000082.
 
 ```
 
-<a id="execute-test-runs" /> 
+<a id="execute-test-runs"></a>
 
 ### Execute test runs  
 
@@ -510,7 +526,7 @@ Failed:                  1
 Inconclusive:            0
 ```
 
-<a id="abort-test-runs" /> 
+<a id="abort-test-runs"></a>
 
 ### Abort test runs  
 
@@ -537,7 +553,7 @@ tcm run /abort /id:1000082 /collection:https://fabrikamprime.visualstudio.com /t
 Run with ID [1000082] and title [MyTestRun] has been aborted.
 ```
 
-<a id="delete-test-runs" /> 
+<a id="delete-test-runs"></a>
 
 ### Delete test runs  
 
@@ -566,7 +582,7 @@ Are you sure you want to delete run [MyTestRun]? (Yes/No) y
 Run [MyTestRun] has been deleted.
 ```
 
-<a id="export-test-runs" /> 
+<a id="export-test-runs"></a> 
 
 ### Export test runs  
 
@@ -591,7 +607,7 @@ The following command specifies that the test run with the **ID** *1000082* for 
 tcm run /export /id:1000082 /resultsfile:"c:\temp\ResultsForDeveloper.trx" /collection:https://fabrikamprime.visualstudio.com /teamproject:"Fabrikam Fiber"
 ```
 
-<a id="publish-test-runs" /> 
+<a id="publish-test-runs"></a>
 
 ### Publish test runs  
 
@@ -703,6 +719,10 @@ For Microsoft Internet Explorer or Microsoft Edge browsers, or for desktop app t
 
 For more information, see [Collect diagnostic data](collect-diagnostic-data.md#web-recording).
 
+### Q: Some of the attachments for the test run are not showing the preview option?
+
+**A:** You can only preview files with txt and log extensions. Click on the preview option for txt or log extension files, and another UI will open up with the drop down field showing all the attachments for the test run. If you select a file with an extension type other than txt or log, the following message is shown: "You can only preview files with txt and log extensions, click here to download the attachment"
+
 ### Q: How do I control how long I keep my test data?
 
 **A:** For more information, see [Set test retention policies](how-long-to-keep-test-results.md).
@@ -713,7 +733,15 @@ For more information, see [Collect diagnostic data](collect-diagnostic-data.md#w
 
 ### Q: What are the supported operating systems for the Test Runner client?
 
-**A:** The Test Runner desktop client is currently supported only on Windows.
+**A:** The Test Runner desktop client is currently supported only on Windows x64 platform.
+
+### Q: I am observing test run failures when using the Azure Test Runner desktop client.
+
+**A:** Make sure you are using latest version of Test Runner desktop client. Download the [Test Runner desktop client](https://aka.ms/ATPTestRunnerDownload)
+
+### Q: Does the Azure Test Runner desktop client work on devices with Microsoft Entra Conditional Access enabled?
+
+**A:** Azure Test Runner might not work if your organization uses a conditional access policy via Microsoft Entra. For more information, see [Conditional access common decisions](/entra/identity/conditional-access/overview#common-decisions). This is a known limitation and our recommendation is to use web runner in this scenario.
 
 ### Q: Can I opt out of telemetry for the Test Runner client?
 

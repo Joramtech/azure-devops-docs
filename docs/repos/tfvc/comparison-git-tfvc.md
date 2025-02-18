@@ -35,7 +35,7 @@ Git is a distributed version control system. Each developer has a copy of the so
 >[!NOTE]
 >Git in Visual Studio, Azure DevOps Services, and Azure DevOps Server is standard Git. You can use Visual Studio with third-party Git services, and you can also use third-party Git clients with Azure DevOps Server.
  
-To learn more, see [Git and Azure Repos](../../repos/git/index.yml).
+For more information, see [Git and Azure Repos](../../repos/git/index.yml).
 
 ### TFVC (centralized)
  
@@ -47,7 +47,7 @@ TFVC has two [workflow models](decide-between-using-local-server-workspace.md):
 
   - **Local workspaces** - Each team member takes a copy of the latest version of the codebase with them and works offline as needed. Developers check in their changes and resolve conflicts as necessary. Another system that works this way is Subversion.
 
-To learn more, see [What is Team Foundation Version Control?](./what-is-tfvc.md)
+For more information, see [What is Team Foundation Version Control?](./what-is-tfvc.md)
  
 <a name="tfvc_or_git_details"></a>
 
@@ -170,7 +170,7 @@ The following table provides a summary of how TFVC and Git support the main capa
    Scale
    :::column-end:::
    :::column span="2":::
-   You can work on small or very large scale projects using [local workspaces](decide-between-using-local-server-workspace.md#local). Support massive scale (millions of files per branch and large binary files) projects using [server workspaces](decide-between-using-local-server-workspace.md#when-might-i-need-to-use-a-server-workspace).
+   You can work on small or very large scale projects using [local workspaces](decide-between-using-local-server-workspace.md#use-a-local-workspace). Support massive scale (millions of files per branch and large binary files) projects using [server workspaces](decide-between-using-local-server-workspace.md#use-a-server-workspace).
    :::column-end:::
    :::column span="2":::
    You can quickly begin small projects. You can scale up to very large projects, but you have to plan ahead to modularize your codebase. You can create multiple repositories in a project.
@@ -323,7 +323,7 @@ The following table summarizes the client supported features available depending
    Manage work on your dev machine
    :::column-end:::
    :::column span="2":::
-   [Pending Changes](develop-code-manage-pending-changes.md#use-the-pending-changes-page-to-manage-your-work) and [My Work](develop-code-manage-pending-changes.md#use-the-my-work-page-to-manage-your-work) pages in Visual Studio **Team Explorer**.
+   [Pending Changes](develop-code-manage-pending-changes.md#use-the-pending-changes-page-to-manage-work) and [My Work](develop-code-manage-pending-changes.md#use-the-my-work-page-to-manage-work) pages in Visual Studio **Team Explorer**.
    :::column-end:::
    :::column span="2":::
    Changes, commits, and branches pages.

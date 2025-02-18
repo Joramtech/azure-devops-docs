@@ -3,4 +3,12 @@ ms.topic: include
 ---
 
 > [!IMPORTANT]
-> Currently, you can only use letters from the English alphabet in your organization name. Start organization names with a letter or number, followed by letters, numbers, or hyphens. Organization names must not contain more than 50 Unicode characters and must end with a letter or number.
+> Adhere to the following guidelines when you create an organization name.
+> - Use only letters from the English alphabet
+> - Start your organization name with a letter or number
+> - Use letters, numbers, or hyphens after the initial character
+> - Ensure that your organization doesn't exceed 50 Unicode characters
+> - End with a letter or number
+>
+> If you use any of the disallowed characters, you get the following error message:
+> VS850015: The specified name is not allowed to be used: {Organization name}.

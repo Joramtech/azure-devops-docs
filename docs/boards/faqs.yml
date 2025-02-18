@@ -9,7 +9,7 @@ metadata:
   ms.topic: faq
   monikerRange: '<= azure-devops'
   "recommendations": "true"
-  ms.date: 07/31/2023
+  ms.date: 01/05/2024
 
 
 title: Azure Boards FAQs  
@@ -18,7 +18,7 @@ title: Azure Boards FAQs
 summary: | 
   [!INCLUDE [version-lt-eq-azure-devops](../includes/version-lt-eq-azure-devops.md)]
 
-  Find answers to frequently asked questions when using Azure Boards. For FAQs specific to queries or Microsoft Excel integration to add or modify work items defined in Azure DevOps, see [Query FAQs](queries/query-faqs.yml) and [FAQs: Work in Excel connected to Azure Boards](backlogs/office/faqs.yml). 
+  Find answers to frequently asked questions about using Azure Boards. For FAQs specific to queries or Microsoft Excel integration to add or modify work items defined in Azure DevOps, see [Query FAQs](queries/query-faqs.yml) and [FAQs: Work in Excel connected to Azure Boards](backlogs/office/faqs.yml). 
 
   You can view a list of features that are on our roadmap for Azure Boards from the [Features Timeline](/azure/devops/release-notes/features-timeline). To request a feature or up-vote a feature, go to our [Developer Community page](https://developercommunity.visualstudio.com/spaces/21/visual-studio-team-services.html?type=idea). 
 
@@ -36,7 +36,7 @@ sections:
         answer: |
           ::: moniker range="azure-devops"
           For private projects, you can grant access to an unlimited number of users by assigning them Stakeholder access. For public projects, anonymous users&mdash;ones who don't sign into the project&mdash;can view all work items. For more information, see [Stakeholder access quick reference](../organizations/security/stakeholder-access.md) and [Make a private project public](../organizations/projects/make-project-public.md).   
-          Also, if your organization uses Azure Active Directory to manage user access, you can [add external users to your organization](../organizations/accounts/add-external-user.md).
+          Also, if your organization uses Microsoft Entra ID to manage user access, you can [add external users to your organization](../organizations/accounts/add-external-user.md).
           ::: moniker-end
 
           ::: moniker range="< azure-devops"
@@ -49,10 +49,10 @@ sections:
           - [Set work tracking and plan permissions](../organizations/security/set-permissions-access-work-tracking.md?toc=/azure/devops/boards/toc.json)
           - [Grant or restrict permissions to select tasks](../organizations/security/restrict-access.md?toc=/azure/devops/boards/toc.json) 
 
-      - question: Can caching impact rules applied to work items?  
+      - question: Can caching affect rules applied to work items?  
         answer: | 
 
-          **Yes**. Conditional rules based on user or group membership get cached for your web browser. If you find yourself restricted to update a work item, you may have encountered one of these rules. For more information about conditional rules, see [Rules and rule evaluation](../organizations/settings/work/rule-reference.md).
+          **Yes**. Conditional rules based on user or group membership get cached for your web browser. If you find yourself restricted to update a work item, you probably encountered one of these rules. For more information about conditional rules, see [Rules and rule evaluation](../organizations/settings/work/rule-reference.md).
           If your cache stores outdated rules, you can wait for the client cache to expire within three days, or you can clear the cache.    
           To clear the cache, run the following command in the browser command window and then refresh the browser: window.indexedDB.deleteDatabase("wit")
 
@@ -103,13 +103,13 @@ sections:
 
       - question: How can I best track dependencies?
         answer: |
-          You can track dependencies between work items by linking them using a related or other link type. See [Link work items](backlogs/add-link.md) and [Linking, traceability, and managing dependencies](queries/link-work-items-support-traceability.md). 
+          You can track dependencies between work items by linking them using a related or other link type. See [Link work items to other objects](backlogs/add-link.md). 
 
           ::: moniker range=">= azure-devops-2022"
-          You can view dependencies using [Delivery Plans (Preview)](plans/review-team-plans.md). 
+          You can view dependencies using [Delivery Plans](plans/review-team-plans.md). 
           ::: moniker-end
 
-          If you're tracking dependencies across one or more organizations, you may want to use the [Dependency Tracker](extensions/dependency-tracker.md).
+          If you're tracking dependencies across one or more organizations, you might want to use the [Dependency Tracker](extensions/dependency-tracker.md).
 
       - question: What determines which work item type should be a parent for another work item type? 
 
@@ -129,23 +129,49 @@ sections:
           The easiest way to accomplish the task of copying many work items with child items is to create parent-child links to new work items using Excel. To learn how, see [Bulk add or modify work items with Excel, Add a hierarchy of linked work items](backlogs/office/bulk-add-modify-work-items-excel.md#import-work-items-as-a-tree-list).
 
           Other solutions include employing one of the following Marketplace extensions:  
-          - [Work item form one select actions](https://marketplace.visualstudio.com/items?itemName=mohitbagra.witoneclickactions)  
+          - [Work item form one-click actions](https://marketplace.visualstudio.com/items?itemName=mohitbagra.witoneclickactions)  
           - [1-Click Child-Links](https://marketplace.visualstudio.com/items?itemName=ruifig.vsts-work-item-one-click-child-links)  
           - [1-Click Tasks](https://marketplace.visualstudio.com/items?itemName=ruifig.vsts-work-item-one-click-tasks)  
           ::: moniker-end
-
 
       - question: How do I bulk modify a rich-text field? 
 
         answer: | 
           See [Bulk modify work items, Bulk modify rich-text fields](backlogs/bulk-modify-work-items.md#rich-text).
 
-  - name: Backlogs and Boards 
+  - name: Automation rules
+
+    questions: 
+      - question: Is there way to make the parent active when a child is active?
+        answer: | 
+          Yes, you can set your backlog level to include two different rules. The first rule it to set the parent as active when any of its children are set to active. The second rule is to set parent to resolved or closed when all the children are closed. These rules can be configured for backlog level. For more information, see [Automate work item state transitions](work-items/automate-work-item-state-transitions.md)
+
+      - question: Why are my work items automatically changing state?  
+        answer: | 
+          Work items automatically change state after your team administrator set up automation rules on the backlog. Create rules to automatically set the state to active or closed depending on the state change of its children. For more information, see [Automate work item state transitions](work-items/automate-work-item-state-transitions.md).
+
+      - question: Why are the rules not triggering when I reactivate a child item?  
+        answer: | 
+          Rules only trigger when the state of the child item moves from New to Active or into Closed. Rules don't trigger when the state of the child item moves from Closed back to Active. This is currently by design.
+
+      - question: Can I set automation rules per work item type or state?  
+        answer: | 
+          No, the rules are applied to all work item types in that backlog level. We use state categories instead of states because state categories are consistent across all work item types.
+
+      - question: Can I set up automation rules for user stories but not for features or epics?
+        answer: | 
+          Yes, rules are configured per backlog level. Automation rules on the user stories backlog don't affect features or epics. But, you can also set up rules separately for features and epics. For more information, see [Automate work item state transitions](work-items/automate-work-item-state-transitions.md).
+
+      - question: Why are automation rules not working if the child or parent items belongs to a different team or project?
+        answer: | 
+          Rules only trigger if both the parent and children belong to the same team. We don’t want rules automatically triggered for items that belong to other teams. For more information, see [Automate work item state transitions](work-items/automate-work-item-state-transitions.md).
+
+  - name: Backlogs and boards 
 
     questions: 
       - question: What's the difference between a backlog and a board?  
         answer: | 
-          Each backlog and board represents a filtered set of work items based on team area path and iteration path assignments. Backlogs list work items, boards display work items as cards. To understand how the filtering is applied, see [About teams and Agile tools, Team defaults referenced by backlogs and boards](../organizations/settings/about-teams-and-settings.md#team-defaults).
+          Each backlog and board represents a filtered set of work items based on team area path and iteration path assignments. Backlogs list work items, boards display work items as cards. To understand how the filtering is applied, see [About teams and Agile tools, Team defaults referenced by backlogs and boards](../organizations/settings/about-teams-and-settings.md#team-defaults-referenced-by-backlogs-and-boards).
 
       - question: How do I add a backlog or board?  
         answer: | 
@@ -167,9 +193,9 @@ sections:
           - **Portfolio backlog**: By default lists Features (all process models) for the Features backlog, and Epics (Agile, Scrum, and CMMI) for the Epic backlog. Provides options to show **Parents** and **In Progress** or **Completed** child items. 
           - **Sprint backlog**: By default lists all product backlog items assigned to the selected iteration, regardless of status. Provides options to show **Work details**.
 
-      - question: Can I define sprints and use them with my Kanban board? 
+      - question: Can I define sprints and use them with my board? 
         answer: | 
-          **Yes**. You can assign sprints to work items and filter your Kanban board based on the iteration path. For more information, see [Filter your Kanban board](./backlogs/filter-backlogs-boards-plans.md). 
+          **Yes**. You can assign sprints to work items and filter your board based on the iteration path. For more information, see [Filter your board](./backlogs/filter-backlogs-boards-plans.md). 
 
       - question: If I manage bugs with tasks, can I add bugs as a checklist to a requirement? 
         answer: | 
@@ -181,7 +207,7 @@ sections:
 
           That said, we recommend that you use [Delivery Plans](plans/review-team-plans.md) to view dependencies and a calendar view of work.  
 
-          If your organization supports connection to Microsoft Project, you may find more [Marketplace extensions](https://marketplace.visualstudio.com/search?target=AzureDevOps&category=Azure%20Boards&sortBy=Relevance) that support connection of Azure DevOps to Microsoft Project.  
+          If your organization supports connection to Microsoft Project, you might find more [Marketplace extensions](https://marketplace.visualstudio.com/search?target=AzureDevOps&category=Azure%20Boards&sortBy=Relevance) that support connection of Azure DevOps to Microsoft Project.  
 
           For more context, see [The Critical Path on Agile Projects](https://www.mountaingoatsoftware.com/blog/the-critical-path-on-agile-projects) and [Running a lean startup on Azure DevOps](https://medium.com/@giladkhen/running-a-lean-startup-on-azure-devops-5934ced2cc42).
 
@@ -206,51 +232,51 @@ sections:
  
 
 
-  - name: Kanban boards
+  - name: Boards
 
     questions: 
-      - question: Is there a way to widen columns on a Kanban board? 
+      - question: Is there a way to widen columns on a board? 
 
         answer: | 
           **No**. This feature isn't supported. It's a suggested feature, which you can upvote by going to our [Developer Community page](https://developercommunity.visualstudio.com/t/Resize-board-column-width/901212?space=21&q=column+width).
 
-      - question: Can I query based on Kanban board columns? 
+      - question: Can I query based on board columns? 
 
         answer: | 
-          **Yes**, see [Query by assignment or workflow changes, Kanban board change queries](queries/query-by-workflow-changes.md#query-changes-to-a-kanban-board). 
+          **Yes**, see [Query by assignment or workflow changes, board change queries](queries/query-by-workflow-changes.md#query-changes-to-a-kanban-board). 
 
-      - question: Can I view a query as a Kanban board? 
+      - question: Can I view a query as a board? 
 
         answer: | 
           **Yes**, by adding the [Query Based Boards](https://marketplace.visualstudio.com/items?itemName=realdolmen.EdTro-AzureDevOps-Extensions-QueryBasedBoards-Public) Marketplace extension. 
 
-      - question: Is there a way to copy a Kanban configuration to another team?  
+      - question: Is there a way to copy a board configuration to another team?  
 
         answer: | 
            **Yes**, by adding the [Azure Boards Kanban Tools](https://marketplace.visualstudio.com/items?itemName=alm-devops-rangers.KanbanBoardTools) Marketplace extension. 
       
-      - question: Can I list items based on their Kanban column assignment?
+      - question: Can I list items based on their column assignment?
 
         answer: |
-            **Yes**, you can track column moves on a Kanban board by using the [Board Column and Board Column Done fields](queries/query-by-workflow-changes.md#kanban_query_fields).
+            **Yes**, you can track column moves on a board by using the [Board Column and Board Column Done fields](queries/query-by-workflow-changes.md#kanban_query_fields).
 
       - question: What if I get the error message, "The column configurations aren't valid"?
 
         answer: |
-            If you get the following error when you open your Kanban board, you need to correct the configuration. The main reason for this error is that the workflow states of work item types that have been added to the **Requirement** category aren't mapped to the column. 
+            If you get the following error when you open your board, you need to correct the configuration. The main reason for this error is that the workflow states of work item types added to the **Requirement** category aren't mapped to the column. 
 
             > [!div class="mx-imgBorder"]
-            > ![Screenshot that shows a configuration error message on a Kanban board.](./backlogs/media/setup-backlog/column-config-error.png)
+            > ![Screenshot that shows a configuration error message on a board.](./backlogs/media/setup-backlog/column-config-error.png)
 
             Select **Correct this now** to open the **Settings** dialog.
-            In the following example, two new states are added: **Triaged** for bug, and **Investigate** for user story. Each state is then mapped to an existing or new column. After each state is mapped to a column, the Kanban board displays the work items assigned to these states.  
+            In the following example, two new states are added: **Triaged** for bug, and **Investigate** for user story. Each state is then mapped to an existing or new column. After each state is mapped to a column, the board displays the work items assigned to these states.  
             > [!div class="mx-imgBorder"]
-            > ![Screenshot showing Kanban board settings, columns.](./boards/media/add-columns-custom-states-mapping.png)  
+            > ![Screenshot showing board settings, columns.](./boards/media/add-columns-custom-states-mapping.png)  
 
       - question: Can I use swimlanes and set up swimlane rules?
 
         answer:  |
-            **Yes**, you can [add or remove swimlanes](boards/expedite-work.md) on your Kanban board. You can also [set up swimlane rules](boards/expedite-work.md#set-up-swimlane-rules), where when certain conditions are met, Azure Boards automatically moves work items into specific lanes.
+            **Yes**, you can [add or remove swimlanes](boards/expedite-work.md) on your board. You can also [set up swimlane rules](boards/expedite-work.md#set-up-swimlane-rules), where when certain conditions are met, Azure Boards automatically moves work items into specific lanes.
 
   - name: Work item templates  
 
@@ -273,14 +299,14 @@ sections:
         answer: |
           **Example request**: *When creating a template, I would like the Parent User Story to be defaulted. There isn't a predetermined field in the template. Would/could this function be under a user-defined selection?*  
 
-          No, there's no native support for creating hierarchy templates. In particular, you can't specify a default parent work item. You can, however, quickly copy tasks, bugs, and other items using [Excel](backlogs/office/bulk-add-modify-work-items-excel.md) to apply parent-child links in a tree list. Or, you can use a Kanban board to add child tasks, backlog items, or features. For more information, see:  
+          No, there's no native support for creating hierarchy templates. In particular, you can't specify a default parent work item. You can, however, quickly copy tasks, bugs, and other items using [Excel](backlogs/office/bulk-add-modify-work-items-excel.md) to apply parent-child links in a tree list. Or, you can use a board to add child tasks, backlog items, or features. For more information, see:  
           - [Add task checklists](boards/add-task-checklists.md)
           - [Add, run, and update inline tests](boards/add-run-update-tests.md) 
           - [Add features and epics](boards/kanban-epics-features-stories.md)  
 
           ::: moniker range=">= azure-devops-2019"
-          Alternatively, you may find a solution for creating child work items by installing one of the following Marketplace extensions:  
-          - [Work item form one select actions](https://marketplace.visualstudio.com/items?itemName=mohitbagra.witoneclickactions)  
+          Alternatively, you might find a solution for creating child work items by installing one of the following Marketplace extensions:  
+          - [Work item form one-click actions](https://marketplace.visualstudio.com/items?itemName=mohitbagra.witoneclickactions)  
           - [1-Click Child-Links](https://marketplace.visualstudio.com/items?itemName=ruifig.vsts-work-item-one-click-child-links)  
           - [1-Click Tasks](https://marketplace.visualstudio.com/items?itemName=ruifig.vsts-work-item-one-click-tasks) 
           ::: moniker-end

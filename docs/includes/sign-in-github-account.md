@@ -5,7 +5,7 @@ ms.topic: include
 ## Sign up with a GitHub account
 
 > [!IMPORTANT]
-> If your GitHub email address is associated with an Azure AD-backed organization in Azure DevOps, you can't sign in with your GitHub account, rather you must sign in with your Azure AD account.
+> If your GitHub email address is associated with a Microsoft Entra ID-backed organization in Azure DevOps, you can't sign in with your GitHub account, rather you must sign in with your Microsoft Entra account.
 
 1. Select the sign-up link for [Azure DevOps](https://azure.microsoft.com/services/devops/), **Start free with GitHub**. If you're already part of an Azure DevOps organization, select **Sign in to Azure DevOps**.
 
@@ -31,7 +31,7 @@ ms.topic: include
 
 An organization is created based on the account you used to sign in. Sign in to your organization at any time, (`https://dev.azure.com/{yourorganization}`).
 
-You can rename and delete your organization, or change the organization location. To learn more, see [Manage organizations](../organizations/accounts/organization-management.md).
+You can rename and delete your organization, or change the organization location. For more information, see [Manage organizations](../organizations/accounts/organization-management.md).
 
 ### Enable GitHub invitations
 
@@ -41,4 +41,4 @@ Once the setting is changed, sign out of Azure DevOps, and then from a fresh bro
 
 ![Invite GitHub users policy ](../media/invite-github-users-policy.png)
 
-For more information about GitHub authentication, see [FAQs](../organizations/security/faq-github-authentication.yml).
+For more information about GitHub authentication, see [Connect to GitHub/FAQs](../boards/github/connect-to-github.md#faqs).

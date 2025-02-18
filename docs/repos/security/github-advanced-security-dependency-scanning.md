@@ -6,15 +6,13 @@ ms.service: azure-devops
 ms.subservice: azure-devops-integration
 ms.topic: how-to 
 ms.custom: cross-service
-ms.author: jukullam
-author: juliakm 
+ms.author: laurajiang
+author: laurajjiang
 monikerRange: 'azure-devops'
-ms.date: 04/21/2023
+ms.date: 10/24/2024
 ---
 
 # Dependency scanning 
-
-[!INCLUDE [github-advanced-security-preview](includes/github-advanced-security-preview.md)]
 
 Dependency scanning in [GitHub Advanced Security for Azure DevOps](configure-github-advanced-security-features.md) detects the open source components used in your source code and detects if there are any associated vulnerabilities. Any found vulnerabilities from open source components get flagged as an alert. 
 
@@ -26,17 +24,19 @@ Dependency scanning generates an alert for any open-source component, direct or 
 
 ### About dependency scanning detection 
 
-A new snapshot of your components is stored whenever the dependency graph for a repository changes and after, a pipeline that contains the dependency scanning task building new code is executed. Dependency scanning generates security alerts for Go, Maven, npm (including Yarn and pnpm), NuGet, Pip, Ruby, and Rust.
+A new snapshot of your components is stored whenever the dependency graph for a repository changes, and after a pipeline that contains the dependency scanning task is executed. 
 
 For every vulnerable component detected in use, the component and vulnerability are listed in the build log and displayed as an alert in the Advanced Security tab. Only advisories that reviewed by GitHub and added to the [GitHub Advisory Database](https://docs.github.com/en/code-security/dependabot/dependabot-alerts/browsing-security-advisories-in-the-github-advisory-database) create a dependency scanning alert. The build log includes a link to the individual alert for further investigation. For more information on the alert detail, view Fixing dependency scanning alerts.  
 
 The build log also contains basic information about each detected vulnerability. These details include the severity, the affected component, the title of the vulnerability, and the associated CVE.  
 
-![Screenshot of a dependency scanning build output](./media/dependency-scanning-build-log.png)
+![Screenshot of a dependency scanning build output](./media/dependency-scanning-build-log.png) 
+
+For a list of supported component ecosystems and versions, see [Supported package ecosystems](./github-advanced-security-dependency-scanning-ecosystems.md).
 
 ### About dependency scanning alerts 
 
-The Advanced Security tab in Repos in Azure DevOps is the hub to view your security alerts, which by default shows dependency scanning alerts. You can filter by branch, pipeline, package, and severity. You can select into an alert for more details, including remediation guidance.  
+The Advanced Security tab in Repos in Azure DevOps is the hub to view your security alerts, which by default shows dependency scanning alerts. You can filter by branch, pipeline, package, and severity. You can select into an alert for more details, including remediation guidance. At this time, the alerts hub does not display alerts for scanning completed on PR branches.
 
 When a vulnerable package is detected in your repository, fixing dependency scanning alerts typically involves upgrading to a higher package version or removing an offending package. This advice holds true for both direct and transitive (or indirect) dependencies. The default view in your Advanced Security tab is active alerts for the default branch for your repository.
 
@@ -49,7 +49,7 @@ An alert’s state is automatically updated to `Closed` when the vulnerable comp
 
 ![Screenshot of viewing closed dependency scanning alerts](./media/dependency-scanning-alerts-closed.png)
 
-If for whatever reason, you turn off Advanced Security for your repository, you'll lose access to the results in the Advanced Security tab and build task. The build task won't fail, but any results from builds run with the task while Advanced Security is disabled are hidden and unretained. 
+If you turn off Advanced Security for your repository, you'll lose access to the results in the Advanced Security tab and build task. The build task won't fail, but any results from builds run with the task while Advanced Security is disabled are hidden and not retained. 
 
 ### Alert details
 
@@ -73,9 +73,6 @@ The pipelines listed under the **Detections** tab are the pipelines where the vu
 Once an alert has been resolved, the alert automatically moves to the `Closed` state and the latest run pipeline under the Detections tab displays a green checkmark, meaning that code containing the updated component was run in that pipeline: 
 
 ![Screenshot of dependency scanning detections view for an alert](./media/dependency-scanning-detections.png)
-
-
-
 
 #### Severity 
 
@@ -111,13 +108,9 @@ By default, the alerts page shows dependency scanning results for the default br
 The status of an alert reflects the state for the default branch and latest run pipeline, even if the alert exists on other branches and pipelines. 
 
 ### Fixing dependency scanning alerts 
-A direct dependency is a component that you have explicitly included in your repository. A transitive or indirect dependency is a component that utilized by a direct dependency. Regardless of whether the vulnerability is found in a direct or transitive dependency, your project is still vulnerable.  
-
 A direct dependency is a component that you have in your repository. A transitive or indirect dependency is a component that gets used by a direct dependency. Your project is still vulnerable regardless of whether the vulnerability is found in a direct or transitive dependency.
 
 Fixing a vulnerable transitive dependency usually takes the form of explicitly overriding the version of the vulnerable component used for each identified direct dependency. Once the root dependencies have upgraded their use of the vulnerable component to a safe version, you can upgrade each root dependency rather than multiple individual overrides.  
-
-To fix a vulnerable transitive dependency, override the version of the vulnerable component used for each identified direct dependency. Once the root dependencies upgrade their use of the vulnerable component to a safe version, you can upgrade each root dependency rather than have multiple individual overrides.  
 
 #### Updating dependencies for Yarn/Npm 
 
@@ -442,7 +435,7 @@ It's recommended to add a comment near the dependency resolution so that anyone 
 ### What if there's no fix available?
 
 When no known fix is available, the following options are available as other methods of remediation until an upgraded component is available: 
-* Stop using the component and remove it from your code - this removal will be detected upon your next build with the dependency scanning task installed 
+* Stop using the component and remove it from your code - this removal is detected upon your next build with the dependency scanning task installed 
 * Contribute a fix to the component itself. If your organization has specific guidelines around open-source contributions, follow those guidelines.
 * Dismissing the alert. However, alerts with no known fix still can pose a security threat to your organization. We recommend that you don't dismiss an alert just because there's no known fix. 
 
@@ -461,10 +454,21 @@ To dismiss an alert:
 
 ![Screenshot showing how to dismiss a dependency scanning alert](./media/dependency-scanning-dismiss-alert.png)
 
-This action only dismisses the alert for your selected branch. Other branches that may contain the same vulnerability stays active until otherwise acted upon. Any alert that has been previously dismissed can be manually re-opened.
+This action only dismisses the alert for your selected branch. Other branches that may contain the same vulnerability stays active until otherwise acted upon. Any alert that has been previously dismissed can be manually reopened. 
 
-## Troubleshooting dependency scanning 
+### Managing dependency scanning alerts on pull requests
 
-### Break-glass scenario for build task
+If alerts are created for new code changes in a pull request, the alert is reported as an annotation in the Overview tab's comment section of the pull request and as an alert in the Advanced Security repository tab. There is a new branch picker entry for the pull request branch.
 
-If the dependency scanning build task is blocking a successful execution of your pipeline and you need to urgently skip the build task, you can set a pipeline variable `DependencyScanning.Skip: false`.  
+You can see the affected package manifest, see a summary of the finding, and resolve the annotation in the Overview section.
+
+[![Screenshot of active dependency pull request annotation.](./media/pull-request-annotation-dependency-scanning.png)](./media/pull-request-annotation-dependency-scanning.png#lightbox)
+
+To dismiss pull request alerts, you must navigate to the alert detail view to close both the alert and resolve the annotation. Otherwise, simply changing the comment status (1) resolves the annotation but does not close or fix the underlying alert. 
+
+[![Screenshot of closed dependency pull request annotation.](./media/pull-request-annotation-dependency-scanning-closed.png)](./media/pull-request-annotation-dependency-scanning-closed.png#lightbox)
+
+To see the entire set of results for your pull request branch, navigate to **Repos** > **Advanced Security** and select your pull request branch. Selecting **Show more details** (2) on the annotation directs you to the alert detail view in the Advanced Security tab. 
+
+> [!TIP]
+> Annotations will only be created when the affected lines of code are entirely unique to the pull request difference compared to the target branch of the pull request.

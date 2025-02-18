@@ -10,8 +10,8 @@ metadata:
   description: Configure resources and manage settings for an organization, project, team, or user.  
   ms.subservice: azure-devops-settings
   ms.topic: landing-page 
-  author: KathrynEE 
-  ms.author: kaelli 
+  author: chcomley 
+  ms.author: chcomley
   ms.date: 02/18/2022
 
 # linkListType: architecture | concept | deploy | download | get-started | how-to-guide | learn | overview | quickstart | reference | tutorial | video | whats-new
@@ -27,7 +27,7 @@ landingContent:
           - text: About settings
             url: ./settings/about-settings.md 
           - text: Get started as an administrator
-            url: ../user-guide/project-admin-tutorial.md?toc=/azure/devops/organizations/toc.json 
+            url: ../user-guide/project-admin-tutorial.md?toc=/azure/devops/organizations/toc.json
       - linkListType: quickstart
         links:
           - text: Set user preferences
@@ -46,7 +46,7 @@ landingContent:
             url: ../user-guide/plan-your-azure-devops-org-structure.md?toc=/azure/devops/organizations/toc.json 
       - linkListType: concept
         links:
-          - text: Manage access with Azure Active Directory
+          - text: Manage access with Microsoft Entra ID
             url: ./accounts/access-with-azure-ad.md
       - linkListType: quickstart
         links:
@@ -56,7 +56,7 @@ landingContent:
         links:
           - text: Add users to your organization 
             url: ./accounts/add-organization-users.md?toc=/azure/devops/organizations/toc.json 
-          - text: Connect your organization to Azure Active Directory
+          - text: Connect your organization to Microsoft Entra ID
             url: ./accounts/connect-organization-to-azure-ad.md?toc=/azure/devops/organizations/toc.json  
   - title: Add & manage projects
     linkLists:

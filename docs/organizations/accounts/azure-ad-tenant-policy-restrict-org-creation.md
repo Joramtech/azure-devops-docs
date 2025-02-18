@@ -1,30 +1,28 @@
 ---
-title: Restrict new organization creation, Azure Active Directory tenant policy
+title: Restrict new organization creation, Microsoft Entra tenant policy
 titleSuffix: Azure DevOps Services
 ms.custom: 
-description: Learn how Azure DevOps Administrators can prevent users from creating new organizations via the Azure Active Directory tenant policy.
+description: Learn how Azure DevOps Administrators can prevent users from creating new organizations via the Microsoft Entra tenant policy.
 ms.subservice: azure-devops-organizations
 ms.assetid: 
 ms.topic: conceptual
 ms.author: chcomley
 author: chcomley
-ms.date: 05/13/2022
+ms.date: 10/22/2024
 monikerRange: 'azure-devops'
 ---
 
-# Restrict organization creation via Azure AD tenant policy
+# Restrict organization creation via Microsoft Entra tenant policy
 
 [!INCLUDE [version-eq-azure-devops](../../includes/version-eq-azure-devops.md)]
 
-Learn how to turn on the Azure Active Directory (Azure AD) tenant policy, which restricts users from creating an organization in Azure DevOps. This policy is turned off, by default.
+Learn how to turn on the Microsoft Entra tenant policy, which restricts users from creating an organization in Azure DevOps. This policy is turned off, by default.
 
 ## Prerequisites
 
-You must be an Azure DevOps Administrator in Azure AD to manage this policy. It isn't a requirement to be a Project Collection Administrator.
-
-If you don't see the policy section in Azure DevOps, then you aren't an administrator. To check your role, sign in to the [Azure portal](https://ms.portal.azure.com/#home), and then choose **Azure Active Directory > Roles and administrators**. In case that you aren't an Azure DevOps administrator, talk to your administrator.
-
-![Check Azure AD roles and administrators](media/azure-ad-tenant-policy/azure-ad-roles-and-administrators.png)
+| Category | Requirements |
+|--------------|-------------|
+|**Permissions**|[Azure DevOps Administrator in Microsoft Entra ID](/azure/active-directory/roles/permissions-reference). To check your role, sign in to the [Azure portal](https://ms.portal.azure.com/#home), and go to **Microsoft Entra ID** > **Roles and administrators**. If you're not an Azure DevOps administrator, you can't see the policies. Contact your administrator, if necessary. The Project Collection Administrator role isn't required. |
 
 ## Turn on the policy
 
@@ -33,50 +31,46 @@ If you don't see the policy section in Azure DevOps, then you aren't an administ
 2. Select ![gear icon](../../media/icons/gear-icon.png) **Organization settings**.
 
     ![Screenshot showing highlighted Organization settings button.](../../media/settings/open-admin-settings-vert.png)
-3. Select **Azure Active Directory**, and then switch the toggle to turn on the policy, restricting organization creation.
 
-   ![Turn on Azure AD policy](media/azure-ad-tenant-policy/azure-ad-turn-policy-on.png)
+3. Select **Microsoft Entra ID**, and then switch the toggle to turn on the policy, restricting organization creation.
 
 ## Optional
 
 ### Create allowlist
 
 > [!WARNING]
-> We recommend using groups with your tenant policy allow list(s). If you use a named user, be aware that a reference to the named user's identity will reside in the United States, Europe (EU), and Southeast Asia (Singapore).
+> We recommend using groups with your tenant policy allowlist. If you use a named user, be aware that a reference to the named user's identity resides in the United States, Europe (EU), and Southeast Asia (Singapore).
 
-With the policy turned on, all users are restricted from creating new organizations. Grant an exception to users with an allowlist. Users on the allowlist can create new organizations, but they can't manage the policy.
+When the policy is enabled, all users are restricted from creating new organizations. To grant exceptions, add users to an allowlist. Users on the allowlist can create new organizations but can't manage the policy.
 
-1. Select **Add AAD user or group**.
+Select **Add Microsoft Entra user or group**.
 
-![Option, Create allow list and add Azure AD users or groups](media/azure-ad-tenant-policy/add-azure-ad-user-group.png)
+For more information, see [Add organization users and manage access](add-organization-users.md).
 
 ### Create error message
 
-When administrators, who aren't on the allowlist, try to create an organization they get an error similar to the following example. 
- 
-![Error message example](media/azure-ad-tenant-policy/error-message.png)
+When administrators, who aren't on the allowlist, try to create an organization they get an error. 
 
-Customize this error message in the policy settings in Azure DevOps.
+To customize this error message, do the following steps:
 
-1. Select **Edit display message**.
+1. In the policy settings in Azure DevOps, select **Edit display message**.
 
-   ![Select Edit display message to customize](media/azure-ad-tenant-policy/edit-display-message.png)
-2. Enter your customized message, and then choose **Save**.
+2. Enter your customized message, and then select **Save**.
 
-   ![Customize error message dialog](media/azure-ad-tenant-policy/display-error-message-dialog.png)
+   ![Screenshot show Customize error message dialog.](media/azure-ad-tenant-policy/display-error-message-dialog.png)
 
 The error message is customized.
 
 ![Customized error message](media/azure-ad-tenant-policy/error-message-example-ui.png)
 
 > [!NOTE]
-> Administrators, who aren't on the allow list, can't connect their organization to the Azure AD tenant where the policy is turned on.
+> Administrators, who aren't on the allowlist, can't connect their organization to the Microsoft Entra tenant where the policy is turned on.
 >
 > ![Connection failed error](media/azure-ad-tenant-policy/connection-failed-notification.png)
 
 ## Related articles
 
-* [Connect your organization to Azure Active Directory](connect-organization-to-azure-ad.md)
-* [About access with Azure AD](access-with-azure-ad.md)
-* [Get a list of organizations backed by Azure AD](get-list-of-organizations-connected-to-azure-active-directory.md)
+* [Connect your organization to Microsoft Entra ID](connect-organization-to-azure-ad.md)
+* [Learn about access with Microsoft Entra ID](access-with-azure-ad.md)
+* [Get a list of organizations backed by Microsoft Entra ID](get-list-of-organizations-connected-to-azure-active-directory.md)
 * [Resolve orphaned organization](resolve-orphaned-organization.md)

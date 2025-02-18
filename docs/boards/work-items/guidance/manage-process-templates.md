@@ -17,26 +17,24 @@ ms.date: 01/05/2023
 
 [!INCLUDE [version-lt-eq-azure-devops](../../../includes/version-lt-eq-azure-devops.md)] 
 
-When you create a project, a process is used to specify the work item types to configure and other settings. Each process template primarily defines the building blocks of the work item tracking system for Azure Boards. For the Hosted XML and On-premises XML process models, you can upload a process template to either update an existing project or create a project. For the Inheritance process model, you customize work tracking through the web portal. To learn more about these different processes, see [Customize your work tracking experience](../../../reference/customize-work.md).  
+When you create a project, a process is used to specify the work item types to configure and other settings. Each process template primarily defines the building blocks of the work item tracking system for Azure Boards. For the Hosted XML and On-premises XML process models, you can upload a process template to either update an existing project or create a project. For the Inheritance process model, you customize work tracking through the web portal. For more information about these different processes, see [Customize your work tracking experience](../../../reference/customize-work.md).  
 
 ::: moniker range=">= azure-devops-2019 < azure-devops"
 You can upload and export process templates only for those project collections configured to use the On-premises XML processes. Also, you can mark a template to appear as the default when you add projects.
  
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-You can upload, download, and delete process templates for a project collection. Also, you can mark a template to appear as the default when you add projects.
-::: moniker-end 
+ 
 
 
-[!INCLUDE [version-all](../../../includes/version-selector-minimize.md)]
+[!INCLUDE [version-all](../../../includes/version-selector.md)]
 
 
 [!INCLUDE [temp](../../includes/get-latest-process-templates.md)]
 
 ## Prerequisites
  
-To manage process templates, you must be a member of the **Project Collection Administrators** group, To get added to this group, see [Change project collection-level permissions](../../../organizations/security/change-organization-collection-level-permissions.md). 
+To manage process templates, be a member of the **Project Collection Administrators** group, To get added to this group, see [Change project collection-level permissions](../../../organizations/security/change-organization-collection-level-permissions.md). 
 
 ::: moniker range=">= azure-devops-2019"
 
@@ -82,7 +80,7 @@ To manage process templates, you must be a member of the **Project Collection Ad
 	> [!div class="mx-imgBorder"]  
 	> ![Screenshot of Import process actions menu, Create new team project from imported process.](../../../organizations/settings/work/import-process/media/import-process-new-team-project.png)
 
-5. Complete the form that appears. To learn more about the different options, see [Create a project](../../../organizations/projects/create-project.md).
+5. Complete the form that appears. For more information about the different options, see [Create a project](../../../organizations/projects/create-project.md).
 
 	> [!div class="mx-imgBorder"]  
 	> ![Dialog for Create new project.](../../../organizations/settings/work/import-process/media/create-project-from-hosted.png)
@@ -118,34 +116,7 @@ For other Hosted XML process management tasks, see [Import and export a Hosted X
 ::: moniker-end
 
 
-::: moniker range="tfs-2018"
 
-## Open Process Template Manager 
-
-1. From Visual Studio 2015, open the Process Template Manager from the **Team>Team Project Collection Settings>Process Template Manager** bar menu.
-
-	> [!div class="mx-imgBorder"] 
-	> ![Screenshot that shows Open Process Template Manager from Visual Studio 2015.](media/open-process-template-manager.png)
-
-   You'll see a list of each process template that has been uploaded to the project collection. 
-
-   ![Process Template Manager dialog, Select process template to work with.](media/process-template-manager.png)
-
-   > [!TIP]   
-   > For a comparison of the default process templates--Agile, CMMI, and Scrum--see [About processes and process templates](choose-process.md).  
-   The **Upload**, **Download**, **Make Default**, and **Delete** buttons are disabled when you don't have the necessary permissions to manage process templates. 
-
-3. Select the process template that you want to work with and then choose from the following actions.  
-
-	|**Choose this task** | **To perform this operation** |
-	|---------------------|-------------------------------|
-	|**Upload**|To upload a process template.<br/>In the **Upload Process Template** dialog box, choose the folder that contains the root file, ProcessTemplate.xml, for the process template that you want to upload. See also [Process template restrictions and validation checks](#restrictions). |
-	|**Download** | To download the process template to a local computer.<br/>In the **Download Process Template** dialog box, select a folder where the process template gets downloaded.<br/><br/>If you're downloading a process template to use to [configure new features](/previous-versions/azure/devops/reference/upgrade/configure-features-after-upgrade), [manually add new features](/previous-versions/azure/devops/reference/upgrade/add-features-manually) or [update a custom process template to enable new features](/previous-versions/azure/devops/reference/upgrade/additional-configuration-options)--choose the process that corresponds to the one you used previously to create your project. For example, if you're updating a project based on the Scrum process template, then select **Scrum**. All version numbers have been removed from the process templates. If you don't see Agile, CMMI, or Scrum, then you need to [update TFS](https://visualstudio.microsoft.com/downloads/download-visual-studio-vs). <br/><br/>You can determine which process template to select based on the [work item types defined for your existing project](#wit_correlation). |
-	|**Make Default**| To cause the selected process template to appear as the default selection in the **New Team Project Wizard**. | 
-	|**Delete**	|To permanently remove the selected process template from the collection.	| 
-
-
-::: moniker-end
 
 
 
@@ -163,14 +134,7 @@ To determine the type of process template that was used to create your project, 
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-
-| **Agile**| **CMMI**| **Scrum**| 
-|-----------|-----------|-----------|-----------|
-| ![Agile work item types](media/ALM_MPT_WIT_Agile.png) | ![CMMI work item types](media/ALM_MPT_WIT_CMMI.png) | ![Scrum work item types](media/ALM_MPT_WIT_Scrum.png) | 
-
-::: moniker-end
 
 
 <a id="restrictions"> </a>

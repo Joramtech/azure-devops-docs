@@ -4,7 +4,7 @@ description: Best practices when publishing and consuming packages with Azure Ar
 ms.service: azure-devops-artifacts
 ms.topic: conceptual
 ms.date: 04/07/2023
-ms.custom: contperf-fy23, engagement-fy23
+ms.custom: engagement-fy23
 monikerRange: '<= azure-devops'
 "recommendations": "true"
 ---
@@ -47,17 +47,13 @@ In this section, we'll cover best practices for consuming packages with Azure Ar
 
     Adding upstream sources to your feed is the recommended approach for consuming packages from public registries like NuGet.org or npmjs.com. See [Understand upstream sources](upstream-sources.md) and [how to configure upstream sources](../how-to/set-up-upstream-sources.md) for more details.
 
-- **Sources not in your organization but in the same AAD tenant should be added using the feed locator**:
+- **Sources not in your organization but in the same Microsoft Entra tenant should be added using the feed locator**:
 
     The syntax for the feed locator is as follows: `azure-feed://<organization>/<projectName>/<feed>@<view>`
 
 - **Ensure that the order of the sources matches your desired package resolution order**:
 
     The feed will sequentially check each upstream source, and return the package from the first source that has it.
-
-- **Place public upstreams FIRST in your resolution order**:
-
-    This prevents other sources from overriding well-known packages with altered or incompatible versions.
 
 ## Related articles
 

@@ -20,10 +20,20 @@ Stay aligned and coordinated with Azure Boards and link your code activity and i
 
 ## Integrate Azure Boards and GitHub
 
-:::moniker range=">= azure-devops-2022"
+:::moniker range="> azure-devops-2022"
 Azure Boards and Azure DevOps support integration with GitHub.com and GitHub Enterprise Server repositories.
 
-You can start from either Azure Boards or GitHub to integrate and connect up to 250 GitHub repositories to an Azure Boards project. 
+You can start from either Azure Boards or GitHub to integrate and connect up to 500 GitHub repositories to an Azure Boards project. 
+
+- [Install and configure the Azure Boards app for GitHub](install-github-app.md)
+- [Connect an Azure Boards project to one or more GitHub repositories](connect-to-github.md)
+
+:::moniker-end
+
+:::moniker range="= azure-devops-2022"
+Azure Boards and Azure DevOps support integration with GitHub.com and GitHub Enterprise Server repositories.
+
+You can start from either Azure Boards or GitHub to integrate and connect up to 500 GitHub repositories to an Azure Boards project. 
 
 - [Install and configure the Azure Boards app for GitHub](install-github-app.md)
 - [Connect an Azure Boards project to one or more GitHub repositories](connect-to-github.md)
@@ -55,8 +65,8 @@ You can do the following tasks with Azure Boards-GitHub integration:
 
 - [Transition work items to a "Done" or "Completed" state with `fix`, `fixes`, or `fixed` in GitHub](link-to-from-github.md#use-ab-to-link-from-github-to-azure-boards-work-items). 
 - [Post a comment to a GitHub commit, pull request, or issue when linked to a work item.](https://docs.github.com/en/get-started/quickstart/communicating-on-github) 
-- [Link from a work item to a GitHub commit, pull request, or issue](link-to-from-github.md#add-link-from-a-work-item-to-a-github-commit-pull-request-or-issue).
-- [View GitHub objects on a Kanban board](link-to-from-github.md#view-github-objects-on-kanban-board). 
+- [Link from a work item to a GitHub commit, pull request, branch, or issue](link-to-from-github.md#link-work-item-to-branch-commit-pr).
+- [View GitHub objects on a board](link-to-from-github.md#view-github-objects-on-board). 
 - [Configure status badges](configure-status-badges.md)
 - [Manage GitHub repository access](install-github-app.md#change-repository-access)
 - [Troubleshoot Azure Boards-GitHub integration](connect-to-github.md#resolve-connection-issues)

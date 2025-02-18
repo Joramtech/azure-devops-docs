@@ -16,9 +16,9 @@ ms.date: 07/08/2022
 
 [!INCLUDE [version-gt-eq-2019](../../../includes/version-gt-eq-2019.md)]
 
-<a id="inherited" /> 
+<a id="inherited"></a> 
 
-To customize the work tracking system, you *customize* an inherited process through the administrative user interface for the organization. All projects that use an inherited process get the customizations made to that process. On the other hand, you *configure* your Agile tools&mdash;[Backlogs, Sprints, Kanban boards, and Taskboard](../about-teams-and-settings.md)&mdash;for each team. 
+To customize the work tracking system, you *customize* an inherited process through the administrative user interface for the organization. All projects that use an inherited process get the customizations made to that process. On the other hand, you *configure* your Agile tools&mdash;[Backlogs, Sprints, boards, and Taskboards](../about-teams-and-settings.md)&mdash;for each team. 
 
 > [!IMPORTANT]  
 > To customize an on-premises project or update XML definition files to support customization, see [On-premises XML process model](../../../reference/on-premises-xml-process-model.md). This article applies to Azure DevOps Services and Azure DevOps Server 2019 only. 
@@ -112,7 +112,7 @@ Each inherited process you create inherits the WITs defined in the system proces
 You can add fields and modify the workflow and work item form for all inherited WITs that display on the **Work Item Types** page. If you don't want users to create a WIT, you can disable it. In addition, you can add custom WITs. 
 
 
-<a id="field-customizations" />
+<a id="field-customizations"></a>
 
 ## Field customizations 
 
@@ -195,7 +195,7 @@ In addition, you can [add an existing field](customize-process-field.md#add-exis
 
 - You can't change the field name or data type once you've defined it
 - You can't modify the gray area on the form where the State, Reason, Area Path, and iteration path fields are located  
-- You can't import or define a global list as supported by the Hosted XML and On-premises XML process models. To learn more, see [Define global lists](/previous-versions/azure/devops/reference/xml/define-global-lists).  
+- You can't import or define a global list as supported by the Hosted XML and On-premises XML process models. For more information, see [Define global lists](/previous-versions/azure/devops/reference/xml/define-global-lists).  
 
 ::: moniker-end
 
@@ -207,7 +207,7 @@ In addition, you can [add an existing field](customize-process-field.md#add-exis
     - Change the picklist of an inherited field, such as the Activity or Discipline field  
     - Change the picklist order, picklists display in alphabetic order
 - You can't modify the Description help text of inherited fields
-- Import or define a global list as supported by the Hosted XML and On-premises XML process models. To learn more, see [Define global lists](/previous-versions/azure/devops/reference/xml/define-global-lists).  
+- Import or define a global list as supported by the Hosted XML and On-premises XML process models. For more information, see [Define global lists](/previous-versions/azure/devops/reference/xml/define-global-lists).  
 
 > [!NOTE]    
 > With the inherited process, you can't modify the picklists of predefined fields&mdash;such as [Activity](../../../boards/queries/query-numeric.md), [Automation Status](../../../boards/queries/build-test-integration.md), [Discipline](../../../boards/queries/query-numeric.md), [Priority](../../../boards/queries/planning-ranking-priorities.md), plus others.  
@@ -229,7 +229,7 @@ Picklists associated with person-name fields, such as Assigned To and Changed By
 
 Renaming a field or changing the data type aren't supported actions. However, you can change the label that appears for a field on the work item form from the Layout tab. When selecting the field in a query you need to select the field name and not the field label. 
 
-<a id="delete-restore" />
+<a id="delete-restore"></a>
 
 ### Can I delete or restore a deleted field? 
 
@@ -285,7 +285,7 @@ For example, you can make the Title or the State field Read-only for select user
 
 ### Restrict modification of work items based on Area Path 
 
-You can disallow users from modifying select work items by setting permissions on an Area path. This is not a rule setting, but a permission setting. To learn more, see [Create child nodes, modify work items under an area path](../../security/set-permissions-access-work-tracking.md#set-permissions-area-path).
+You can disallow users from modifying select work items by setting permissions on an Area path. This is not a rule setting, but a permission setting. For more information, see [Create child nodes, modify work items under an area path](../../security/set-permissions-access-work-tracking.md#set-permissions-area-path).
 
 ## Work item type (WIT) customizations 
 

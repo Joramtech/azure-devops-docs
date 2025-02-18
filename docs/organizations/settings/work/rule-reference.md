@@ -65,7 +65,7 @@ Default rules and behaviors that govern these fields include:
 1. These rules are needed when a work item type has custom states, or the work item type is a custom work item type.
 1. These rules only apply to inherited processes; they are never generated for the Hosted XML or On-premises XML processes. 
 
-Workflow states are associated with state categories to support the workflow on Kanban boards. To learn more, see [How workflow states and state categories are used in Backlogs and Boards](../../../boards/work-items/workflow-and-state-categories.md).
+Workflow states are associated with state categories to support the workflow on boards. For more information, see [How workflow states and state categories are used in Backlogs and Boards](../../../boards/work-items/workflow-and-state-categories.md).
  
 
 ### State Change Date field rules
@@ -73,7 +73,7 @@ Workflow states are associated with state categories to support the workflow on 
 These rules are technically a lot simpler than Closed By/Closed Date rules because they are not dependent on any particular state. For any work item type, the same rules will always work. They need to be auto-generated because some OOB work item types do not contain the State Change Date field, so when the user adds this field to a custom work item type, these rules need to be auto-generated as well. The same principles for Closed By/Closed Date rules apply here as well.
  
 
-<a id="custom-rules" /> 
+<a id="custom-rules"></a> 
 
 ## Custom rules
 
@@ -92,7 +92,7 @@ Note the following:
 
 ### Rule composition
 
-<a id="ip-rule-composition" /> 
+<a id="ip-rule-composition"></a> 
 
 # [Inheritance process](#tab/inheritance)
 
@@ -198,7 +198,7 @@ The On-premises XML process defines rules using XML elements. All of these rule 
 
 When you want a rule to apply to a field throughout the life of the work item, specify it within the `FIELD` section. For example, a field that is required for a bug that is new and active remains required until the bug is closed. Otherwise, if you want it applied based on a change in State, Reason, or transition, specify it within the `WORKFLOW` section.
 
-**State** (System.State) and **Reason** (System.Reason) fields are defined within the `WORKFLOW` section. You can specify most field rules to apply to a field during a change of state, selection of a reason, or for a specific transition. To learn more, see [Change the workflow for a work item type](../../../reference/add-modify-wit.md).
+**State** (System.State) and **Reason** (System.Reason) fields are defined within the `WORKFLOW` section. You can specify most field rules to apply to a field during a change of state, selection of a reason, or for a specific transition. For more information, see [Change the workflow for a work item type](../../../reference/add-modify-wit.md).
  
  
 Otherwise, specify a rule to be evaluated only during a change in state. These rules are defined within the `WORKFLOW` section under the `STATE`, `REASON`, or `TRANSITION` elements. All rules, except for `HELPTEXT`, can be applied within a `FIELD` (Workflow) element.
@@ -273,13 +273,13 @@ The rule engine restricts setting conditions or actions to system fields except 
 If you don't see a field listed in the drop-down menu of the rule user interface for the Inheritance process, this is why. For example, if you try to make **Area Path** (System.AreaPath) read-only based on a condition, the Area Path field isn't available for selection. Even if you're able to specify a system field, the rule engine may restrict you from saving the rule. 
  
 
-<a id="clear" /> 
+<a id="clear"></a> 
 
 ## Default and copy rules 
 
 Default and copy rules modify the values of work item fields. They define run-time behavior and constraints, such as specifying default values, clearing fields, requiring fields to be defined, and more. 
 
-::: moniker range="tfs-2018 || azure-devops-2020 || azure-devops"
+::: moniker range="=azure-devops-2020 || =azure-devops"
 You can restrict application of these rules based on the current user's group membership as described in [User or group membership rule restrictions](#membership).
 ::: moniker-end
 
@@ -405,13 +405,13 @@ These rules support setting defaults, copying values from one field to another, 
 ---  
 
 
-<a id="require" /> 
+<a id="require"></a> 
 
 ## Constraint rules
 
 Constraint rules restrict changing the value of a field. They define the valid states for a work item. Each constraint operates on a single field. Constraints are evaluated on the server on work item save, and if any constraint is violated the save operation is rejected.  
  
-::: moniker range="tfs-2018 || azure-devops-2020 || azure-devops"
+::: moniker range="=azure-devops-2020 || =azure-devops"
 You can restrict application of these rules based on the current user's group membership as described in [User or group membership rule restrictions](#membership).
 ::: moniker-end
  
@@ -588,7 +588,7 @@ Most of these rule actions can be applied with the selection of any condition.
 ---  
 
 
-<a id="pick-list" /> 
+<a id="pick-list"></a> 
 
 ## Pick lists 
 
@@ -695,7 +695,7 @@ To avoid validation errors that would otherwise occur when members leave the tea
 
 
 
-<a id="conditional-rules" />
+<a id="conditional-rules"></a>
 
 ## Conditional field values or changes 
 
@@ -827,9 +827,9 @@ For syntax structure and examples, see [Assign conditional-based values and rule
 ---  
 
 
-<a id="apply-ignore" /> 
-<a id="membership" /> 
-<a id="apply-or-ignore-rules-based-on-user-or-group" /> 
+<a id="apply-ignore"></a> 
+<a id="membership"></a> 
+<a id="apply-or-ignore-rules-based-on-user-or-group"></a> 
 
 ## User or group membership rule restrictions   
 
@@ -840,7 +840,7 @@ You can restrict application of a rule based on the current user's membership. W
 
 
 > [!TIP]    
-> To avoid rule evaluation issues that may arise, specify Azure DevOps security groups and not Azure Active Directory or Active Directory security groups. To learn more, see [Default rules and the rule engine](rule-reference.md). 
+> To avoid rule evaluation issues that may arise, specify Azure DevOps security groups and not Microsoft Entra ID or Active Directory security groups. For more information, see [Default rules and the rule engine](rule-reference.md). 
 
 # [Inheritance process](#tab/inheritance)
 
@@ -936,7 +936,7 @@ To restrict a rule based on the current user's membership, you specify either th
 
 
 
-<a id="tokens" /> 
+<a id="tokens"></a> 
 
 ### Use tokens to reference users or groups
 
@@ -951,7 +951,7 @@ Examples of tokens include the following:
 - [*CollectionName*], such as [fabrikam], [myorganization] 
 
 
-To learn about the scopes available for your project or organization, go to the **Project Settings>Permissions>Groups** or **Organization Settings>Permissions>Groups** page, you can filter the list as needed. For example, the following image shows the first four entries to a filtered list based on *Azure DevOps*. To learn more, see [Change project-level permissions](../../security/change-project-level-permissions.md) or 
+To learn about the scopes available for your project or organization, go to the **Project Settings>Permissions>Groups** or **Organization Settings>Permissions>Groups** page, you can filter the list as needed. For example, the following image shows the first four entries to a filtered list based on *Azure DevOps*. For more information, see [Change project-level permissions](../../security/change-project-level-permissions.md) or 
 [Change project collection-level permissions](../../security/change-organization-collection-level-permissions.md). 
 
 :::image type="content" source="media/rules/permissions-group-scope.png" alt-text="Screenshot of filtered Permissions groups list.":::
@@ -985,7 +985,7 @@ Examples of tokens include the following:
 > [!NOTE]    
 > [Project], [GLOBAL], and [Team Foundation] are used as is. You don't replace them with the name of the project, collection, or server name. 
 
-To learn about the scopes available for your project or collection, go to the **Project Settings>Permissions>Groups** or **Collection Settings>Permissions>Groups** page. Filter the list as needed. For example, the following image shows the first four entries to a filtered list based on *Azure DevOps*. To learn more, see [Change project-level permissions](../../security/change-project-level-permissions.md) or 
+To learn about the scopes available for your project or collection, go to the **Project Settings>Permissions>Groups** or **Collection Settings>Permissions>Groups** page. Filter the list as needed. For example, the following image shows the first four entries to a filtered list based on *Azure DevOps*. For more information, see [Change project-level permissions](../../security/change-project-level-permissions.md) or 
 [Change project collection-level permissions](../../security/change-organization-collection-level-permissions.md). 
 
 :::image type="content" source="media/rules/permissions-group-scope.png" alt-text="Screenshot of filtered Permissions groups list.":::
@@ -1008,7 +1008,7 @@ To learn more about default security groups, see [Permissions and groups](../../
 
 Rules that specify a condition based on the user or group membership of the user modifying a work item are evaluated in one of two ways. When the rule is evaluated, the application needs to determine whether the rule applies to the current user by checking if that user is or isn't a member of the specified group. 
  
-- When modifying the work item from the web portal, REST API, or **azure boards** command, a request to the Azure Active Directory or Active Directory is made. No problems occur for this operation.  
+- When modifying the work item from the web portal, REST API, or **azure boards** command, a request to the Microsoft Entra ID or Active Directory is made. No problems occur for this operation.  
 - When modifying the work item from Visual Studio, Excel or other custom tool using the WIT Client Object Model, the request to evaluate membership is based on a client cache. The client cache is not aware of Active Directory groups. 
 
 > [!NOTE] 

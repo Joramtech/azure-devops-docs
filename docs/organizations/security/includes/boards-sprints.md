@@ -66,7 +66,7 @@ ms.topic: include
       View team capacity and work details
    :::column-end:::
    :::column span="1":::
-      
+      ✔️
    :::column-end:::
    :::column span="1":::
       ✔️
@@ -83,7 +83,7 @@ ms.topic: include
       
    :::column-end:::
    :::column span="1":::
-      ✔️
+      
    :::column-end:::
    :::column span="1":::
       ✔️

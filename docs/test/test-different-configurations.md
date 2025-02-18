@@ -5,8 +5,8 @@ ms.assetid: 750F033E-A39E-4C85-BF85-012629C33DE6
 ms.service: azure-devops-test-plans
 ms.custom: UpdateFrequency3
 ms.topic: conceptual
-ms.author: sdanie
-author: steved0x
+ms.author: jeom
+author: rohit-batra
 monikerRange: '<= azure-devops'
 ms.date: 12/20/2021
 ---
@@ -40,14 +40,14 @@ Then you can:
 
 ## Prerequisites
 
-- You must connect to a project. If you don't have a project yet, [create one](/azure/devops/user-guide/sign-up-invite-teammates).
-- You must be added to a project. To get added, [Add users to a project or team](/azure/devops/organizations/security/add-users-team-project).
-- To view or add test configurations, you must have **Basic** access or higher.
-- To add test configurations, you must have the project-level **Manage test configurations** permission set to **Allow**. By default, this permission is granted to members of the Contributors and Project Administrator groups.
+| Category | Requirement |
+|--------------|-------------|
+| **Project access** | [Project member](../organizations/security/add-users-team-project.md). |
+| **Access levels** | To add test configurations: Project-level **Manage test configurations** permission set to **Allow**. By default, this permission is granted to members of the Contributors and Project Administrator groups.|
 
-To learn more, see [Manual test access and permissions](/azure/devops/test/manual-test-permissions).
+For more information, see [Manual test access and permissions](manual-test-permissions.md).
 
-[!INCLUDE [prerequisites-define](includes/prerequisites-tcm.md)]
+[!INCLUDE [prerequisites-tcm](includes/prerequisites-tcm.md)]
 
 <a name="view-configs"></a>
 
@@ -137,7 +137,7 @@ Then combine multiple variable values to create a configuration.
 1. Save your new test configuration.
 ::: moniker-end
 
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 A test configuration is a combination of configuration variable 
 values. Your configuration variables could be, for example, 
@@ -206,7 +206,7 @@ Configurations assigned to a test suite apply to all tests or suites within it.
 
    ![Screenshot shows setting configurations for a test case.](media/testing-configurations/select-configuration-test-case.png)
 ::: moniker-end
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 You can assign configurations to a test plan, a test suite,
 or an individual test case. Configurations assigned to a test plan 
@@ -255,7 +255,7 @@ Set up a testing platform for a particular configuration, such as testing the ap
    ![Screenshot shows the configuration for this test in the status bar.](media/testing-configurations/configuration-status-bar.png)
 ::: moniker-end
 
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 1. Set up a testing platform for a particular configuration, such
    as testing the app using Google Chrome on Windows 10.
@@ -292,7 +292,7 @@ If you have a test case that appears in several test suites, you can set the dif
 The same test case can have different configuration settings in different test suites and test plans.
 ::: moniker-end
 
-::: moniker range="<=azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 1. Open the **Charts** page for your test plan or test suite, choose 
    **New**, and select **New test result chart**.

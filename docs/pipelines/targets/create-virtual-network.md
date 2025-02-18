@@ -1,9 +1,8 @@
 ---
-title: Create a virtual network for build-deploy-test 
+title: Create a virtual network for build-deploy-test
 description: Provision and manage VMs in SCVMM - Create a virtual network for build-deploy-test scenarios using Network Virtualization
 ms.assetid: 64620E9B-D2D1-4516-921A-40A159019513
 ms.topic: conceptual
-ms.custom: seodec18
 ms.author: ronai
 author: RoopeshNair
 ms.date: 02/01/2022
@@ -14,9 +13,7 @@ monikerRange: '<= azure-devops'
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-::: moniker range="tfs-2018"
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
-::: moniker-end
+
 
 Network Virtualization provides ability to create multiple virtual
 networks on a shared physical network. Isolated virtual networks can
@@ -45,8 +42,6 @@ See also: [Hyper-V Network Virtualization Overview](/windows-server/networking/s
   virtual network. The options and steps are described in [this section](#select-topology).
 
 * Enable your build-deploy-test scenario as shown in [these steps](#enable-scenario).
-
-* You can perform a range of operations to manage VMs using SCVMM. For examples, see [SCVMM deployment](scvmm.md).
   
 <a name="prereqs"></a>
 
@@ -205,7 +200,7 @@ port profiles, logical switches, and adding the switches to the Hyper-V hosts.
 1. Do the same for all the Hyper-V hosts in the host group.
 
 This is a one-time configuration for a specific host group of machines. After completing this setup, you can dynamically
-provision your isolated network of virtual machines using the **SCVMM extension** in TFS and Azure Pipelines builds and releases.
+provision your isolated network of virtual machines using the **SCVMM extension** in Azure Pipelines builds and releases.
 
 [Back to list of tasks](#task-list)
 
@@ -243,8 +238,7 @@ Isolated virtual networks can be broadly classified into three topologies.
 
 You can create any of the above topologies using the SCVMM extension, as shown in the following steps.
 
-1. Open your TFS or Azure Pipelines instance and install the **SCVMM extension** if not already installed.
-   For more information, see [SCVMM deployment](scvmm.md).
+1. Open your Azure Pipelines instance and install the **SCVMM extension** if not already installed.
 
    >The **SCVMM task** provides a more efficient way capability to perform lab management operations using build and release
    pipelines. You can manage SCVMM environments, provision isolated virtual networks, and implement build-deploy-test scenarios.
@@ -341,16 +335,13 @@ environments. You can create as many environments as you need with just a select
 
 ## See also
 
-* [SCVMM deployment](scvmm.md)
 * [Hyper-V Network Virtualization Overview](/windows-server/networking/sdn/technologies/hyper-v-network-virtualization/hyperv-network-virtualization-overview-windows-server)
 
 ## FAQ
 
 <!-- BEGINSECTION class="md-qanda" -->
 
-::: moniker range="tfs-2018"
-[!INCLUDE [temp](../includes/qa-versions.md)]
-::: moniker-end
+
 
 <!-- ENDSECTION -->
 

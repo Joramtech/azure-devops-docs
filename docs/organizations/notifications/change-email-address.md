@@ -7,7 +7,7 @@ ms.topic: conceptual
 ms.author: chcomley
 author: chcomley
 monikerRange: '<= azure-devops'
-ms.date: 06/22/2023
+ms.date: 01/27/2025
 ---
 
 # Change your preferred email address for notifications
@@ -20,7 +20,8 @@ You can change your preferred email address for notifications from your organiza
 
 > [!NOTE]
 > - Your preferred email address applies across all of your organizations and can't be changed on a per-organization basis.
-> - It may take some time for the settings to take effect.
+> - Your settings might take some time to take effect.
+> - If you're enrolled in the Microsoft Entra profile information preview, your profile information gets pulled directly from Microsoft Entra and therefore you can't edit it. For more information, see [Set user preferences, Microsoft Entra profile preview](../settings/set-your-preferences.md#microsoft-entra-profile-preview).
 ::: moniker-end
 
 ## Change your email address
@@ -29,7 +30,7 @@ Do the following steps to update your preferred email address, where you receive
 
 ::: moniker range="azure-devops"
 
-1. From your home page, open user settings, :::image type="icon" source="../../media/icons/user-settings-gear.png" border="false":::, and then select **Profile**.
+1. From your home page, open user settings :::image type="icon" source="../../media/icons/user-settings-gear.png" border="false":::, and then select **Profile**.
 
    :::image type="content" source="../../media/open-user-settings-profile-preview.png" alt-text="Screenshot showing user settings profile open.":::
 
@@ -48,20 +49,6 @@ Do the following steps to update your preferred email address, where you receive
 2. Update your Preferred email and choose Save changes.  
 
 	:::image type="content" source="../settings/media/user-preferences/user-profile-dialog-general-tab.png" alt-text="User Profile dialog, General tab":::
-
-For other settings, see [Set your preferences](../../organizations/settings/set-your-preferences.md).
-
-::: moniker-end
-
-::: moniker range="tfs-2018"
-
-1. Open your organization menu and select **My profile**.
-
-   :::image type="content" source="media/open-profile-team-services.png" alt-text="Screenshot showing My Profile link on Organization menu.":::
-
-2. From your profile and information page, select **Edit profile**.
-
-3. Update the address and select **Save changes**.
 
 For other settings, see [Set your preferences](../../organizations/settings/set-your-preferences.md).
 

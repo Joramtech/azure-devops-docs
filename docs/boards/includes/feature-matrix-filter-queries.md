@@ -34,7 +34,7 @@ The following table summarizes the query filter functions supported by each Azur
       [Text string searches](../queries/titles-ids-descriptions.md) (single text, multi-line text, rich text) 
    :::column-end:::
    :::column span="4":::
-      Searches are not case sensitive.  
+      Searches aren't case sensitive.  
    :::column-end:::
    :::column span="1":::
       All versions  
@@ -68,7 +68,7 @@ The following table summarizes the query filter functions supported by each Azur
 ---
 :::row:::
    :::column span="1":::
-      [Logical clause groupings](../queries/using-queries.md#logical-groupings)   
+      [Logical clause groupings](../queries/using-queries.md)   
    :::column-end:::
    :::column span="4":::
       Group and nest clauses using AND and OR Boolean operators.  
@@ -86,7 +86,7 @@ The following table summarizes the query filter functions supported by each Azur
        Find work items based on a field match with a previous value. 
        Supported operator: `Was Ever`
        Find work items based on a value defined on a specific date. 
-       Supported operator: `ASOF` ([WIQL syntax](../queries/wiql-syntax.md#asof-historical-queries))
+       Supported operator: `ASOF` ([WIQL syntax](../queries/wiql-syntax.md))
    :::column-end:::
    :::column span="1":::
       All versions  
@@ -95,7 +95,7 @@ The following table summarizes the query filter functions supported by each Azur
 ---
 :::row:::
    :::column span="1":::
-      [Query using macros or variables](../queries/about-managed-queries.md#macros) 
+      [Query using macros or variables](../queries/about-managed-queries.md#supported-macros) 
    :::column-end:::
    :::column span="1":::
       Use macros to create queries relative to a date, other tools, such as team area path, team iteration, and more.  
@@ -107,7 +107,7 @@ The following table summarizes the query filter functions supported by each Azur
 ---
 :::row:::
    :::column span="1":::
-      [Search across projects](../queries/using-queries.md#across-projects)
+      [Search across projects](../queries/using-queries.md)
    :::column-end:::
    :::column span="1":::
       Find work items in one or more projects in an organization or collection. Default is the current project. Use the **Team Project** field to query on two or more projects.
@@ -152,7 +152,7 @@ The following table summarizes the query filter functions supported by each Azur
       **Supported operators**: `Is Empty, Is Not Empty`
    :::column-end:::
    :::column span="1":::
-      Azure DevOps 2019 through Azure DevOps Server 2022, Azure DevOps Services  
+      All versions  
    :::column-end:::
 :::row-end:::
 ---
@@ -161,7 +161,7 @@ The following table summarizes the query filter functions supported by each Azur
       [In and Not In Group searches](../queries/planning-ranking-priorities.md) 
    :::column-end:::
    :::column span="1":::
-      Find work whose field value matches any value in a delimited set, such as a set of work item types, workflow states, or picklist values.  Separate values with the list separator that corresponds to the regional settings that are defined for your client computer. For example, you might use a comma(,).
+      Find work whose field value matches any value in a delimited set, such as a set of work item types, workflow states, or picklist values. Separate values with the list separator that corresponds to the regional settings that are defined for your client computer. For example, you might use a comma (,).
    :::column-end:::
    :::column span="1":::
       All versions
@@ -194,13 +194,13 @@ The following table summarizes the query filter functions supported by each Azur
 ---
 :::row:::
    :::column span="1":::
-      [Query on Kanban board fields](../queries/query-by-workflow-changes.md#query-changes-to-a-kanban-board)
+      [Query on board fields](../queries/query-by-workflow-changes.md#query-changes-to-a-kanban-board)
    :::column-end:::
    :::column span="1":::
-      Find work items based on their Kanban column, swimlane, or Doing/Done status.
+      Find work items based on their column, swimlane, or Doing/Done status.
    :::column-end:::
    :::column span="1":::
-      Azure DevOps 2019 through Azure DevOps Server 2022, Azure DevOps Services  
+      All versions  
    :::column-end:::
 :::row-end:::
 ---
@@ -212,7 +212,7 @@ The following table summarizes the query filter functions supported by each Azur
       Filter query results based on a key word or select fields. 
    :::column-end:::
    :::column span="1":::
-      Azure DevOps 2019 through Azure DevOps Server 2022, Azure DevOps Services  
+      All versions  
    :::column-end:::
 :::row-end:::
 ---

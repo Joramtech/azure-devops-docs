@@ -1,6 +1,5 @@
 ---
 title: Deploy a build and release agent on macOS (2.x)
-ms.custom: seodec18
 description: Learn how to deploy a macOS agent to build and deploy your iOS application for Azure Pipelines and Team Foundation Server (TFS) (2.x)
 ms.topic: conceptual
 ms.assetid: 3D487E4E-D940-4DA9-BDE1-1F60E74DD6F1
@@ -19,13 +18,9 @@ monikerRange: '<= azure-devops'
 
 :::moniker-end
 
-::: moniker range="tfs-2018"
 
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
 
-::: moniker-end
-
-To build and deploy Xcode apps or Xamarin.iOS projects, you'll need at least one macOS agent. This agent can also build and deploy Java and Android apps.
+To build and deploy Xcode apps, you need at least one macOS agent. This agent can also build and deploy Java and Android apps.
 
 > Before you begin:
 > * If your pipelines are in [Azure Pipelines](https://visualstudio.microsoft.com/products/visual-studio-team-services-vs) and a [Microsoft-hosted agent](hosted.md) meets your needs, you can skip setting up a self-hosted macOS agent.
@@ -35,7 +30,7 @@ To build and deploy Xcode apps or Xamarin.iOS projects, you'll need at least one
 
 ## Check prerequisites
 
-::: moniker range=">= tfs-2018"
+::: moniker range="<=azure-devops"
 
 Make sure your machine has these prerequisites:
 - macOS 10.15 "Catalina", macOS 11.0 "Big Sur", or macOS 12.0 "Monterey"
@@ -125,29 +120,7 @@ After you get a feel for how agents work, or if you want to automate setting up 
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-### TFS 2018
-
-1. Log on to the machine using the account for which you've prepared permissions as explained above.
-
-1. In your web browser, sign in to Azure Pipelines or TFS, and navigate to the **Agent pools** tab:
-
-   [!INCLUDE [include](includes/agent-pools-tab/agent-pools-tab-tfs-2018.md)]
-
-1. Click **Download agent**.
-
-1. On the **Get agent** dialog box, click **macOS**.
-
-1. Click the **Download** button.
-
-1. Follow the instructions on the page.
-
-1. Clear the extended attribute on the tar file: `xattr -c vsts-agent-osx-x64-V.v.v.tar.gz`.
-
-1. Unpack the agent into the directory of your choice. `cd` to that directory and run `./config.sh`. Make sure that the path to the directory contains no spaces because tools and scripts don't always properly escape spaces.
-
-::: moniker-end
 
 ### Server URL
 
@@ -315,7 +288,7 @@ Command:
 Normally, the agent service runs only after the user logs in. If you want the agent service to automatically start when the machine restarts, you can configure the machine to automatically login and lock on startup. See [Set your Mac to automatically login during startup - Apple Support](https://support.apple.com/HT201476).
 
 > [!NOTE]
-> For more information, see the [Terminally Geeky: use automatic login more securely](https://www.engadget.com/2011/03/07/terminally-geeky-use-automatic-login-more-securely/) blog. The .plist file mentioned in that blog may no longer be available at the source, but a copy can be found here: [Lifehacker - Make OS X load your desktop before you log in](https://lifehacker.com/5779922/make-os-x-load-your-desktop-before-you-log-in).
+> For more information, see the [Terminally Geeky: use automatic login more securely](https://www.engadget.com/2011/03/07/terminally-geeky-use-automatic-login-more-securely/) blog. The .plist file mentioned in that blog may no longer be available at the source, but a copy can be found here: [Lifehacker - Make OS X load your desktop before you log in](https://lifehacker.com/make-os-x-load-your-desktop-before-you-log-in-5779922).
 
 <h3 id="service-update-environment-variables">Update environment variables</h3>
 

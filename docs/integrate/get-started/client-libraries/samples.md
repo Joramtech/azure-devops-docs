@@ -8,27 +8,26 @@ ms.topic: conceptual
 monikerRange: '<= azure-devops'
 ms.author: chcomley
 author: chcomley
-ms.date: 05/05/2022
+ms.date: 07/02/2024
 ---
 
 # C# client library samples 
 
 [!INCLUDE [version-lt-eq-azure-devops](../../../includes/version-lt-eq-azure-devops.md)]
 
-Samples showing how to extend and integrate with Azure DevOps using the [.NET client libraries](../../concepts/dotnet-client-libraries.md).
-
+The following samples show you how to extend and integrate with Azure DevOps using the [.NET client libraries](../../concepts/dotnet-client-libraries.md).
 
 ## Samples in GitHub
-There are many samples with instructions on how to run them on our [.NET Sample GitHub Page](https://github.com/microsoft/azure-devops-dotnet-samples). 
+
+On the [.NET Sample GitHub page](https://github.com/microsoft/azure-devops-dotnet-samples), you can find many samples with instructions on how to run them. 
 
 ## Other samples
+
 REST examples on this page require the following NuGet packages:
 * [Microsoft.TeamFoundationServer.Client](https://www.nuget.org/packages/Microsoft.TeamFoundationServer.Client/)
 * [Microsoft.VisualStudio.Services.Client](https://www.nuget.org/packages/Microsoft.VisualStudio.Services.Client/)
 * [Microsoft.VisualStudio.Services.InteractiveClient](https://www.nuget.org/packages/Microsoft.VisualStudio.Services.InteractiveClient/)
 
->[!NOTE]
-> The Work Item Tracking (WIT) and Test Client OM are scheduled to be deprecated in 2020. For more information, see [Deprecation of WIT and Test Client OM](../../concepts/wit-client-om-deprecation.md).
 
 #### Example: Using a REST-based HTTP client
 
@@ -122,22 +121,27 @@ public static void SampleREST()
 }
 ```
 
-## Authenticating
+## Authentication
 
-To change the method of authentication to Azure DevOps Services or Azure DevOps Server, change the VssCredential type passed to VssConnection when creating it.
+To change the method of authentication for Azure DevOps, change the VssCredential type passed to VssConnection when you create it.
 
-##### Personal Access Token authentication for REST services
+<a name='azure-active-directory-authentication-for-rest-services'></a>
+
+##### Microsoft Entra authentication for REST services
+
 ```cs
-public static void PersonalAccessTokenRestSample()
+public static void AADRestSample()
 {
-    // Create instance of VssConnection using Personal Access Token
-    VssConnection connection = new VssConnection(orgUrl, new VssBasicCredential(string.Empty, personalAccessToken));
+    // Create instance of VssConnection using Azure AD Credentials for Azure AD backed account
+    VssConnection connection = new VssConnection(new Uri(collectionUri), new VssAadCredential(userName, password));
 }
 ```
 
-##### Visual Studio sign-in prompt (Microsoft Account or Azure Active Directory backed) for REST services (.NET Framework only)
+<a name='visual-studio-sign-in-prompt-microsoft-account-or-azure-active-directory-backed-for-rest-services-net-framework-only'></a>
 
-Because interactive dialogs aren't supported by the .NET Core version of the clients, this sample applies only to the .NET Framework version of the clients.
+##### Visual Studio sign-in prompt (Microsoft Account or Microsoft Entra backend) for REST services (.NET Framework only)
+
+Since the .NET Core version doesn't support interactive dialogs, this sample applies only to the .NET Framework version of the clients.
 
 ```cs
 public static void MicrosoftAccountRestSample()
@@ -147,21 +151,24 @@ public static void MicrosoftAccountRestSample()
 }
 ```
 
-##### Azure Active Directory Authentication for REST services
-```cs
-public static void AADRestSample()
-{
-    // Create instance of VssConnection using Azure AD Credentials for Azure AD backed account
-    VssConnection connection = new VssConnection(new Uri(collectionUri), new VssAadCredential(userName, password));
-}
-```
-
 ##### OAuth Authentication for REST services
-Follow this link to learn how to obtain and refresh an OAuth accessToken: https://github.com/microsoft/azure-devops-auth-samples
+
+For more information, see [Azure DevOps auth samples](https://github.com/microsoft/azure-devops-auth-samples) and [Microsoft identity platform and OAuth 2.0 authorization code flow](/entra/identity-platform/v2-oauth2-auth-code-flow).
+
 ```cs
 public static void OAuthSample()
 {
     // Create instance of VssConnection using OAuth Access token
     VssConnection connection = new VssConnection(new Uri(collectionUri), new VssOAuthAccessTokenCredential(accessToken));
+}
+```
+
+##### Personal access token authentication for REST services
+
+```cs
+public static void PersonalAccessTokenRestSample()
+{
+    // Create instance of VssConnection using Personal Access Token
+    VssConnection connection = new VssConnection(orgUrl, new VssBasicCredential(string.Empty, personalAccessToken));
 }
 ```

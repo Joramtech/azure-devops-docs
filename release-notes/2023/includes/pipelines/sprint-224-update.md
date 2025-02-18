@@ -7,7 +7,7 @@ ms.topic: include
 
 ### Kubernetes tasks now support kubelogin
 
-We have updated the  [KuberentesManifest@1](/azure/devops/pipelines/tasks/reference/kubernetes-manifest-v1), [HelmDeploy@0](/azure/devops/pipelines/tasks/reference/helm-deploy-v0), [Kubernetes@1](/azure/devops/pipelines/tasks/reference/kubernetes-v1) and [AzureFunctionOnKubernetes@1](/azure/devops/pipelines/tasks/reference/azure-function-on-kubernetes-v1) tasks to support [kubelogin](/azure/aks/managed-azure-ad#non-interactive-sign-in-with-kubelogin). This allows you to target Azure Kubernetes Service (AKS) configured with [Azure Active Directory integration](/azure/aks/managed-azure-ad).
+We have updated the  [KubernetesManifest@1](/azure/devops/pipelines/tasks/reference/kubernetes-manifest-v1), [HelmDeploy@0](/azure/devops/pipelines/tasks/reference/helm-deploy-v0), [Kubernetes@1](/azure/devops/pipelines/tasks/reference/kubernetes-v1) and [AzureFunctionOnKubernetes@1](/azure/devops/pipelines/tasks/reference/azure-function-on-kubernetes-v1) tasks to support [kubelogin](/azure/aks/managed-azure-ad#non-interactive-sign-in-with-kubelogin). This allows you to target Azure Kubernetes Service (AKS) configured with [Azure Active Directory integration](/azure/aks/managed-azure-ad).
 
 Kubelogin isn't pre-installed on [Hosted images](/azure/devops/pipelines/agents/hosted). To make sure above mentioned tasks use kubelogin, install it by inserting the [KubeloginInstaller@0](/azure/devops/pipelines/tasks/reference/kubelogin-installer-v0) task before the task that depends on it:
 
@@ -19,21 +19,6 @@ Kubelogin isn't pre-installed on [Hosted images](/azure/devops/pipelines/agents/
 
 ```
 
-### Use Service Principal in Agent VM extension
-
-Azure VMs can be included in Deployment Groups using a [VM Extension](/azure/devops/pipelines/release/deployment-groups/howto-provision-deployment-group-agents?view=azure-devops&preserve-view=true#install-the-azure-pipelines-agent-azure-vm-extension-using-an-arm-template). The VM extension has been updated to optionally use a Service Principal instead of a PAT to register the agent:
-
-```
-"settings": {
-  "userServicePrincipal": true
-}
-"protectedSettings": {
-  "clientId": "<clientId>",
-  "clientSecret": "<clientSecret>",
-  "tenantId": "<tenantId>"
-}
-```
-
 ### Improvements to Approvals REST API
 
 [Approvals](/azure/devops/pipelines/process/approvals?view=azure-devops&tabs=check-pass&preserve-view=true#approvals) increase your YAML pipeline's security by giving you the possibility to manually review a deployment to production. We updated the [Approvals Query REST API](/rest/api/azure/devops/approvalsandchecks/approvals/query) to make it more powerful. Now, you:
@@ -42,7 +27,7 @@ Azure VMs can be included in Deployment Groups using a [VM Extension](/azure/dev
 - Can specify the `state` of the approvals to be returned, for example, `pending`.
 
 Here's an example:
-`GET https://dev.azure.com/fabrikamfiber/fabrikam-chat/_apis/pipelines/approvals?api-version=7.1-preview.1&userId=47acd774-9773-6c31-bbb6-5a0585695d19&state=pending` returns 
+`GET https://dev.azure.com/fabrikamfiber/fabrikam-chat/_apis/pipelines/approvals?api-version=7.1-preview.1&userId=00aa00aa-bb11-cc22-dd33-44ee44ee44ee&state=pending` returns 
 ```json
 {
     "count": 2,

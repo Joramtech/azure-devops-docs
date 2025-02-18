@@ -2,7 +2,7 @@
 title: YAML pipeline editor guide
 description: Learn how to author and edit pipelines with the YAML pipeline editor.
 ms.topic: reference
-ms.date: 06/12/2023
+ms.date: 08/17/2023
 author: steved0x
 ms.author: sdanie
 monikerRange: '>=azure-devops-2019'
@@ -13,6 +13,8 @@ monikerRange: '>=azure-devops-2019'
 [!INCLUDE [version-gt-eq-2019](../../includes/version-gt-eq-2019.md)]
 
 Azure Pipelines provides a YAML pipeline editor that you can use to author and edit your pipelines. The YAML editor is based on the [Monaco Editor](https://github.com/microsoft/monaco-editor). The editor provides tools like Intellisense support and a task assistant to provide guidance while you edit a pipeline.
+
+This article shows you how to edit your pipelines using the YAML Pipeline editor, but you can also edit pipelines by modifying the **azure-pipelines.yml** file directly in your pipeline's repository using a text editor of your choice, or by using a tool like Visual Studio Code and the [Azure Pipelines for VS Code](https://github.com/Microsoft/azure-pipelines-vscode) extension.
 
 :::moniker range="azure-devops-2019"
 
@@ -61,9 +63,21 @@ To access the YAML pipeline editor, do the following steps.
 
 :::moniker-end
 
+:::moniker range=">= azure-devops-2020 < azure-devops"
+
 5. Choose **Save**. You can commit directly to your branch, or create a new branch and optionally start a pull request.
 
     :::image type="content" source="media/yaml-pipeline-editor/yaml-pipeline-save.png" alt-text="YAML pipeline editor save window.":::
+
+:::moniker-end
+
+:::moniker range="azure-devops"
+
+5. Choose **Validate and save**. You can commit directly to your branch, or create a new branch and optionally start a pull request.
+
+    :::image type="content" source="media/yaml-pipeline-editor/yaml-pipeline-validate-and-save.png" alt-text="Screenshot showing the YAML pipeline editor validate and save window.":::
+
+:::moniker-end
 
 ### Use keyboard shortcuts
 
@@ -122,6 +136,24 @@ The task assistant provides a method for adding tasks to your YAML pipeline.
 Validate your changes to catch syntax errors in your pipeline that prevent it from starting. Choose **More actions** > **Validate**.
 
 :::image type="content" source="media/yaml-pipeline-editor/yaml-pipeline-validate.png" alt-text="Validate and Download full YAML.":::
+
+:::moniker-end
+
+:::moniker range="azure-devops"
+
+Azure Pipelines validates your pipelines each time you save. Choose **Validate and save** to validate your pipeline before saving. If there are any errors, you can **Cancel** or **Save anyway**. To save your pipeline without validating, choose **Save without validating**.
+
+:::image type="content" source="media/yaml-pipeline-editor/yaml-pipeline-validate-and-save-button.png" alt-text="Screenshot showing the Validate and save button.":::
+
+:::moniker-end
+
+:::moniker range="azure-devops"
+
+Azure Pipelines detects incorrect variable definitions defined at the pipeline, stage, and job level and detects incorrect YAML conditions defined at the pipeline, stage, and job level.
+
+:::moniker-end
+
+:::moniker range=">= azure-devops-2020"
 
 ## Download full YAML
 
@@ -200,6 +232,16 @@ Some YAML pipeline settings are configured using the pipeline settings UI instea
 :::moniker range=">= azure-devops-2022"
 
 ## View and edit templates
+
+:::moniker-end
+
+:::moniker range="=azure-devops-2022"
+
+[!INCLUDE [feature-added-2022-1](../../includes/feature-added-2022-1.md)]
+
+:::moniker-end
+
+:::moniker range=">= azure-devops-2022"
 
 [Templates](../process/templates.md) are a commonly used feature in YAML pipelines. They're an easy way to share pipeline snippets and are a powerful mechanism for verifying and enforcing [security and governance](../security/templates.md) in your pipeline.
 Previously, the editor didn't support templates, so authors of YAML pipelines couldn't get intellisense assistance. Now Azure Pipelines supports a YAML editor, for which we're previewing support. To enable this preview, [go to preview features](../../project/navigation/preview-features.md) in your Azure DevOps organization, and enable **YAML templates editor**.

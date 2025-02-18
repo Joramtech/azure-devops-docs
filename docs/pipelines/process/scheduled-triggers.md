@@ -4,8 +4,7 @@ description: Configure schedules to run pipelines
 ms.topic: conceptual
 ms.author: sdanie
 author: steved0x
-ms.date: 01/17/2023
-ms.custom: contperf-fy21q3
+ms.date: 05/09/2024
 monikerRange: '<= azure-devops'
 ---
 
@@ -13,9 +12,7 @@ monikerRange: '<= azure-devops'
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-::: moniker range="tfs-2018"
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
-::: moniker-end
+
 
 Azure Pipelines provides several types of triggers to configure how your pipeline starts.
 
@@ -40,7 +37,7 @@ You can combine scheduled and event-based triggers in your pipelines, for exampl
 > Once all UI scheduled triggers are removed, a push must be made in order for the YAML 
 > scheduled triggers to start being evaluated.
 >
-> To delete UI scheduled triggers from a YAML pipeline, see [UI settings override YAML scheduled triggers](../troubleshooting/troubleshooting.md#ui-settings-override-yaml-scheduled-triggers).
+> To delete UI scheduled triggers from a YAML pipeline, see [UI settings override YAML scheduled triggers](../troubleshooting/troubleshoot-triggers.md#ui-settings-override-yaml-scheduled-triggers).
 
 Scheduled triggers configure a pipeline to run on a schedule defined using [cron syntax](#cron-syntax).
 
@@ -55,7 +52,7 @@ schedules:
   branches:
     include: [ string ] # which branches the schedule applies to
     exclude: [ string ] # which branches to exclude from the schedule
-  always: boolean # whether to always run the pipeline or only if there have been source code changes since the last successful scheduled run. The default is false.
+  always: boolean # whether to always run the pipeline or only if there have been source code or pipeline settings changes since the last successful scheduled run. The default is false.
 ```
 
 ::: moniker-end
@@ -69,7 +66,7 @@ schedules:
   branches:
     include: [ string ] # which branches the schedule applies to
     exclude: [ string ] # which branches to exclude from the schedule
-  always: boolean # whether to always run the pipeline or only if there have been source code changes since the last successful scheduled run. The default is false.
+  always: boolean # whether to always run the pipeline or only if there have been source code or pipeline settings changes since the last successful scheduled run. The default is false.
   batch: boolean # Whether to run the pipeline if the previously scheduled run is in-progress; the default is false.
   # batch is available in Azure DevOps Server 2022.1 and higher
 ```
@@ -216,11 +213,7 @@ After you create your YAML build pipeline, you can use pipeline settings to spec
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-YAML isn't supported in TFS.
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 
@@ -235,11 +228,7 @@ If your repository is Azure Repos Git, GitHub, or Other Git, then you can also s
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-![scheduled trigger multiple time zones.](media/triggers/scheduled-trigger-git-multiple-time-zones-neweditor.png)
-
-::: moniker-end
 
 * * *
 
@@ -287,11 +276,7 @@ After you create your YAML build pipeline, you can use pipeline settings to spec
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-YAML isn't supported in TFS.
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 
@@ -311,11 +296,7 @@ In this example, the classic editor scheduled trigger has two entries, which pro
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-![scheduled trigger multiple time zones.](media/triggers/scheduled-trigger-git-multiple-time-zones-neweditor.png)
-
-::: moniker-end
 
 
 #### Example: Nightly build with different frequencies
@@ -336,12 +317,7 @@ In this example, the classic editor scheduled trigger has two entries, producing
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-
-![Scheduled trigger different frequencies, TFS 2017.3 through TFS 2018.](media/triggers/scheduled-trigger-git-different-frequencies-neweditor.png)
-
-::: moniker-end
 
 
 * * *
@@ -399,11 +375,7 @@ After you create your YAML build pipeline, you can use pipeline settings to spec
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-YAML isn't supported in TFS.
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 
@@ -417,11 +389,14 @@ Classic schedules are defined using a graphical editor instead of cron syntax. F
 
 ::: moniker range=">azure-devops-2019"
 
-You can view a preview of upcoming scheduled builds by choosing **Scheduled runs** from the context menu on the [pipeline details page](../create-first-pipeline.md#view-pipeline-details) for your pipeline. 
+You can view a preview of upcoming scheduled builds by choosing **Scheduled runs** from the context menu on the [pipeline details page](../create-first-pipeline.md#view-pipeline-details) for your pipeline.
+
+> [!IMPORTANT]
+> The scheduled runs view only shows pipelines scheduled to run within seven days from the current date. If your cron schedule has an interval longer than 7 days and the next run is scheduled to start after seven days from the current date, it won't be displayed in the **Scheduled runs** view.
 
 ![Scheduled runs menu](media/triggers/scheduled-runs-menu.png)
 
-After you create or update your scheduled triggers, you can verify them using this view.
+After you create or update your scheduled triggers, you can verify them using **Scheduled runs** view.
 
 ![Scheduled runs](media/triggers/scheduled-runs.png)
 
@@ -438,6 +413,9 @@ schedules:
 
 The **Scheduled runs** windows displays the times converted to the local time zone set on the computer used to browse to the Azure DevOps portal. This example displays a screenshot taken in the EST time zone.
 
+> [!NOTE]
+> If you update the schedule for a running pipeline, the **Scheduled runs** view isn't updated with the new schedule until the currently running pipeline completes.
+
 ::: moniker-end
 
 ::: moniker range="azure-devops-2019"
@@ -447,11 +425,7 @@ After you create your YAML build pipeline, you can use pipeline settings to spec
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-YAML isn't supported in TFS.
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 ::: moniker range=">= azure-devops-2020"
@@ -478,11 +452,7 @@ Classic scheduled pipelines don't have a **Scheduled runs** view, but you can vi
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-![scheduled trigger multiple time zones.](media/triggers/scheduled-trigger-git-multiple-time-zones-neweditor.png)
-
-::: moniker-end
 
 
 * * *
@@ -490,14 +460,9 @@ Classic scheduled pipelines don't have a **Scheduled runs** view, but you can vi
 <a name="always"></a>
 ## Running even when there are no code changes
 
-::: moniker range="<=tfs-2018"
 
-> [!NOTE] 
-> Scheduled builds always run on schedule regardless of code changes on TFS 2018.1 and lower.
 
-::: moniker-end
-
-::: moniker range=">=tfs-2018"
+::: moniker range="<=azure-devops"
 
 By default, your pipeline doesn't run as scheduled if there have been no code changes since the last successful scheduled run. For instance, consider that you've scheduled a pipeline to run every night at 9:00pm. During the weekdays, you push various changes to your code. The pipeline runs as per schedule. During the weekends, you don't make any changes to your code. If there have been no code changes since the scheduled run on Friday, then the pipeline doesn't run as scheduled during the weekend. 
 
@@ -525,29 +490,15 @@ After you create your YAML build pipeline, you can use pipeline settings to spec
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-YAML isn't supported in TFS.
-
-::: moniker-end
 
 #### [Classic](#tab/classic/)
 
-::: moniker range="<=tfs-2018"
 
-> [!NOTE] 
-> Scheduled builds always run on schedule regardless of code changes on TFS 2018.1 and lower.
 
-::: moniker-end
 
-::: moniker range="tfs-2018"
 
-> [!NOTE]
-> The [Skip scheduled builds if nothing has changed in the repo](/previous-versions/azure/devops/2017/dec-11-vsts#skip-scheduled-builds-if-nothing-has-changed-in-the-repo) support described in this section is supported in TFS 2018.2 and higher.
-
-::: moniker-end
-
-::: moniker range=">=tfs-2018"
+::: moniker range="<=azure-devops"
 
 To configure the scheduled pipeline to build only if there has been a change since the last build, check **Only schedule builds if the source or pipeline has changed**.
 
@@ -667,11 +618,25 @@ In the second schedule, **Sunday 3:00 AM (UTC) weekly latest version build**, th
 
 ## FAQ
 
+* [I want my pipeline to run only on the schedule and not when someone pushes a change to a branch](#i-want-my-pipeline-to-run-only-on-the-schedule-and-not-when-someone-pushes-a-change-to-a-branch)
 * [I defined a schedule in the YAML file. But it didn't run. What happened?](#i-defined-a-schedule-in-the-yaml-file-but-it-didnt-run-what-happened)
 * [My YAML schedules were working fine. But, they stopped working now. How do I debug this?](#my-yaml-schedules-were-working-fine-but-they-stopped-working-now-how-do-i-debug-this)
 * [My code hasn't changed, yet a scheduled build is triggered. Why?](#my-code-hasnt-changed-yet-a-scheduled-build-is-triggered-why)
 * [I see the planned run in the Scheduled runs panel. However, it doesn't run at that time. Why?](#i-see-the-planned-run-in-the-scheduled-runs-panel-however-it-doesnt-run-at-that-time-why)
 * [Schedules defined in YAML pipeline work for one branch but not the other. How do I fix this?](#schedules-defined-in-yaml-pipeline-work-for-one-branch-but-not-the-other-how-do-i-fix-this)
+
+### I want my pipeline to run only on the schedule and not when someone pushes a change to a branch
+
+If you want your pipeline to run only on the schedule, and not when someone pushes a change to a branch or merges a change to the main branch, you must explicitly disabled the default CI and PR triggers on the pipeline.
+
+To disable the default CI and PR triggers, add the following statements to your YAML pipeline, and [verify that you haven't overridden the YAML pipeline triggers with UI triggers](../troubleshooting/troubleshoot-triggers.md#ui-settings-override-yaml-trigger-setting).
+
+```yaml
+trigger: none
+pr: none
+```
+
+For more information, see [pr definition](/azure/devops/pipelines/yaml-schema/pr) and [trigger definition](/azure/devops/pipelines/yaml-schema/trigger).
 
 ### I defined a schedule in the YAML file. But it didn't run. What happened?
 

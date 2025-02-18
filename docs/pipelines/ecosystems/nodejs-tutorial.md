@@ -50,7 +50,7 @@ To fork the sample application, you'll need to sign in to GitHub, go to the samp
 
 Use the Azure CLI to add the resources needed to deploy and run an App Service instance. You'll access Azure CLI from Azure Cloud Shell. 
 
-1. Go to the [Azure portal][https://portal.azure.com?azure-portal=true] and sign in.
+1. Go to the [Azure portal](https://portal.azure.com?azure-portal=true) and sign in.
 
 1. From the menu, select **Cloud Shell**. When prompted, select the **Bash** experience.
 
@@ -212,12 +212,7 @@ To clean up your resource group:
     ```azurecli
     az group delete --name hello-world-nodejs-rg
     ```
-To delete your Azure DevOps project, including the build pipeline:
-
-1. In Azure DevOps, navigate to your project. 
-1. Select **Project settings**.
-1. In the **Project details**, select **Delete**.
-
+To delete your Azure DevOps project, including the build pipeline, see [Delete project](../../organizations/projects/delete-project.md).
 
 ## Related content
 

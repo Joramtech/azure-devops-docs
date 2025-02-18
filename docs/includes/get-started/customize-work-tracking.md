@@ -7,7 +7,7 @@ ms.date: 04/04/2022
 ---
 
 
-<a id="customize" />
+<a id="customize"></a>
 
 ### Customize work-tracking processes
 
@@ -16,7 +16,7 @@ You and your team can start using all work-tracking tools immediately after you 
 > [!NOTE]   
 > By default, organization owners and users added to the **Project Collection Administrators** security group are granted permission to create, edit, and manage processes used to customize the work-tracking experience. If you want to lock down who is able to perform these tasks, you can set permissions at the organization-level to **Deny**.  
 
-To learn more, see these articles: 
+For more information, see these articles: 
 
 ::: moniker range=">= azure-devops-2019"
 
@@ -26,11 +26,5 @@ To learn more, see these articles:
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-- [On-premises XML process customization](../../reference/on-premises-xml-process-model.md)  
-- [Add or modify a field to track work](../../reference/add-modify-field.md)  
-- [Add or modify a work item type](../../reference/add-modify-wit.md)  
-
-::: moniker-end
  

@@ -22,7 +22,7 @@ Remove unused Git repos from your project when they are no longer needed. The st
 
 ## Prerequisites 
 
-- You must have [Delete Repository permissions](set-git-repository-permissions.md) to delete a repo from a project. 
+- Have [Delete Repository permissions](set-git-repository-permissions.md) to delete a repo from a project. 
 
 ::: moniker range="azure-devops"
 
@@ -59,30 +59,11 @@ Remove unused Git repos from your project when they are no longer needed. The st
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-1. Select the settings icon in the web to bring up the project administration page and choose **Version Control**.
-
-   ![Version control settings](media/repo-mgmt/version-control-settings.png)
-
-2. Select the Git repository to remove from the list shown and select the **...** next to the name. Choose **Delete Repository**.
-
-   ![remove the Azure DevOps Services repo using the ellipses link next to the repo name](media/repo-mgmt/remove-repo.png)
-
-   >[!NOTE]
-   >If the **Repositories** pane is not expanded, select **>** to expand it and display the list of repositories.
-   >
-   >![Repositories pane](media/repo-mgmt/expand-repositories-pane.png)
-
-3. Confirm the deletion of the repository by typing the repo's name and selecting **Delete**.
-
-   ![Delete repository confirm](media/repo-mgmt/delete-repository-confirm.png)
-
-::: moniker-end
 
 # [Azure DevOps CLI](#tab/azure-devops-cli)
 
-::: moniker range=">= azure-devops-2020" 
+::: moniker range="azure-devops" 
 
 You can use Azure DevOps CLI to delete an Azure DevOps Git repository.  
 
@@ -121,7 +102,7 @@ Are you sure you want to delete this repository? (y/n): y
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2020"
+::: moniker range="< azure-devops"
 [!INCLUDE [temp](../../includes/note-cli-not-supported.md)]
 ::: moniker-end
 

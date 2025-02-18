@@ -22,6 +22,7 @@ This article builds off information provided in [Construct OData queries for Ana
 
 [!INCLUDE [temp](../includes/analytics-preview.md)] 
  
+## Prerequisites
 
 [!INCLUDE [prerequisites-simple](../includes/analytics-prerequisites-simple.md)]
 
@@ -32,7 +33,7 @@ All examples are scoped to a project on Azure DevOps. For examples of organizati
 > You can use the [WIQL to OData Azure DevOps](https://marketplace.visualstudio.com/items?itemName=ms-eswm.wiql-to-odata) Marketplace extension to quickly generate an OData query based on a work item query from the **Queries** page. This extension supports conversion of **Flat list of work items** and **Work items and direct links**. Extensions are not supported features of Azure Boards and therefore not supported by the product team. For questions, suggestions, or issues you have when using these extensions, visit their corresponding extension page.
 ::: moniker-end
 
-<a id="changed-date" /> 
+<a id="changed-date"></a> 
 
 
 
@@ -54,7 +55,7 @@ https://analytics.dev.azure.com/{OrganizationName}/{ProjectName}/_odata/v1.0/Wor
 ```
 
 
-<a id="area" />
+<a id="area"></a>
 
 ## Filter work items based on Area 
 
@@ -130,7 +131,7 @@ And the response returns data for the following five projects.
 ```
 
 
-<a id="iteration" />
+<a id="iteration"></a>
 
 ## Filter work items based on Iteration 
 
@@ -213,7 +214,7 @@ https://analytics.dev.azure.com/{OrganizationName}/{ProjectName}/_odata/{version
   &$select=WorkItemId, Title, State
 ```
 
-<a id="tag" />
+<a id="tag"></a>
 
 
 
@@ -232,7 +233,7 @@ https://analytics.dev.azure.com/{OrganizationName}/{ProjectName}/_odata/{version
   &$select=WorkItemId, Title, State
 ```
 
-<a id="team" />
+<a id="team"></a>
 
 ## Filter work items for a specific team 
 
@@ -245,7 +246,7 @@ https://analytics.dev.azure.com/{OrganizationName}/{ProjectName}/_odata/{version
   &$select=WorkItemId, Title, State
 ```
 
-<a id="was-ever" />
+<a id="was-ever"></a>
 
 ## Filter work items based on a field ever having a specific value 
 
@@ -351,7 +352,7 @@ The response returns three area paths and the names of several teams assigned to
 ```
 
 
-<a id="history" />
+<a id="history"></a>
 
 ## Return the history of a specific work item
 
@@ -366,7 +367,7 @@ https://analytics.dev.azure.com/{OrganizationName}/{ProjectName}/_odata/{version
 ```
 
 > [!NOTE]   
-> Anytime a change is made to a work item, including a change to it's stack rank value, a revision is created. To learn more about historical data, see [Applying filters to historical data](../powerbi/analytics-historical-filtering.md).
+> Anytime a change is made to a work item, including a change to it's stack rank value, a revision is created. For more information about historical data, see [Applying filters to historical data](../powerbi/analytics-historical-filtering.md).
 
 **Example query:**
 

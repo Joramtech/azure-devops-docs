@@ -1,7 +1,5 @@
 ---
 title: Modernizing the UI – VSTS Sprint 136 Update
-author: alexcnichols
-ms.author: alexn
 ms.date: 6/22/2018
 description: In the Sprint 136 Update of Visual Studio Team Services (VSTS), we introduce a more modern UI.
 ---
@@ -272,9 +270,6 @@ See all dashboards in the project.
 ### Get notified for PAT expirations
 
 When a Personal Access Token (PAT) is nearing expiration, you’ll get an email notification giving you the ability to immediately take action and extend the lifetime of the PAT so that your tools and processes will go on uninterrupted.
-
-> [!div class="mx-imgBorder"]
-> ![PAT expiration](media/136_08.png)
 
 ## How to provide feedback
 

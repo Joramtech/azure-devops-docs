@@ -7,7 +7,7 @@
   displayName: agile, kanban, scrum, rollup, filtering, waterfall, deliverables, cadence, sprint cadence, work types, CMMI, product plan, product backlog
   href: best-practices-agile-project-management.md
 - name: Quick reference - concepts and tasks
-  displayName: agile, charts, interitance, work item, scrum, state categories, bulk modify, WIT
+  displayName: agile, charts, inheritance, work item, scrum, state categories, bulk modify, WIT
   href: ./work-items/quick-ref.md
 - name: Get started
   href: get-started/toc.yml
@@ -60,7 +60,7 @@
         href: backlogs/office/resolve-excel-data-conflicts-publish-refresh.md
       - name: Resolve Excel data validation errors
         displayName: error checking in Excel, error checking, invalid links
-        href: backlogs/office/resolve-excel-data-validation-errors.md 
+        href: backlogs/office/resolve-excel-data-validation-errors.md
     - name: Project portal & process guidance (Deprecated)
       items:
       - name: Configure or add a project portal
@@ -71,9 +71,7 @@
   items:
   - name: FAQs
     href: faqs.yml
-  - name: Set up your backlogs & boards
-    href: backlogs/set-up-your-backlog.md
-  - name: Fix "Ordering backlog items is disabled"
+  - name: Fix reordering and nesting issues
     href: backlogs/resolve-backlog-reorder-issues.md
     displayname: reorder, disable, nest, natural hierarchy, in progress
 - name: Field reference

@@ -1,7 +1,7 @@
 ---
 title: Set Git repository permissions
 titleSuffix: Azure Repos
-description: Steps for how to grant or restrict access to a Git repository feature 
+description: Steps for how to grant or restrict access to a Git repository feature. 
 ms.service: azure-devops-repos
 ms.topic: quickstart
 ms.author: vijayma
@@ -17,28 +17,28 @@ ms.subservice: azure-devops-repos-git
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-You grant or restrict access to repositories to lock down who can contribute to your source code and manage other features.  You can set permissions across all Git repositories by making changes to the top-level **Git repositories** entry. Individual repositories inherit permissions from the top-level **Git Repositories** entry. 
+Manage access to repositories to lock down who can contribute to your source code and manage other features.  You can set permissions across all Git repositories by making changes to the top-level **Git repositories** entry. Individual repositories inherit permissions from the top-level **Git Repositories** entry. 
 
 > [!NOTE]   
 > Branches inherit a subset of permissions from assignments made at the repository level. For branch permissions and policies, see [Set branch permissions](branch-permissions.md) and [Improve code quality with branch policies](branch-policies.md).
  
-For guidance on who to provide greater permission levels, see [Grant or restrict access using permissions](../../organizations/security/restrict-access.md).
+For guidance on who to provide greater permission levels, see [Manage access using permissions](../../organizations/security/restrict-access.md).
 
 
 ## Prerequisites
 
-- You must have a project. If you don't have a project yet, create one in [Azure DevOps](../../user-guide/sign-up-invite-teammates.md) or set one up in an [on-premises Azure DevOps](../../organizations/projects/create-project.md).
-- You must be a member of the [**Project Administrators** Group](../../organizations/security/change-project-level-permissions.md) or have your **Manage permissions** set to **Allow** for Git repositories.  
+- A project. If you don't have a project yet, create one in [Azure DevOps](../../user-guide/sign-up-invite-teammates.md) or set one up in an [on-premises Azure DevOps](../../organizations/projects/create-project.md).
+- Be a member of the [**Project Administrators** Group](../../organizations/security/change-project-level-permissions.md) or have your **Manage permissions** set to **Allow** for Git repositories.  
 
 ::: moniker range="azure-devops"
 
-To contribute to the source code, you must be granted **Basic** access level or greater. Users granted **Stakeholder** access for private projects have no access to source code. Users granted **Stakeholder** access for public projects have the same access as Contributors and those granted **Basic** access. To learn more, see [About access levels](../../organizations/security/access-levels.md).
+To contribute to the source code, have **Basic** access level or greater. Users granted **Stakeholder** access for private projects have no access to source code. Users granted **Stakeholder** access for public projects have the same access as Contributors and those granted **Basic** access. For more information, see [About access levels](../../organizations/security/access-levels.md).
 
 ::: moniker-end
 
 ::: moniker range="< azure-devops"
 
-To contribute to the source code, you must be granted **Basic** access level or greater. Users granted **Stakeholder** access have no access to source code. To learn more, see [About access levels](../../organizations/security/access-levels.md).
+To contribute to the source code, have **Basic** access level or greater. Users granted **Stakeholder** access have no access to source code. For more information, see [About access levels](../../organizations/security/access-levels.md).
 ::: moniker-end
 
 
@@ -48,6 +48,11 @@ By default, members of the project Contributors group have permissions to contri
 
 [!INCLUDE [temp](../../organizations/security/includes/code-git.md)]
 
+:::moniker range=">= azure-devops-2022"
+
+Starting with [Azure DevOps sprint 224](/azure/devops/release-notes/2023/sprint-224-update) (Azure DevOps Services and Azure DevOps Server 2022.1 and higher), [Edit policies permission is no longer granted automatically to branch creators](/azure/devops/release-notes/2023/sprint-224-update#removing-edit-policies-permission-to-branch-creator). Previously, when you created a new branch, you were granted permission to edit policies on that branch. With this update, we are changing the default behavior to not grant this permission even if the **Permission management** setting is switched on for the repository. You will need the **Edit policies** permission granted explicitly (either manually or through REST API) by security permission inheritance or through a group membership.
+
+:::moniker-end
 
 <a id="git-repository">  </a>
 
@@ -79,7 +84,7 @@ You set Git repository permissions from **Project Settings>Repositories**.
 
 ## Set permissions for a repository
 
-You can grant or restrict access to a repository by setting the permission state to **Allow** or **Deny** for a single user or a security group. 
+You can manage access to a repository by setting the permission state to **Allow** or **Deny** for a single user or a security group. 
 
 ::: moniker-end 
 
@@ -107,40 +112,14 @@ You can grant or restrict access to a repository by setting the permission state
 ::: moniker-end
 
 
-::: moniker range="tfs-2018"
 
-
-1. Open the web portal and choose the project where you want to add users or groups. To choose another project, see [Switch project, repository, team](../../project/navigation/go-to-project-repo.md).  
-
-1. Choose the :::image type="icon" source="../../media/icons/gear-icon.png" border="false"::: gear icon to open the administrative context.
-
-	> [!div class="mx-imgBorder"]  
-	> ![Open Project Settings, horizontal nav](../../media/settings/open-project-settings-horz.png)  
-	
-2. Choose **Version Control**.
-
-3. To set the set the permissions for all Git repositories for a project, (1) choose **Git Repositories** and then (2) choose the security group whose permissions you want to manage. 
-
-	[!INCLUDE [temp](../../includes/ability-to-find-user-once-added.md)]
-
-	Otherwise, choose a specific repository and choose the security group whose permissions you want to manage.   
-
-4. Choose the setting for the permission you want to change. 
-
-	Here we grant permissions to the Contributors group to (3) **Create repository**. 
-
-	![Security dialog for all Git repositories, Contributors group](media/git-permissions/set-repo-git-permissions.png)  
-
-5. When done, choose **Save changes**. 
-
-::: moniker-end
 
 
 ::: moniker range="azure-devops"
 
 ## Change permissions for a security group
 
-To set permissions for a custom security group, you must have defined that group previously. See [Set permissions at the project-level](../../organizations/security/change-project-level-permissions.md). 
+To set permissions for a custom security group, have defined that group previously. See [Set permissions at the project-level](../../organizations/security/change-project-level-permissions.md). 
 
 1. To set permissions for a specific group, choose the group. For example, here we choose the Contributors group.
 
@@ -177,7 +156,7 @@ To set permissions for a custom security group, you must have defined that group
 	> [!div class="mx-imgBorder"]  
 	> ![Enable or disable inheritance for a specific repository.](media/git-permissions/disable-inheritance-specific-repo.png)  
 
-	To learn about inheritance, see [About permissions and groups, Inheritance and security groups](../../organizations/security/about-permissions.md#inheritance). 
+	To learn about inheritance, see [About permissions and groups, Inheritance and security groups](../../organizations/security/about-permissions.md#permission-inheritance). 
 
 ::: moniker-end
 
@@ -201,7 +180,7 @@ By granting the first permission and denying the second, a user can use the bypa
 
 ## Related articles
 
-- [Grant or restrict access using permissions](../../organizations/security/restrict-access.md)
+- [Manage access using permissions](../../organizations/security/restrict-access.md)
 - [Default permissions and access](../../organizations/security/permissions-access.md) 
 - [Permissions and groups reference](../../organizations/security/permissions.md)  
 - [Tf git permission command-line tool](../tfvc/git-permission-command.md)  

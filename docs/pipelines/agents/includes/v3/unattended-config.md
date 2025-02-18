@@ -4,7 +4,7 @@ ms.service: azure-devops-pipelines
 ms.manager: mijacobs
 ms.author: sdanie
 author: steved0x
-ms.date: 02/12/2020
+ms.date: 04/17/2024
 ---
 
 To configure an agent, it must know the URL to your organization or collection and credentials of someone authorized to set up agents.
@@ -18,7 +18,8 @@ For example, `VSTS_AGENT_INPUT_PASSWORD` instead of specifying `--password`.
 - `--unattended` - agent setup will not prompt for information, and all settings must be provided on the command line
 - `--url <url>` - URL of the server. For example: https://dev.azure.com/myorganization or http://my-azure-devops-server:8080/tfs
 - `--auth <type>` - authentication type. Valid values are:
-  - `pat` (Personal access token) - PAT is the only scheme that works with Azure DevOps Services.
+  - `pat` (Personal access token)
+  - `SP` (Service Principal) (Requires [agent version 3.227.1](https://github.com/microsoft/azure-pipelines-agent/releases/tag/v3.227.1) or newer)
   - `negotiate` (Kerberos or NTLM)
   - `alt` (Basic authentication)
   - `integrated` (Windows default credentials)
@@ -27,10 +28,16 @@ For example, `VSTS_AGENT_INPUT_PASSWORD` instead of specifying `--password`.
 
 - If you chose `--auth pat`:
   - `--token <token>` - specifies your personal access token
-  -  PAT is the only scheme that works with Azure DevOps Services.
+  - You can also pass an OAuth 2.0 token as the `--token` parameter.
 - If you chose `--auth negotiate` or `--auth alt`:
   - `--userName <userName>` - specifies a Windows username in the format `domain\userName` or `userName@domain.com`
   - `--password <password>` - specifies a password
+- If you chose `--auth SP`:
+  - `--clientID <clientID>` - specifies the Client ID of the Service Principal with access to register agents
+  - `--tenantId <tenantID>` - specifies the Tenant ID which the Service Principal is registered in
+  - `--clientSecret <clientSecret>` - specifies the Client Secret of the Service Principal
+  - See [Register an agent using a service principal](../../service-principal-agent-registration.md) for more information
+
 
 ### Pool and agent names
 - `--pool <pool>` - pool name for the agent to join
@@ -50,6 +57,7 @@ agent and should not be shared between multiple agents.
 - `--windowsLogonAccount <account>` - used with `--runAsService` or `--runAsAutoLogon` to specify the Windows user
 name in the format `domain\userName` or `userName@domain.com`
 - `--windowsLogonPassword <password>` - used with `--runAsService` or `--runAsAutoLogon` to specify Windows logon password (not required for [Group Managed Service Accounts](https://aka.ms/gmsa) and Windows built in accounts such as 'NT AUTHORITY\NETWORK SERVICE')
+- `--enableservicesidtypeunrestricted` - used with `--runAsService` to configure the agent with service SID type as `SERVICE_SID_TYPE_UNRESTRICTED` (requires administrator permission)
 - `--overwriteAutoLogon` - used with `--runAsAutoLogon` to overwrite the existing auto logon on the machine
 - `--noRestart` - used with `--runAsAutoLogon` to stop the host from restarting after agent configuration completes
 

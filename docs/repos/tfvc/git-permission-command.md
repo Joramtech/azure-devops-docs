@@ -19,9 +19,9 @@ The `tf git permission` command modifies the user access control list (ACL) and 
 
 ## Prerequisites
 
-- To view permissions, you must be able to view the artifact for the type of information you're requesting: **View collection-level information** for project collections, **View project-level information** for projects, and **Read** for repository and branch if you're viewing branch permissions.
+- To view permissions, be able to view the artifact for the type of information you're requesting: **View collection-level information** for project collections, **View project-level information** for projects, and **Read** for repository and branch if you're viewing branch permissions.
 
-- To manage permissions, you must have **Manage permissions** for the desired artifact.  
+- To manage permissions, have **Manage permissions** for the desired artifact.  
 
 For more information, see [Default Git permissions](../../organizations/security/default-git-permissions.md).
 
@@ -46,7 +46,7 @@ tf git permission [/allow:(* |perm1[,perm2,...]]
 |---------------------------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |       `/allow:(* |<perm1>[,<perm2>,...])`       |                                                                                                                                                   The permissions to allow.                                                                                                                                                    |
 |       `/deny:(* |<perm1>[,<perm2>,...])`        |                                                                                                                                                    The permissions to deny.                                                                                                                                                    |
-|      `/remove:(* |<perm1>[,<perm2>,...])`       | The permissions to remove, sometimes referred to as not set. You can use all three of `/allow`, `/deny`, and `/remove` in the same invocation. For more information on how the allow, deny, and remove settings interact, see [Permission settings](../../organizations/security/about-permissions.md#permission-settings). |
+|      `/remove:(* |<perm1>[,<perm2>,...])`       | The permissions to remove, sometimes referred to as not set. You can use all three of `/allow`, `/deny`, and `/remove` in the same invocation. For more information on how the allow, deny, and remove settings interact, see [Permission settings](../../organizations/security/about-permissions.md#permission-states). |
 |   `/user:<username1>[,<username2>,...]`    |                                                                                                              The user or users for which to allow, deny, or remove permissions. You must specify at least one user or group.                                                                                                               |
 |  `/group:<groupname1>[,<groupname2>,...]`  |                                                                                      The groups or groups for which to allow, deny, or remove permissions. You must specify at least one user or group. Groups and individuals can be used together.                                                                                       |
 | `/collection:<TeamProjectCollectionUrl>` |                                                 Specifies the URL of the project collection that contains the permissions to view or modify. For example: `http://myserver:8080/tfs/DefaultCollection` or `https://fabrikam-fiber.visualstudio.com`. This parameter is required.                                                 |

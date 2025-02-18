@@ -35,11 +35,7 @@ Learn more about [how agents communicate](../../agents.md#communication).
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
 
-1. Sign in with the user account you plan to use in your Team Foundation Server web portal (`https://{your-server}:8080/tfs/`).
-
-::: moniker-end
 
 ::: moniker range=" >= azure-devops-2019 < azure-devops"
 
@@ -49,7 +45,7 @@ Learn more about [how agents communicate](../../agents.md#communication).
 
 ::: moniker range="azure-devops"
 
-1. Sign in with the user account you plan to use in your Azure DevOps organization (`https://dev.azure.com/{your_organization}`).
+1. Sign in with the user account you plan to use in your Azure DevOps organization (`https://dev.azure.com/{Your_Organization}`).
 
 ::: moniker-end
 

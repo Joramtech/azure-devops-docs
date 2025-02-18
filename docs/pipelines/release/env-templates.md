@@ -1,6 +1,5 @@
 ---
 title: Use stage templates in release pipelines
-ms.custom: seodec18
 description: How to use stage templates in Azure Pipelines
 ms.assetid: BE9E2883-5CEB-4A91-A038-CB45B728A0C4
 ms.topic: conceptual
@@ -73,4 +72,3 @@ To update a stage template, delete the existing one from the list of templates, 
 
 - [Deploy pull request Artifacts ](deploy-pull-request-builds.md).
 - [Deploy from multiple branches](deploy-multiple-branches.md).
-- [View release progress and test summary](visualize-release-test-progress.md).

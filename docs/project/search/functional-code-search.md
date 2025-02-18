@@ -1,59 +1,67 @@
 ---
-title: Functional code search options
+title: Functional code search
 titleSuffix: Azure Repos
-description: Options for code searching across all your projects in Azure DevOps.
+description: Options for searching code across all your projects in Azure DevOps.
 ms.subservice: azure-devops-search
 ms.custom: cross-service, cross-project
 ms.topic: how-to
 ms.author: chcomley
 author: chcomley
 monikerRange: '<= azure-devops'
-ms.date: 09/08/2021
+ms.date: 01/27/2025
 ---
 
 # Functional code search  
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-Functional code search extends your ability to refine your search across repositories beyond what's documented in [Get started with search](get-started-search.md). To do code searches, the [Code Search](https://marketplace.visualstudio.com/items?itemName=ms.vss-code-search) Marketplace extension must be installed for your organization or collection.
+Find the code you need faster with functional code search. This article explains how to refine your search across repositories using code types and other functions with the [Code Search](https://marketplace.visualstudio.com/items?itemName=ms.vss-code-search) Marketplace extension for Azure DevOps.
 
 ## Prerequisites
 
-- Install [Code Search](https://marketplace.visualstudio.com/items?itemName=ms.vss-code-search)
+::: moniker range=" azure-devops"
+
+| Category | Prerequisite |
+|--------------|-------------|
+| **Access levels** | - To use code search: At least **Basic** access. <br> - To access code in a private project: At least **Basic** access. Stakeholder access doesn't include code. <br> - To access code in a public project: At least  **Stakeholder** access. |
+| **Search results** | **Access-based results**: When you're searching across the organization or collection, only results for which a project member has access are listed. |
+
+::: moniker-end
+
 ::: moniker range="< azure-devops"
-  For more information, see [Install and configure search](install-configure-search.md).
+
+| Category | Requirements |
+|--------------|-------------|
+| **Access levels** | - To use code search: At least **Basic** access. <br> - To access code in a private project: At least **Basic** access. Stakeholder access doesn't include code. |
+| **Search results** | **Access-based results**: When you're searching across the organization or collection, only results for which a project member has access are listed. |
+| **Tools** | [Code Search extension](https://marketplace.visualstudio.com/items?itemName=ms.vss-code-search)   |
+
 ::: moniker-end
-- To use Code Search, you must have at least Basic access.
-- Users with Stakeholder access don't have access to code, so they can't search for code.
-::: moniker range="azure-devops"
-- Users with Stakeholder access for a public project have [full access to code](../../organizations/security/access-levels.md), so they can search for code. To access code in a private project, you must have at least Basic access.
-::: moniker-end
-- When you're searching across the organization or collection, only results for which a project member has access are listed.
 
 ## Code search best practices
 
-- Get the results you want even faster by starting with a higher-level search. You can narrow your search by using project, repository, path, file name, and other filter operators.
-- When you're not sure of the exact term you're looking for, [Use wildcards to widen your search](get-started-search.md#search-features-usage-and-examples) and [Boolean operators to fine-tune it](get-started-search.md#search-features-usage-and-examples).
-- Find more information about an item of interest faster and with minimal efforts. When you find an item of interest, place the cursor on it and use the shortcut menu to quickly search for that text across all your projects and files.
-- Easily trace how your code works by using the shortcut menu to search for related items such as definitions and references – directly from inside a file or from the search results.
-- Go quickly to the implementation of, for example, an API your code might be taking dependency on by narrowing down your results to exact code type matches. Use code type filters to search for specific kinds of code such as:
-- definitions
-- references
-- functions
-- comments
-- strings
-- namespaces, and more.
+- **Start broad:** Begin with a broad search and then use filter operators to narrow it down by project, repository, path, file name, and more.
+- **Use [wildcards](get-started-search.md#search-features-usage-and-examples) and [boolean operators](get-started-search.md#search-features-usage-and-examples):** If you don’t know the exact term, use wildcards to expand your search and boolean operators to refine it.
+- **Hover for more info:** To get more information about a code item, hover over it and use the shortcut menu to search for that text in all your projects and files.
+- **Trace code functionality:** Use the shortcut menu to search for related items like definitions and references in a file or in the search results to trace how your code works.
+- **Use code type filters:** To find the implementation of an API or other code element, use code type filters to search for specific kinds of code such as:
+  - Definitions
+  - References
+  - Functions
+  - Comments
+  - Strings
+  - Namespaces, and more
 
 > [!NOTE]
-> You can't search code in forked repositories.
+> Code search doesn't work for forked repositories.
 
 ## Functions to find specific types of code
 
-As you enter your search, select functions and keywords from the drop-down list to quickly create your query. Use the **Show more** link to display all the available functions and keywords. Mix and match the functions as required.
+To create your query faster, choose functions and keywords from the drop-down list as you enter text. Select **Show more** to see all the options. You can combine different functions as needed.
 
-You can also select one or a combination of filters from the list in the left column. Again, the **Show more** link displays all the available functions and keywords.
+You can also use filters from the left column to narrow your search. **Show more** shows you all the functions and keywords.
 
-Instead, you can enter the functions and parameters directly into the search. The following table shows a list of functions for selecting specific types or members in your C#, C, C++, Java, and Visual Basic.NET code.
+Or, you can type the functions and parameters in the search box. The following table lists the functions for finding specific types or members in your C#, C, C++, Java, and Visual Basic.NET code.
 
 | To find code where _findThis_ appears as a ... | ... search for argument **arg:**_findThis_ |
 | --- | --- |
@@ -97,21 +105,17 @@ Instead, you can enter the functions and parameters directly into the search. Th
 | Typedef | **typedef:**_findThis_ ```Merged with type:```|
 | Union | **union:**_findThis_ ```Deprecated in July 2019```|
 
-
-
-<a name="locationfunctions"></a>
-
 ## Functions to select projects, repositories, paths, and files
 
-Functions make it easy to narrow the search to specified locations, specific types of files within these locations, or specified filenames. Narrow the search to a specific location using the `proj`, `repo`, or `path` filters. Mix and match the functions as required.
-
-
+Functions make it easy to narrow the search to specified locations, specific types of files within these locations, or specified filenames. Narrow the search to a specific location using the `proj`, `repo`, or `path` filters. Mix and match the following functions as required.
 
 |**Usage**  |**Example**  |
 |---------|---------|
 |Find all occurrences of the word *QueueJobsNow* in the Fabrikam project.     | `QueueJobsNow proj:Fabrikam`        |
 |Find all occurrences of the word *QueueJobsNow* in the Contoso repository.    |  `QueueJobsNow repo:Contoso`       |
 |Find all occurrences of the word *QueueJobsNow* in the path *VisualStudio/Services/Framework* and its subpaths.  | `QueueJobsNow path:VisualStudio/Services/Framework`        |
+|Find all occurrences of the word *QueueJobsNow* in the path *\*/Doc\*/Framework/\** and *\*/Doc\*/\*/\*/Framework/\** and its subpaths. Globbing Pattern (\*\*) matches zero or more characters across multiple segments. For example, path:\*\*/Doc\*\*/Framework also matches abc/*Doc*Test/gh/ijk/mnop/*Framework*/ | `QueueJobsNow path:**/Doc**/Framework`        |
+|Find all occurrences of the word *QueueJobsNow* in the path *\*/Doc\*/Framework/\** and its subpaths and file name Test*.txt (Use Globbing Pattern \*\*). For example, path:\*\*/Doc\*\*/Framework/\*\*/Test\*.txt also matches abc/def/*Doc*A/gh/*Framework*/*Test*Misc.*txt*  | `QueueJobsNow path:**/Doc**/Framework/**/Test*.txt`        |
 |Enclose the argument to the filter in double-quotes if it contains a space.   | `QueueJobsNow path:"VisualStudio/Windows Phones and Devices/Services"`        |
 |Find all occurrences of the word *QueueJobsNow* in all files where the filename starts with *queueRegister*. | `QueueJobsNow file:queueRegister*`         |
 |Find all files with the name *QueueRegister* without an extension. Use quotes to find files without extensions.   |  `file:"queueRegister"`       |
@@ -119,45 +123,42 @@ Functions make it easy to narrow the search to specified locations, specific typ
 
 ## Find related items or other terms
 
-One of the powerful features of Code Search is the capability to expand your search interactively, based on the results of previous searches. For example, you can easily broaden your search to related files when tracing or debugging code.
+Code Search lets you interactively expand your search based on previous results. For example, you can widen your search to related files when you're tracing or debugging code.
 
-Place the insertion point on a term in the file and open the shortcut menu (mouse: right-click) to start a new search for other files containing the selected term. You can search for it as text, for the definition if you select an object name, or for references to a selected object.
+Right-click on a term in the file and start a new search for other files with the same term. You can search for it as text, or as a definition or reference if it's an object name.
 
-For more information about the following search functions, see [Get started with search](get-started-search.md#search-features-usage-and-examples).
-
-- Keyword
-- Exact match
-- Wildcard
-- Boolean operators
-- Proximity
+For more information, see [Get started with search](get-started-search.md#search-features-usage-and-examples).
 
 ## More code search operations
 
-See the following examples of even more code search functions. You can use the code type search functions with files written in C#, C, C++, Java, and Visual Basic.NET. Open the search results in a new browser tab from the main search box, and select **Ctrl** + **Enter**. In Google Chrome, select **Ctrl** + **Shift** + **Enter** to switch the focus to the new browser tab.
+Here are some more code search functions. You can search for code types in C#, C, C++, Java, and Visual Basic.NET files. To open the search results in a new tab, select **Ctrl** + **Enter** from the main search box. To switch to the new tab in Google Chrome, select **Ctrl** + **Shift** + **Enter**.
 
 |**Usage** |**Example** |
 |---------|---------|
-|Find all instances of "ToDo" comments in your code               |Select `comment:` and enter `todo`   |
+|Find all comments | History:Keyword    |
+|Find all instances of "ToDo" comments in your code   |Select `comment:` and enter `todo`   |
 |Search in specific locations, such as within a particular path   |Use a search string such as `Driver path:MyShuttle/Server`    |
 |Search for files by name or just by file extension    | `Driver file:GreenCabs.cs`. The search string `error ext:resx` could be useful if you want to review all error strings in your code. Even if your plain text search string matches part of a filename, the file appears in the list of found files. This search works without matching specific file type functions.        |
 
-
 ## Search Git projects and repositories
 
-In a Git project, you see a list of the repositories that it contains. Use the project and repository checkboxes to widen your search. You can search more or all projects, or narrow your search to fewer projects and repositories. If there are more than a few projects or repositories, use the **Show more** link to see them all.
+A Git project has a list of repositories. To expand your search, check the project and repository boxes. You can search all or more projects, or fewer projects and repositories. If there are many projects or repositories, select **Show more** to see them all.
 
-Code Search can index multiple branches in a Git repository. By default it indexes files in only the default branch of your Git repositories. Your default branch is usually the **main** branch. Specify the branches for each repository, indexing in the **Options** tab of the **Repositories** section, [project settings page](../navigation/go-to-service-page.md#open-project-settings).
+Code Search can index different branches in a Git repository. It only indexes files in the default branch of your Git repositories by default. The default branch is main. To index other branches, go to the **Options** tab in the **Repositories** section of the [project settings page](../navigation/go-to-service-page.md#open-project-settings).
+
+> [!NOTE]
+> By default, code search looks for the specified string in the main or default branch of a repository. But, you can narrow down the search by specifying a filter for a specific branch.
 
 ::: moniker range=">= azure-devops-2019"
-![Configure Git branches to include in search](media/advanced-work-item-search-syntax/configure-branches.png)
+![Screenshot showing Git branches for configuration.](media/advanced-work-item-search-syntax/configure-branches.png)
 ::: moniker-end
 
 ## Search TFVC projects
 
-In a TFVC project, you see a list of folder paths in that project for which you have read access - you won't see any projects and folders for which you don't have read permission. Select paths in the folder tree to narrow your search if necessary.
+Team Foundation Version Control (TFVC) projects display only the folders that you can read. You can't see any other projects or folders. To filter your search, choose folders from the tree.
 
 > [!TIP]
-> Code Search remembers your last settings, such as the project and repository or path that you searched in. Clear the checkboxes to search across all projects easily with the **Clear all** links when you want to search in a different scope. In the results pane, Code Search highlights up to the first 100 hits or matches found in the target files.  
+> Code Search saves your last settings, such as the project and repository or path that you searched in. When you want to search in a different scope, select **Clear all links** to clear the checkboxes and search across all projects. The first 100 hits or matches in the target files get highlighted by Code Search in the results pane. 
 
 ## Search code with REST API
 
@@ -173,4 +174,3 @@ You can use APIs to extend or supplement the capabilities listed in this article
 * [Get started with Search](get-started-search.md)
 * [Search artifacts and packages](functional-package-search.md)
 * [Search work items](functional-work-item-search.md)
-* [Search FAQs](faq-search.yml)

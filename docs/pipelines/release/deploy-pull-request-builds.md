@@ -3,7 +3,7 @@ title: Deploy pull request Artifacts
 description: Deploy pull request Artifacts from Azure Repos or GitHub repositories
 ms.topic: tutorial
 ms.author: moala
-ms.custom: contperf-fy21q4, engagement-fy23
+ms.custom: engagement-fy23
 author: raiyanalam
 ms.date: 02/14/2023
 monikerRange: '>= azure-devops-2019'
@@ -19,7 +19,7 @@ Pull requests provide an effective way to review code changes before it is merge
 
 - Source code hosted on Azure Repos or GitHub. Use the [pipelines-dotnet-core](https://github.com/MicrosoftDocs/pipelines-dotnet-core) sample app and create your repository if you don't have one already.
 - A working [build pipeline](../create-first-pipeline.md) for your repository.
-- A classic release pipeline. [Set up a release pipeline](./deploy-multiple-branches.md#set-up-a-release-pipeline) if you don't have one already.
+- A Classic release pipeline. [Set up a Classic release pipeline](./deploy-multiple-branches.md#create-a-release-pipeline) if you don't have one already.
 
 ## Pull request deployment
 

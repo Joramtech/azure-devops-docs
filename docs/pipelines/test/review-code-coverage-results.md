@@ -3,9 +3,9 @@ title: Review code coverage
 description: Review code coverage results in Azure Pipelines or Team Foundation Server (TFS)
 ms.assetid: 86D94FB7-D730-4ECE-8300-5E76934090A5
 ms.topic: conceptual
-ms.custom: "continuous-test, seodec18, cross-service"
-ms.author: vinojos
-author: vinodjo
+ms.custom: continuous-test, cross-service
+ms.author: jeom
+author: raviLiftr
 ms.date: 06/23/2020
 monikerRange: '<= azure-devops'
 ---
@@ -25,32 +25,17 @@ Reviewing the code coverage result helps to identify code path(s) that are not
 covered by the tests. This information is important to improve the test collateral
 over time by reducing the test debt.
 
-::: moniker range="tfs-2018"
 
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
-
-::: moniker-end
 
 ## Example
 
 To view an example of publishing code coverage results for your choice of language,
 see the **Ecosystems** section of the Pipelines topics. For example, collect and publish
-code coverage for [JavaScript](../ecosystems/javascript.md) using Istanbul.
+code coverage for [JavaScript](../ecosystems/customize-javascript.md) using Istanbul.
 
 ## View results 
 
-:::moniker range="< azure-devops-2019"
 
-The code coverage summary can be viewed in the build timeline view.
-The summary shows the overall percentage of line coverage. 
-
-![View code coverage results](media/review-code-coverage-results/view-code-coverage-summary-2018.png)
-
-> [!NOTE]
-> Merging code coverage results from multiple [test runs](test-glossary.md) is
-> limited to .NET and .NET Core at present. This will be supported for other formats in a future release.
-
-:::moniker-end
 
 :::moniker range=">= azure-devops-2019"
 
@@ -76,14 +61,7 @@ The results can be viewed and downloaded on the **Code coverage** tab.
 
 ## Artifacts
 
-:::moniker range="< azure-devops-2019"
 
-The code coverage artifacts published during the build can be viewed under the
-**Build artifacts published** milestone in the timeline view.
-
-![View code coverage artifact](media/review-code-coverage-results/view-code-coverage-artifact-2018.png)
-
-:::moniker-end
 
 :::moniker range=">= azure-devops-2019"
 
@@ -108,7 +86,7 @@ The code coverage artifacts published during the build can be viewed under the *
 
 ## Tasks
 
-* [Publish Code Coverage Results](/azure/devops/pipelines/tasks/reference/publish-code-coverage-results-v1) publishes code coverage results to Azure Pipelines or TFS,
+* [Publish Code Coverage Results](/azure/devops/pipelines/tasks/reference/publish-code-coverage-results-v2) publishes code coverage results to Azure Pipelines or TFS,
   which were produced by a build in [Cobertura](https://cobertura.github.io/cobertura/) or [JaCoCo](https://www.eclemma.org/jacoco/) format. 
 * Built-in tasks such as [Visual Studio Test](/azure/devops/pipelines/tasks/reference/vstest-v2),
   [.NET Core](/azure/devops/pipelines/tasks/reference/dotnet-core-cli-v2), [Ant](/azure/devops/pipelines/tasks/reference/ant-v1), [Maven](/azure/devops/pipelines/tasks/reference/maven-v3),

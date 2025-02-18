@@ -34,9 +34,9 @@ Not all pick lists are defined in the same way. Some lists are defined through t
 
 ## Prerequisites
  
-- To list fields, you must have your **View project-level information** permission for the project in the collection set to **Allow**. 
-- To add or customize a field, you must be a member of the Project Administrators group or have your **Edit project-level information** permission set to Allow.  
-- To delete or rename fields or change an attribute of a field, you must be a member of the **Team Foundation Administrators** security group or the **Project Collection Administrators** security group.  
+- To list fields, have your **View project-level information** permission for the project in the collection set to **Allow**. 
+- To add or customize a field, be a member of the Project Administrators group or have your **Edit project-level information** permission set to Allow.  
+- To delete or rename fields or change an attribute of a field, be a member of the **Team Foundation Administrators** security group or the **Project Collection Administrators** security group.  
   
 To get added as an administrator, [Change project collection-level permissions](../organizations/security/change-organization-collection-level-permissions.md).
 
@@ -75,7 +75,7 @@ To add rules or add a custom field, export, edit, and then import the WIT defini
 
 [!INCLUDE [temp](../includes/process-editor.md)]  
 
-Any field that you want to use to track data must be added to the WIT definition file. This is true for all but system fields (fields whose reference name start with **System.**). All System fields are defined for all WITs, whether or not you include them in WIT definition. To learn more about each field, see [Work item field index](../boards/work-items/guidance/work-item-field.md).
+Any field that you want to use to track data must be added to the WIT definition file. This is true for all but system fields (fields whose reference name start with **System.**). All System fields are defined for all WITs, whether or not you include them in WIT definition. For more information about each field, see [Work item field index](../boards/work-items/guidance/work-item-field.md).
 
 <a id="boolean-field">  </a>
 
@@ -364,7 +364,7 @@ For more information, see [Query based on build and test integration fields](../
 
 ## Field names and reporting
 
-You can add fields or change the attributes of existing fields to support reporting. When you add or change fields, you should name them systematically so that you can find the field in the Analysis Services cube because the fields are logically grouped into folders. To learn more, see [Add or modify work item fields to support reporting](/previous-versions/azure/devops/reference/xml/add-or-modify-work-item-fields-to-support-reporting).
+You can add fields or change the attributes of existing fields to support reporting. When you add or change fields, you should name them systematically so that you can find the field in the Analysis Services cube because the fields are logically grouped into folders. For more information, see [Add or modify work item fields to support reporting](/previous-versions/azure/devops/reference/xml/add-or-modify-work-item-fields-to-support-reporting).
 
 ::: moniker-end
 

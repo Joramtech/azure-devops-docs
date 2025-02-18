@@ -1,7 +1,5 @@
 ---
 title: Work Items hub and VM-based Azure DevOps Project – VSTS Sprint 131 Update
-author: alexcnichols
-ms.author: alexn
 ms.date: 3/5/2018
 ms.topic: article
 ms.manager: jillfra
@@ -57,7 +55,7 @@ Any project pivot can now be sorted based on a variety of options, including tit
 > ![Work Items sorting options](media/131_02.png)
 
 
-<a id="query-work" />
+<a id="query-work"></a>
 
 ### Query work across the iteration schedule with +/- @CurrentIteration
 

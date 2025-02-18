@@ -19,12 +19,13 @@ Learn how to manage permissions for users or groups, so they can manage extensio
 
 ## Prerequisites
 ::: moniker range="azure-devops"
-- You must be a member of the Project Collection Administrators group to manage permissions for users or groups. Organization owners are automatically members of this group.
-- Private extensions must be shared with your organization to be installed. Check out the [publishing documentation](../extend/publish/overview.md#upload) for information on how to share private extensions.
+- **Permissions:** Member of the Project Collection Administrators group. Organization owners are automatically members of this group.
+- **Extension sharing:** Private extensions [shared with your organization](../extend/publish/overview.md#share-your-extension).
 ::: moniker-end
 
 ::: moniker range="< azure-devops"
-- You must be a member of the Project Collection Administrators group or have "Edit collection-level information" permissions to manage permissions for users or groups. Organization owners are automatically members of the Project Collection Administrators group.
+- **Permissions:** Member of the Project Collection Administrators group or **Edit collection-level information** permissions. Organization owners are automatically members of this group.
+- **Extension sharing:** Private extensions [shared with your organization](../extend/publish/overview.md#share-your-extension).
 ::: moniker-end
 
 ## Manage permissions
@@ -68,42 +69,7 @@ Learn how to manage permissions for users or groups, so they can manage extensio
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-To grant permissions for publishing or updating to users or groups, use the [TFSSecurity](/azure/devops/server/command-line/tfssecurity-cmd#permissions) command-line tool.
 
-1. At the server level, create a group, for example, "TFS Extension Publishers".
-
-   ```
-   tfssecurity /gcg "TFS Extension Publishers" "publishers who can manage extensions for the server" /server:ServerURL
-   ```
-
-2. Grant access to the "TFS Extension Publishers" group to manage extensions.
-
-   ```
-   tfssecurity /a+ Publisher "//" CreatePublisher n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-   tfssecurity /a+ Publisher "//" PublishExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-   tfssecurity /a+ Publisher "//" UpdateExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-   tfssecurity /a+ Publisher "//" DeleteExtension n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-   ```
-<!--
-   For Team Foundation Server "15" RC2 or earlier, use this syntax:
-
-   ```
-   tfssecurity /a+ Publisher "//" Create n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-   tfssecurity /a+ Publisher "//" Publish n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-   tfssecurity /a+ Publisher "//" Write n:"[TEAM FOUNDATION]\TFS Extension Publishers" allow /server:ServerURL
-   ```
--->
-3. Add existing users and groups to the "TFS Extension Publishers" group.
-
-    ```
-    tfssecurity /g+ "[TEAM FOUNDATION]\TFS Extension Publishers" n:User /server:ServerURL
-    ```
-    ```
-
-You can add users later to "TFS Extension Publishers". This permission is a server-level permission. 
-When you update or delete an extension, it affects all the project collections that use the extension.
-::: moniker-end
 
 ## Related articles
 

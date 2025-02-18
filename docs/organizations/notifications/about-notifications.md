@@ -7,7 +7,7 @@ ms.custom: quarterly-update, engagement-fy23
 ms.author: chcomley
 author: chcomley
 ms.topic: conceptual
-ms.date: 02/13/2023
+ms.date: 12/17/2024
 monikerRange: '<= azure-devops'
 ---
 
@@ -48,14 +48,14 @@ You can create a subscription for the following categories and select from the f
 
 |Category  |Template options  |
 |---------|---------|
-|Build | <ul><li>a build completes</li><li>a build fails</li><li>a legacy XAML build controller or agent's status changes</li><li>a legacy XAML build's quality changes</li></ul>   |
-|Code (Git)  |  <ul><li>a commit is pushed</li><li>a pull request is created or updated</li><li>a pull request my team is a reviewer on is updated</li><li>a comment is made on a pull request</li></ul>  |
-|Code (TFVC)    | <ul><li>code is checked in</li><li>code is checked in with a policy override</li><li>a file with a specific extension is checked in</li><li>a file under a specific path is checked in</li><li>any code review changes</li></ul>  |
-|Pipelines | <ul><li>run stage waiting for approval</li><li>run stage waiting for Manual validation</li></ul>
-|Work   | <ul><li>a work item is created</li><li>a work item is changed</li><li>a work item is deleted</li><li>a work item is restored</li><li>a work item is moved from this team project</li></ul>    |
-|Artifacts    | <ul><li>a package is changed</li></ul>       |
-|Extension management | <ul><li>an extension is modified</li></ul>   |
-|Release | <ul><li>an approval for a deployment is pending</li><li>a deployment is completed</li><li>a request for release creation failed</li><li>a manual intervention for a deployment is pending</li></ul> |
+|Build | <ul>- a build completes</br>- a build fails</br>- a legacy XAML build controller or agent's status changes</br>- a legacy XAML build's quality changes</br></ul>   |
+|Code (Git)  |  <ul>- a commit is pushed</br>- a pull request is created or updated</br>- a pull request my team is a reviewer on is updated</br>- a comment is made on a pull request</br></ul>  |
+|Code (TFVC)    | <ul>- code is checked in</br>- code is checked in with a policy override</br>- a file with a specific extension is checked in</br>- a file under a specific path is checked in</br>- any code review changes</br></ul>  |
+|Pipelines | <ul>- run stage waiting for approval</br>- run stage waiting for Manual validation</br></ul>
+|Work   | <ul>- a work item is created</br>- a work item is changed</br>- a work item is deleted</br>- a work item is restored</br>- a work item is moved from this team project</br></ul>    |
+|Artifacts    | <ul>- a package is changed</br></ul>       |
+|Extension management | <ul>- an extension is modified</br></ul>   |
+|Release | <ul>- an approval for a deployment is pending</br>- a deployment is completed</br>- a request for release creation failed</br>- a manual intervention for a deployment is pending</br></ul> |
 
 :::moniker range=">= azure-devops-2020"
 
@@ -133,7 +133,9 @@ There are no UI permissions associated with managing email notifications or aler
 
 ## Preferred email address
 
-The preferred email address for your organization profile gets notifications, by default. It's typically the email address you signed into Azure DevOps with. You can manage this email address via your organization preferences profile page.
+The preferred email address for your organization profile gets notifications, by default. It's typically the email address you signed into Azure DevOps with. You can manage this email address via your organization preferences profile page. 
+
+If you're enrolled in the Microsoft Entra profile information preview, your profile information is pulled directly from Microsoft Entra and can't be edited. For more information, see [Set your preferences](../settings/set-your-preferences.md).
 
 > [!NOTE]
 > Your preferred email address applies across all of your organizations and cannot be changed on a per-organization basis.
@@ -143,10 +145,9 @@ The preferred email address for your organization profile gets notifications, by
 
 ## Integrating with other services
 
-If your team uses an external service to collaborate&mdash;such as Campfire or Slack&mdash;you can configure notifications for these services. We support the following out of the box services.
+If your team uses an external service to collaborate&mdash;such as Trello or Slack&mdash;you can configure notifications for these services. We support the following out of the box services.
 
-- [Campfire](../../service-hooks/overview.md?bc=%252fazure%252fdevops%252fnotifications%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fdevops%252fnotifications%252ftoc.json) 
-- [HipChat](../../service-hooks/overview.md?bc=%252fazure%252fdevops%252fnotifications%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fdevops%252fnotifications%252ftoc.json) 
+- [Trello](../../service-hooks/services/trello.md?toc=/azure/devops/organizations/notifications/toc.json&bc=/azure/devops/organizations/notifications/breadcrumb/toc.json)
 - [Slack](../../service-hooks/services/slack.md?toc=/azure/devops/organizations/notifications/toc.json&bc=/azure/devops/organizations/notifications/breadcrumb/toc.json)  
 - [Microsoft Teams](../../service-hooks/services/teams.md?toc=/azure/devops/organizations/notifications/toc.json&bc=/azure/devops/organizations/notifications/breadcrumb/toc.json)
 

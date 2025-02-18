@@ -1,14 +1,13 @@
 ---
 title: Publish and download build artifacts
-description: How to use Artifacts in Azure Pipelines
-ms.custom: seodec18
+description: How to publish and download build artifacts with Azure Pipelines
 ms.assetid: 34874DFA-2364-4C1D-A092-B8F67C499AB0
 ms.topic: reference
 ms.date: 04/21/2022
 monikerRange: '<= azure-devops'
 ---
 
-# Artifacts in Azure Pipelines
+# Publish and download build artifacts
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
@@ -30,23 +29,26 @@ Artifacts can be published at any stage of your pipeline. You can use YAML or th
 ```yaml
 - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**/$(BuildConfiguration)/**/?(*.exe|*.dll|*.pdb)'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
     artifactName: drop
 ```
 
-* **pathToPublish**: the path of your artifact. This can be an absolute or a relative path. Wildcards are not supported.
+* **pathToPublish**: the path of your artifact. This can be an absolute or a relative path. Wildcards aren't supported.
 * **artifactName**: the name of your artifact.
 
 > [!NOTE]
-> Make sure you are not using one of the reserved folder names when publishing your artifact. See [Application Folders](/previous-versions/ex526337(v=vs.140)#application-folders) for more details.
+> Make sure you aren't using one of the reserved folder names when publishing your artifact. See [Application Folders](/previous-versions/ex526337(v=vs.140)#application-folders) for more details.
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-YAML is not supported in TFS.
-::: moniker-end
+
 
 #### [Classic](#tab/classic/)
 
@@ -63,6 +65,11 @@ Add the **Publish Build Artifacts** task to your pipeline and fill out the requi
 ```yaml
 - powershell: gci env:* | sort-object name | Format-Table -AutoSize | Out-File $env:BUILD_ARTIFACTSTAGINGDIRECTORY/environment-variables.txt
 
+- task: CopyFiles@2
+  inputs:
+    sourceFolder: '$(Build.SourcesDirectory)'
+    contents: '**/$(BuildConfiguration)/**/?(*.exe|*.dll|*.pdb)'
+    targetFolder: '$(Build.ArtifactStagingDirectory)'
 - task: PublishBuildArtifacts@1
   inputs:
     pathToPublish: '$(Build.ArtifactStagingDirectory)'
@@ -73,14 +80,12 @@ Add the **Publish Build Artifacts** task to your pipeline and fill out the requi
     artifactName: drop2
 ```
 
-* **pathToPublish**: the path of your artifact. This can be an absolute or a relative path. Wildcards are not supported.
+* **pathToPublish**: the path of your artifact. This can be an absolute or a relative path. Wildcards aren't supported.
 * **artifactName**: the name of your artifact.
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-YAML is not supported in TFS.
-::: moniker-end
+
 
 #### [Classic](#tab/classic/)
 
@@ -110,7 +115,7 @@ You can add multiple **Publish Build Artifacts** tasks to your pipelines. Make s
 * **sourceFolder**: the folder that contains the files you want to copy. If you leave this empty, copying will be done from **$(Build.SourcesDirectory)**.
 * **contents**: File paths to include as part of the copy.
 * **targetFolder**: destination folder.
-* **pathToPublish**: the folder or file path to publish. It can be an absolute or a relative path. Wildcards are not supported.
+* **pathToPublish**: the folder or file path to publish. It can be an absolute or a relative path. Wildcards aren't supported.
 * **artifactName**: the name of the artifact that you want to create.
 
 > [!NOTE]
@@ -118,9 +123,7 @@ You can add multiple **Publish Build Artifacts** tasks to your pipelines. Make s
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-YAML is not supported in TFS.
-::: moniker-end
+
 
 #### [Classic](#tab/classic/)
 
@@ -139,6 +142,10 @@ YAML is not supported in TFS.
 - Artifact name: drop
 
 * * *
+
+
+> [!NOTE]
+> `Build.ArtifactStagingDirectory` path is cleaned up after each build. If you're using this path to publish your artifact, make sure you copy the content you wish to publish into this directory before the publishing step.
 
 ## Download artifacts
 
@@ -161,9 +168,7 @@ YAML is not supported in TFS.
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-YAML is not supported in TFS.
-::: moniker-end
+
 
 #### [Classic](#tab/classic/)
 
@@ -180,7 +185,7 @@ YAML is not supported in TFS.
 * * *
 
 > [!NOTE]
-> If you are using a deployment task, you can reference your build artifacts using **$(Agent.BuildDirectory)**. See [Agent variables](../build/variables.md#agent-variables) for more details.
+> If you're using a deployment task, you can reference your build artifacts using **$(Agent.BuildDirectory)**. See [Agent variables](../build/variables.md#agent-variables) for more details.
 
 ::: moniker range=">= azure-devops-2019"
 
@@ -191,41 +196,55 @@ When your pipeline run is completed, navigate to **Summary** to explore or downl
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
+## Download a specific artifact
 
-When your pipeline run is completed, select **Artifacts** to download your artifact.
+#### [YAML](#tab/yaml/)
 
-> [!div class="mx-imgBorder"]
-> ![Published build artifact TFS](media/build-artifact-tab.png)
+```yaml
+steps:
+- task: DownloadBuildArtifacts@1
+  displayName: 'Download Build Artifacts'
+  inputs:
+    buildType: specific
+    project: 'xxxxxxxxxx-xxxx-xxxx-xxxxxxxxxxx'
+    pipeline: 20
+    buildVersionToDownload: specific
+    buildId: 128
+    artifactName: drop
+    extractTars: false
+```
 
-::: moniker-end
+#### [Classic](#tab/classic/)
 
-::: moniker range="tfs-2018"
+Add the :::image type="icon" source="../tasks/utility/media/downloadbuildartifacts.png" border="false"::: **Download Build Artifacts** task to your pipeline definition and configure it as follows:
 
-## Publish from TFS to a UNC file share
+:::image type="content" source="media/download-specific-build-artifact.png" alt-text="A screenshot that shows a Maven package deployed to a feed." lightbox="media/download-specific-build-artifact.png":::
 
-If you're using a private Windows agent, you can set the **artifact publish location** option (**TFS 2018 RTM and older**: artifact type) to publish your files to a UNC **file share**.
+- **Download artifacts produced by**: Specific build.
 
-> [!NOTE]
-> Use a Windows build agent. This option doesn't work for macOS and Linux agents.
+- **Project**: select your project from the dropdown menu.
 
-Choose **file share** to copy the artifact to a file share. Common reasons to do this:
+- **Build pipeline**: select your build pipeline.
 
-* The size of your drop is large and consumes too much time and bandwidth to copy.
+- **Build version to download**: select specific version.
 
-* You need to run some custom scripts or other tools against the artifact.
+- **Build**: select your build from the dropdown menu.
 
-If you use a file share, specify the UNC file path to the folder. You can control how the folder is created for each build by using [variables](../build/variables.md). For example: ```\\my\share\$(Build.DefinitionName)\$(Build.BuildNumber)```.
+- **Download type**: specific artifact.
 
-::: moniker-end
+- **Artifact name**: select your artifact from the dropdown menu.
+
+- **Destination directory**: default $(System.ArtifactsDirectory).
+
+* * *
 
 ## Tips
 
-- Disable IIS Basic Authentication if you are using Azure DevOps Server to allow authentication with your Personal Access Token. See [IIS Basic Authentication and PATs](../../integrate/get-started/authentication/iis-basic-auth.md) for more details.
+- Disable IIS Basic Authentication if you're using Azure DevOps Server to allow authentication with your Personal Access Token. See [IIS Basic Authentication and PATs](../../integrate/get-started/authentication/iis-basic-auth.md) for more details.
 
 - Use forward slashes in file path arguments. Backslashes don't work in macOS/Linux agents.
 
-- Build artifacts are stored on a Windows filesystem, which causes all UNIX permissions to be lost, including the execution bit. You might need to restore the correct UNIX permissions after downloading your artifacts from Azure Pipelines or TFS.
+- Build artifacts are stored on a Windows filesystem, which causes all UNIX permissions to be lost, including the execution bit. You might need to restore the correct UNIX permissions after downloading your artifacts from Azure Pipelines.
 
 - `Build.ArtifactStagingDirectory` and `Build.StagingDirectory` are interchangeable.
 
@@ -233,7 +252,7 @@ If you use a file share, specify the UNC file path to the folder. You can contro
 
 - Deleting a build associated with packages published to a file share will result in the deletion of all Artifacts in that UNC path.  
 
-- If you are publishing your packages to a file share, make sure you provide access to the build agent.
+- If you're publishing your packages to a file share, make sure you provide access to the build agent.
 
 - Make sure you allow [Azure Artifacts Domain URLs and IP addresses](../../organizations/security/allow-list-ip-url.md#azure-artifacts) if your organization is using a firewall.
 

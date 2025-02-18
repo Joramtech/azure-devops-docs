@@ -16,12 +16,12 @@ ms.date: 07/27/2022
 
 ::: moniker range="azure-devops"
 
-You configure resources either for yourself or for your team, project, or organization from an administrative **Settings** page. The settings you can configure depend on the security group or administrative role that you belong to. 
+You can configure resources for yourself, your team, project, or organization from the administrative **Settings** page. The settings available to you depend on your security group membership or administrative role.
 
-If you're just getting started as a Project Administrator, see [Get started as an administrator](../../user-guide/project-admin-tutorial.md). To quickly find a setting or related settings, see [Search organization settings](search-settings.md).
+If you're new to being a Project Administrator, see [Get started as an administrator](../../user-guide/project-admin-tutorial.md) for a comprehensive guide.
 
 > [!NOTE]  
-> You can delegate several tasks to a user with Stakeholder or Basic access by adding them to the [**Project Collection Administrators** group](../security/change-organization-collection-level-permissions.md). For more information about Stakeholder access, see [Stakeholder access quick reference](../security/stakeholder-access.md). 
+> You can delegate several tasks to a user with Basic or Stakeholder access by adding them to the [**Project Collection Administrators** group](../security/change-organization-collection-level-permissions.md). For more information, see [Stakeholder access quick reference](../security/stakeholder-access.md). 
 
 ::: moniker-end
 
@@ -35,7 +35,7 @@ If you're just getting started as a Project Administrator, see [Get started as a
 
 ## User settings
 
-Individual contributors can set their user preferences, enable features that are in preview, and manage their favorites and notifications.
+Individual contributors can customize their experience in Azure DevOps by setting user preferences, enabling preview features, and managing their favorites and notifications. The following table outlines the various user settings available:
 
 :::row:::
    :::column span="1":::
@@ -144,18 +144,18 @@ Individual contributors can set their user preferences, enable features that are
       - [Manage personal notifications](../../organizations/notifications/manage-your-personal-notifications.md)
    :::column-end:::
    :::column span="2":::
-      Notifications alert you through email messages when changes occur to work items, code reviews, pull requests, source control files, builds, and more. When a project is created, a number of notifications are defined. If you want to opt out of these, you can.
+      Notifications alert you through email messages when changes occur to work items, code reviews, pull requests, source control files, builds, and more. When a project is created, a number of notifications are defined. If you want to opt out, you can.
    :::column-end:::
 :::row-end:::
 ---
 
-<a id="team" />
+<a id="team"></a>
 
 ## Team administrator role and managing teams
 
-Team administrators configure team resources, which mostly correspond to Agile tools and dashboards. To configure team resources, you must be added as a [team administrator for the specific team](../../organizations/settings/add-team-administrator.md), or be a member of the Project Administrators or Project Collection Administrators groups.  
+Team administrators are responsible for configuring team resources, which primarily include Agile tools and dashboards. To configure these resources, get added as a [team administrator for the specific team](../../organizations/settings/add-team-administrator.md) or be a member of the Project Administrators or Project Collection Administrators groups.
 
-For a complete overview of all Agile tools that you can configure, see [Manage teams and configure team tools](manage-teams.md).
+The following table provides an overview of the Agile tools and resources that team administrators can configure. For a comprehensive guide, see [Manage teams and configure team tools](manage-teams.md).
 
 :::row:::
    :::column span="1":::
@@ -189,13 +189,12 @@ For a complete overview of all Agile tools that you can configure, see [Manage t
    :::column span="2":::
       - [Backlog levels](select-backlog-navigation-levels.md?toc=/azure/devops/organizations/settings/toc.json&amp;bc=/azure/devops/organizations/settings/breadcrumb/toc.json)
       - [Show bugs on backlogs & boards](show-bugs-on-backlog.md)
-      - [Set working days](set-working-days.md?toc=/azure/devops/organizations/settings/toc.json&amp;bc=/azure/devops/organizations/settings/breadcrumb/toc.json)
       - [Configure area paths](set-area-paths.md?toc=/azure/devops/organizations/settings/toc.json&amp;bc=/azure/devops/organizations/settings/breadcrumb/toc.json)
       - [Select active iteration paths (sprints)](set-iteration-paths-sprints.md?toc=/azure/devops/organizations/settings/toc.json&amp;bc=/azure/devops/organizations/settings/breadcrumb/toc.json)
       - [Define work item templates](../../boards/backlogs/work-item-template.md?toc=/azure/devops/organizations/settings/toc.json&amp;bc=/azure/devops/organizations/settings/breadcrumb/toc.json)
    :::column-end:::
    :::column span="2":::
-      For an overview of team resources, see [About teams and Agile tools](about-teams-and-settings.md). You configure Kanban boards from the board view - [Columns](../../boards/boards/add-columns.md), [Swimlanes](../../boards/boards/expedite-work.md), [Cards](../../boards/boards/customize-cards.md), [WIP limits](../../boards/boards/wip-limits.md). 
+      For an overview of team resources, see [About teams and Agile tools](about-teams-and-settings.md). Configure boards from the board view - [Columns](../../boards/boards/add-columns.md), [Swimlanes](../../boards/boards/expedite-work.md), [Cards](../../boards/boards/customize-cards.md), [WIP limits](../../boards/boards/wip-limits.md). 
    :::column-end:::
 :::row-end:::
 ---
@@ -226,7 +225,7 @@ For a complete overview of all Agile tools that you can configure, see [Manage t
 ---
 
 
-<a id="project" />
+<a id="project"></a>
 
 ## Project Administrator role and managing projects
 
@@ -255,16 +254,7 @@ From the administrative **Project settings** page, you can configure settings av
 ![Screenshot of Project settings page, Azure DevOps Server versions.](media/about/project-settings-server-2020.png)  
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-**Project-level settings**  
-From the administrative **Project settings** page, you can configure settings available from the tabs shown in the following image.
 
-![Screenshot of Project settings tab selected, TFS versions.](media/about/collection-settings-tfs-nav.png)  
-
-> [!NOTE]  
-> Project settings differ depending on your on-premises TFS version. Some settings aren't available for earlier versions of TFS. 
-
-::: moniker-end
 
 :::row:::
    :::column span="1":::
@@ -349,7 +339,7 @@ From the administrative **Project settings** page, you can configure settings av
       - [Set dashboard permissions](../security/../../report/dashboards/dashboard-permissions.md)
       - [Set Wiki permissions](../../project/wiki/manage-readme-wiki-permissions.md)
       - [Set feedback permissions](/previous-versions/azure/devops/project/feedback/give-permissions-feedback)
-      - [Set build and release permissions](../../pipelines/policies/set-permissions.md)
+      - [Set build and release permissions](../../pipelines/policies/permissions.md#pipeline-permissions)
    :::column-end:::
    :::column span="2":::
       Project Administrators can add users to a project or a team. When you add a user to a team, you automatically add them to the project. Users added to a project can only view and contribute to that specific project. For an overview of security concepts, see [Get started with permissions, access, and security groups](../security/about-permissions.md) and [About access levels](../security/access-levels.md). For a list of project-level permissions, see [Permissions and groups reference, Project-level permissions](../security/permissions.md#project-level-permissions).
@@ -376,7 +366,7 @@ From the administrative **Project settings** page, you can configure settings av
       - [Configure service hooks](../../service-hooks/overview.md)
    :::column-end:::
    :::column span="2":::
-      With service hooks, you can automate a task on other services, such as [Campfire, HipChat, and more](../../service-hooks/overview.md). You can use service hooks in custom apps and services to drive activities as events happen.
+      With service hooks, you can automate a task on other services, such as [Trello, Datadog, and more](../../service-hooks/overview.md). You can use service hooks in custom apps and services to drive activities as events happen.
    :::column-end:::
 :::row-end:::
 ---
@@ -401,7 +391,7 @@ From the administrative **Project settings** page, you can configure settings av
       - [Define iteration paths or sprints](set-iteration-paths-sprints.md)
    :::column-end:::
    :::column span="2":::
-      Area and iteration paths set at the project level are then used to set team defaults. To configure additional product backlogs, Kanban boards, and dashboards, you first [add a team](add-teams.md).
+      Area and iteration paths set at the project level are then used to set team defaults. To configure more product backlogs, boards, and dashboards, you first [add a team](add-teams.md).
    :::column-end:::
 :::row-end:::
 ---
@@ -416,7 +406,7 @@ From the administrative **Project settings** page, you can configure settings av
       - [Set retention policies](../../pipelines/policies/retention.md)
    :::column-end:::
    :::column span="2":::
-      Area and iteration paths set at the project level are then used to set team defaults. To configure additional product backlogs, Kanban boards, and dashboards, you first [add a team](add-teams.md).
+      Area and iteration paths set at the project level are then used to set team defaults. To configure more product backlogs, boards, and dashboards, you first [add a team](add-teams.md).
    :::column-end:::
 :::row-end:::
 ---
@@ -425,7 +415,7 @@ From the administrative **Project settings** page, you can configure settings av
       **Repos, Code version control**
    :::column-end:::
    :::column span="2":::
-      - [Create additional Git repositories](../../repos/git/creatingrepo.md)
+      - [Create Git repositories](../../repos/git/creatingrepo.md)
       - [Set Git repository permissions](../../repos/git/set-git-repository-permissions.md)
       - [Set TFVC repository permissions](../../repos/tfvc/set-tfvc-repository-permissions.md)
       - [Manage branch policies](../../repos/git/branch-policies.md)
@@ -510,7 +500,7 @@ From the administrative **Project settings** page, you can configure settings av
       **Service connections**
    :::column-end:::
    :::column span="2":::
-      - [Manage service connections in Azure Pipelines](../../pipelines/library/service-endpoints.md#project-level-permissions)
+      - [Manage service connections in Azure Pipelines](../../pipelines/policies/permissions.md#set-service-connection-project-permissions)
    :::column-end:::
    :::column span="2":::
       For more information, see a [list of common service connection types](../../pipelines/library/service-endpoints.md#common-service-connection-types).
@@ -518,7 +508,7 @@ From the administrative **Project settings** page, you can configure settings av
 :::row-end:::
 ---
 
-<a id="admin" />
+<a id="admin"></a>
 
 ## Project Collection Administrator (PCA) role and managing collections of projects 
 
@@ -555,17 +545,7 @@ From the administrative page for a collection, you can configure the settings sh
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
 
-**Collection-level settings**  
-From the administrative page for a collection, you can configure the settings shown in the following image and listed in the following table. 
-
-> [!NOTE]  
-> Project collection settings differ depending on your on-premises TFS version. Some settings aren't available for earlier versions of TFS. 
-
-![Screenshot of Collection settings options, TFS.](media/about/collection-settings-tfs-nav.png) 
-
-::: moniker-end
 
 ::: moniker range="azure-devops"
 
@@ -610,7 +590,7 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
    :::column-end:::
    :::column span="2":::
       - Add and manage organization information: [change organization owner](../accounts/change-organization-ownership.md), [Rename](../accounts/rename-organization.md), [Delete](../accounts/delete-your-organization.md)- [Recover](../accounts/recover-your-organization.md), [Find or change your organization location](../accounts/change-organization-location.md)
-      - [Set up billing](../billing/set-up-billing-for-your-organization-vs.md)
+      - [Set up billing](../billing/set-up-billing-for-your-organization-vs.md#set-up-billing)
    :::column-end:::
    :::column span="2":::
       From the **Overview** page, you can manage the time zone, owner, region, and other settings that apply to all projects.
@@ -643,7 +623,7 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
       - [Remove users](../accounts/delete-organization-users.md)
    :::column-end:::
    :::column span="2":::
-      For large organizations with a sizable number of users, we recommend that you [manage user access through Azure Active Directory](../accounts/access-with-azure-ad.md). For a small number of users, you can manage user access by adding their Microsoft Service Account (MSA) email. From the account-level Users page, you can also [export the set of users and their access levels](../security/export-users-audit-log.md).
+      For large organizations with a sizable number of users, we recommend that you [manage user access through Microsoft Entra ID](../accounts/access-with-azure-ad.md). For a few users, you can manage user access by adding their Microsoft Service Account (MSA) email. From the account-level Users page, you can also [export the set of users and their access levels](../security/export-users-audit-log.md).
    :::column-end:::
 :::row-end:::
 ---
@@ -654,11 +634,11 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
       **Billing**
    :::column-end:::
    :::column span="2":::
-      - [Set up billing](../billing/set-up-billing-for-your-organization-vs.md)
+      - [Set up billing](../billing/set-up-billing-for-your-organization-vs.md#set-up-billing)
       - [Try Azure Test Plans for free](../billing/try-additional-features-vs.md)
       - [Pay for users (Basic)](../billing/buy-basic-access-add-users.md)
       - [Buy parallel jobs](../../pipelines/licensing/concurrent-jobs.md#how-much-do-parallel-jobs-cost)
-      - [Add a user to make purchases](../billing/add-backup-billing-managers.md)
+      - [Add a user to make purchases](../billing/set-up-billing-for-your-organization-vs.md#give-a-user-access-to-manage-billing)
    :::column-end:::
    :::column span="2":::
       All billing gets managed through Azure. For more information, see [Billing overview](../billing/overview.md).
@@ -676,7 +656,7 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
       - [Create audit streaming](../audit/auditing-streaming.md)
    :::column-end:::
    :::column span="2":::
-      The auditing page provides a simple view into the audit events recorded for your organization. For more information, see [Review audit log](../audit/azure-devops-auditing.md#review-audit-log), [Export audit events](../audit/azure-devops-auditing.md#export-auditing-events), or learn more about Audit [events](../audit/auditing-events.md).
+      The auditing page provides a simple view into the audit events recorded for your organization. For more information, see [Review audit log](../audit/azure-devops-auditing.md#review-audit-log), [Export audit events](../audit/azure-devops-auditing.md#export-audit-events), or learn more about Audit [events](../audit/auditing-events.md).
    :::column-end:::
 :::row-end:::
 ---
@@ -731,7 +711,7 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
       - [Manage application access policies](../accounts/change-application-access-policies.md)
       - [Add external users](../accounts/add-external-user.md)   
       - [Disable Request Access policy](../accounts/disable-request-access-policy.md)
-      - [Restrict users from creating new organizations with Azure Active Directory policy](../accounts/azure-ad-tenant-policy-restrict-org-creation.md)
+      - [Restrict users from creating new organizations with Microsoft Entra policy](../accounts/azure-ad-tenant-policy-restrict-org-creation.md)
       - [Restrict Team and Project Administrators from inviting new users](../security/restrict-invitations.md)
       - [Enable Conditional Access or Multi-Factor Authentication](/azure/active-directory/authentication/tutorial-enable-azure-mfa)
    :::column-end:::
@@ -750,8 +730,8 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
       - [Look up the organization owner](../security/look-up-organization-owner.md)
       - [Look up a project collection administrator ](../security/look-up-project-collection-administrators.md)
       - [Add administrators, set organization-level permissions](../security/change-organization-collection-level-permissions.md)
-      - [Add Azure Active Directory groups](../accounts/manage-azure-active-directory-groups.md)
-      - [Connect to Azure Active Directory](../accounts/connect-organization-to-azure-ad.md)
+      - [Add Microsoft Entra groups](../accounts/manage-azure-active-directory-groups.md)
+      - [Connect to Microsoft Entra ID](../accounts/connect-organization-to-azure-ad.md)
       - [Set permissions to manage extensions](../../marketplace/grant-permissions.md)
       - [Manage conditional access](../accounts/change-application-access-policies.md)
    :::column-end:::
@@ -770,7 +750,7 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
       - [Look up the organization owner](../security/look-up-organization-owner.md)
       - [Look up a project collection administrator ](../security/look-up-project-collection-administrators.md)
       - [Add administrators, set organization-level permissions](../security/change-organization-collection-level-permissions.md)
-      - [Grant or restrict access to select features](../security/restrict-access.md) 
+      - [Manage access to specific features](../security/restrict-access.md) 
    :::column-end:::
    :::column span="2":::
       For an overview of security concepts, see [Get started with permissions, access, and security groups](../security/about-permissions.md) and [About access levels](../security/access-levels.md). For a list of collection-level permissions, see [Permissions and groups reference, Collection-level permissions](../security/permissions.md#organization-level-permissions).
@@ -818,7 +798,7 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
       - [Artifacts storage consumption](../../artifacts/artifact-storage.md)
    :::column-end:::
    :::column span="2":::
-     Each organization gets Azure Artifacts for free, up until 2 GB of storage is reached. For more information, see [Artifacts free tier and upgrade](../../artifacts/start-using-azure-artifacts.md#artifacts-free-tier-and-upgrade). 
+     Each organization gets Azure Artifacts for free, up until 2 GB of storage is reached. For more information, see [Start using Azure Artifacts](../../artifacts/start-using-azure-artifacts.md#increase-azure-artifacts-storage-limit).
    :::column-end:::
 :::row-end:::
 ---
@@ -826,7 +806,7 @@ For an overview of managing collections, see [Configure and manage Azure DevOps 
 
 ::: moniker range="< azure-devops"
 
-<a id="admin" />
+<a id="admin"></a>
 
 ## Server Administrator role 
 

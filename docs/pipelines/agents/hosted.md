@@ -1,16 +1,15 @@
 ---
 title: Microsoft-hosted agents for Azure Pipelines
-ms.custom: seodec18, contperf-fy20q4
 description: Learn about using the Microsoft-hosted agents provided in Azure Pipelines
 ms.topic: conceptual
 ms.assetid: D17E9C01-8026-41E8-B44A-AB17EDE4AFBD
-ms.date: 06/20/2023
+ms.date: 04/03/2024
 monikerRange: '<= azure-devops'
 ---
 
 # Microsoft-hosted agents
 
-[!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
+[!INCLUDE [version-lt-eq-azure-devops](../../includes/version-eq-azure-devops.md)]
 
 ::: moniker range="< azure-devops"
 
@@ -30,32 +29,41 @@ The **Azure Pipelines** agent pool offers several virtual machine images to choo
 
 | Image | Classic Editor Agent Specification | YAML VM Image Label | Included Software |
 | --- | --- | --- | --- |
-| Windows Server 2022 with Visual Studio 2022 | *windows-2022* | `windows-latest` OR `windows-2022` | [Link](https://github.com/actions/runner-images/blob/main/images/win/Windows2022-Readme.md) |
-| Windows Server 2019 with Visual Studio 2019 | *windows-2019* | `windows-2019` | [Link](https://github.com/actions/runner-images/blob/main/images/win/Windows2019-Readme.md) |
-| Ubuntu 22.04 | *ubuntu-22.04* | `ubuntu-latest` OR `ubuntu-22.04` | [Link](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2204-Readme.md)
-| Ubuntu 20.04 | *ubuntu-20.04* | `ubuntu-20.04` | [Link](https://github.com/actions/runner-images/blob/main/images/linux/Ubuntu2004-Readme.md)
-| macOS 13 Ventura | *macOS-13* | `macOS-13` | [Link](https://github.com/actions/runner-images/blob/main/images/macos/macos-13-Readme.md) |
-| macOS 12 Monterey | *macOS-12* | `macOS-latest` OR `macOS-12` | [Link](https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md) |
-| macOS 11 Big Sur | *macOS-11* | `macOS-11` | [Link](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md) |
+| Windows Server 2022 with Visual Studio 2022 | *windows-2022* | `windows-latest` OR `windows-2022` | [Link](https://aka.ms/windows-2022-readme) |
+| Windows Server 2019 with Visual Studio 2019 | *windows-2019* | `windows-2019` | [Link](https://aka.ms/windows-2019-readme) |
+| Ubuntu 24.04 | *ubuntu-24.04* | `ubuntu-24.04` | [Link](https://github.com/actions/runner-images/blob/main/images/ubuntu/Ubuntu2404-Readme.md)
+| Ubuntu 22.04 | *ubuntu-22.04* | `ubuntu-latest` OR `ubuntu-22.04` | [Link](https://aka.ms/ubuntu-22.04-readme)
+| Ubuntu 20.04 | *ubuntu-20.04* | `ubuntu-20.04` | [Link](https://aka.ms/ubuntu-20.04-readme)
+| macOS 15 Sequoia preview | *macOS-15* | `macOS-15` | [Link](https://github.com/actions/runner-images/blob/main/images/macos/macos-15-Readme.md) |
+| macOS 14 Sonoma | *macOS-14* | `macOS-latest` OR `macOS-14` | [Link](https://aka.ms/macOS-14-readme) |
+| macOS 13 Ventura | *macOS-13* | `macOS-13` | [Link](https://aka.ms/macOS-13-readme) |
 
 The default agent image for classic build pipelines is *windows-2019*, and the default agent image for YAML build pipelines is `ubuntu-latest`. For more information, see [Designate a pool in your pipeline](pools-queues.md#designate-a-pool-in-your-pipeline).
 
-You can see the installed software for each hosted agent by choosing the **Included Software** link in the table. When using macOS images, you can manually select from tool versions. [See below](#mac-pick-tools).
+You can see the installed software for each hosted agent by choosing the **Included Software** link in the table. When using macOS images, you can manually select from tool versions. [Read more](#mac-pick-tools).
 
 
 ### Recent updates
 
-* The macOS 13 image is available
+* The macOS-12 Monterey image has been retired
+* The macOS-15 Sequoia image is available in preview
+* The Ubuntu-24.04 image is available
+* The macOS-12 Monterey image is deprecated and will be retired December 3, 2024.
+* The Ubuntu-22.04 image is available
+* The macOS-14 Sonoma image is available in preview
+* The macOS-11 Big Sur image is deprecated and will be retired June 28, 2024.
+* All Microsoft hosted agents will start using PowerShell 7.2 LTS to PowerShell 7.4 LTS starting January 28. For more information, including potential breaking changes, see [Microsoft hosted agents use PowerShell 7.4](/azure/devops/release-notes/2024/sprint-233-update#microsoft-hosted-agents-use-powershell-74).
+* The macOS 13 image is generally available
 * The macOS 10.15 image is fully unsupported as of 4/24/2023
-* Ubuntu 18.04 has been retired
-* [`ubuntu-latest` images will use `ubuntu-22.04`](https://github.com/actions/runner-images/issues/6399).
+* The Ubuntu 18.04 image is retired
+* [`ubuntu-latest` images use `ubuntu-22.04`](https://github.com/actions/runner-images/issues/6399).
 * [General availability of Ubuntu 22.04 for Azure Pipelines hosted pools](/azure/devops/release-notes/2022/sprint-208-update#general-availability-of-ubuntu-2204-for-azure-pipelines-hosted-pools).
 * [The Ubuntu 18.04 image will begin deprecation on 8/8/22 and will be fully unsupported by 4/1/2023](https://github.com/actions/runner-images/issues/6002).
 * [The macOS 10.15 image will begin deprecation on 5/31/22 and will be fully unsupported by 12/1/2022](https://github.com/actions/runner-images/issues/5583).
-* [`windows-latest` images will use `windows-2022`](https://github.com/actions/runner-images/issues/4856).
-* [`macOS-latest` images will use `macOS-11`](https://github.com/actions/runner-images/issues/4060).
+* [`windows-latest` images use `windows-2022`](https://github.com/actions/runner-images/issues/4856).
+* [`macOS-latest` images use `macOS-11`](https://github.com/actions/runner-images/issues/4060).
 * [The Ubuntu 16.04 hosted image was removed September 2021](https://github.com/actions/runner-images/issues/3287).
-* The Windows Server 2016 with Visual Studio 2017 image has been deprecated and will be retired June 30 2022. Read [this blog post](https://devblogs.microsoft.com/devops/hosted-pipelines-image-deprecation/#windows) on how to identify pipelines using deprecated images.
+* The Windows Server 2016 with Visual Studio 2017 image is deprecated and was retired June 30 2022. Read [this blog post](https://devblogs.microsoft.com/devops/hosted-pipelines-image-deprecation/#windows) on how to identify pipelines using deprecated images.
 * In December 2021, we removed the following Azure Pipelines hosted image:
   * macOS X Mojave 10.14 (`macOS-10.14`)
 * In March 2020, we removed the following Azure Pipelines hosted images:
@@ -66,6 +74,10 @@ You can see the installed software for each hosted agent by choosing the **Inclu
 Customers are encouraged to migrate to newer versions or a [self-hosted agent](windows-agent.md).
 
 For more information and instructions on how to update your pipelines that use those images, see [Removing older images in Azure Pipelines hosted pools](https://devblogs.microsoft.com/devops/removing-older-images-in-azure-pipelines-hosted-pools/).
+
+> [!NOTE]
+> macOS capacity is currently limited. Unlike Linux and Windows images, where our capacity is restrained by Azure's all up capacity, macOS capacity is constrained by the amount of hardware we have available. While we are working to add capacity during Spring 2024, some jobs may experience delayed execution.
+> Wherever possible, e.g. for jobs that do not create Apple ecosystem apps, customers should choose Linux or Windows images.
 
 > [!NOTE]
 > The Azure Pipelines hosted pool replaces the previous hosted pools that had names that mapped to the corresponding images. Any jobs you had in the previous hosted pools are automatically redirected to the correct image in the new Azure Pipelines hosted pool. In some circumstances, you may still see the old pool names, but behind the scenes the hosted jobs are run using the Azure Pipelines pool. For more information about this update, see the [Single hosted pool](/azure/devops/release-notes/2019/sprint-154-update#single-hosted-pool) release notes from the [July 1 2019 - Sprint 154 release notes](/azure/devops/release-notes/2019/sprint-154-update).
@@ -89,7 +101,7 @@ You can also query job history for deprecated images across projects using the s
 
 # [YAML](#tab/yaml)
 
-In YAML pipelines, if you do not specify a pool, pipelines will default to the Azure Pipelines agent pool. You simply need to specify which virtual machine image you want to use.
+In YAML pipelines, if you do not specify a pool, pipelines default to the Azure Pipelines agent pool. You simply need to specify which virtual machine image you want to use.
 
 ```yaml
 jobs:
@@ -139,7 +151,7 @@ Agents that run macOS images are provisioned on Mac pros with a 3 core CPU, 14 G
 All of these machines have at least 10 GB of free disk space available for your pipelines to run. This free space is consumed when your pipeline checks out source code, downloads packages, pulls docker images, or generates intermediate files.
 
 > [!IMPORTANT]
-> We cannot honor requests to increase disk space on Microsoft-hosted agents, or to provision more powerful machines. If the specifications of Microsoft-hosted agents do not meet your needs, then you should consider [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md).
+> We cannot honor requests to increase disk space on Microsoft-hosted agents, or to provision more powerful machines. If the specifications of Microsoft-hosted agents do not meet your needs, then you should consider [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios).
 
 <a name="agent-ip-ranges"></a>
 
@@ -188,24 +200,26 @@ namespace WeeklyFileIPRanges
     class Program
     {
         // Path to the locally saved weekly file
-        const string weeklyFilePath = @"C:\MyPath\ServiceTags_Public_20210823.json";
+        const string weeklyFilePath = @"C:\MyPath\ServiceTags_Public_20230904.json";
 
         static void Main(string[] args)
         {
             // United States geography has the following regions:
-            // Central US, East US, East US 2, North Central US, 
-            // South Central US, West Central US, West US, West US 2
-            // This list is accurate as of 8/26/2021
+            // Central US, East US, East US 2, East US 3, North Central US, 
+            // South Central US, West Central US, West US, West US 2, West US 3
+            // This list is accurate as of 9/8/2023
             List<string> USGeographyRegions = new List<string>
             {
                 "centralus",
                 "eastus",
                 "eastus2",
+                "eastus3",
                 "northcentralus",
                 "southcentralus",
                 "westcentralus",
                 "westus",
-                "westus2"
+                "westus2",
+                "westus3"
             };
 
             // Load the weekly file
@@ -214,12 +228,12 @@ namespace WeeklyFileIPRanges
 
             foreach (string region in USGeographyRegions)
             {
-                string azureCloudRegion = $"AzureCloud.{region}";
-                Console.WriteLine(azureCloudRegion);
+                string tag = $"AzureCloud.{region}";
+                Console.WriteLine(tag);
 
                 var ipList =
                     from v in values
-                    where (string)v["name"] == azureCloudRegion
+                    where tag.Equals((string)v["name"], StringComparison.OrdinalIgnoreCase)
                     select v["properties"]["addressPrefixes"];
 
                 foreach (var ip in ipList.Children())
@@ -244,7 +258,7 @@ Microsoft-hosted agents run on secure Azure platform. However, you must be aware
 - Microsoft-hosted agents are run in individual VMs, which are re-imaged after each run. Each agent is dedicated to a single organization, and each VM hosts only a single agent.
 - There are several benefits to running your pipeline on Microsoft-hosted agents, from a security perspective. If you run untrusted code in your pipeline, such as contributions from forks, it is safer to run the pipeline on Microsoft-hosted agents than on self-hosted agents that reside in your corporate network.
 - When a pipeline needs to access your corporate resources behind a firewall, you have to allow the IP address range for the Azure geography. This may increase your exposure as the range of IP addresses is rather large and since machines in this range can belong to other customers as well. The best way to prevent this is to avoid the need to access internal resources. For information on deploying artifacts to a set of servers, see [Communication to deploy to target servers](agents.md#communication-to-deploy-to-target-servers).
-- Hosted images do not conform to [CIS hardening benchmarks](https://www.cisecurity.org/benchmark/azure/). To use CIS-hardened images, you must create either self-hosted agents or scale-set agents.
+- Hosted images do not conform to [CIS hardening benchmarks](https://www.cisecurity.org/benchmark/azure/). To use CIS-hardened images, you must create either self-hosted agents or scale-set agents or Managed DevOps pools.
 
 ## Capabilities and limitations
 
@@ -257,21 +271,23 @@ Microsoft-hosted agents:
   * Public project: 10 free Microsoft-hosted parallel jobs that can run for up to 360 minutes (6 hours) each time, with no overall time limit per month. [Contact us](https://azure.microsoft.com/support/devops/) to get your free tier limits increased.
   * Private project: One free parallel job that can run for up to 60 minutes each time, until you've used 1,800 minutes (30 hours) per month. You can pay for additional capacity per parallel job. Paid parallel jobs remove the monthly time limit and allow you to run each job for up to 360 minutes (6 hours). [Buy Microsoft-hosted parallel jobs](https://marketplace.visualstudio.com/items?itemName=ms.build-release-hosted-pipelines).
   * When you create a new Azure DevOps organization, you are not given these free grants by default. To request the free grant for public or private projects, submit [a request](https://aka.ms/azpipelines-parallelism-request).
-* Run on Microsoft Azure general purpose virtual machines [Standard_DS2_v2](/azure/virtual-machines/dv2-dsv2-series#dsv2-series)
-* Run as an administrator on Windows and a passwordless sudo user on Linux
-* (Linux only) Run steps in a `cgroup` that offers 6 GB of physical memory and 13 GB of total memory
+* Run on Microsoft Azure general purpose virtual machines [Standard_DS2_v2](/azure/virtual-machines/dv2-dsv2-series#dsv2-series).
+* Run as an administrator on Windows and a passwordless sudo user on Linux.
+* (Linux only) Run steps in a `cgroup` that offers 6 GB of physical memory and 13 GB of total memory.
+* Use VM images that are regularly updated (every 3 weeks).
 
 Microsoft-hosted agents do not offer:
 
 * The ability to remotely connect.
-* The ability to [drop artifacts to a UNC file share](../artifacts/build-artifacts.md#publish-from-tfs-to-a-unc-file-share).
+* The ability to [drop artifacts to a UNC file share](/previous-versions/azure/devops/pipelines/artifacts/build-artifacts?view=tfs-2018&preserve-view=true#publish-from-tfs-to-a-unc-file-share).
 * The ability to join machines directly to your corporate network.
 * The ability to get bigger or more powerful build machines.
 * The ability to pre-load custom software. You can install software during a pipeline run, such as through [tool installer tasks](../process/tasks.md#tool-installers) or in a script.
 * Potential performance advantages that you might get by using self-hosted agents that might start and run builds faster. [Learn more](agents.md#private-agent-performance-advantages)
 * The ability to run [XAML builds](/previous-versions/visualstudio/visual-studio-2013/ms181709(v=vs.120)).
+* The ability to roll back to a previous VM image version. You always use the latest version.
 
-If Microsoft-hosted agents don't meet your needs, then you can deploy your own [self-hosted agents](agents.md#install) or use [scale set agents](scale-set-agents.md).
+If Microsoft-hosted agents don't meet your needs, then you can deploy your own [self-hosted agents](agents.md#install) or use [scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios).
 
 ## FAQ
 
@@ -298,7 +314,7 @@ You can also use a self-hosted agent that includes the exact versions of softwar
 
 ### What if I need a bigger machine with more processing power, memory, or disk space?
 
-We can't increase the memory, processing power, or disk space for Microsoft-hosted agents, but you can use [self-hosted agents](agents.md#install) or [scale set agents](scale-set-agents.md) hosted on machines with your desired specifications.
+We can't increase the memory, processing power, or disk space for Microsoft-hosted agents, but you can use [self-hosted agents](agents.md#install) or [scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios) hosted on machines with your desired specifications.
 
 ### I can't select a Microsoft-hosted agent and I can't queue my build or deployment. What should I do?
 
@@ -310,7 +326,7 @@ By default, all project contributors in an organization have access to the Micro
 
 If your pipeline has recently become slower, review our [status page](https://status.dev.azure.com/) for any outages. We could be having issues with our service. Or else, review any changes that you made in your application code or pipeline. Your repository size during check-out might have increased, you may be uploading larger artifacts, or you may be running more tests.
 
-If you are just setting up a pipeline and are comparing the performance of Microsoft-hosted agents to your local machine or a self-hosted agent, then note the [specifications](#capabilities-and-limitations) of the hardware that we use to run your jobs. We are unable to provide you with bigger or powerful machines. You can consider using [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md) if this performance is not acceptable.
+If you are just setting up a pipeline and are comparing the performance of Microsoft-hosted agents to your local machine or a self-hosted agent, then note the [specifications](#capabilities-and-limitations) of the hardware that we use to run your jobs. We are unable to provide you with bigger or powerful machines. You can consider using [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios) if this performance is not acceptable.
 
 ### I need more agents. What can I do?
 
@@ -320,9 +336,9 @@ All Azure DevOps organizations are provided with several free parallel jobs for 
 
 Your self-hosted agent probably has all the right dependencies installed on it, whereas the same dependencies, tools, and software are not installed on Microsoft-hosted agents. First, carefully review the list of software that is installed on Microsoft-hosted agents by following the link to **Included software** in the table above. Then, compare that with the software installed on your self-hosted agent. In some cases, Microsoft-hosted agents may have the tools that you need (for example, Visual Studio), but all of the necessary optional components may not have been installed. If you find differences, then you have two options:
 
-- You can create a new issue on the [repository](https://github.com/actions/runner-images), where we track requests for additional software. Contacting support will not help you with setting up new software on Microsoft-hosted agents.
+- You can create a new issue on the [repository](https://github.com/actions/runner-images), where we track requests for additional software. Contacting support can't help you set up new software on Microsoft-hosted agents.
 
-- You can use [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md). With these agents, you are fully in control of the images that are used to run your pipelines.
+- You can use [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios). With these agents, you are fully in control of the images that are used to run your pipelines.
 
 ### My build succeeds on my local machine, but fails on Microsoft-hosted agents. What should I do?
 
@@ -330,11 +346,11 @@ Your local machine probably has all the right dependencies installed on it, wher
 
 - You can create a new issue on the [repository](https://github.com/actions/runner-images), where we track requests for additional software. This is your best bet for getting new software installed. Contacting support will not help you with setting up new software on Microsoft-hosted agents.
 
-- You can use [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md). With these agents, you are fully in control of the images that are used to run your pipelines.
+- You can use [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios). With these agents, you are fully in control of the images that are used to run your pipelines.
 
 ### My pipeline fails with the error: "no space left on device".
 
-Microsoft-hosted agents only have 10 GB of disk space available for running your job. This space is consumed when you check out source code, when you download packages, when you download docker images, or when you produce intermediate files. Unfortunately, we cannot increase the free space available on Microsoft-hosted images. You can restructure your pipeline so that it can fit into this space. Or, you can consider using [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md).
+Microsoft-hosted agents only have 10 GB of disk space available for running your job. This space is consumed when you check out source code, when you download packages, when you download docker images, or when you produce intermediate files. Unfortunately, we cannot increase the free space available on Microsoft-hosted images. You can restructure your pipeline so that it can fit into this space. Or, you can consider using [self-hosted agents](agents.md) or [scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios).
 
 ### My pipeline running on Microsoft-hosted agents requires access to servers on our corporate network. How do we get a list of IP addresses to allow in our firewall?
 
@@ -350,32 +366,10 @@ If you get an SAS error code, it is most likely because the IP address ranges fr
 
 1. [Manage the IP network rules for your Azure Storage account](/azure/storage/common/storage-network-security?tabs=azure-portal#managing-ip-network-rules) and add the [IP address ranges for your hosted agents](#networking).
 2. In your pipeline, use [Azure CLI to update the network ruleset for your Azure Storage account](/powershell/module/az.storage/update-azstorageaccountnetworkruleset) right before you access storage, and then restore the previous ruleset.
-3. Use [self-hosted agents](agents.md#install) or [Scale set agents](scale-set-agents.md).
+3. Use [self-hosted agents](agents.md#install) or [Scale set agents](scale-set-agents.md) or [Managed DevOps Pools](../../managed-devops-pools/overview.md#usage-scenarios).
 
 <a name="mac-pick-tools"></a>
 ### How can I manually select versions of tools on the Hosted macOS agent?
-
-#### Xamarin
-
-  **Hosted macOS** agent stores Xamarin SDK versions and the associated Mono versions as a set of symlinks to Xamarin SDK locations that are available by a single bundle symlink.
-
-  To manually select a Xamarin SDK version to use on the **Hosted macOS** agent, execute the following bash command before your Xamarin build task as a part of your build, specifying the symlink to Xamarin versions bundle that you need.
-
-  `/bin/bash -c "sudo $AGENT_HOMEDIRECTORY/scripts/select-xamarin-sdk.sh <symlink>"`
-
-  The list of all available Xamarin SDK versions and symlinks can be found in the agents documentation:
-  - [macOS 11](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md#xamarin)
-  - [macOS 12](https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md#xamarin)
-  
-This command does not select the Mono version beyond the Xamarin SDK. To manually select a Mono version, see instructions below.
-
-  In case you are using a non-default version of Xcode for building your Xamarin.iOS or Xamarin.Mac apps, you should additionally execute this command line:
-
-  `/bin/bash -c "echo '##vso[task.setvariable variable=MD_APPLE_SDK_ROOT;]'$(xcodeRoot);sudo xcode-select --switch $(xcodeRoot)/Contents/Developer"`
-  
-  where `$(xcodeRoot)` = `/Applications/Xcode_13.2.app`
-
-  Xcode versions on the **Hosted macOS** agent pool can be found [here](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md#xcode) for the `macos-11` agent and [here](https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md#xcode) for the `macos-12` agent.
 
 #### Xcode
 
@@ -383,13 +377,11 @@ This command does not select the Mono version beyond the Xamarin SDK. To manuall
 
   `/bin/bash -c "sudo xcode-select -s /Applications/Xcode_13.2.app/Contents/Developer"`
 
-  Xcode versions on the **Hosted macOS** agent pool can be found [here](https://github.com/actions/runner-images/blob/main/images/macos/macos-11-Readme.md#xcode) for the `macos-11` agent and [here](https://github.com/actions/runner-images/blob/main/images/macos/macos-12-Readme.md#xcode) for the `macos-12` agent.
-
-  This command does not work for Xamarin apps. To manually select an Xcode version for building Xamarin apps, see instructions above.
+  Xcode versions on the **Hosted macOS** agent pool can be found [here](https://github.com/actions/runner-images/blob/main/images/macos/).
 
 #### Mono
 
-  To manually select a Mono version to use on the **Hosted macOS** agent pool, execute this script in each job of your build before your Mono build task, specifying the symlink with the required Mono version (list of all available symlinks can be found in the [Xamarin section](#xamarin) above):
+  To manually select a Mono version to use on the **Hosted macOS** agent pool, execute this script in each job of your build before your Mono build task, specifying the symlink with the required Mono version:
 
   ```bash
   SYMLINK=<symlink>

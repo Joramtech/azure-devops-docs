@@ -1,67 +1,50 @@
 ---
-title: Grant or restrict access to select features
+title: Manage access to specific features
 titleSuffix: Azure DevOps 
-description: How to set permissions to grant or restrict access to select build, version control, or work tracking functions  
+description: How to set permissions to grant or restrict access to specific build, version control, or work tracking functions.  
 ms.assetid: ee4c4a8f-0478-4ade-8b12-4e5ffd0054c7
 ms.topic: overview
 ms.subservice: azure-devops-security
 ms.author: chcomley
 author: chcomley
 monikerRange: '<= azure-devops'
-ms.date: 03/23/2023 
+ms.date: 01/05/2025
 --- 
 
-# Grant or restrict access using permissions
+# Manage access to specific features
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-You can grant or restrict access to resources that you manage in Azure DevOps. You may want to open up or close down access to a select set of features and for a select set of users. While the built-in security groups provide a standard set of permission assignments, you may need more security requirements not met by these assignments.
+Managing access to specific features in Azure DevOps can be crucial for maintaining the right balance of openness and security. Whether you're looking to grant or restrict access to certain functionalities for a group of users, understanding the flexibility beyond the standard permissions provided by built-in security groups is key.
 
-If you're new to administrating permissions and groups, review [Get started with permissions, access, and security groups](about-permissions.md) to learn about permission states and inheritance.
-
-In this article you learn how to do the following tasks: 
-
-::: moniker range="azure-devops"
-
-> [!div class="checklist"]
-> * Recommended method for granting and restricting permissions
-> * Delegate tasks by assigning select permissions to specific roles 
-> * Limit user visibility to organization information
-> * Limit people picker to project users and groups 
-> * Restrict access to view or modify objects
-> * Restrict modification of work items based on a user or group
-::: moniker-end
-
-::: moniker range="< azure-devops"
-
-> [!div class="checklist"]
-> * Recommended method for granting and restricting permissions
-> * Delegate tasks by assigning select permissions to specific roles
-> * Restrict access to view or modify objects
-> * Restrict modification of work items based on a user or group
-::: moniker-end
+If you're new to the permissions and groups landscape, see [Get started with permissions, access, and security groups](about-permissions.md). This article covers the essentials of permission states and how they inherit.
 
 > [!TIP]    
-> Because you set many permissions at an object-level, such as repositories and area paths, how you structure your project determines the areas you can open up or close down.
+> The structure of your project in Azure DevOps plays a pivotal role in determining the granularity of permissions at an object level, such as repositories and area paths. This structure is the foundation that allows you to fine-tune access controls, enabling you to specifically delineate which areas are accessible or restricted. For more information, see [About projects and scaling your organization](../projects/about-projects.md).
 
-## Recommended method for granting and restricting permissions 
+## Prerequisites
 
-For maintenance purposes, we recommend you use either the built-in security groups or [custom security groups to manage permissions](add-remove-manage-user-group-security-group.md). 
+[!INCLUDE [prerequisites-pca-only](../../includes/prerequisites-pca-only.md)]
 
-You can't change the permission settings for the Project Administrators group or the Project Collection Administrators group, which is by design. However, for all other groups, you can change the permissions. 
+## Use security groups
 
-If you manage a few users, then you may find changing individual permissions a valid option. However, custom security groups allow you to better track roles and permissions assigned to those roles.  
+For optimal maintenance, we recommend using the default security groups or establishing [custom security groups to manage permissions](add-remove-manage-user-group-security-group.md). The permission settings for the **Project Administrators** and **Project Collection Administrators** groups are fixed by design and can't be altered. However, you have the flexibility to modify permissions for all other groups.
+
+Managing permissions for a few users individually might seem feasible, but custom security groups provide a more organized approach. They streamline the oversight of roles and their associated permissions, ensuring clarity and ease of management design and can't be altered. But, you have the flexibility to modify permissions for all other groups.
 
 ## Delegate tasks to specific roles
 
-As an administrator or account owner, it's a good idea to delegate administrative tasks to those team members who lead or manage an area. Several of the main built-in roles that come with default permissions and role assignments are:
-- Readers 
-- Contributors 
-- Team Administrator (role) 
-- Project Administrators
-- Project Collection Administrators  
+As an administrator or organization owner, delegating administrative tasks to team members who oversee specific areas is a strategic approach. The primary built-in roles equipped with predefined permissions and role assignments include:
 
-For a summary of permissions for the above roles, see [Default permissions and access](permissions-access.md), or for the Project Collection Administrators, see [Change project collection-level permissions](change-organization-collection-level-permissions.md). 
+- **Readers:** Have read-only access to the project.
+- **Contributors:** Can contribute to the project by adding or modifying content.
+- **Team Administrator:** Manage team-related settings and permissions.
+- **Project Administrators:** Have administrative rights over the project.
+- **Project Collection Administrators:** Oversee the entire project collection and have the highest level of permissions.
+
+These roles facilitate the distribution of responsibilities and streamline the management of project areas.
+
+For for more information, see [Default permissions and access](permissions-access.md) and [Change project collection-level permissions](change-organization-collection-level-permissions.md). 
 
 To delegate tasks to other members within your organization, consider creating a custom security group and then granting permissions as indicated in the following table.  
 
@@ -90,7 +73,7 @@ To delegate tasks to other members within your organization, consider creating a
 :::row-end:::
 :::row:::
    :::column span="1":::
-   Development lead (TFVC)
+   Development lead (Team Foundation Version Control (TFVC))
    :::column-end:::
    :::column span="1":::
    Manage repository and branches
@@ -196,55 +179,70 @@ To delegate tasks to other members within your organization, consider creating a
    For an account or collection, Edit instance-level (or collection-level) information  
    To understand the scope of these permissions, see [Permission lookup guide](permissions-lookup-guide.md). To request a change in permissions, See [Request an increase in permission levels](request-changes-permissions.md).  
    
-   You can also grant permissions to manage permissions for the following objects:
+In addition to assigning permissions to individuals, you can manage permissions for various objects within Azure DevOps. These objects include:
    
-   - [Set Git repository permissions](../../repos/git/set-git-repository-permissions.md)
-   - [Manage Git branch permissions](../../repos/git/branch-permissions.md)
-   - [Set TFVC repository permissions](../../repos/tfvc/set-tfvc-repository-permissions.md)
-   - [Administer build and release permissions](../../pipelines/policies/set-permissions.md)
-   - [Manage Wiki permissions](../../project/wiki/manage-readme-wiki-permissions.md).
+   - [Git repositories](../../repos/git/set-git-repository-permissions.md)
+   - [Git branches](../../repos/git/branch-permissions.md)
+   - [TFVC repositories](../../repos/tfvc/set-tfvc-repository-permissions.md)
+   - [Build and release pipelines](../../pipelines/policies/permissions.md#pipeline-permissions)
+   - [Wikis](../../project/wiki/manage-readme-wiki-permissions.md).
 
    :::column-end:::
 :::row-end:::
 
-<a id="restrict-access-project-scoped-user-group" />
+These links provide detailed steps and guidelines for setting up and managing permissions effectively for the respective areas in Azure DevOps.
+
+<a id="restrict-access-project-scoped-user-group"></a>
 
 ::: moniker range="azure-devops" 
 
-## Limit user visibility to organization and project information
-
-[!INCLUDE [project-scoped-users-important-note](../../includes/project-scoped-users-important-note.md)]
-
-By default, users added to an organization can view all organization and project information and settings. To restrict access to only those projects that you add users to, you can enable the **Limit user visibility and collaboration to specific projects** preview feature for the organization. To enable this feature, see [Manage or enable features](../../project/navigation/preview-features.md#account-level). 
-
-With this feature enabled, users added to the **Project-Scoped Users** group can't view most **Organization settings** and can only connect to those projects to which they've been added. 
+## Limit user visibility
 
 [!INCLUDE [project-scoped-users-warning](../../includes/project-scoped-users-warning.md)]
 
-::: moniker-end
+### Organizations and projects
 
-::: moniker range="azure-devops" 
+By default, users added to an organization can view all organization and project information and settings. You can restrict specific users, such as Stakeholders, Microsoft Entra users, or members of a particular security group, with the **Limit user visibility and collaboration to specific projects** preview feature for the organization. Once the feature [gets turned on](#turn-on-the-preview-feature-and-add-users-to-the-security-group), any user or group that [gets added to the **Project-Scoped Users** group](#identity-search-and-selection) is restricted in the following ways:
 
-## Limit people picker to project users and groups
+- Access is confined to only the projects to which they're explicitly added.
+- Views displaying lists of users, projects, billing details, usage data, and more accessed through **Organization settings** are restricted.
+- The set of people or groups that appear in people-picker search selections and the ability to **@mention** people is limited.
 
-For organizations that manage their users and groups using Azure Active Directory (Azure AD), people pickers support searching all users and groups added to Azure AD, not just those users or groups added to a project. People pickers support the following Azure DevOps functions: 
+### Identity search and selection
+
+With Microsoft Entra ID, you can use people pickers to search for any user or group in your organization, not just the ones in your current project. People pickers support the following Azure DevOps functions:
 
 - Selection of a user identity from a work tracking identity field such as **Assigned To**  
 - Selection of a user or group using **@mention** in a work item discussion or rich-text field, a pull request discussion, commit comments, or changeset or shelveset comments
 - Selection of a user or group using **@mention** from a wiki page 
 
-As shown in the following image, you simply start typing into a people picker box until you find a match to a user name or security group.
- 
-> [!div class="mx-imgBorder"]  
-> ![Screenshot of people picker](../../organizations/notifications/media/at-mention/identity-selector.png)  
+As shown in the following image, start entering a user or security group name into a people picker box until you find a match.
 
-Users and groups who are added to the **Project-Scoped Users** group can only see and select users and groups in the project they're connected to from a people picker. To scope people pickers for all project members, see [Manage your organization, Limit  identity search and selection](../../user-guide/manage-organization-collection.md#limit-identity-selection).
+   :::image type="content" source="../../organizations/notifications/media/at-mention/identity-selector.png" alt-text="Screenshot of people picker.":::
+
+Users and groups who are added to the **Project-Scoped Users** group can only see and select users and groups in the project they're connected to from a people picker.
+
+### Turn on the preview feature and add users to the security group
+
+Do the following steps to turn on the preview feature and add users and group to the Project-Scoped Users group:
+
+1. Turn on the **Limit user visibility and collaboration to specific projects** [preview feature](../../project/navigation/preview-features.md) for the organization. 
+2. Add the users to your project as described in [Add users to a project or team](../../organizations/security/add-users-team-project.md). Users added to a team are automatically added to the project and team group. 
+3. Open **Organizations settings** > **Security** > **Permissions** and choose **Project-Scoped Users**. Select the **Members** tab. 
+4. Add all users and groups that you want to scope to the project they're added to. For more information, see [Set permissions at the project- or collection-level](../../organizations/security/change-organization-collection-level-permissions.md). 
+   
+   The **Project-Scoped Users** group only appears under the **Permissions** > **Groups** when the **Limit user visibility and collaboration to specific projects** preview feature is turned on. 
+
+All security groups in Azure DevOps are considered organization-level entities, even if they only have permissions for a specific project. This means that security groups get managed at the organization level. 
+
+From the web portal, the visibility of some security groups might be restricted based on the user's permissions. However, you can still discover the names of all security groups within an organization by using the **azure devops** CLI tool or the REST APIs. For more information, see [Add and manage security groups](../../organizations/security/add-manage-security-groups.md).
 
 ::: moniker-end
  
 ## Restrict access to view or modify objects  
 
-Azure DevOps is designed to enable all valid users to view all objects defined in the system. You can restrict access to resources by setting the permission state to **Deny**. You can set permissions for members that belong to a custom security group or for an individual user. To learn more about how to set these types of permissions, see [Request an increase in permission levels](request-changes-permissions.md). 
+Azure DevOps is designed to allow all authorized users to view all defined objects within the system. However, you can tailor access to resources by setting the permission state to **Deny**. 
+You can set permissions for members who belong to a custom security group or for individual users. For more information, see [Request an increase in permission levels](request-changes-permissions.md). 
 
 :::row:::
    :::column span="1":::
@@ -260,6 +258,7 @@ Azure DevOps is designed to enable all valid users to view all objects defined i
    :::column-end:::
    :::column span="1":::
    View, Contribute  
+   
    See [Set Git repository permissions](../../repos/git/set-git-repository-permissions.md) or [Set TFVC repository permissions](../../repos/tfvc/set-tfvc-repository-permissions.md).
    :::column-end:::
 :::row-end:::
@@ -279,7 +278,7 @@ Azure DevOps is designed to enable all valid users to view all objects defined i
    :::column span="1":::
    Edit build pipeline, View build pipeline  
    Edit release pipeline, View release pipeline  
-   You set these permissions at the object level. See [Set build and release permissions](../../pipelines/policies/set-permissions.md).
+   You set these permissions at the object level. See [Set build and release permissions](../../pipelines/policies/permissions.md#pipeline-permissions).
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -292,7 +291,7 @@ Azure DevOps is designed to enable all valid users to view all objects defined i
    :::column-end:::
 :::row-end:::
 
-<a id="restrict-modifications-wits" /> 
+<a id="restrict-modifications-wits"></a> 
 
 ## Restrict modification of work items or select fields 
 
@@ -301,21 +300,19 @@ For examples that illustrate how to restrict modification of work items or selec
 ## Next steps
 
 > [!div class="nextstepaction"]
-> [Remove user accounts](remove-users-prohibit-access.md)
+> [Remove user accounts](/azure/active-directory/add-users-azure-active-directory#delete-a-user?toc=/azure/devops/organizations/security/toc.json)
 
 ## Related articles
 
-- [Troubleshoot permissions](troubleshoot-permissions.md)
-- [Rules and rule evaluation](../settings/work/rule-reference.md)  
-- [Default permissions and access](permissions-access.md) 
-- [Permission lookup guide](permissions-lookup-guide.md) 
+- [View default permissions and access](permissions-access.md)
+- [Use the permission lookup guide](permissions-lookup-guide.md)
 - [Get started with permissions, access, and security groups](about-permissions.md)
-- [Permissions and groups reference](permissions.md)
+- [Refer to permissions and groups](permissions.md)
 - [Change project-level permissions](change-project-level-permissions.md)
 - [Change project collection-level permissions](change-organization-collection-level-permissions.md)
 
 <!--- 
-This topic should provide useful steps to think about what they want to shut down, addressing the most common areas that admins have expressed that they want to shut down or open up. Also - consider how they might structure their project - repos, area paths, etc. and how that influences permissions 
+This article should provide useful steps to think about what they want to shut down, addressing the most common areas that admins have expressed that they want to shut down or open up. Also - consider how they might structure their project - repos, area paths, etc. and how that influences permissions 
 
 Maybe consider this in a 2 or 3 step process: 
 - what areas to open up/close down
@@ -329,12 +326,8 @@ Create a custom security group
 Add users to that group 
 Set the permissions to restrict access to a feature. 
 
-Should we have a Concepts topic about restricting -- address things that we support/don't support. 
-
 User Voice requests: 
 * Hide Work Item Types (WITs) based on permission/security group
 
 If you have requirements where you want to restrict user views or select users ability to contribute within an area, you may want to create a separate project where you restrict access. 
-
-What you can do on TFS differs from what is available  from Azure DevOps 
 -->

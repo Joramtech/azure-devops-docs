@@ -2,10 +2,10 @@
 title: Manage flaky tests
 description: Improve productivity with flaky test management system
 ms.assetid: BBDD071F-4017-4AF0-AB59-71F8FEFF1E37
-ms.topic: conceptual 
-ms.custom: "continuous-test, seodec18"
-ms.author: chcomley
-author: chcomley
+ms.topic: conceptual
+ms.custom: continuous-test
+ms.author: jeom
+author: raviLiftr
 ms.date: 08/31/2020
 monikerRange: 'azure-devops'
 ---

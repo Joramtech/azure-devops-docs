@@ -34,7 +34,7 @@ For an overview of the Git workflow, see [Azure Repos Git tutorial](gitworkflow.
 
 [!INCLUDE [azure-repos-prerequisites](includes/azure-repos-prerequisites.md)]
 
-To learn more about permissions and access, see [Default Git repository and branch permissions](../../organizations/security/default-git-permissions.md) and [About access levels](../../organizations/security/access-levels.md).
+For more information about permissions and access, see [Default Git repository and branch permissions](../../organizations/security/default-git-permissions.md) and [About access levels](../../organizations/security/access-levels.md).
 
 [!INCLUDE [temp](includes/note-new-git-tool.md)]
 
@@ -229,7 +229,7 @@ To show a diff view of the last commit in your current branch, run the following
 
 ---
 
-<a id="link-work-items" />
+<a id="link-work-items"></a>
 
 ## Link work items to your commits
 

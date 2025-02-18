@@ -1,16 +1,14 @@
 ---
 title: Plan your organizational structure
 titleSuffix: Azure DevOps
-ms.custom: seodec18, contperf-fy22q3
 description: Begin to plan your organizational structure, including projects, teams, repos, version control, and more.
 ms.subservice: azure-devops-new-user
-ms.assetid: 
 ms.author: chcomley
 author: chcomley
 robots: NOINDEX, NOFOLLOW
 ms.topic: overview
 monikerRange: '<= azure-devops'
-ms.date: 02/23/2022
+ms.date: 11/18/2024
 ---
 
 # Plan your organizational structure
@@ -24,7 +22,7 @@ Consider the following structures for your business and collaborative work in Az
 * [Number of organizations](#how-many-organizations-do-you-need)
 * [Number of projects under an organization](#how-many-projects-do-you-need)
 
-You also may want to plan for the following scenarios:
+Also, plan for the following scenarios:
 
 * [Map your organizations and projects](#mapping-guidance-table) in Azure DevOps to your enterprise, business unit, and team structure
 * [Structure your repositories (repos)](#structure-repos-and-version-control-within-a-project)
@@ -33,7 +31,7 @@ You also may want to plan for the following scenarios:
 * [Reporting needs](#mapping-guidance-table)
 * Promote common practices - [use foundational elements to create an agile mindset and culture](../boards/plans/agile-culture.md)
 
-Have at least one organization, which may represent your company, your larger collection of code projects, or even multiple related business units.
+Have at least one organization, which might represent your company, your larger collection of code projects, or even multiple related business units.
 
 ## What's an organization?
 
@@ -42,7 +40,7 @@ An organization in Azure DevOps is a mechanism for organizing and connecting gro
 Each organization gets its own *free tier* of services (up to five users for each service type) as follows. You can use all the services, or choose only what you need to complement your existing workflows.
 
 * [Azure Pipelines](https://azure.microsoft.com/services/devops/pipelines/): One hosted job with 1,800 minutes per month for CI/CD and one self-hosted job
-* [Azure Boards](https://azure.microsoft.com/services/devops/boards/): Work item tracking and Kanban boards
+* [Azure Boards](https://azure.microsoft.com/services/devops/boards/): Work item tracking and boards
 * [Azure Repos](https://azure.microsoft.com/services/devops/repos/): Unlimited private Git repos
 * [Azure Artifacts](https://azure.microsoft.com/services/devops/artifacts/): Package management
 * Unlimited Stakeholders
@@ -57,7 +55,7 @@ Start with one organization in Azure DevOps. Then, you can add more organization
 Take some time to review your work structure and the different business groups and participants to be managed. For more information, see [Map your projects to business units](#mapping-guidance-table) and [Structure considerations](#more-about-organizational-structure).
 
 > [!TIP]
-> For company-owned Azure AD organizations, consider restricting users from creating new organizations as a way to protect your IP. For more information, see [Restrict organization creation via Azure AD tenant policy](../organizations/accounts/azure-ad-tenant-policy-restrict-org-creation.md). Users can create organizations using their MSA or GitHub accounts with no restrictions.
+> For company-owned Microsoft Entra organizations, consider restricting users from creating new organizations as a way to protect your IP. For more information, see [Restrict organization creation via Microsoft Entra tenant policy](../organizations/accounts/azure-ad-tenant-policy-restrict-org-creation.md). Users can create organizations using their MSA or GitHub accounts with no restrictions.
 
 ## What's a team?
 
@@ -89,7 +87,7 @@ Within an organization, you can do either of the following approaches:
 * Create a single project that contains many repos and teams
 * Create many projects, each with its own set of teams, repos, builds, work items, and other elements
 
-Even if you have many teams working on hundreds of different applications and software projects, you can manage them within a single project in Azure DevOps. However, if you want to manage more granular security between your software projects and their teams, consider using many projects. At the highest level of isolation is an organization, where each organization is connected to a single Azure AD tenant. A single Azure AD tenant, however, can be connected to many Azure DevOps organizations.
+Even if you have many teams working on hundreds of different applications and software projects, you can manage them within a single project in Azure DevOps. However, if you want to manage more granular security between your software projects and their teams, consider using many projects. At the highest level of isolation is an organization, where each organization is connected to a single Microsoft Entra tenant. A single Microsoft Entra tenant, however, can be connected to many Azure DevOps organizations.
 
 ::: moniker range="azure-devops"  
 
@@ -150,7 +148,7 @@ Configure your project in **Project settings**.
 
 ![Screenshot showing the Project settings button.](../media/settings/open-project-settings-vert-brn.png)
 
-For more information about managing projects, see [Manage projects in Azure DevOps](../organizations/projects/about-projects.md). You can move a project to a different organization by migrating the data. For more information about migrating your project, see [Migration options](../migrate/migrate-from-tfs.md).
+For more information about managing projects, see [Manage projects in Azure DevOps](../organizations/projects/about-projects.md). You can move a project to a different organization by migrating the data. For more information about migrating your project, see the [Migration overview](../migrate/migration-overview.md).
 
 ## Manage version control
 
@@ -164,7 +162,19 @@ Azure Repos offers the following version control systems for teams to choose fro
 
 TFVC is a centralized version control system that is also available. Unlike Git, only one TFVC repository is allowed for a project. But, within that repo, folders, and branches are used to organize code for multiple products and services, if wanted. Projects can use both TFVC and Git, if appropriate.
 
-### One vs. many repos
+### Monorepo vs. one repo per service
+
+Deploying various independent services from a monorepo can be effective for small teams aiming to build early momentum. However, this strategy can become problematic as the team grows due to several factors:
+
+- The knowledge required for new members increases with the overall complexity of the system.
+- Code sharing within a single repository can result in unintended coupling between services.
+- Changes in shared code can impact the behavior of various services, making it challenging to track these changes.
+
+For larger teams, managing a monorepo necessitates strong engineering discipline and robust tooling. Alternatively, you can opt for individual repositories for each service, along with a separate repo for shared resources. Although this approach involves more initial setup, it scales more effectively as the team grows. It also makes onboarding easier for new members, who can concentrate solely on their specific service repo.
+
+If you’re starting with a small team, a monorepo can be a good choice. As your team expands and complexity rises, you can transition to separate repositories.
+
+### One vs. many repos within a project
 
 Do you need to set up multiple repos within a single project or have a repo set up per project? The following guidance relates to the planning and administration functions across those repos.  
 
@@ -174,11 +184,11 @@ If the products stored in multiple repos work on independent schedules or proces
 
 Base your decision for one vs. many repos on the following factors and tips:
 
-- code dependencies and architecture 
-- put each independently deploy-able product or service in its own repo
-- don't separate a codebase into many repos if you expect to make coordinated code changes across those repos, as no tools can help coordinate those changes 
-- if your codebase is already a monolith, keep it in one repo. For more information about monolithic repos, see [How Microsoft develops modern software with DevOps](/devops/develop/how-microsoft-develops-devops) articles
-- if you have many disconnected services, one repo per service is a good strategy  
+- Code dependencies and architecture 
+- Put each independently deploy-able product or service in its own repo
+- Don't separate a codebase into many repos if you expect to make coordinated code changes across those repos, as no tools can help coordinate those changes 
+- If your codebase is already a monolith, keep it in one repo. For more information about monolithic repos, see [How Microsoft develops modern software with DevOps](/devops/develop/how-microsoft-develops-devops) articles
+- If you have many disconnected services, one repo per service is a good strategy
 
 > [!Tip]
 > Consider [managing your permissions](../organizations/security/permissions.md), so not everyone in your organization can [create a repo](../repos/git/create-new-repo.md). If you have too many repos, it's hard to keep track of who owns which code or other content stored in those repos.
@@ -193,35 +203,50 @@ The following image displays a sample of how "your company" could structure its 
 
 ![Diagram showing organizational structure for a company.](media/azure-devops-org_project_team_visual.png)
 
+### Managing temporary and shared resources
+
+Consider how to manage temporary and shared resources effectively by employing the following best practices:
+
+- **Temporary environments:** Temporary environments are short-lived and used for tasks such as testing, development, or staging. To manage these environments efficiently:
+  - **Separate repositories and pipelines:** Each temporary environment and its associated resources, for example, Azure Functions, should have its own repository and pipeline. This separation allows you to deploy and roll back the environment and its resources simultaneously, making it easier to spin up and discard them as needed.
+  - **Example:** Create a repository and pipeline specifically for your development environment, including all necessary resources such as Azure Functions, storage accounts, and other services.
+- **Shared resources:** Shared resources are typically long-lived and used across multiple environments. These resources often have longer spin-up times and higher costs. To manage shared resources effectively:
+  - **Separate repositories and pipelines:** Shared resources, such as Azure SQL Database, should have their own repository and pipeline. This separation ensures that temporary environments can use these shared resources, making their deployments faster and more cost-effective.
+  - **Example:** Create a repository and pipeline for your Azure SQL Database, which can be used by multiple temporary environments.
+- **Shared infrastructure resources:** Shared infrastructure resources, such as Virtual Private Clouds (VPCs) and subnets, also known as landing zones, should also have their own repositories and pipelines. This approach ensures that your infrastructure is managed consistently and can be reused across different environments.
+  - **Example:** Create a repository and pipeline for your VPC and subnet configuration, which can be referenced by other repositories and pipelines.
+
 ## More about organizational structure
 
 ### Choose your organization administrator account type
 
-When you create an organization, the credentials that you sign in with define which identity provider your organization uses. Create your organization with a Microsoft account or Azure AD instance. Use those credentials to sign in as an administrator to your new organization at `https://dev.azure.com/{YourOrganization}`.
+When you create an organization, the credentials that you sign in with define which identity provider your organization uses. Create your organization with a Microsoft account or Microsoft Entra instance. Use those credentials to sign in as an administrator to your new organization at `https://dev.azure.com/{YourOrganization}`.
 
 #### Use your Microsoft account
 
-Use your Microsoft account if you don't need to authenticate users for an organization with Azure AD. All users must sign in to your organization with a Microsoft account. If you don't have one, [create a Microsoft account](https://login.live.com/login.srf?lw=1).
+Use your Microsoft account if you don't need to authenticate users for an organization with Microsoft Entra ID. All users must sign in to your organization with a Microsoft account. If you don't have one, [create a Microsoft account](https://login.live.com/login.srf?lw=1).
 
    ![Enter your password and sign in](../media/enter-password-sign-in.png)
 
-If you don't have an Azure AD instance, create one for free from the [Azure portal](https://ms.portal.azure.com/) or use your Microsoft account to create an organization. Then, you can [connect your organization to Azure AD](../organizations/accounts/connect-organization-to-azure-ad.md).
+If you don't have a Microsoft Entra instance, create one for free from the [Azure portal](https://ms.portal.azure.com/) or use your Microsoft account to create an organization. Then, you can [connect your organization to Microsoft Entra ID](../organizations/accounts/connect-organization-to-azure-ad.md).
 
-#### Use your Azure AD account
+<a name='use-your-azure-ad-account'></a>
 
-You might have an Azure AD account already if you use Azure or Microsoft 365. If you work for a company that uses Azure AD to manage user permissions, you probably have an Azure AD account.
+#### Use your Microsoft Entra account
 
-If you don't have an Azure AD account, [sign up for Azure AD](https://ms.portal.azure.com/) to automatically connect your organization to your Azure AD. All users must be members in that directory to access your organization. To add users from other organizations, use [Azure AD B2B collaboration](/azure/active-directory/b2b/add-users-administrator).
+You might have a Microsoft Entra account already if you use Azure or Microsoft 365. If you work for a company that uses Microsoft Entra ID to manage user permissions, you probably have a Microsoft Entra account.
 
-Azure DevOps authenticates users through your Azure AD, so that only users who are members in that directory have access to your organization. When you remove users from that directory, they can no longer access your organization. Only specific [Azure AD administrators](/azure/active-directory/users-groups-roles/directory-assign-admin-roles) manage users in your directory, so administrators control who accesses your organization.
+If you don't have a Microsoft Entra account, [sign up for Microsoft Entra ID](https://ms.portal.azure.com/) to automatically connect your organization to your Microsoft Entra ID. All users must be members in that directory to access your organization. To add users from other organizations, use [Microsoft Entra B2B collaboration](/azure/active-directory/b2b/add-users-administrator).
+
+Azure DevOps authenticates users through your Microsoft Entra ID, so that only users who are members in that directory have access to your organization. When you remove users from that directory, they can no longer access your organization. Only specific [Microsoft Entra administrators](/azure/active-directory/users-groups-roles/directory-assign-admin-roles) manage users in your directory, so administrators control who accesses your organization.
 
 For more information on managing users, see [Manage users](../organizations/accounts/add-organization-users.md).
 
 ### Map organizations to business units
 
-Each business unit within your company gets its own organization in Azure DevOps, along with its own Azure AD tenant. You can [set up projects](#whats-a-project) within those individual organizations, as required, based on teams or ongoing work.
+Each business unit within your company gets its own organization in Azure DevOps, along with its own Microsoft Entra tenant. You can [set up projects](#whats-a-project) within those individual organizations, as required, based on teams or ongoing work.
 
-For a larger company, you can create multiple organizations using different user accounts (most likely Azure AD accounts). Consider what groups and users share strategies and work, and group them into specific organizations. 
+For a larger company, you can create multiple organizations using different user accounts (most likely Microsoft Entra accounts). Consider what groups and users share strategies and work, and group them into specific organizations. 
 
 For example, the fictional Fabrikam company created the following three organizations: 
 
@@ -244,6 +269,6 @@ The organizations are for the same company, but are mostly isolated from each ot
 
 - [Create an organization](../organizations/accounts/create-organization.md)
 - [Create a project](../organizations/projects/create-project.md)
-- [Connect your organization to Azure AD](../organizations/accounts/connect-organization-to-azure-ad.md)
-- [Set up billing](../organizations/billing/set-up-billing-for-your-organization-vs.md)
+- [Connect your organization to Microsoft Entra ID](../organizations/accounts/connect-organization-to-azure-ad.md)
+- [Set up billing](../organizations/billing/set-up-billing-for-your-organization-vs.md#set-up-billing)
 - [Set user preferences](../organizations/settings/set-your-preferences.md)

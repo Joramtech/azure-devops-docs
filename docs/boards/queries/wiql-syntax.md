@@ -17,7 +17,7 @@ ms.date: 10/18/2022
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]   
 
-You can use the WIQL syntax to [define a query as a hyperlink](../../boards/queries/define-query-hyperlink.md) or when using the [Work Item Query Language (REST API)](/rest/api/azure/devops/wit/wiql).  
+You can use the WIQL syntax to [define a query as a hyperlink](using-queries.md#define-a-query-as-a-hyperlink) or when using the [Work Item Query Language (REST API)](/rest/api/azure/devops/wit/wiql).  
 
 The WIQL syntax supports all functions available through the web portal Query Editor plus a few more. You can specify the fields to return and specify logical grouping of query clauses. In addition, you can use an `ASOF` clause to filter based on assignments based on a previous date.  
 
@@ -26,7 +26,9 @@ The WIQL syntax supports all functions available through the web portal Query Ed
 
 ## Prerequisites
 
-A query returns only those work items for which you have the **View work items** or **View work items in this node** permission. Typically, these permissions are granted to members of the **Readers** and **Contributors** groups for each team project. For more information, see [Permissions and groups](../../organizations/security/permissions.md).  
+| Category | Requirements |
+|--------------|-------------|
+| **Permissions** | **View work items** or **View work items in this node** permission set to **Allow**. Typically, these permissions get granted to members of the **Readers** and **Contributors** groups for each team project. For more information, see [Permissions and groups](../../organizations/security/permissions.md). |
 
 
 ## Query language overview
@@ -52,7 +54,7 @@ ASOF '02-11-2020'
 
 
 > [!TIP] 
-> By installing the [Wiql Editor Marketplace extension](https://marketplace.visualstudio.com/items?itemName=ottostreifel.wiql-editor), you can construct your queries using the Query Editor and then view the WIQL syntax. You can then copy and modify the WIQL syntax and run the query using the **Wiql Playground** hub added to **Boards**.
+> By installing the [Wiql Editor Marketplace extension](https://marketplace.visualstudio.com/items?itemName=ms-devlabs.wiql-editor), you can construct your queries using the Query Editor and then view the WIQL syntax. You can then copy and modify the WIQL syntax and run the query using the **Wiql Playground** hub added to **Boards**.
 
 :::row:::
    :::column span="1":::
@@ -153,15 +155,9 @@ For more information, see [Work item fields and attributes](../work-items/work-i
 
 ::: moniker-end 
 
-::: moniker range="tfs-2018"  
+ 
 
-You can add a custom field to a query clause. With WIQL, you must specify the reference name for the custom field. 
-
-For more information, see [Add or modify a field to track work](../../reference/add-modify-field.md).
-
-::: moniker-end 
-
-<a id="where-clause" />
+<a id="where-clause"></a>
 
 ## Specify filter clauses (`WHERE`)
 
@@ -201,13 +197,13 @@ Each filter condition is composed of three parts, each of which must conform to 
 - **Operator**: Valid values are specified in the [Operators](#operators) section later in this article. 
 - **Field value**: You can specify one of the following three values depending on the field specified.  
 	- A *literal value* must match the data type of the field value. 
-	- A *variable or macro that indicates a certain value. For example, **@Me** indicates the person who is running the query. For more information, see [Macros and variables](#macros) later in this article.
+	- A *variable* or macro that indicates a certain value. For example, **@Me** indicates the person who is running the query. For more information, see [Macros and variables](#macros) later in this article.
 	- The name of another *field*. For example, you can use `[Assigned to] = [Changed by]` to find work items that are assigned to the person who changed the work item most recently.
 
 For a description and reference names of all system-defined fields, see [Work item field index](../work-items/guidance/work-item-field.md).
 
 
-<a id="operators" />
+<a id="operators"></a>
 
 ### Operators 
 
@@ -361,7 +357,7 @@ WHERE
 ```
 
 
-<a id="macros" />
+<a id="macros"></a>
 
 ## Macros or variables
 
@@ -381,16 +377,7 @@ The following table lists the macros or variables you can use within a WIQL quer
 
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
-|      Macro     |                 Usage   |
-|-----------------|----------------|
-| **@Me**|  Use this variable to automatically search for the current user's alias in a field that contains user aliases. For example, you can find work items that you opened if you set the **Field** column to **Activated By**, the **Operator** column to **=**, and the **Value** column to **@Me**.  |
-|**@CurrentIteration** | Use this variable to automatically filter for work items assigned to the current sprint for the selected team based on the selected team context. |
-| **@Project**|Use this variable to search for work items in the current project. For example, you can find all the work items in the current project if you set the **Field** column to **Team Project**, the **Operator** column to **=**, and the **Value** column to **@Project**.  |
-|**@Today**| Use this variable to search for work items that relate to the current date or to an earlier date. You can also modify the <strong>@Today</strong> variable by subtracting days. For example, you can find all items activated in the last week if you set the **Field** column to **Activated Date**, the **Operator** column to **&gt;=**, and the **Value** column to **@Today - 7**. |
-|**[Any]** |Use this variable to search for work items that relate to any value that is defined for a particular field. |
 
-::: moniker-end
 
  
 ### @me macro
@@ -435,7 +422,7 @@ WHERE
 ```
 
 
-<a id="start-of" />
+<a id="start-of"></a>
 
 
 ::: moniker range=">= azure-devops-2019"
@@ -561,7 +548,7 @@ ORDER BY [Microsoft.VSTS.Common.Priority],
 
 
 
-<a id="linked-work-items" />
+<a id="linked-work-items"></a>
 
 ## Query for links between work items
 

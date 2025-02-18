@@ -1,20 +1,14 @@
 ---
 ms.service: azure-devops-test-plans
-ms.author: chcomley
-author: chcomley
+ms.author: jeom
+author: raviLiftr
 ms.topic: include
-ms.date: 07/13/2021
+ms.date: 01/13/2025
 ---
 
 
-## Prerequisites
-
-- You must connect to a project. If you don't have a project yet, [create one](../../user-guide/sign-up-invite-teammates.md). 
-- You must be added to a project. To get added, [Add users to a project or team](../../organizations/security/add-users-team-project.md). 
-- To request or provide feedback, you must have **Stakeholder** access or higher. 
-- To add or modify bugs or other work item types, you must have the **Edit work items in this node** permission set to **Allow** under the corresponding **Area Path**. 
-- To add new tags, you must have the **Create tag definition** permission set to **Allow**. 
-
-To learn more, see [Set permissions and access for testing](../../organizations/security/set-permissions-access-test.md). 
-
-
+| Category | Requirement |
+|--------------|-------------|
+| **Project access** | [Project member](../../organizations/security/add-users-team-project.md). |
+| **Access levels** | To request or provide feedback: At least **Stakeholder** access. |
+| **Permissions** | - To add or modify bugs or other work item types: **Edit work items in this node** permission set to **Allow** under the corresponding **Area Path**. <br> - To add new tags: **Create tag definition** permission set to **Allow**. <br> For more information, see [Set permissions and access for testing](../../organizations/security/set-permissions-access-test.md). |

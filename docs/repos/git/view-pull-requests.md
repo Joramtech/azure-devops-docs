@@ -10,6 +10,7 @@ author: vijayma
 ms.date: 03/31/2022
 monikerRange: '<= azure-devops'
 ms.subservice: azure-devops-repos-git
+ms.custom: devx-track-azurecli
 ---
 
 # View, filter, and open pull requests
@@ -28,7 +29,7 @@ There are several ways to list, filter, view, and open PRs for a project.
 ::: moniker range="azure-devops"
 - **Repos** must be enabled on your project. If the **Repos** hub and associated pages don't display, see [Turn an Azure DevOps service on or off](../../organizations/settings/set-services.md) to reenable Repos.
  
-- To view PRs, you must be a member of the Azure DevOps project the PR is in, with **Basic** access or higher. If you aren't a project member, [get added](../../organizations/accounts/add-organization-users.md).
+- To view PRs, be a member of the Azure DevOps project the PR is in, with at least **Basic** access. If you aren't a project member, [get added](../../organizations/accounts/add-organization-users.md).
 
   > [!NOTE]
   > For public projects, users granted **Stakeholder** access have full access to Azure Repos.
@@ -36,17 +37,14 @@ There are several ways to list, filter, view, and open PRs for a project.
 
 ::: moniker range=">= azure-devops-2019 < azure-devops"
 - **Repos** must be enabled on your project. If the **Repos** hub and associated pages don't display, see [Turn an Azure DevOps service on or off](../../organizations/settings/set-services.md) to reenable Repos.
-- To view PRs, you must be a member of the Azure DevOps project with **Basic** access or higher. If you aren't a project member, [get added](../../organizations/security/add-users-team-project.md).
+- To view PRs, be a member of the Azure DevOps project with at least **Basic** access. If you aren't a project member, [get added](../../organizations/security/add-users-team-project.md).
 ::: moniker-end
 
-::: moniker range="< azure-devops-2019"
-- To view or review PRs, you must be a member of the Azure DevOps project with **Basic** access or higher. If you aren't a project member, [get added](../../organizations/security/add-users-team-project.md).
 
-::: moniker-end
 
-- To learn more about permissions and access, see [Default Git repository and branch permissions](../../organizations/security/default-git-permissions.md) and [About access levels](../../organizations/security/access-levels.md).
+- For more information about permissions and access, see [Default Git repository and branch permissions](../../organizations/security/default-git-permissions.md) and [About access levels](../../organizations/security/access-levels.md).
 
-::: moniker range=">= azure-devops-2020"
+::: moniker range="azure-devops"
 
 - In Azure DevOps Services, you can manage PRs and other resources from the [Azure command-line interface (CLI)](/cli/azure/) with the `azure-devops` extension. To learn how to work with the Azure DevOps Services CLI, see [Get started with Azure DevOps CLI](../../cli/index.md). Azure Repos CLI commands for PRs use [az repos pr](/cli/azure/repos/pr).
 
@@ -80,22 +78,10 @@ You can list PRs by using the Azure DevOps project website, Visual Studio, or th
 
 ::: moniker-end
 
-::: moniker range="tfs-2018"
-
-Manage PRs you own or are assigned to with the **Pull Requests** tab in the **Code** page on the web.
-
-![Screenshot of viewing completed and abandoned PRs in Azure Repos.](media/view-pull-requests/repos-code-pull-requests.png)
-
-::: moniker-end 
+ 
 
 
-::: moniker range="tfs-2018"
-
-You can view all of your PRs in your organization, across all projects, by choosing **My pull requests** from the **Projects** page.
-
-![View all my pull requests](media/view-pull-requests/view-all-pull-requests.png)
-
-::: moniker-end 
+ 
 
 # [Visual Studio](#tab/visual-studio)
 
@@ -186,7 +172,7 @@ ID    Created     Creator              Title                                    
 
 ***
 
-<a id="define-custom-pr-view" />
+<a id="define-custom-pr-view"></a>
 
 ## Define a custom pull request view
 
@@ -267,7 +253,7 @@ az repos pr list --creator "My Name" --status all --top 1
 
 ***
 
-<a id="open-pr" />
+<a id="open-pr"></a>
 
 ## Open a pull request
 

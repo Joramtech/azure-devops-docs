@@ -2,7 +2,6 @@
 title: Understand job access tokens
 description: Access repositories, artifacts and other resources from pipelines
 ms.topic: reference
-ms.custom: seodec18
 ms.author: vijayma
 author: vijayma
 ms.date: 06/30/2022
@@ -13,9 +12,7 @@ monikerRange: '<= azure-devops'
 
 [!INCLUDE [version-lt-eq-azure-devops](../../includes/version-lt-eq-azure-devops.md)]
 
-::: moniker range="tfs-2018"
-[!INCLUDE [temp](../includes/concept-rename-note.md)]
-::: moniker-end
+
 
 At run-time, each job in a pipeline may access other resources in Azure DevOps. For example, a job may:
 - Check out source code from a Git repository
@@ -81,7 +78,7 @@ Enable one or more of the following settings. Enabling these settings are recomm
 
 ::: moniker-end
 
-::: moniker range="<= azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 If you use Azure DevOps Server 2019, then all YAML jobs run with the job authorization scope set to **collection**. In other words, these jobs have access to all repositories in your project collection. You cannot change this in Azure DevOps Server 2019.
 
@@ -148,7 +145,7 @@ To set job authorization scope for a specific pipeline:
 
 ::: moniker-end
 
-::: moniker range="<= azure-devops-2019"
+::: moniker range="=azure-devops-2019"
 
 Job authorization scope can be set for each pipeline. To set this scope:
 
@@ -391,6 +388,12 @@ All YAML pipelines in Azure DevOps Server 2019 run under **collection** job auth
     * If **Limit job authorization scope to current project for non-release pipelines** is not enabled, open the editor for the pipeline, and navigate to the **Options** tab.
       * If the **Build job authorization scope** is **Current project**, then scope is **project**.
       * Or else, scope is **collection**.
+
+:::moniker-end
+
+:::moniker range=">= azure-devops-2022"
+
+When creating a new classic pipeline, the *job authorization scope* is set to **current project** and the *build job authorization scope* is set to **project** by default.
 
 :::moniker-end
 
